@@ -103,16 +103,8 @@ namespace TeaPacket::GX2
         
         
         // No Copy
-        MEM2Resource& operator=(const MEM2Resource& other)
-        {
-            Allocate();
-            memcpy(data, other.data, size);
-        };
-        MEM2Resource(const MEM2Resource& other)
-        {
-            Allocate();
-            memcpy(data, other.data, size);
-        };
+        MEM2Resource& operator=(const MEM2Resource& other) = delete;
+        MEM2Resource(const MEM2Resource& other) = delete;
         
         // Constructors
         MEM2Resource() = default;
