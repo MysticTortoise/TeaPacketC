@@ -7,6 +7,7 @@
 #include "TeaPacket/Graphics/Display.hpp"
 #include "TeaPacket/Graphics/PlatformMesh.hpp"
 #include "TeaPacket/Graphics/Mesh/Mesh.hpp"
+#include "TeaPacket/MacroUtils/StructUtils.hpp"
 #include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 
 using namespace TeaPacket;
@@ -20,6 +21,10 @@ static constexpr D3D_FEATURE_LEVEL d3dFeatureLevels[] = {
     D3D_FEATURE_LEVEL_9_2,
     D3D_FEATURE_LEVEL_9_1,
 };
+
+static D3D11_DEPTH_STENCIL_DESC depthStencilDesc;
+static Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilState = nullptr;
+static Microsoft::WRL::ComPtr<ID3D11BlendState> blendState = nullptr;
 
 void Graphics::Initialize()
 {
@@ -58,6 +63,30 @@ void Graphics::Initialize()
     };
     CheckErrorWinCom(device->CreateRasterizerState(&desc, defaultRasterizerState.GetAddressOf()));
     deviceContext->RSSetState(defaultRasterizerState.Get());
+
+    ZeroStruct(depthStencilDesc);
+    depthStencilDesc.DepthEnable = true;
+    depthStencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+    depthStencilDesc.DepthFunc = D3D11_COMPARISON_LESS;
+
+    depthStencilDesc.StencilEnable = true;
+    depthStencilDesc.StencilReadMask = 0xFF;
+    depthStencilDesc.StencilWriteMask = 0xFF;
+
+    depthStencilDesc.FrontFace.StencilFailOp = D3D11_STENCIL_OP_KEEP;
+    depthStencilDesc.FrontFace.StencilDepthFailOp = D3D11_STENCIL_OP_INCR;
+    depthStencilDesc.FrontFace.StencilPassOp = D3D11_STENCIL_OP_KEEP;
+    depthStencilDesc.FrontFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
+    depthStencilDesc.BackFace.StencilFailOp = D3D11_STENCIL_OP_KEEP;
+    depthStencilDesc.BackFace.StencilDepthFailOp = D3D11_STENCIL_OP_DECR;
+    depthStencilDesc.BackFace.StencilPassOp = D3D11_STENCIL_OP_KEEP;
+    depthStencilDesc.BackFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
+
+    CheckErrorWinCom(
+        device->CreateDepthStencilState(&depthStencilDesc,
+            depthStencilState.ReleaseAndGetAddressOf())
+    );
+    deviceContext->OMSetDepthStencilState(depthStencilState.Get(), 0);
 }
 
 void Graphics::DeInitialize()
@@ -76,4 +105,14 @@ void Graphics::DrawMesh()
     {
         deviceContext->DrawIndexed(meshToDraw->platformMesh->indexCount, 0, 0);
     }
+}
+
+void Graphics::SetDepthEnabled(const bool depthEnabled)
+{
+    depthStencilDesc.DepthEnable = depthEnabled;
+    CheckErrorWinCom(
+        device->CreateDepthStencilState(&depthStencilDesc,
+            depthStencilState.ReleaseAndGetAddressOf())
+    );
+    deviceContext->OMSetDepthStencilState(depthStencilState.Get(), 0);
 }

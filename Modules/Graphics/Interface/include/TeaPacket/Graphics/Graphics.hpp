@@ -21,5 +21,7 @@ namespace TeaPacket::Graphics{
     /// - The active UniformBuffer (s).
     /// - The active Viewport.
     void DrawMesh();
+
+    void SetDepthEnabled(bool depthEnabled);
 }
 TP_HookInitDeInitFunctions(Graphics, 10);

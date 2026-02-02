@@ -100,3 +100,8 @@ void Graphics::DrawMesh()
     }
     
 }
+
+void Graphics::SetDepthEnabled(bool depthEnabled)
+{
+    GX2SetDepthOnlyControl(depthEnabled, depthEnabled, GX2_COMPARE_FUNC_LESS);
+}
