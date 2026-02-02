@@ -5,6 +5,7 @@ TP_add_impl_subdirectory(Graphics GX2)
 TP_add_impl_subdirectory(Input WiiU)
 TP_add_impl_subdirectory(Logging WHBLogUDP)
 TP_add_impl_subdirectory(System WiiU)
+TP_add_impl_subdirectory(Time CoreinitU)
 
 TP_add_interface_subdirectory(Math)
 TP_add_interface_subdirectory(Types)
@@ -15,9 +16,10 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
     TeaPacket_Input_WiiU
     TeaPacket_Logging_WHBLogUDP
     TeaPacket_Math_Base
-    TeaPacket_Types_Base
     TeaPacket_System_WiiU
-    )
+    TeaPacket_Time_CoreinitU
+    TeaPacket_Types_Base
+)
 
 if(DEFINED TEAPACKET_PLATFORM)
     if(TEAPACKET_PLATFORM STREQUAL "WiiU")
