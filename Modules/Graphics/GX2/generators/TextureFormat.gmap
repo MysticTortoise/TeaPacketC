@@ -6,5 +6,6 @@ Headers "TeaPacket/Graphics/Texture/TextureFormat.hpp" <gx2/surface.h>
 Data
 RGBA8 GX2_SURFACE_FORMAT_UNORM_R8_G8_B8_A8
 D24S8 GX2_SURFACE_FORMAT_UNORM_R24_X8
+R8 GX2_SURFACE_FORMAT_UNORM_R8
 End
 Error Invalid Texture Format
