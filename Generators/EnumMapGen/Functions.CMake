@@ -11,7 +11,7 @@ if(NOT COMMAND TP_EnumMapGen)
                 DEPENDS "${Source}"
                 WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
                 COMMENT "Generating ${DEST_FILE} from ${Source}"
-                COMMAND python "${TEAPACKET_ROOT}/Generators/EnumMapGen/main.py" "${Source}"
+                COMMAND python3 "${TEAPACKET_ROOT}/Generators/EnumMapGen/main.py" "${Source}"
                 VERBATIM
         )
         target_sources(${Target} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/${DEST_FILE}")
