@@ -1,6 +1,7 @@
 if(NOT COMMAND TP_AM_BuildAssets)
     function(TP_AM_BuildAssets)
         #message("Building assets...")
+        set(options REBUILD)
         set(oneValueArgs SOURCE DESTINATION TARGET)
         set(multiValueArgs PASSES)
         cmake_parse_arguments(PARSE_ARGV 0 TP_AM_BuildAssets
@@ -9,6 +10,11 @@ if(NOT COMMAND TP_AM_BuildAssets)
         #message(${TEAPACKET_ROOT})
         #message("${TEAPACKET_ROOT}/Subtools/AssetMixer/asset_mixer.py")
         list(REMOVE_DUPLICATES TP_AM_BuildAssets_PASSES)
+        if(${TP_AM_BuildAssets_REBUILD})
+            set(TP_AM_BuildAssets_REBUILD "--rebuild")
+        else()
+            set(TP_AM_BuildAssets_REBUILD)
+        endif ()
         add_custom_command(
                 TARGET ${TP_AM_BuildAssets_TARGET}
                 PRE_BUILD
@@ -19,6 +25,7 @@ if(NOT COMMAND TP_AM_BuildAssets)
                     "${TP_AM_BuildAssets_DESTINATION}"
                     "--passes"
                     ${TP_AM_BuildAssets_PASSES}
+                    ${TP_AM_BuildAssets_REBUILD}
         )
     endfunction()
 endif()
