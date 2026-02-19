@@ -9,7 +9,6 @@ if(NOT COMMAND TP_AM_BuildAssets)
         #message(${TEAPACKET_ROOT})
         #message("${TEAPACKET_ROOT}/Subtools/AssetMixer/asset_mixer.py")
         list(REMOVE_DUPLICATES TP_AM_BuildAssets_PASSES)
-        message("PASS IS ${TP_AM_BuildAssets_PASSES}")
         add_custom_command(
                 TARGET ${TP_AM_BuildAssets_TARGET}
                 PRE_BUILD
