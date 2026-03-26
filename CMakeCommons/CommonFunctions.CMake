@@ -52,7 +52,7 @@ if(NOT COMMAND TP_run_python_script)
                 TARGET ${projectName}
                 PRE_BUILD
                 COMMENT "Running ${scriptPath}"
-                COMMAND python ${scriptPath}
+                COMMAND python3 ${scriptPath}
                 WORKING_DIRECTORY "${scriptDir}"
                 VERBATIM
         )
