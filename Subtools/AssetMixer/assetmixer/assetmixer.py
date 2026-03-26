@@ -3,15 +3,16 @@ import shutil
 import tempfile
 import importlib.util
 from pathlib import Path
+from typing import Callable
 
 
-def get_need_files(src_dir : str, dest_dir : str, loaded_modules, rebuild_all : bool):
-    need_files = []
+def get_need_files(src_dir : str, dest_dir : str, loaded_modules, rebuild_all : bool) -> set[Path]:
+    need_files = set()
 
     if rebuild_all:
-        return [
+        return set([
             p for p in Path(src_dir).rglob("*")
-            if not p.is_dir()]
+            if not p.is_dir()])
 
     for file in Path(src_dir).rglob("*"):
         if file.is_dir():
@@ -23,13 +24,16 @@ def get_need_files(src_dir : str, dest_dir : str, loaded_modules, rebuild_all : 
                 not rel_dest_path.exists() or
                 file.stat().st_mtime > rel_dest_path.stat().st_mtime
         ):
-            need_files.append(file)
+            need_files.add(file)
 
     for module in loaded_modules:
-        function = getattr(module, "get_updated_files")
+        if not hasattr(module, "get_updated_files"):
+            continue
+
+        function: Callable[[str, str, list[Path]], list[Path]] = getattr(module, "get_updated_files")
 
         if function and callable(function):
-            function(src_dir, dest_dir)
+            need_files = function(src_dir, dest_dir, need_files)
         else:
             raise Exception(f"Error loading asset pass script: {module}")
 
@@ -51,7 +55,7 @@ def build_assets(src_dir : str, dest_dir, asset_pass_scripts=None, rebuild_all =
         loaded_modules.append(default_module)
 
 
-    need_files : list[Path] = get_need_files(src_dir, dest_dir, loaded_modules, rebuild_all)
+    need_files : set[Path] = get_need_files(src_dir, dest_dir, loaded_modules, rebuild_all)
     #print(need_files)
 
     with tempfile.TemporaryDirectory() as temp_dir:
