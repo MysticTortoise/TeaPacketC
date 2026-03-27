@@ -18,7 +18,7 @@ def grab():
             print("Cloning glslang", flush=True)
             subprocess.run("git clone https://github.com/KhronosGroup/glslang.git", shell=True, cwd=dir)
         print("Updating glslang sources", flush=True)
-        subprocess.run("assetmixer " + dir + "glslang/update_glslang_sources.py", shell=True, cwd=dir + "glslang")
+        subprocess.run("python " + dir + "glslang/update_glslang_sources.py", shell=True, cwd=dir + "glslang")
         print("CMAKE Configuring", flush=True)
         subprocess.run("cmake -B " + dir + "glslangbuild -DCMAKE_BUILD_TYPE=Release", shell=True, cwd =dir + "glslang")
         print("CMAKE Build", flush=True)
