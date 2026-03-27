@@ -16,6 +16,13 @@ def check():
         text = infile.read()
         if not os.path.isdir(text):
             return False
+        header_file = text + "/include/gameinput.h"
+        if not os.path.exists(header_file):
+            return False
+        with open(header_file, "r") as headerfile:
+            text = headerfile.read()
+            if not "namespace" in text:
+                return False
 
     return True
 
