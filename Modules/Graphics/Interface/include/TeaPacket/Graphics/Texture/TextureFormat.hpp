@@ -12,6 +12,7 @@ namespace TeaPacket::Graphics
         BGRA8, ///< A 4 channel 32 bpp texture format that supports 8 bits for Blue, Green, Red, Alpha
         D24S8, ///< A 32 bpp texture for 24 bits of depth and 8 bits of mask
         R8, ///< An 8 bpp texture for 8 bits of red.
+        R1, ///< A 1bpp texture for 1 bit of red
         NONE
     };
 
@@ -24,6 +25,7 @@ namespace TeaPacket::Graphics
         case RGBA8: return {8,8,8,8};
         case D24S8: return {24, 8};
         case R8: return {8};
+        case R1: return {1};
         case NONE: throw std::exception();
         }
         throw std::exception();
@@ -39,6 +41,7 @@ namespace TeaPacket::Graphics
         case RGBA8:
         case D24S8: return 32;
         case R8: return 8;
+        case R1: return 1;
         case NONE: throw std::exception();
         }
         throw std::exception();
