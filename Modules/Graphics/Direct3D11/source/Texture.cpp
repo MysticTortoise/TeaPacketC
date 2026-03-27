@@ -15,6 +15,7 @@
 #include "TeaPacket/Graphics/D3D11/D3D11TextureFilter.gen"
 #include "TeaPacket/Graphics/D3D11/D3D11TextureWrap.gen"
 
+using namespace TeaPacket;
 using namespace TeaPacket::Graphics;
 
 static constexpr D3D11_USAGE GetD3DUsage(const TextureUseFlags flags)
@@ -167,4 +168,9 @@ void Texture::SetActive(const uint8_t index)
 {
     deviceContext->PSSetShaderResources(index, 1, platformTexture->shaderResourceView.GetAddressOf());
     deviceContext->PSSetSamplers(index, 1, platformTexture->samplerState.GetAddressOf());
+}
+
+
+constexpr bool Graphics::IsTextureFormatSupported(const TextureFormat format) {
+    return TextureFormatConvertableToD3D(format);
 }

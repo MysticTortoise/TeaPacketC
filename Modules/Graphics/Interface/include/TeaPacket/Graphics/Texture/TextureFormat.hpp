@@ -49,4 +49,6 @@ namespace TeaPacket::Graphics
     {
         return GetTextureFormatBPP(format)/8;
     }
+
+    [[nodiscard]] constexpr bool IsTextureFormatSupported(TextureFormat format);
 }

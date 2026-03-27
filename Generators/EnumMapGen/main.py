@@ -88,6 +88,7 @@ def generate(file):
                 if other_enum == enum:
                     continue
 
+                # Generate Conversion
                 genfile.write("constexpr inline " + other_enum.name + " " + enum.alias + "To" + other_enum.alias + "(const " + enum.name + " val)\n")
                 genfile.write("{\n")
                 genfile.write(" switch(val)\n")
@@ -110,6 +111,29 @@ def generate(file):
 
                 genfile.write(" }\n")
                 genfile.write("}\n")
+
+                # Generate "Is Possible?" function
+                genfile.write("constexpr inline bool " + enum.alias + "ConvertableTo" + other_enum.alias + "(const " + enum.name + " val)\n")
+                genfile.write("{\n")
+                genfile.write(" switch(val)\n")
+                genfile.write(" {\n")
+
+                if enum.is_class:
+                    genfile.write(" using enum " + enum.name + ";\n")
+                if other_enum.is_class:
+                    genfile.write(" using enum " + other_enum.name + ";\n")
+
+                this_index = enums.index(enum)
+                other_index = enums.index(other_enum)
+
+                for i in range(len(enum_map)):
+                    genfile.write("case " + enum_map[i][this_index] + ":\n")
+                genfile.write("return true;\n")
+                genfile.write("default: return false;\n")
+
+                genfile.write(" }\n")
+                genfile.write("}\n")
+
         with open(f"{mypath}/footer.hpp", "r") as footerFile:
             genfile.write(footerFile.read())
 

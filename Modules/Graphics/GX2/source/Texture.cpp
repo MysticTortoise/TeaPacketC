@@ -13,6 +13,7 @@
 #include "TeaPacket/Graphics/GX2/GX2TextureFilter.gen"
 #include "TeaPacket/Graphics/Shader/Shader.hpp"
 
+using namespace TeaPacket;
 using namespace TeaPacket::Graphics;
 
 Texture::Texture(const TextureParameters& parameters):
@@ -94,3 +95,8 @@ void Texture::SetActive(const uint8_t index)
 
 Texture::~Texture() = default;
 Texture::Texture(Texture&& source) noexcept = default;
+
+
+constexpr bool Graphics::IsTextureFormatSupported(const TextureFormat format) {
+    return TextureFormatConvertableToGX2(format);
+}
