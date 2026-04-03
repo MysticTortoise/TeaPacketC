@@ -37,7 +37,7 @@ namespace TeaPacket::Graphics
         /// @details This may fail if the texture format is not a typical RGBA8 format.
         [[nodiscard]] Color GetColor4(const uint16_t x, const uint16_t y) const
         {
-            const unsigned char* p = &data[y * pitch + x * GetTextureFormatBytesPerPixel(format)];
+            const unsigned char* p = &data[y * pitch + static_cast<unsigned int>(x * GetTextureFormatBytesPerPixel(format))];
             switch (format)
             {
                 using enum TextureFormat;

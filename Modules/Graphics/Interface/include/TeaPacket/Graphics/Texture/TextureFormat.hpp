@@ -48,9 +48,9 @@ namespace TeaPacket::Graphics
     }
 
     /// Returns the Bytes-Per-Pixel of a texture format.
-    [[nodiscard]] constexpr uint8_t GetTextureFormatBytesPerPixel(const TextureFormat format)
+    [[nodiscard]] constexpr float GetTextureFormatBytesPerPixel(const TextureFormat format)
     {
-        return GetTextureFormatBPP(format)/8;
+        return GetTextureFormatBPP(format)/8.0f;
     }
 
     [[nodiscard]] constexpr bool IsTextureFormatSupported(TextureFormat format);
