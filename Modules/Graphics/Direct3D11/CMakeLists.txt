@@ -12,6 +12,8 @@ add_subdirectory_no_overwrite(TeaPacket_MacroUtils_WinSpecific "${TEAPACKET_ROOT
 TP_add_impl_subdirectory(Window Windows)
 TP_add_impl_subdirectory(Logging STDIO)
 
+TP_add_extension_subdirectory(TexturePreparer)
+
 
 file(GLOB_RECURSE sources source/*.c*)
 
@@ -29,7 +31,8 @@ target_link_libraries(TeaPacket_Graphics_Direct3D11 TeaPacket_Graphics_Base
         TeaPacket_Window_Windows
         d3d11.lib D3DCompiler.lib
         TeaPacket_MacroUtils_Base TeaPacket_MacroUtils_WinSpecific
-        TeaPacket_Math_Base TeaPacket_Logging_STDIO)
+        TeaPacket_Math_Base TeaPacket_Logging_STDIO
+        TeaPacket_Extension_TexturePreparer)
 
 set(TP_ASSET_MIXER_PASSES "${TP_ASSET_MIXER_PASSES};${CMAKE_CURRENT_SOURCE_DIR}/AssetMixer/Passes/hlsl_shader.py" CACHE INTERNAL "" FORCE)
 

@@ -54,4 +54,5 @@ namespace TeaPacket::Graphics
     }
 
     [[nodiscard]] constexpr bool IsTextureFormatSupported(TextureFormat format);
+    TextureFormat ConvertTextureToSupportedFormat(std::vector<unsigned char>& data, TextureFormat sourceFormat);
 }

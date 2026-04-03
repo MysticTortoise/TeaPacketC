@@ -15,6 +15,8 @@
 #include "TeaPacket/Graphics/D3D11/D3D11TextureFilter.gen"
 #include "TeaPacket/Graphics/D3D11/D3D11TextureWrap.gen"
 
+#include "TeaPacket/Extensions/TexturePreparer/TexturePreparer.hpp"
+
 using namespace TeaPacket;
 using namespace TeaPacket::Graphics;
 
@@ -70,7 +72,7 @@ format(parameters.format)
 
     D3D11_SUBRESOURCE_DATA texData = {
         .pSysMem = parameters.data,
-        .SysMemPitch = static_cast<UINT>(width) * GetTextureFormatBytesPerPixel(format),
+        .SysMemPitch = static_cast<UINT>(width * GetTextureFormatBytesPerPixel(format)),
         .SysMemSlicePitch = 0
     };
 
@@ -181,4 +183,23 @@ constexpr bool Graphics::IsTextureFormatSupported(const TextureFormat format) {
         throw std::exception("D3D11 - INVALID ARGUMENT FORMAT");
     }
     return formatSupport & (D3D11_FORMAT_SUPPORT_TEXTURE2D);
+}
+
+TextureFormat Graphics::ConvertTextureToSupportedFormat(std::vector<unsigned char>& data, const TextureFormat sourceFormat)
+{
+
+    switch (sourceFormat)
+    {
+    case TextureFormat::R1:
+        if (IsTextureFormatSupported(TextureFormat::R8))
+        {
+            Extensions::TexturePreparer::ConvertTextureToFormat<TextureFormat::R1, TextureFormat::R8>(data);
+            return TextureFormat::R8;
+        } else
+        {
+            throw std::exception("Format R8 not supported - add more pls");
+        }
+    default:
+        return sourceFormat;
+    }
 }
