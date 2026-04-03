@@ -172,5 +172,13 @@ void Texture::SetActive(const uint8_t index)
 
 
 constexpr bool Graphics::IsTextureFormatSupported(const TextureFormat format) {
-    return TextureFormatConvertableToD3D(format);
+    if (!TextureFormatConvertableToD3D(format))
+        return false;
+    UINT formatSupport;
+    const HRESULT result = device->CheckFormatSupport(TextureFormatToD3D(format), &formatSupport);
+    if (result == E_INVALIDARG)
+    {
+        throw std::exception("D3D11 - INVALID ARGUMENT FORMAT");
+    }
+    return formatSupport & (D3D11_FORMAT_SUPPORT_TEXTURE2D);
 }
