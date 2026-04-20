@@ -37,9 +37,7 @@ void UniformBuffer::SendData(const void* data)
     GX2Invalidate(GX2_INVALIDATE_MODE_CPU | GX2_INVALIDATE_MODE_UNIFORM_BLOCK, platformBuffer->data.get(), size);
 }
 
-UniformBuffer::~UniformBuffer() = default;
-
-UniformBuffer::UniformBuffer(UniformBuffer&& other) noexcept = default;
+TP_OBJ_IMPL_DESTRUCTOR_MOVE_DEFAULT(UniformBuffer);
 /*
 UniformBuffer::UniformBuffer(const UniformBuffer& other):
 size(other.size)

@@ -6,9 +6,9 @@
   <component name="CMakePythonSetting">
     <option name="pythonIntegrationState" value="YES" />
   </component>
-  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/TestPrograms/GraphicsTest">
+  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/Modules/Graphics/Direct3D11">
     <contentRoot DIR="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.14" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13" project-jdk-type="Python SDK" />
   <component name="WestSettings">{}</component>
 </project>

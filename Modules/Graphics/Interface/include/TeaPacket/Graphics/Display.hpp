@@ -26,6 +26,10 @@ namespace TeaPacket::Graphics{
         explicit Display(const DisplayParameters& parameters);
         ~Display();
 
+        // no copy
+        Display(const Display& other) = delete;
+        Display& operator=(const Display& other) = delete;
+
         /// A pointer to the implementation-defined data this display uses.
         std::unique_ptr<PlatformDisplay> platformDisplay;
 

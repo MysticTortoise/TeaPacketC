@@ -4,7 +4,7 @@
 
 #include <vector>
 
-
+#include "TeaPacket/Graphics/Shader/ShaderVariable.hpp"
 
 namespace TeaPacket::Graphics
 {
@@ -14,5 +14,7 @@ namespace TeaPacket::Graphics
         std::vector<uint32_t> indexBuffer;
 
         size_t indexCount = 0;
+
+        std::vector<ShaderVariableType> vertexDataInfo;
     };
 }

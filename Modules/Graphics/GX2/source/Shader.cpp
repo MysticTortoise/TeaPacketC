@@ -95,5 +95,5 @@ void Shader::SetActive()
 }
 
 
-Shader::~Shader() = default;
+TP_OBJ_IMPL_DESTRUCTOR_MOVE_DEFAULT(Shader);
 

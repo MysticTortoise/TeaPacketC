@@ -9,7 +9,7 @@
 using namespace TeaPacket;
 using namespace TeaPacket::Extensions;
 
-Graphics::Texture STBImageLoader::LoadImage(const std::string& assetPath, const Graphics::TextureParameters& params)
+Graphics::Texture STBImageLoader::LoadImage(const std::string& assetPath, const Graphics::TextureParameters& wantParams)
 {
     const std::vector<unsigned char> imgData = Assets::ReadBinaryFile(assetPath);
     int width, height, numComponents;
@@ -19,9 +19,9 @@ Graphics::Texture STBImageLoader::LoadImage(const std::string& assetPath, const 
         &width,
         &height,
         &numComponents,
-        static_cast<int>(GetTextureFormatChannelSizes(params.format).size()));
+        static_cast<int>(GetTextureFormatChannelSizes(wantParams.format).size()));
 
-    auto trueParams = params;
+    auto trueParams = wantParams;
     trueParams.data = data;
     trueParams.width = static_cast<uint16_t>(width);
     trueParams.height = static_cast<uint16_t>(height);

@@ -99,7 +99,7 @@ void Graphics::DrawMesh()
     const Mesh* meshToDraw = Mesh::activeMesh;
     assert(meshToDraw != nullptr);
     
-    if (meshToDraw->hasIndex)
+    if (meshToDraw->platformMesh->indexCount)
     {
         GX2DrawIndexedEx(
             GX2_PRIMITIVE_MODE_TRIANGLES,

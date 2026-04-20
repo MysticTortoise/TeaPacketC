@@ -11,6 +11,8 @@ TP_add_interface_subdirectory(MacroUtils)
 TP_add_interface_subdirectory(Math)
 TP_add_interface_subdirectory(Logging)
 
+TP_add_extension_subdirectory(TexturePreparer)
+
 file(GLOB_RECURSE sources source/*.c*)
 
 add_library(TeaPacket_Graphics_GX2 STATIC ${sources})
@@ -21,6 +23,7 @@ TP_EnumMapGen("${CMAKE_CURRENT_SOURCE_DIR}/generators/TextureFilter.gmap" TeaPac
 
 target_include_directories(TeaPacket_Graphics_GX2 PRIVATE source)
 target_include_directories(TeaPacket_Graphics_GX2 PUBLIC include)
-target_link_libraries(TeaPacket_Graphics_GX2 TeaPacket_Graphics_Base TeaPacket_Logging_Base)
+target_link_libraries(TeaPacket_Graphics_GX2 TeaPacket_Graphics_Base TeaPacket_Logging_Base
+        TeaPacket_Extension_TexturePreparer)
 
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

@@ -2,6 +2,8 @@
 #include <vector>
 #include <memory>
 
+#include "TeaPacket/MacroUtils/ClassDefUtils.hpp"
+
 
 namespace TeaPacket::Graphics
 {
@@ -27,6 +29,8 @@ namespace TeaPacket::Graphics
         /// Creates a shader via parameters
         explicit Shader(const ShaderParameters& parameters);
         ~Shader();
+
+        TP_OBJ_MOVE_NO_COPY(Shader)
 
         /// Sets this shader to be the currently active shader to be used in future DrawMesh() calls.
         void SetActive();

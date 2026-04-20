@@ -52,17 +52,18 @@ static constexpr D3D11_CPU_ACCESS_FLAG GetD3DCpuAccessFlags(const TextureUseFlag
 }
 
 Texture::Texture(const TextureParameters& parameters):
-platformTexture(std::make_unique<PlatformTexture>()),
-width(parameters.width),
-height(parameters.height),
-format(parameters.format)
+platformTexture(std::make_unique<PlatformTexture>())
 {
+    platformTexture->width = parameters.width;
+    platformTexture->height = parameters.height;
+    platformTexture->format = parameters.format;
+
     D3D11_TEXTURE2D_DESC textureDesc;
-    textureDesc.Width = width;
-    textureDesc.Height = height;
+    textureDesc.Width = parameters.width;
+    textureDesc.Height = parameters.height;
     textureDesc.MipLevels = 1;
     textureDesc.ArraySize = 1;
-    textureDesc.Format = TextureFormatToD3D(format);
+    textureDesc.Format = TextureFormatToD3D(parameters.format);
     textureDesc.SampleDesc.Count = 1;
     textureDesc.SampleDesc.Quality = 0;
     textureDesc.Usage = GetD3DUsage(parameters.useFlags);
@@ -72,7 +73,7 @@ format(parameters.format)
 
     D3D11_SUBRESOURCE_DATA texData = {
         .pSysMem = parameters.data,
-        .SysMemPitch = static_cast<UINT>(width * GetTextureFormatBytesPerPixel(format)),
+        .SysMemPitch = static_cast<UINT>(static_cast<float>(parameters.width) * GetTextureFormatBytesPerPixel(parameters.format)),
         .SysMemSlicePitch = 0
     };
 
@@ -119,8 +120,7 @@ format(parameters.format)
     }
 }
 
-Texture::~Texture() = default;
-Texture::Texture(Texture&& source) noexcept = default;
+TP_OBJ_IMPL_DESTRUCTOR_MOVE_DEFAULT(Texture);
 
 TextureData Texture::GetData() const
 {
@@ -147,10 +147,10 @@ TextureData Texture::GetData() const
         0, D3D11_MAP_READ, 0, &mappedResource)
     );
 
-    const uint8_t bpp = GetTextureFormatBPP(format);
-    const uint_fast16_t h = height;
+    const uint8_t bpp = GetTextureFormatBPP(platformTexture->format);
+    const uint_fast16_t h = platformTexture->height;
 
-    TextureData data = TextureData(bpp * mappedResource.RowPitch * height);
+    TextureData data = TextureData(bpp * mappedResource.RowPitch * h);
     data.width = static_cast<uint16_t>(stagingDesc.Width);
     data.height = static_cast<uint16_t>(stagingDesc.Height);
     data.format = D3DToTextureFormat(stagingDesc.Format);
@@ -172,8 +172,22 @@ void Texture::SetActive(const uint8_t index)
     deviceContext->PSSetSamplers(index, 1, platformTexture->samplerState.GetAddressOf());
 }
 
+uint16_t Texture::GetWidth() const
+{
+    return platformTexture->width;
+}
 
-constexpr bool Graphics::IsTextureFormatSupported(const TextureFormat format) {
+uint16_t Texture::GetHeight() const
+{
+    return platformTexture->height;
+}
+
+TextureFormat Texture::GetFormat() const
+{
+    return platformTexture->format;
+}
+
+bool Graphics::IsTextureFormatSupported(const TextureFormat format) {
     if (!TextureFormatConvertableToD3D(format))
         return false;
     UINT formatSupport;
@@ -203,3 +217,4 @@ TextureFormat Graphics::ConvertTextureToSupportedFormat(std::vector<unsigned cha
         return sourceFormat;
     }
 }
+

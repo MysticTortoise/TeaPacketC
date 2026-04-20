@@ -53,6 +53,6 @@ namespace TeaPacket::Graphics
         return GetTextureFormatBPP(format)/8.0f;
     }
 
-    [[nodiscard]] constexpr bool IsTextureFormatSupported(TextureFormat format);
+    [[nodiscard]] bool IsTextureFormatSupported(TextureFormat format);
     TextureFormat ConvertTextureToSupportedFormat(std::vector<unsigned char>& data, TextureFormat sourceFormat);
 }

@@ -11,9 +11,7 @@
 using namespace TeaPacket::Graphics;
 
 Mesh::Mesh(const MeshParameters& parameters):
-    platformMesh(std::make_unique<PlatformMesh>()),
-    hasIndex(parameters.flags.useIndices),
-    vertexDataInfo(parameters.vertexInfo)
+    platformMesh(std::make_unique<PlatformMesh>())
 {
     size_t vertexSize = 0;
     for (const ShaderVariableType& vertexData : parameters.vertexInfo)
@@ -71,11 +69,11 @@ void Mesh::SetActive()
 
     constexpr unsigned int offset = 0;
     deviceContext->IASetVertexBuffers(0, 1, platformMesh->vertexBuffer.GetAddressOf(), &platformMesh->vertexSize, &offset);
-    if (hasIndex)
+    if (platformMesh->indexBuffer != nullptr)
     {
         deviceContext->IASetIndexBuffer(platformMesh->indexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
         deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     }
 }
 
-Mesh::~Mesh() = default;
+TP_OBJ_IMPL_DESTRUCTOR_MOVE_DEFAULT(Mesh);

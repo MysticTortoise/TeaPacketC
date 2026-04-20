@@ -62,7 +62,4 @@ void UniformBuffer::SendData(const void* data)
 }
 
 constexpr bool UniformBuffer::ShouldUBBeEndianSwapped = false;
-
-UniformBuffer::UniformBuffer(UniformBuffer&& other) noexcept = default;
-
-UniformBuffer::~UniformBuffer() = default;
+TP_OBJ_IMPL_DESTRUCTOR_MOVE_DEFAULT(UniformBuffer);

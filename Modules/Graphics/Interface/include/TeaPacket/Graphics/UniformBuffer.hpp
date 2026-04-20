@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include "TeaPacket/Endianness/EndianSwapping.hpp"
+#include "TeaPacket/MacroUtils/ClassDefUtils.hpp"
 
 namespace TeaPacket::Graphics
 {
@@ -22,8 +23,9 @@ namespace TeaPacket::Graphics
 
         /// Creates a buffer from specified parameters.
         explicit UniformBuffer(const UniformBufferParameters& parameters);
-        UniformBuffer(UniformBuffer&& other) noexcept;
         ~UniformBuffer();
+
+        TP_OBJ_MOVE_NO_COPY(UniformBuffer)
 
         /// @brief Updates the data in this Uniform buffer.
         /// @warning DO NOT UPDATE THE DATA IN THIS BUFFER WHILE A DRAW CALL IS BEING MADE! This may cause issues on certain platforms.

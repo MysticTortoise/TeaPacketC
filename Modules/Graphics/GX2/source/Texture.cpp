@@ -13,6 +13,10 @@
 #include "TeaPacket/Graphics/GX2/GX2TextureFilter.gen"
 #include "TeaPacket/Graphics/Shader/Shader.hpp"
 
+#include "TeaPacket/Extensions/TexturePreparer/TexturePreparer.hpp"
+#include "TeaPacket/Graphics/Texture/TextureFormat.hpp"
+#include "TeaPacket/MacroUtils/ClassDefUtils.hpp"
+
 using namespace TeaPacket;
 using namespace TeaPacket::Graphics;
 
@@ -48,10 +52,7 @@ platformTexture(std::make_unique<PlatformTexture>(PlatformTexture{
     .gx2Sampler = GX2Sampler{},
 
     .isPartOfViewport = parameters.useFlags.renderTargetColor || parameters.useFlags.renderTargetDepth
-})),
-width(parameters.width),
-height(parameters.height),
-format(parameters.format)
+}))
 {
     if (platformTexture->isPartOfViewport)
     {
@@ -78,7 +79,9 @@ format(parameters.format)
         proxySurface.tileMode = GX2_TILE_MODE_LINEAR_SPECIAL;
         proxySurface.pitch = proxySurface.width;
         proxySurface.image = parameters.data;
-        proxySurface.imageSize = GetTextureFormatBytesPerPixel(format) * width * height;
+        proxySurface.imageSize = static_cast<uint32_t>(GetTextureFormatBytesPerPixel(parameters.format) *
+            static_cast<float>(parameters.width) *
+            static_cast<float>(parameters.height));
         GX2CopySurface(&proxySurface, 0, 0, &platformTexture->gx2Texture.surface, 0, 0);
     } else
     {
@@ -92,11 +95,36 @@ void Texture::SetActive(const uint8_t index)
     GX2SetPixelSampler(&platformTexture->gx2Sampler, index);
 }
 
+uint16_t Texture::GetWidth() const
+{
+    return platformTexture->gx2Texture.surface.width;
+}
 
-Texture::~Texture() = default;
-Texture::Texture(Texture&& source) noexcept = default;
+uint16_t Texture::GetHeight() const
+{
+    return platformTexture->gx2Texture.surface.height;
+}
 
+TextureFormat Texture::GetFormat() const
+{
+    return GX2ToTextureFormat(platformTexture->gx2Texture.surface.format);
+}
 
-constexpr bool Graphics::IsTextureFormatSupported(const TextureFormat format) {
+TP_OBJ_IMPL_DESTRUCTOR_MOVE_DEFAULT(Texture);
+
+bool Graphics::IsTextureFormatSupported(const TextureFormat format) {
     return TextureFormatConvertableToGX2(format);
+}
+
+TextureFormat Graphics::ConvertTextureToSupportedFormat(std::vector<unsigned char>& data, const TextureFormat sourceFormat)
+{
+
+    switch (sourceFormat)
+    {
+    case TextureFormat::R1:
+            Extensions::TexturePreparer::ConvertTextureToFormat<TextureFormat::R1, TextureFormat::R8>(data);
+            return TextureFormat::R8;
+    default:
+        return sourceFormat;
+    }
 }

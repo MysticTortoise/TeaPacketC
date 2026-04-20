@@ -123,7 +123,7 @@ void Graphics::DrawMesh()
     const Mesh* meshToDraw = Mesh::activeMesh;
     assert(meshToDraw != nullptr);
     
-    if (meshToDraw->hasIndex)
+    if (meshToDraw->platformMesh->indexBuffer != nullptr)
     {
         deviceContext->DrawIndexed(meshToDraw->platformMesh->indexCount, 0, 0);
     }

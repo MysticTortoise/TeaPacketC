@@ -1,7 +1,6 @@
 #include "TeaPacket/Graphics/Mesh/Mesh.hpp"
 
 #include <cstring>
-#include <algorithm>
 
 #include "TeaPacket/Graphics/Mesh/MeshParameters.hpp"
 #include "TeaPacket/Graphics/PlatformMesh.hpp"
@@ -13,21 +12,20 @@
 using namespace TeaPacket::Graphics;
 
 Mesh::Mesh(const MeshParameters& parameters):
-    platformMesh(std::make_unique<PlatformMesh>()),
-    hasIndex(parameters.flags.useIndices),
-    vertexDataInfo(parameters.vertexInfo)
+    platformMesh(std::make_unique<PlatformMesh>())
 {
-    platformMesh->buffers.reserve(vertexDataInfo.size());
+    platformMesh->vertexDataInfo = parameters.vertexInfo;
+    platformMesh->buffers.reserve(parameters.vertexInfo.size());
 
     size_t vertexSize = 0;
-    for (const auto& vertInfo : vertexDataInfo)
+    for (const auto& vertInfo : parameters.vertexInfo)
     {
         vertexSize += vertInfo.GetSize();
     }
     const size_t vertexCount = parameters.vertexData.size / vertexSize;
     size_t paramOffset = 0;
     
-    for (const auto& vertInfo : vertexDataInfo)
+    for (const auto& vertInfo : parameters.vertexInfo)
     {
         size_t sizeOfElem = vertInfo.GetSize();
         GX2RBuffer& buffer = platformMesh->buffers.emplace_back(GX2RBuffer{
@@ -51,7 +49,7 @@ Mesh::Mesh(const MeshParameters& parameters):
         GX2RUnlockBufferEx(&buffer, GX2R_RESOURCE_BIND_NONE);
     }
 
-    if (hasIndex)
+    if (parameters.flags.useIndices)
     {
         assert(parameters.indices.has_value());
         platformMesh->indexBuffer.reserve(parameters.indices->size);
@@ -68,12 +66,11 @@ Mesh::Mesh(const MeshParameters& parameters):
 
 void Mesh::SetActive()
 {
-    for (unsigned int i = 0; i < vertexDataInfo.size(); i++)
+    for (unsigned int i = 0; i < platformMesh->vertexDataInfo.size(); i++)
     {
         GX2RSetAttributeBuffer(&platformMesh->buffers[i], i, platformMesh->buffers[i].elemSize, 0); 
     }
     activeMesh = this;
 }
 
-Mesh::Mesh(Mesh&& source) noexcept = default;
-Mesh::~Mesh() = default;
+TP_OBJ_IMPL_DESTRUCTOR_MOVE_DEFAULT(Mesh);
