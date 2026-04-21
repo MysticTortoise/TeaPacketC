@@ -2,9 +2,6 @@ cmake_minimum_required(VERSION 3.28)
 project(TeaPacket_Logging_STDIO)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonFunctions.CMake")
 
-set(CMAKE_CXX_STANDARD 20)
-
-
 TP_add_interface_subdirectory(Logging)
 
 file(GLOB_RECURSE sources source/*.c*)

@@ -1,23 +1,23 @@
-#include "TeaPacket/Random/Random.hpp"
+#include "TeaPacket/Random/Random.h"
 
 #include <random>
 
-using namespace TeaPacket;
 
 static std::random_device device;
 static std::mt19937 gen(device());
 static std::uniform_real_distribution<float> floatDist(0, 1);
 
-float Random::RandFloat() {
+float TP_Random_F()
+{
     return floatDist(gen);
 }
 
-int Random::RandIntRangeInclusive(const int min, const int max) {
+int TP_Random_IRangeInclusive(const int min, const int max) {
     std::uniform_int_distribution distribution(min ,max);
     return distribution(gen);
 }
 
-unsigned int Random::RandUIntRangeInclusive(const unsigned int min, const unsigned int max) {
+unsigned int TP_Random_UIRangeInclusive(const unsigned int min, const unsigned int max) {
     std::uniform_int_distribution distribution(min ,max);
     return distribution(gen);
 }

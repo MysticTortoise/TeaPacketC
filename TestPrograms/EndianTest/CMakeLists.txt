@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.28)
+project(TeaPacket_TestPrograms_Endianness)
+include("${TEAPACKET_ROOT}/CMakeCommons/CommonFunctions.CMake")
+
+TP_add_interface_subdirectory(Endianness)
+TP_add_interface_subdirectory(Logging)
+
+add_executable(TeaPacket_TestPrograms_Endianness main.c)
+target_link_libraries(TeaPacket_TestPrograms_Endianness TeaPacket_Endianness_Base TeaPacket_Logging_Base)
+
+set_target_properties(TeaPacket_TestPrograms_Endianness PROPERTIES C_STANDARD 90)

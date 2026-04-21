@@ -1,12 +1,14 @@
-#include "TeaPacket/Logging/Logging.hpp"
+#include "TeaPacket/Logging/Logging.h"
 
 #include <iostream>
 
-void TeaPacket::Logging::Initialize() {}
-void TeaPacket::Logging::DeInitialize() {}
 
+tp_bool TP_Logging_Init()   {return tp_true;}
+void    TP_Logging_DeInit() {}
 
-void TeaPacket::LogString(const std::string& msg)
+void TP_LogString(const TP_StringView view)
 {
-    std::cout << msg << "\n";
+    std::cout.write(view.p, static_cast<std::streamsize>(view.size) * sizeof(char));
 }
+
+#include "TeaPacket/Logging/AutoLoggingFuncs.h"

@@ -11,6 +11,6 @@ else()
 endif()
 # Disable extensions and require
 set_target_properties(${PROJECT_NAME} PROPERTIES
-        CXX_STANDARD_REQUIRED ON
-        CXX_EXTENSIONS OFF
+        C_STANDARD_REQUIRED ON
+        C_EXTENSIONS OFF
 )

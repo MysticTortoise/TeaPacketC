@@ -5,7 +5,7 @@
 #include <string>
 #include <fstream>
 
-static constexpr auto assetPrepend = "/vol/content/";
+static constexpr auto assetPrepend = "assets/";
 
 TP_String TP_Assets_ReadTextAsset(const TP_String assetPath)
 {

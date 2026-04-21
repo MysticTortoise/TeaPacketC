@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.28)
 project(TeaPacket_Time_STDChrono)
 
-set(CMAKE_CXX_STANDARD 20)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonFunctions.CMake")
 
 TP_add_interface_subdirectory(Time)

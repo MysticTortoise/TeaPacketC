@@ -1,43 +1,34 @@
-#include "TeaPacket/Time/Time.hpp"
+#include "TeaPacket/Time/Time.h"
 
 #include <chrono>
 
-using namespace TeaPacket;
-using namespace std;
 using namespace std::chrono;
 
-void Time::Initialize()
-{
+tp_bool TP_Time_Init(){return tp_true;}
+void TP_Time_DeInit() {}
 
+tp_timeunit TP_Time_GetSeconds()
+{
+    return static_cast<tp_timeunit>(duration_cast<seconds>(steady_clock::now().time_since_epoch()).count());
 }
 
-void Time::DeInitialize()
+tp_timeunit TP_Time_GetMilliseconds()
 {
-
+    return static_cast<tp_timeunit>(duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count());
 }
 
-uint32_t Time::GetCurrentSeconds()
+tp_timeunit TP_Time_GetMicroseconds()
 {
-    return static_cast<uint32_t>(duration_cast<seconds>(steady_clock::now().time_since_epoch()).count());
+    return static_cast<tp_timeunit>(duration_cast<microseconds>(steady_clock::now().time_since_epoch()).count());
 }
 
-uint64_t Time::GetCurrentMilliseconds()
-{
-    return static_cast<uint64_t>(duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count());
-}
-
-uint64_t Time::GetCurrentMicroseconds()
-{
-    return static_cast<uint64_t>(duration_cast<microseconds>(steady_clock::now().time_since_epoch()).count());
-}
-
-float Time::GetCurrentSecondsFloat()
+float TP_Time_GetSecondsF()
 {
     const duration<float> dur = steady_clock::now().time_since_epoch();
     return dur.count();
 }
 
-double Time::GetCurrentSecondsDouble()
+double TP_Time_GetSecondsD()
 {
     const duration<double> dur = steady_clock::now().time_since_epoch();
     return dur.count();
