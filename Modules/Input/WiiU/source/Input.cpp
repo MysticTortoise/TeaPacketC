@@ -1,28 +1,29 @@
-#include "TeaPacket/Input/Input.hpp"
+#include "TeaPacket/Input/Input.h"
 
 #include <vpad/input.h>
 
-using namespace TeaPacket;
-using namespace TeaPacket::Input;
+#include "stdlib.h"
+#include "string.h"
 
-#include "VPadCode.hpp"
+#include "VPadCode.h"
 
-void Input::Initialize()
+tp_bool TP_Input_Init()
 {
     VPADInit();
+    return tp_true;
 }
 
-void Input::DeInitialize()
+void TP_Input_DeInit()
 {
     VPADShutdown();
 }
 
-void Input::UpdateControllers()
+void TP_Input_UpdateControllers()
 {
     
 }
 
-void Input::PollInputs(const ControllerSlot slot)
+void TP_Input_PollSlot(const TP_Input_Slot slot)
 {
     if (slot == 0)
     {
@@ -30,35 +31,35 @@ void Input::PollInputs(const ControllerSlot slot)
     }
 }
 
-bool Input::IsConnected(const ControllerSlot slot)
+tp_bool TP_Input_IsConnected(const TP_Input_Slot slot)
 {
     if (slot == 0)
     {
         return IsVPadConnected();
     }
 
-    return false;
+    return tp_false;
 }
 
-bool Input::IsButtonPressed(const ControllerSlot slot, const InputButtonType button)
+tp_bool TP_Input_IsButtonPressed(const TP_Input_Slot slot, const TP_Input_Button button)
 {
     if (slot == 0)
     {
         return IsVPadButtonPressed(button);
     }
-    return false;
+    return tp_false;
 }
 
-bool Input::IsButtonSupported(const ControllerSlot slot, const InputButtonType button)
+tp_bool TP_Input_IsButtonSupported(const TP_Input_Slot slot, const TP_Input_Button button)
 {
     if (slot == 0)
     {
         return IsVPadButtonSupported(button);
     }
-    return false;
+    return tp_false;
 }
 
-float Input::GetAxisValue(const ControllerSlot slot, const InputAxisType axis)
+float TP_Input_GetAxis(const TP_Input_Slot slot, const TP_Input_Axis axis)
 {
     if (slot == 0)
     {
@@ -67,31 +68,38 @@ float Input::GetAxisValue(const ControllerSlot slot, const InputAxisType axis)
     return 0;
 }
 
-bool Input::IsAxisSupported(const ControllerSlot slot, const InputAxisType axis)
+tp_bool TP_Input_IsAxisSupported(const TP_Input_Slot slot, const TP_Input_Axis axis)
 {
     if (slot == 0)
     {
         return GetVPadAxisSupported(axis);
     }
-    return false;
+    return tp_false;
 }
 
-ControllerSlot Input::GetLastControllerPressed(const ControllerType type)
+TP_Input_Slot TP_Input_GetLastSlotPressed(const TP_Input_ControllerType typeFilter)
 {
-    (void)type;
+    (void)typeFilter;
     return 0; // FIX WHEN MORE CONTROLLERS ADDED
 }
 
-std::string Input::GetControllerName(ControllerSlot slot)
+const char WiiUGamepadStr[] = "Wii U Gamepad";\
+const TP_String emptyString = {0, 0};
+
+TP_String TP_Input_GetControllerName(TP_Input_Slot slot)
 {
     if (slot == 0)
     {
-        return "Wii U Gamepad";
+        TP_String str;
+        str.size = sizeof(WiiUGamepadStr)-1;
+        str.p = (char*)malloc(str.size);
+        memcpy(str.p, WiiUGamepadStr, str.size);
+        return str;
     }
-    return "";
+    return emptyString;
 }
 
-ControllerSlot Input::GetSlotCount()
+TP_Input_Slot TP_Input_GetSlotCount()
 {
     return 5;
 }

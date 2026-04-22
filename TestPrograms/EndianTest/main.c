@@ -4,6 +4,7 @@
 
 #include "TeaPacket/Endianness/Endian.h"
 #include "TeaPacket/Logging/Logging.h"
+#include "TeaPacket/Input/Input.h"
 
 int main(void)
 {

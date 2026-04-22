@@ -94,3 +94,11 @@ void TP_LogBool(const tp_bool x)
         TP_LogString(data);
     }
 }
+
+void TP_LogCharN(const char* c, const size_t n)
+{
+    TP_StringView strview;
+    strview.p = c;
+    strview.size = n;
+    TP_LogString(strview);
+}

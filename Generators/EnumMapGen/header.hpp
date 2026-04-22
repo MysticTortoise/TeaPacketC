@@ -1,5 +1,4 @@
 #pragma once
-#include <stdexcept>
 #if defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wswitch"

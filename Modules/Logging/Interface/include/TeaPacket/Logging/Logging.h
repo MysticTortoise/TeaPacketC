@@ -18,6 +18,9 @@ void TP_LogSLong(  signed long);
 void TP_LogULong(unsigned long);
 void TP_LogDouble(double);
 void TP_LogBool(tp_bool);
+void TP_LogCharN(const char*, size_t);
+
+#define TP_LogConstStr(msg) TP_LogCharN(msg, sizeof(msg)-1);
 
 
 #ifdef __cplusplus

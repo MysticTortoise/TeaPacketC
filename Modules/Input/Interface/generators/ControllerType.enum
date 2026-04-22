@@ -1,0 +1,7 @@
+TP_Input_ControllerType tp_u16
+None
+Keyboard
+Mouse
+Gamepad
+Misc
+Any = 0xFFFF
