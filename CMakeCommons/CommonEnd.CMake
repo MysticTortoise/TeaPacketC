@@ -1,5 +1,5 @@
-target_compile_definitions(${PROJECT_NAME} INTERFACE
-        TP_DEBUG=${TP_DEBUG})
+#target_compile_definitions(${PROJECT_NAME} INTERFACE
+#        TP_DEBUG=${TP_DEBUG})
 
 # Enable warnings and treat warnings as errors.
 if(MSVC)

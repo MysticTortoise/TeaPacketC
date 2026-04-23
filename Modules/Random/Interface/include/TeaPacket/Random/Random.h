@@ -1,6 +1,6 @@
 
-#ifndef TEAPACKET_LOGGING_WHBLOGUDP_RANDOM_H
-#define TEAPACKET_LOGGING_WHBLOGUDP_RANDOM_H
+#ifndef TEAPACKET_RANDOM_H
+#define TEAPACKET_RANDOM_H
 #ifdef __cplusplus
 extern "C" {
 #endif

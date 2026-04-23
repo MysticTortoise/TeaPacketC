@@ -1,6 +1,6 @@
 
-#ifndef TEAPACKET_ASSETS_CPPSTDFILE_INPUT_H
-#define TEAPACKET_ASSETS_CPPSTDFILE_INPUT_H
+#ifndef TEAPACKET_INPUT_H
+#define TEAPACKET_INPUT_H
 #ifdef __cplusplus
 extern "C" {
 #endif

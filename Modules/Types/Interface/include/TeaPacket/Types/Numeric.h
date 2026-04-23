@@ -1,5 +1,5 @@
-#ifndef TEAPACKET_TYPES_NUMERIC
-#define TEAPACKET_TYPES_NUMERIC
+#ifndef TEAPACKET_TYPES_NUMERIC_H
+#define TEAPACKET_TYPES_NUMERIC_H
 
 #include "TeaPacket/MacroUtils/Features.h"
 #include "limits.h"

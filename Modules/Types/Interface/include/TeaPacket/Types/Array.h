@@ -21,4 +21,6 @@ typedef TP_Array(tp_byte) TP_ByteArray;
 
 typedef TP_ArrayView(char) TP_StringView;
 
+#define TP_StrViewFromConstStr(msg) {msg, sizeof(msg)-1}
+
 #endif

@@ -1,15 +1,14 @@
 #pragma once
 
 #include <windows.h>
+#include "TeaPacket/Types/Numeric.h"
 
-namespace TeaPacket::Window
+struct TP_Window
 {
-    struct PlatformWindow
-    {
-        /// The Win32 HWND this Window uses.
-        HWND windowHandle;
+    /// The Win32 HWND this Window uses.
+    HWND windowHandle;
 
-        // Ugly Hack
-        static inline bool shouldQuit = false;
-    };
-}
+    tp_u16 x, y, w, h;
+
+    static inline bool shouldQuit = false;
+};

@@ -1,6 +1,6 @@
 
-#ifndef TEAPACKET_RANDOM_STDRANDOM_TIME_H
-#define TEAPACKET_RANDOM_STDRANDOM_TIME_H
+#ifndef TEAPACKET_TIME_H
+#define TEAPACKET_TIME_H
 #ifdef __cplusplus
 extern "C" {
 #endif

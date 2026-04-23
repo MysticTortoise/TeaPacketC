@@ -1,11 +1,12 @@
 #include <memory>
 
-#include "TeaPacket/Window/Window.hpp"
+#include "TeaPacket/Window/Window.h"
 
-#include "TeaPacket/System/System.hpp"
+#include <atomic>
+
+#include <vector>
+
 #include "TeaPacket/Window/PlatformWindow.hpp"
-
-using namespace TeaPacket::Window;
 
 static LRESULT WindowProc(const HWND hWnd, const UINT message, const WPARAM wParam, const LPARAM lParam)
 {
@@ -15,7 +16,7 @@ static LRESULT WindowProc(const HWND hWnd, const UINT message, const WPARAM wPar
     case WM_QUIT:
         PostQuitMessage(0);
         // TODO: multiple windows on closing can be closed individually
-        PlatformWindow::shouldQuit = true;
+        TP_Window::shouldQuit = true;
         return 0;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
@@ -33,11 +34,11 @@ static void InitializeWindowClass()
     windowClass.lpfnWndProc = WindowProc;
     windowClass.cbClsExtra = 0;
     windowClass.cbWndExtra = 0;
-    windowClass.hInstance = GetModuleHandle(NULL);
-    windowClass.hIcon = 0;
-    windowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
+    windowClass.hInstance = GetModuleHandle(nullptr);
+    windowClass.hIcon = nullptr;
+    windowClass.hCursor = LoadCursor(nullptr, IDC_ARROW);
     windowClass.hbrBackground = CreateSolidBrush(RGB(29,29,38));
-    windowClass.lpszMenuName = 0;
+    windowClass.lpszMenuName = nullptr;
     windowClass.lpszClassName = "TeaPacket_MainWindowClass";
 
     if (!RegisterClass(&windowClass))
@@ -46,83 +47,54 @@ static void InitializeWindowClass()
     }
 }
 
-Window::Window(const WindowParameters& parameters):
-    platformWindow(std::make_unique<PlatformWindow>()),
-    x(parameters.x),
-    y(parameters.y),
-    width(parameters.width),
-    height(parameters.height),
-    title(parameters.title),
-    display(parameters.display)
+static inline std::vector<TP_Window*> Windows;
+
+TP_Window* TP_Window_Create(const TP_Window_Params* params)
 {
     if (!IsWindowClassInitialized.load()) { InitializeWindowClass(); }
+    const size_t nameSize = params->title.size;
+    const auto titleName = new char[nameSize+1];
+    memcpy(titleName, params->title.p, nameSize);
+    titleName[nameSize] = '\0';
 
-    const RECT rect = {0, 0, width, height};
-    platformWindow->windowHandle = CreateWindow(
+    HWND winHandle = CreateWindowExA(
+        0,
         "TeaPacket_MainWindowClass",
-        title.c_str(),
+        titleName,
         WS_OVERLAPPEDWINDOW,
-        x, y,
-        rect.right - rect.left, rect.bottom - rect.top,
-        0,
-        0,
-        GetModuleHandle(NULL),
-        0
+        params->x, params->y,
+        params->width, params->height,
+        nullptr,
+        nullptr,
+        GetModuleHandle(nullptr),
+        nullptr
     );
 
-    if (platformWindow->windowHandle == NULL)
+    if (winHandle == nullptr)
     {
         // Error handling
     }
-    ShowWindow(platformWindow->windowHandle, SW_SHOWNORMAL);
-    Windows.push_back(this);
+    ShowWindow(winHandle, SW_SHOWNORMAL);
+
+    const auto window = new TP_Window{
+        winHandle,
+        params->x,
+        params->y,
+        params->width,
+        params->height
+    };
+
+    Windows.push_back(window);
+
+
+    delete[] titleName;
+    return window;
 }
-
-#define UpdateWindowPosition() SetWindowPos( \
-platformWindow->windowHandle, nullptr, \
-x, y, 0, 0, \
-SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE)
-
-void Window::SetXPos(const unsigned short newXPos)
-{
-    x = newXPos;
-    UpdateWindowPosition();
-}
-
-void Window::SetYPos(const unsigned short newYPos)
-{
-    y = newYPos;
-    UpdateWindowPosition();
-}
-
-#define UpdateWindowSize() SetWindowPos(\
-    platformWindow->windowHandle, nullptr, 0, 0, \
-    width, height, \
-    SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
-
-void Window::SetWidth(const unsigned short newWidth)
-{
-    width = newWidth;
-    UpdateWindowSize();
-}
-
-void Window::SetHeight(const unsigned short newHeight)
-{
-    height = newHeight;
-    UpdateWindowSize();
-}
-
-void Window::SetTitle(const std::string& newTitle)
-{
-    title = newTitle;
-    SetWindowTextA(platformWindow->windowHandle, newTitle.c_str());
-}
-
 static thread_local MSG msg;
 
-void Window::ProcessEvents()
+void TP_Window_ProcessEvents(TP_Window* window)
 {
-    const HWND hwnd = platformWindow->windowHandle;
+    const HWND hwnd = window->windowHandle;
     while (PeekMessageA(&msg, hwnd, 0, 0, PM_REMOVE))
     {
         TranslateMessage(&msg);
@@ -130,16 +102,103 @@ void Window::ProcessEvents()
     }
 }
 
-Window::~Window()
+void TP_Window_Destroy(TP_Window* window)
 {
     for (size_t i = 0; i < Windows.size(); i++)
     {
-        if (Windows[i] == this)
+        if (Windows[i] == window)
         {
             Windows.erase(Windows.begin() + i);
             break;
         }
     }
-    DestroyWindow(platformWindow->windowHandle);
+    DestroyWindow(window->windowHandle);
 
+    delete window;
+}
+
+tp_u16 TP_Window_GetXPos(TP_Window* window)
+{
+    return  window->x;
+}
+
+tp_u16 TP_Window_GetYPos(TP_Window* window)
+{
+    return window->y;
+}
+
+tp_u16 TP_Window_GetWidth(TP_Window* window)
+{
+    return window->w;
+}
+
+tp_u16 TP_Window_GetHeight(TP_Window* window)
+{
+    return window->h;
+}
+
+TP_String TP_Window_GetTitle(TP_Window* window)
+{
+    const int len = GetWindowTextLengthA(window->windowHandle);
+
+    // ReSharper disable once CppDFAMemoryLeak
+    const auto text = static_cast<char*>(malloc(len));
+    GetWindowTextA(window->windowHandle, text, len);
+
+    return {text, static_cast<size_t>(len)};
+}
+
+void TP_Window_SetXPos(TP_Window* window, const tp_u16 xPos)
+{
+    window->x = xPos;
+    SetWindowPos(
+        window->windowHandle,
+        nullptr,
+        xPos, window->y,
+        0, 0,
+        SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
+}
+
+void TP_Window_SetYPos(TP_Window* window, const tp_u16 yPos)
+{
+    window->y = yPos;
+    SetWindowPos(
+        window->windowHandle,
+        nullptr,
+        window->x, yPos,
+        0, 0,
+        SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
+}
+
+void TP_Window_SetWidth(TP_Window* window, const tp_u16 width)
+{
+    window->w = width;
+    SetWindowPos(
+    window->windowHandle,
+    nullptr,
+    0, 0,
+    width, window->h,
+    SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+}
+
+void TP_Window_SetHeight(TP_Window* window, const tp_u16 height)
+{
+    window->h = height;
+    SetWindowPos(
+    window->windowHandle,
+    nullptr,
+    0, 0,
+    window->w, height,
+    SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+}
+
+void TP_Window_SetTitle(TP_Window* window, const TP_StringView name)
+{
+    const auto text = new char[name.size+1];
+    memcpy(text, name.p, name.size);
+    text[name.size] = '\0';
+
+    SetWindowTextA(window->windowHandle, text);
+
+    delete[] text;
 }
