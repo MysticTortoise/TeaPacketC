@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    TP_Window_Params parms = {
+    const TP_Window_Params parms = {
         0,
         0,
         1280,
@@ -16,7 +16,6 @@ int main(void)
     for (i = 0; i < 2000000; i++)
     {
         TP_Window_ProcessEvents(window);
-        TP_Window_SetHeight(window, i/1000);
     }
 
     TP_Window_Destroy(window);

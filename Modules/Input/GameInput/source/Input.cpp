@@ -1,22 +1,21 @@
-#include "TeaPacket/Input/Input.hpp"
+#include "TeaPacket/Input/Input.h"
 
 #include <algorithm>
 #include <cassert>
 #include <GameInput.h>
 #include <mutex>
+#include <shared_mutex>
+#include <vector>
 
 #include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 
 #include "TeaPacket/Input/GameInputGlobal.hpp"
-#include "TeaPacket/Input/InputAxis.hpp"
-#include "TeaPacket/Input/InputAxisInfo.hpp"
-#include "TeaPacket/Input/InputButtonInfo.hpp"
 #include "TeaPacket/Input/GameInput/VirtualKey.gen"
 #include "TeaPacket/Input/GameInput/MouseButtons.gen"
 #include "TeaPacket/Input/GameInput/ControllerType.gen"
 #include "TeaPacket/Input/GameInput/GamepadButtons.gen"
 #include "TeaPacket/Window/PlatformWindow.hpp"
-#include "TeaPacket/Window/Window.hpp"
+#include "TeaPacket/Window/Window.h"
 
 using namespace TeaPacket;
 using namespace TeaPacket::Input;
@@ -29,9 +28,12 @@ struct ReadingEntry
     Microsoft::WRL::ComPtr<IGameInputReading> lastReading;
 };
 
-static SharedMutexPair<std::vector<Microsoft::WRL::ComPtr<IGameInputDevice>>> connectedDevices;
-static decltype(connectedDevices) publicDevices;
-static SharedMutexPair<std::vector<ReadingEntry>> readings;
+static std::shared_mutex connectedDevices_m;
+static std::vector<Microsoft::WRL::ComPtr<IGameInputDevice>> connectedDevices_v;
+static std::shared_mutex publicDevices_m;
+static decltype(connectedDevices_v) publicDevices_v;
+static std::shared_mutex readings_m;
+static std::vector<ReadingEntry> readings_v;
 
 void CALLBACK OnDeviceEnumerated(
     [[maybe_unused]] _In_ GameInputCallbackToken callbackToken,
@@ -41,11 +43,11 @@ void CALLBACK OnDeviceEnumerated(
     [[maybe_unused]] _In_ const GameInputDeviceStatus currentStatus,
     [[maybe_unused]] _In_ GameInputDeviceStatus previousStatus)
 {
-    std::unique_lock lock(connectedDevices.m);
+    std::unique_lock lock(connectedDevices_m);
     if (currentStatus & GameInputDeviceConnected)
     {
         // Connected
-        for (auto& i : connectedDevices.v)
+        for (auto& i : connectedDevices_v)
         {
             if (i == nullptr)
             {
@@ -53,11 +55,11 @@ void CALLBACK OnDeviceEnumerated(
                 return;
             }
         }
-        connectedDevices.v.emplace_back(device);
+        connectedDevices_v.emplace_back(device);
     } else
     {
         // Disconnected
-        for (auto& i : connectedDevices.v)
+        for (auto& i : connectedDevices_v)
         {
             if (i.Get() == device)
             {
@@ -68,35 +70,35 @@ void CALLBACK OnDeviceEnumerated(
     }
 }
 
-void Input::UpdateControllers()
+void TP_Input_UpdateControllers()
 {
-    std::unique_lock ulock(publicDevices.m, std::defer_lock);
-    std::unique_lock ulock2(readings.m, std::defer_lock);
-    std::shared_lock slock(connectedDevices.m, std::defer_lock);
+    std::unique_lock ulock(publicDevices_m, std::defer_lock);
+    std::unique_lock ulock2(readings_m, std::defer_lock);
+    std::shared_lock slock(connectedDevices_m, std::defer_lock);
     std::lock(ulock, ulock2, slock);
 
-    publicDevices.v = connectedDevices.v;
-    readings.v.resize(publicDevices.v.size());
+    publicDevices_v = connectedDevices_v;
+    readings_v.resize(publicDevices_v.size());
 }
 
-bool Input::IsConnected(const ControllerSlot slot)
+tp_bool TP_Input_IsConnected(TP_Input_Slot slot)
 {
-    std::shared_lock lock(connectedDevices.m);
-    return connectedDevices.v[slot] != nullptr;
+    std::shared_lock lock(connectedDevices_m);
+    return connectedDevices_v[slot] != nullptr;
 }
 
-void Input::PollInputs(const ControllerSlot slot)
+void TP_Input_PollSlot(TP_Input_Slot slot)
 {
-    std::shared_lock slock(publicDevices.m, std::defer_lock);
-    std::unique_lock ulock(readings.m, std::defer_lock);
+    std::shared_lock slock(publicDevices_m, std::defer_lock);
+    std::unique_lock ulock(readings_m, std::defer_lock);
     std::lock(slock, ulock);
     // ReSharper disable once CppUseStructuredBinding
-    auto& reading = readings.v[slot];
+    auto& reading = readings_v[slot];
     reading.lastReading = reading.currentReading;
     
     if (!SUCCEEDED(gameInput->GetCurrentReading(
         GameInputKindAny,
-        publicDevices.v[slot].Get(),
+        publicDevices_v[slot].Get(),
         reading.currentReading.GetAddressOf()
         )))
     {
@@ -105,7 +107,7 @@ void Input::PollInputs(const ControllerSlot slot)
     }
 }
 
-void Input::Initialize()
+tp_bool TP_Input_Init()
 {
     CheckErrorWinCom(
         GameInputCreate(gameInput.GetAddressOf())
@@ -121,23 +123,23 @@ void Input::Initialize()
             OnDeviceEnumerated,
             &globalCallbackToken)
     );
-    
+    return tp_true;
 }
 
-ControllerSlot Input::GetSlotCount()
+TP_Input_Slot TP_Input_GetSlotCount()
 {
-    std::shared_lock lock(publicDevices.m);
-    return static_cast<ControllerSlot>(publicDevices.v.size());
+    std::shared_lock lock(publicDevices_m);
+    return static_cast<TP_Input_Slot>(publicDevices_v.size());
 }
 
-bool Input::IsButtonPressed(const ControllerSlot slot, const InputButtonType button)
+tp_bool TP_Input_IsButtonPressed(TP_Input_Slot slot, TP_Input_Button button)
 {
-    std::shared_lock lock(readings.m);
-    IGameInputReading* reading = readings.v[slot].currentReading.Get();
+    std::shared_lock lock(readings_m);
+    IGameInputReading* reading = readings_v[slot].currentReading.Get();
     
-    if (IsKeyboardButton(button))
+    if (button > TP_Input_Button_START_KEY && button < TP_Input_Button_END_KEY)
     {
-        const uint8_t virtualKey = InputButtonTypeToVK(button);
+        const uint8_t virtualKey = TP_Input_ButtonToVK(button);
         const uint32_t keyCount = reading->GetKeyCount();
         auto keys = std::vector<GameInputKeyState>(keyCount);
         reading->GetKeyState(keyCount, keys.data());
@@ -151,17 +153,17 @@ bool Input::IsButtonPressed(const ControllerSlot slot, const InputButtonType but
         }
         return false;
     }
-    if (IsMouseButton(button))
+    if (button > TP_Input_Button_START_MOUSE && button < TP_Input_Button_END_MOUSE)
     {
         GameInputMouseState mouseState{};
         reading->GetMouseState(&mouseState);
-        return mouseState.buttons & InputButtonTypeToMouseButton(button);
+        return mouseState.buttons & TP_Input_ButtonToMouseButton(button);
     }
-    if (IsGamepadButton(button))
+    if (button > TP_Input_Button_START_PAD && button < TP_Input_Button_END_PAD)
     {
         GameInputGamepadState gamepadState{};
         reading->GetGamepadState(&gamepadState);
-        return gamepadState.buttons & InputButtonTypeToGamepadButton(button); 
+        return gamepadState.buttons & TP_Input_ButtonToGamepadButton(button);
     }
 
     return false;
@@ -170,21 +172,20 @@ bool Input::IsButtonPressed(const ControllerSlot slot, const InputButtonType but
 static void TP_GetWindowRect(RECT* rect)
 {
     assert(rect != nullptr);
-    assert(Window::Window::Window::GetWindow(0) != nullptr);
-    GetWindowRect(Window::Window::GetWindow(0)->platformWindow->windowHandle, rect);
+    assert(TP_Window_Get(0) != nullptr);
+    GetWindowRect(TP_Window_Get(0)->windowHandle, rect);
 }
 
-float Input::GetAxisValue(const ControllerSlot slot, const InputAxisType axis)
+float TP_Input_GetAxis(TP_Input_Slot slot, TP_Input_Axis axis)
 {
-    using enum InputAxisType;
-    std::shared_lock lock(readings.m, std::defer_lock);
-    std::shared_lock lock2(publicDevices.m, std::defer_lock);
+    std::shared_lock lock(readings_m, std::defer_lock);
+    std::shared_lock lock2(publicDevices_m, std::defer_lock);
     std::lock(lock, lock2);
     
-    if (axis == POINTER_X || axis == POINTER_Y)
+    if (axis == TP_Input_Axis_POINTER_X || axis == TP_Input_Axis_POINTER_Y)
     {
         const GameInputDeviceInfo* info;
-        if (!SUCCEEDED(publicDevices.v[slot]->GetDeviceInfo(&info)))
+        if (!SUCCEEDED(publicDevices_v[slot]->GetDeviceInfo(&info)))
         {
             return 0;
         }
@@ -194,9 +195,9 @@ float Input::GetAxisValue(const ControllerSlot slot, const InputAxisType axis)
             RECT windowRect;
             TP_GetWindowRect(&windowRect);
             GameInputMouseState mouseState{};
-            readings.v[slot].currentReading->GetMouseState(&mouseState);
+            readings_v[slot].currentReading->GetMouseState(&mouseState);
             
-            if (axis == POINTER_X)
+            if (axis == TP_Input_Axis_POINTER_X)
             {
                 return  std::clamp(
                     static_cast<float>(mouseState.absolutePositionX - windowRect.left) /
@@ -211,19 +212,19 @@ float Input::GetAxisValue(const ControllerSlot slot, const InputAxisType axis)
         }
         return 0;
     }
-    if (IsGamepadAxis(axis))
+    if (axis > TP_Input_Axis_START_PAD && axis < TP_Input_Axis_END_PAD)
     {
-        GameInputGamepadState state;
-        readings.v[slot].currentReading->GetGamepadState(&state);
+        GameInputGamepadState state = {};
+        readings_v[slot].currentReading->GetGamepadState(&state);
         switch (axis)
         {
-        case PAD_STICK_LEFT_X:
+        case TP_Input_Axis_PAD_STICK_LEFT_X:
             return state.leftThumbstickX;
-        case PAD_STICK_LEFT_Y:
+        case TP_Input_Axis_PAD_STICK_LEFT_Y:
             return state.leftThumbstickY;
-        case PAD_STICK_RIGHT_X:
+        case TP_Input_Axis_PAD_STICK_RIGHT_X:
             return state.rightThumbstickX;
-        case PAD_STICK_RIGHT_Y:
+        case TP_Input_Axis_PAD_STICK_RIGHT_Y:
             return state.rightThumbstickY;
         default:
             return 0;
@@ -234,40 +235,40 @@ float Input::GetAxisValue(const ControllerSlot slot, const InputAxisType axis)
 }
 
 
-bool Input::IsButtonSupported(const ControllerSlot slot, const InputButtonType button)
+tp_bool TP_Input_IsButtonSupported(TP_Input_Slot slot, TP_Input_Button button)
 {
-    std::shared_lock lock(publicDevices.m);
+    std::shared_lock lock(publicDevices_m);
     const GameInputDeviceInfo* info;
-    const auto device = publicDevices.v[slot].Get();
+    const auto device = publicDevices_v[slot].Get();
     if (!SUCCEEDED(device->GetDeviceInfo(&info)))
     {
         return false;
     }
-    if (IsKeyboardButton(button))
+    if (button > TP_Input_Button_START_KEY && button < TP_Input_Button_END_KEY)
     {
         return info->supportedInput & GameInputKindKeyboard; // TODO: Is there a way to figure this out on a more granular level?
-    } else if (IsMouseButton(button))
+    } else if (button > TP_Input_Button_START_MOUSE && button < TP_Input_Button_END_MOUSE)
     {
         if (!(info->supportedInput & GameInputKindMouse))
         {
             return false;
         }
-        return info->mouseInfo->supportedButtons & InputButtonTypeToMouseButton(button);
+        return info->mouseInfo->supportedButtons & TP_Input_ButtonToMouseButton(button);
     }
 
     return false;
 }
 
-bool Input::IsAxisSupported(const ControllerSlot slot, const InputAxisType axis)
+tp_bool TP_Input_IsAxisSupported(TP_Input_Slot slot, TP_Input_Axis axis)
 {
-    std::shared_lock lock(publicDevices.m);
+    std::shared_lock lock(publicDevices_m);
     const GameInputDeviceInfo* info;
-    const auto device = publicDevices.v[slot].Get();
+    const auto device = publicDevices_v[slot].Get();
     if (!SUCCEEDED(device->GetDeviceInfo(&info)))
     {
         return false;
     }
-    if (axis == InputAxisType::POINTER_X || axis == InputAxisType::POINTER_Y)
+    if (axis == TP_Input_Axis_POINTER_X || axis == TP_Input_Axis_POINTER_Y)
     {
         return info->supportedInput & GameInputKindMouse;
     }
@@ -275,11 +276,11 @@ bool Input::IsAxisSupported(const ControllerSlot slot, const InputAxisType axis)
 }
 
 
-ControllerSlot Input::GetLastControllerPressed(const ControllerType type)
+TP_Input_Slot TP_Input_GetLastSlotPressed(TP_Input_ControllerType typeFilter)
 {
     Microsoft::WRL::ComPtr<IGameInputReading> reading;
     if (!SUCCEEDED(gameInput->GetCurrentReading(
-        ControllerTypeToGameInputKind(type),
+        TP_Input_ControllerTypeToGameInputKind(typeFilter),
         nullptr,
         reading.GetAddressOf())))
     {
@@ -288,31 +289,35 @@ ControllerSlot Input::GetLastControllerPressed(const ControllerType type)
     IGameInputDevice* device;
     reading->GetDevice(&device);
     
-    std::shared_lock lock(publicDevices.m);
-    for (size_t slot = 0; slot < publicDevices.v.size(); ++slot)
+    std::shared_lock lock(publicDevices_m);
+    for (size_t slot = 0; slot < publicDevices_v.size(); ++slot)
     {
-        if (publicDevices.v[slot].Get() == device)
+        if (publicDevices_v[slot].Get() == device)
         {
-            return static_cast<ControllerSlot>(slot);
+            return static_cast<TP_Input_Slot>(slot);
         }
     }
     return NoControllerSlot;
 }
 
-std::string Input::GetControllerName(const ControllerSlot slot)
+TP_String TP_Input_GetControllerName(TP_Input_Slot slot)
 {
     const GameInputDeviceInfo* info;
-    std::shared_lock lock(publicDevices.m);
-    if (!SUCCEEDED(publicDevices.v[slot]->GetDeviceInfo(&info)))
+    std::shared_lock lock(publicDevices_m);
+    if (!SUCCEEDED(publicDevices_v[slot]->GetDeviceInfo(&info)))
     {
-        return "";
+        const TP_String str = {static_cast<char*>(calloc(1, 1)), 1};
+        return str;
     }
-    return info->displayName;
+    const size_t length = std::min(strlen(info->displayName),static_cast<size_t>(100));
+
+    const TP_String str = {static_cast<char*>(malloc(length)), length};
+    memcpy(str.p, info->displayName, length);
+    return str;
 }
 
 
-
-void Input::DeInitialize()
+void TP_Input_DeInit()
 {
     gameInput->UnregisterCallback(globalCallbackToken);
     //gameInput->Release();

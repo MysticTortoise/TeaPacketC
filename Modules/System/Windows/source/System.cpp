@@ -1,34 +1,23 @@
-#include "TeaPacket/System/System.hpp"
+#include "TeaPacket/System/System.h"
 
 #include "TeaPacket/Window/PlatformWindow.hpp"
-
-using namespace TeaPacket;
-
+#include "TeaPacket/Window/Window.h"
 #include "TeaPacket/Window/Window.hpp"
-using namespace TeaPacket::Window;
 
-void System::Initialize()
+tp_bool TP_System_Init(){ return tp_true; }
+void TP_System_DeInit() {}
+
+void TP_System_Process()
 {
-
-}
-
-void System::DeInitialize()
-{
-
-}
-
-void System::ProcessSystem()
-{
-    const size_t windowCount = Window::Window::GetWindowCount();
+    const size_t windowCount = TP_Window_GetCount();
     for (size_t i = 0; i < windowCount; i++)
     {
-        Window::Window* window = Window::Window::GetWindow(i);
-        window->ProcessEvents();
+        TP_Window_ProcessEvents(TP_Window_Get(i));
     }
 }
 
-bool System::ShouldRun()
+tp_bool TP_System_ShouldRun()
 {
-    return !PlatformWindow::shouldQuit;
+    return !TP_Window::shouldQuit;
 }
 
