@@ -3,19 +3,17 @@
 #include "wrl/client.h"
 #include <d3d11.h>
 
-#include "TeaPacket/Graphics/Texture/TextureFormat.hpp"
+#include "TeaPacket/Types/Numeric.h"
+#include "TeaPacket/Graphics/Texture/Format.h"
 
-namespace TeaPacket::Graphics
+
+struct TP_Graphics_Texture
 {
+    Microsoft::WRL::ComPtr<ID3D11Texture2D> texture2D = nullptr;
+    Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceView = nullptr;
+    Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState = nullptr;
 
+    tp_u16 height, width;
+    TP_Graphics_Texture_Format format;
+};
 
-    struct PlatformTexture
-    {
-        Microsoft::WRL::ComPtr<ID3D11Texture2D> texture2D = nullptr;
-        Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> shaderResourceView = nullptr;
-        Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState = nullptr;
-
-        uint16_t height, width;
-        TextureFormat format;
-    };
-}

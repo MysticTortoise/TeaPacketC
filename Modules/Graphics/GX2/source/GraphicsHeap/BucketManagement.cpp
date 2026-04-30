@@ -7,10 +7,9 @@
 #include <coreinit/memexpheap.h>
 #include <coreinit/memfrmheap.h>
 #include <coreinit/memheap.h>
-#include <gx2r/mem.h>
 
-using namespace TeaPacket::GX2;
-using namespace TeaPacket::GX2::_impl;
+using namespace TeaPacket::Graphics::GX2;
+using namespace TeaPacket::Graphics::GX2::_impl;
 
 static bool hasForeground = false;
 
@@ -93,7 +92,7 @@ static uint32_t FreeBuckets([[maybe_unused]] void* context)
     return 0;
 }
 
-void TeaPacket::GX2::InitializeMemory()
+void TeaPacket::Graphics::GX2::InitializeMemory()
 {
     InitializeBuckets(nullptr);
     ProcUIRegisterCallback(
@@ -112,7 +111,7 @@ void TeaPacket::GX2::InitializeMemory()
     SetupGX2R();
 }
 
-void TeaPacket::GX2::DeInitializeMemory()
+void TeaPacket::Graphics::GX2::DeInitializeMemory()
 {
     FreeBuckets(nullptr);
     ProcUIClearCallbacks();

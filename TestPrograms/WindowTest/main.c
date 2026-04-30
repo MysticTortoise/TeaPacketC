@@ -1,5 +1,7 @@
 #include "TeaPacket/Window/Window.h"
 #include "TeaPacket/Types/Array.h"
+#include "TeaPacket/Graphics/DisplayParams.h"
+#include "TeaPacket/Graphics/Display.h"
 
 int main(void)
 {

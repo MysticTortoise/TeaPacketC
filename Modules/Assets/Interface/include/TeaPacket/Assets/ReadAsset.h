@@ -8,10 +8,10 @@ extern "C" {
 #include "TeaPacket/Types/Array.h"
 
 TP_String
-TP_Assets_ReadTextAsset(TP_String assetPath);
+TP_Assets_ReadTextAsset(TP_StringView assetPath);
 
 TP_ByteArray
-TP_Assets_ReadBinaryAsset(TP_String assetPath);
+TP_Assets_ReadBinaryAsset(TP_StringView assetPath);
 
 #ifdef __cplusplus
 }

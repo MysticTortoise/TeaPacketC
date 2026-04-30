@@ -1,69 +1,70 @@
-#include "TeaPacket/Graphics/Viewport.hpp"
+#include "TeaPacket/Graphics/Viewport.h"
 
-#include "TeaPacket/Graphics/Texture/TextureParameters.hpp"
-#include "TeaPacket/Graphics/ViewportParameters.hpp"
+#include "TeaPacket/Graphics/Texture/TextureParams.h"
+#include "TeaPacket/Graphics/ViewportParams.h"
 
 #include <d3d11.h>
 #include <iostream>
 #include <cassert>
 
-#include "TeaPacket/Graphics/Display.hpp"
-#include "TeaPacket/Graphics/PlatformDisplay.hpp"
 #include "TeaPacket/Graphics/PlatformTexture.hpp"
 #include "TeaPacket/Graphics/PlatformViewport.hpp"
-#include "TeaPacket/Graphics/Texture/TextureFormat.hpp"
+#include "TeaPacket/Graphics/Texture/Format.h"
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
+#include "TeaPacket/Graphics/Texture/Texture.h"
 #include "TeaPacket/MacroUtils/StructUtils.hpp"
 #include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 
-using namespace TeaPacket::Graphics;
+using namespace TeaPacket::Graphics::D3D11;
 
-Viewport::Viewport(const ViewportParameters& parameters):
-platformViewport(std::make_unique<PlatformViewport>()),
-
-colorTexture(TextureParameters{
-    .data = nullptr,
-    .width = parameters.width,
-    .height = parameters.height,
-    .format = TextureFormat::BGRA8,
-    .useFlags = {
-        .shaderResource = parameters.flags.shaderUsable,
-        .renderTargetColor = true,
-        .renderTargetDepth = false,
-        .writeMode = TextureAvailableMode::GPU,
-        .cpuReadable = true,
-    },
-    .filterMode = TextureFilterMode::Linear,
-    .wrapMode = TextureWrapMode::Wrap
-}),
-depthTexture(TextureParameters{
-    .data = nullptr,
-    .width = parameters.width,
-    .height = parameters.height,
-    .format = TextureFormat::D24S8,
-    .useFlags = {
-        .shaderResource = parameters.flags.shaderUsable,
-        .renderTargetColor = false,
-        .renderTargetDepth = true,
-        .writeMode = TextureAvailableMode::GPU,
-        .cpuReadable = true
-    },
-    .filterMode = TextureFilterMode::Linear,
-    .wrapMode = TextureWrapMode::Wrap
-}),
-ownedDisplay(parameters.ownedDisplay)
+TP_Graphics_Viewport* TP_Graphics_Viewport_Create(TP_Graphics_ViewportParams* params)
 {
+    auto* viewport = new TP_Graphics_Viewport;
+
+    {
+        auto texParms = TP_Graphics_TextureParams{
+            .data = nullptr,
+            .width = params->width,
+            .height = params->height,
+            .format = TP_Graphics_Texture_Format_BGRA8,
+            .filterMode = TP_Graphics_Texture_FilterMode_Linear,
+            .wrapMode = TP_Graphics_Texture_WrapMode_Wrap,
+            .flags = {
+                .shaderResource = params->shaderUsable,
+                .cpuReadable = true,
+                .writeMode = TP_Graphics_Texture_AvailableMode_GPU,
+            }
+        };
+        viewport->colorTex = TP_Graphics_Texture_Create(&texParms);
+    }
+    {
+        auto texParms = TP_Graphics_TextureParams{
+            .data = nullptr,
+            .width = params->width,
+            .height = params->height,
+            .format = TP_Graphics_Texture_Format_D24S8,
+            .filterMode = TP_Graphics_Texture_FilterMode_Linear,
+            .wrapMode = TP_Graphics_Texture_WrapMode_Wrap,
+            .flags = {
+                .shaderResource = params->shaderUsable,
+                .cpuReadable = true,
+                .writeMode = TP_Graphics_Texture_AvailableMode_GPU,
+            }
+        };
+        viewport->depthTex = TP_Graphics_Texture_Create(&texParms);
+    }
+
     D3D11_RENDER_TARGET_VIEW_DESC renderTargetViewDesc;
     D3D11_TEXTURE2D_DESC texDesc;
-    colorTexture.platformTexture->texture2D->GetDesc(&texDesc);
+    viewport->colorTex->texture2D->GetDesc(&texDesc);
     renderTargetViewDesc.Format = texDesc.Format;
     renderTargetViewDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
     renderTargetViewDesc.Texture2D.MipSlice = 0;
 
     CheckErrorWinCom(
         device->CreateRenderTargetView(
-            colorTexture.platformTexture->texture2D.Get(), &renderTargetViewDesc,
-            platformViewport->renderTargetView.GetAddressOf())
+            viewport->colorTex->texture2D.Get(), &renderTargetViewDesc,
+            viewport->renderTargetView.GetAddressOf())
     );
 
     D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
@@ -73,41 +74,67 @@ ownedDisplay(parameters.ownedDisplay)
     depthStencilViewDesc.Texture2D.MipSlice = 0;
 
     CheckErrorWinCom(
-        device->CreateDepthStencilView(depthTexture.platformTexture->texture2D.Get(), &depthStencilViewDesc,
-            platformViewport->depthStencilView.GetAddressOf())
+        device->CreateDepthStencilView(viewport->depthTex->texture2D.Get(), &depthStencilViewDesc,
+            viewport->depthStencilView.GetAddressOf())
     );
 
-    platformViewport->d3dViewport = D3D11_VIEWPORT{
+    viewport->d3dViewport = D3D11_VIEWPORT{
         .TopLeftX = 0,
         .TopLeftY = 0,
-        .Width = static_cast<float>(parameters.width),
-        .Height = static_cast<float>(parameters.height),
+        .Width = static_cast<float>(params->width),
+        .Height = static_cast<float>(params->height),
         .MinDepth = 0,
         .MaxDepth = 1,
     };
+
+    return viewport;
+
 }
 
-Viewport::~Viewport() = default;
+static TP_Graphics_Viewport* activeViewport;
 
-void Viewport::BeginRender()
+void TP_Graphics_Viewport_Destroy(const TP_Graphics_Viewport* viewport)
+{
+    TP_Graphics_Texture_Destroy(viewport->colorTex);
+    TP_Graphics_Texture_Destroy(viewport->depthTex);
+
+    delete viewport;
+}
+
+void TP_Graphics_Viewport_BeginRender(TP_Graphics_Viewport* viewport)
 {
     assert(activeViewport == nullptr);
-    activeViewport = this;
+    activeViewport = viewport;
 
     deviceContext->OMSetRenderTargets(1,
-        platformViewport->renderTargetView.GetAddressOf(),
-        platformViewport->depthStencilView.Get());
-    deviceContext->RSSetViewports(1, &platformViewport->d3dViewport);
+        viewport->renderTargetView.GetAddressOf(),
+        viewport->depthStencilView.Get());
+    deviceContext->RSSetViewports(1, &viewport->d3dViewport);
 }
 
-void Viewport::FinishRender()
+void TP_Graphics_Viewport_FinishRender(TP_Graphics_Viewport*)
 {
     activeViewport = nullptr;
 }
 
-void Viewport::ClearColor(const uint8_t r, const uint8_t g, const uint8_t b)
+void TP_Graphics_ClearColor(const tp_u8 r, const tp_u8 g, const tp_u8 b)
 {
-    const float colorArray[4] = {r / 255.0f, g / 255.0f, b / 255.0f, 1.0f};
-    deviceContext->ClearRenderTargetView(activeViewport->platformViewport->renderTargetView.Get(),colorArray);
-    deviceContext->ClearDepthStencilView(activeViewport->platformViewport->depthStencilView.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0);
+    const float colorArray[4] = {
+        static_cast<float>(r) / 255.0f,
+        static_cast<float>(g) / 255.0f,
+        static_cast<float>(b) / 255.0f,
+        1.0f
+    };
+    deviceContext->ClearRenderTargetView(activeViewport->renderTargetView.Get(),colorArray);
+    deviceContext->ClearDepthStencilView(activeViewport->depthStencilView.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0);
+}
+
+tp_u16 TP_Graphics_Viewport_GetWidth(const TP_Graphics_Viewport* viewport)
+{
+    return viewport->colorTex->width;
+}
+
+tp_u16 TP_Graphics_Viewport_GetHeight(const TP_Graphics_Viewport* viewport)
+{
+    return viewport->colorTex->height;
 }

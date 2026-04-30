@@ -2,7 +2,6 @@
 
 #include "TeaPacket/Window/PlatformWindow.hpp"
 #include "TeaPacket/Window/Window.h"
-#include "TeaPacket/Window/Window.hpp"
 
 tp_bool TP_System_Init(){ return tp_true; }
 void TP_System_DeInit() {}

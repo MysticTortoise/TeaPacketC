@@ -3,12 +3,8 @@
 #include <wrl/client.h>
 #include <d3d11.h>
 
-namespace TeaPacket::Graphics
+struct TP_Graphics_ShaderBuffer
 {
-
-
-    struct PlatformUniformBuffer
-    {
-        Microsoft::WRL::ComPtr<ID3D11Buffer> cbuffer;
-    };
-}
+    Microsoft::WRL::ComPtr<ID3D11Buffer> cbuffer;
+    size_t size;
+};

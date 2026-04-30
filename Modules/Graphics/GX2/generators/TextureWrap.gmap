@@ -1,11 +1,11 @@
 Destination TeaPacket/Graphics/GX2/GX2TextureWrap.gen
 Namespaces TeaPacket::Graphics
-Enum Class TextureWrapMode
+Enum TP_Graphics_Texture_WrapMode
 Enum GX2TexClampMode Alias GX2
-Headers <gx2/enum.h> "TeaPacket/Graphics/Texture/TextureParameters.hpp"
+Headers <gx2/enum.h> "TeaPacket/Graphics/Texture/TextureParams.h"
 Data
-Wrap GX2_TEX_CLAMP_MODE_WRAP
-Clamp GX2_TEX_CLAMP_MODE_CLAMP
-Mirror GX2_TEX_CLAMP_MODE_MIRROR
+TP_Graphics_Texture_WrapMode_Wrap GX2_TEX_CLAMP_MODE_WRAP
+TP_Graphics_Texture_WrapMode_Clamp GX2_TEX_CLAMP_MODE_CLAMP
+TP_Graphics_Texture_WrapMode_Mirror GX2_TEX_CLAMP_MODE_MIRROR
 End
 Error Invalid Texture Wrap

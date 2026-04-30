@@ -2,19 +2,20 @@
 
 #include <dxgi.h>
 
+#include "TeaPacket/Graphics/Viewport.h"
+#include "TeaPacket/Window/Window.h"
 #include "wrl/client.h"
 
-namespace TeaPacket::Window
-{
-    class Window;
-}
-
-namespace TeaPacket::Graphics
+namespace TeaPacket::Graphics::D3D11
 {
     struct PlatformDisplay
     {
-        std::unique_ptr<Window::Window> window;
+        TP_Window* window;
 
         Microsoft::WRL::ComPtr<IDXGISwapChain> swapchain;
+
+        TP_Graphics_Viewport* viewport;
+
+        explicit PlatformDisplay(const TP_Graphics_DisplayParams* const params);
     };
 }

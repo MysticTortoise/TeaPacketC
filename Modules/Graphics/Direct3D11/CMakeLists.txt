@@ -7,12 +7,14 @@ set(CMAKE_CXX_STANDARD 20)
 
 TP_add_interface_subdirectory(Graphics)
 TP_add_interface_subdirectory(MacroUtils)
-TP_add_interface_subdirectory(Math)
+#TP_add_interface_subdirectory(Math)
 add_subdirectory_no_overwrite(TeaPacket_MacroUtils_WinSpecific "${TEAPACKET_ROOT}/Modules/MacroUtils/WindowsSpecific" WindowsSpecificMacros)
 TP_add_impl_subdirectory(Window Windows)
 TP_add_impl_subdirectory(Logging STDIO)
 
-TP_add_extension_subdirectory(TexturePreparer)
+TP_add_impl_subdirectory(Graphics Helper)
+
+#TP_add_extension_subdirectory(TexturePreparer)
 
 
 file(GLOB_RECURSE sources source/*.c*)
@@ -27,12 +29,12 @@ TP_EnumMapGen("${CMAKE_CURRENT_SOURCE_DIR}/generators/TextureWrap.gmap" TeaPacke
 
 target_include_directories(TeaPacket_Graphics_Direct3D11 PRIVATE source)
 target_include_directories(TeaPacket_Graphics_Direct3D11 PUBLIC include)
-target_link_libraries(TeaPacket_Graphics_Direct3D11 TeaPacket_Graphics_Base
+target_link_libraries(TeaPacket_Graphics_Direct3D11 TeaPacket_Graphics_Base TeaPacket_Graphics_Helper
         TeaPacket_Window_Windows
         d3d11.lib D3DCompiler.lib
         TeaPacket_MacroUtils_Base TeaPacket_MacroUtils_WinSpecific
-        TeaPacket_Math_Base TeaPacket_Logging_STDIO
-        TeaPacket_Extension_TexturePreparer)
+        TeaPacket_Logging_STDIO
+        )
 
 set(TP_ASSET_MIXER_PASSES "${TP_ASSET_MIXER_PASSES};${CMAKE_CURRENT_SOURCE_DIR}/AssetMixer/Passes/hlsl_shader.py" CACHE INTERNAL "" FORCE)
 

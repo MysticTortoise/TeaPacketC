@@ -1,20 +1,19 @@
-#include "TeaPacket/Graphics/Shader/ShaderVariable.hpp"
+#include "TeaPacket/Graphics/Shader/VariableType.h"
 
 #include <stdexcept>
 
-using namespace TeaPacket::Graphics;
-
-[[nodiscard]] size_t ShaderVariableType::GetSize() const
+size_t TP_Graphics_ShaderVar_GetSize(const TP_Graphics_Shader_VariableType var)
 {
-    switch (this->baseType)
+    switch (var.baseType)
     {
-        using enum ShaderVariableBaseType;
-    case Float:
-        return sizeof(float) * this->amount;
-    case Int:
-        return sizeof(int) * this->amount;
-    case UInt:
-        return sizeof(unsigned int) * this->amount;
+    case TP_Graphics_Shader_VariableBaseType_Float:
+        return sizeof(float) * var.amount;
+    case TP_Graphics_Shader_VariableBaseType_Int:
+        return sizeof(int) * var.amount;
+    case TP_Graphics_Shader_VariableBaseType_UInt:
+        return sizeof(unsigned int) * var.amount;
+    case TP_Graphics_Shader_VariableBaseType_None:
+    default:
+        return 0;
     }
-    throw std::runtime_error("BAD VALUE");
 }

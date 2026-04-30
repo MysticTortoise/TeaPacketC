@@ -1,34 +1,34 @@
-#include "TeaPacket/Graphics/Mesh/Mesh.hpp"
+#include "TeaPacket/Graphics/Mesh/Mesh.h"
 
 #include <cstring>
 
-#include "TeaPacket/Graphics/Mesh/MeshParameters.hpp"
 #include "TeaPacket/Graphics/PlatformMesh.hpp"
 
+#include <gx2/draw.h>
 #include <gx2r/draw.h>
 
-#include "TeaPacket/Logging/Logging.hpp"
+static TP_Graphics_Mesh* activeMesh;
 
-using namespace TeaPacket::Graphics;
-
-Mesh::Mesh(const MeshParameters& parameters):
-    platformMesh(std::make_unique<PlatformMesh>())
+TP_Graphics_Mesh* TP_Graphics_Mesh_Create(const TP_Graphics_MeshParams* params)
 {
-    platformMesh->vertexDataInfo = parameters.vertexInfo;
-    platformMesh->buffers.reserve(parameters.vertexInfo.size());
+    auto* mesh = new TP_Graphics_Mesh;
+
+    mesh->vertexDataInfo = std::vector(params->vertexInfo.p, params->vertexInfo.p + params->vertexInfo.size);
+    mesh->buffers.reserve(params->vertexInfo.size);
 
     size_t vertexSize = 0;
-    for (const auto& vertInfo : parameters.vertexInfo)
+    for (size_t i = 0; i < params->vertexInfo.size; i++)
     {
-        vertexSize += vertInfo.GetSize();
+        vertexSize += TP_Graphics_ShaderVar_GetSize(params->vertexInfo.p[i]);
     }
-    const size_t vertexCount = parameters.vertexData.size / vertexSize;
+    const size_t vertexCount = params->vertexData.size / vertexSize;
     size_t paramOffset = 0;
-    
-    for (const auto& vertInfo : parameters.vertexInfo)
+
+    for (size_t i = 0; i < params->vertexInfo.size; i++)
     {
-        size_t sizeOfElem = vertInfo.GetSize();
-        GX2RBuffer& buffer = platformMesh->buffers.emplace_back(GX2RBuffer{
+
+        const size_t sizeOfElem = TP_Graphics_ShaderVar_GetSize(params->vertexInfo.p[i]);
+        GX2RBuffer& buffer = mesh->buffers.emplace_back(GX2RBuffer{
             .flags = GX2R_RESOURCE_BIND_VERTEX_BUFFER | GX2R_RESOURCE_USAGE_CPU_WRITE | GX2R_RESOURCE_USAGE_GPU_READ,
             .elemSize = sizeOfElem,
             .elemCount = vertexCount,
@@ -36,9 +36,9 @@ Mesh::Mesh(const MeshParameters& parameters):
         });
         GX2RCreateBuffer(&buffer);
         auto* uploadBuffer = static_cast<unsigned char*>(GX2RLockBufferEx(&buffer, GX2R_RESOURCE_BIND_NONE));
-        const auto* bufferSourceData = static_cast<unsigned char*>(parameters.vertexData.data) + paramOffset;
-        
-        for (size_t i = 0; i < vertexCount; i++)
+        const auto* bufferSourceData = params->vertexData.p + paramOffset;
+
+        for (size_t j = 0; j < vertexCount; j++)
         {
             memcpy(uploadBuffer, bufferSourceData, sizeOfElem);
             uploadBuffer += sizeOfElem;
@@ -49,28 +49,48 @@ Mesh::Mesh(const MeshParameters& parameters):
         GX2RUnlockBufferEx(&buffer, GX2R_RESOURCE_BIND_NONE);
     }
 
-    if (parameters.flags.useIndices)
+    if (params->indexList.size != 0)
     {
-        assert(parameters.indices.has_value());
-        platformMesh->indexBuffer.reserve(parameters.indices->size);
-        // Copy index data in to internal buffer
-        for (const unsigned long index : parameters.indices.value())
-        {
-            platformMesh->indexBuffer.emplace_back(static_cast<uint32_t>(index));
-        }
-        platformMesh->indexCount = parameters.indices.value().size;
+        static_assert(std::is_same_v<
+            std::remove_cvref_t<decltype(mesh->indexBuffer[0])>,
+            std::remove_cvref_t<decltype(params->indexList.p[0])>
+            >);
+        mesh->indexBuffer = std::vector(params->indexList.p, params->indexList.p + params->indexList.size);
         //Log(platformMesh->indexCount);
-    }
-    
-}
-
-void Mesh::SetActive()
-{
-    for (unsigned int i = 0; i < platformMesh->vertexDataInfo.size(); i++)
+    } else
     {
-        GX2RSetAttributeBuffer(&platformMesh->buffers[i], i, platformMesh->buffers[i].elemSize, 0); 
+        mesh->indexBuffer.resize(0);
     }
-    activeMesh = this;
+
+    return mesh;
 }
 
-TP_OBJ_IMPL_DESTRUCTOR_MOVE_DEFAULT(Mesh);
+void TP_Graphics_Mesh_Destroy(TP_Graphics_Mesh* mesh)
+{
+    delete mesh;
+}
+
+void TP_Graphics_Mesh_SetActive(TP_Graphics_Mesh* mesh)
+{
+    for (unsigned int i = 0; i < mesh->vertexDataInfo.size(); i++)
+    {
+        GX2RSetAttributeBuffer(&mesh->buffers[i], i, mesh->buffers[i].elemSize, 0);
+    }
+}
+
+void TP_Graphics_DrawMesh()
+{
+    assert(activeMesh != nullptr);
+
+    if (activeMesh->indexBuffer.size() != 0)
+    {
+        GX2DrawIndexedEx(
+            GX2_PRIMITIVE_MODE_TRIANGLES,
+            activeMesh->indexBuffer.size(),
+            GX2_INDEX_TYPE_U32,
+            activeMesh->indexBuffer.data(),
+            0,
+            1);
+    }
+
+}

@@ -6,7 +6,7 @@
 #include "GraphicsHeap.hpp"
 
 
-namespace TeaPacket::GX2
+namespace TeaPacket::Graphics::GX2
 {
     enum class ForegroundBucket : bool;
     class DisposableForegroundMemResource

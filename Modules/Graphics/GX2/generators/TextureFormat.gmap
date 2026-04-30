@@ -1,11 +1,11 @@
 Destination TeaPacket/Graphics/GX2/GX2TextureFormat.gen
 Namespaces TeaPacket::Graphics
-Enum Class TextureFormat
+Enum TP_Graphics_Texture_Format
 Enum GX2SurfaceFormat Alias GX2
-Headers "TeaPacket/Graphics/Texture/TextureFormat.hpp" <gx2/surface.h>
+Headers "TeaPacket/Graphics/Texture/Format.h" <gx2/surface.h>
 Data
-RGBA8 GX2_SURFACE_FORMAT_UNORM_R8_G8_B8_A8
-D24S8 GX2_SURFACE_FORMAT_UNORM_R24_X8
-R8 GX2_SURFACE_FORMAT_UNORM_R8
+TP_Graphics_Texture_Format_RGBA8 GX2_SURFACE_FORMAT_UNORM_R8_G8_B8_A8
+TP_Graphics_Texture_Format_D24S8 GX2_SURFACE_FORMAT_UNORM_R24_X8
+TP_Graphics_Texture_Format_R8 GX2_SURFACE_FORMAT_UNORM_R8
 End
 Error Invalid Texture Format

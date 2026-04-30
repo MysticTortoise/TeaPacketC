@@ -5,10 +5,9 @@
 #include <gx2r/mem.h>
 #include <gx2r/resource.h>
 
-#include "../../../../Logging/Interface/include/TeaPacket/Logging/Logging.hpp"
 
-using namespace TeaPacket::GX2;
-using namespace TeaPacket::GX2::_impl;
+using namespace TeaPacket::Graphics::GX2;
+using namespace TeaPacket::Graphics::GX2::_impl;
 
 static constexpr GX2RResourceFlags MEM1ResourceTypes =
     GX2R_RESOURCE_BIND_COLOR_BUFFER |

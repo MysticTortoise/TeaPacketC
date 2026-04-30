@@ -1,4 +1,4 @@
-#include "TeaPacket/Graphics/Graphics.hpp"
+#include "TeaPacket/Graphics/Graphics.h"
 
 #include "GraphicsHeap/GraphicsHeap.hpp"
 
@@ -10,21 +10,14 @@
 #include <gx2/state.h>
 #include <coreinit/memdefaultheap.h>
 #include <gx2/context.h>
-#include <gx2/draw.h>
 #include <gx2/registers.h>
-
-#include "TeaPacket/Graphics/PlatformMesh.hpp"
-#include "TeaPacket/Graphics/Display.hpp"
-#include "TeaPacket/Logging/Logging.hpp"
 
 #include "CafeGLSL/CafeGLSLCompiler.hpp"
 #include "GraphicsHeap/MEM2Resource.hpp"
-#include "TeaPacket/Graphics/Mesh/Mesh.hpp"
 
 #define WHB_GFX_COMMAND_BUFFER_POOL_SIZE (0x400000)
 
-using namespace TeaPacket;
-using namespace TeaPacket::GX2;
+using namespace TeaPacket::Graphics::GX2;
 
 static void* commandBufferPool = nullptr;
 
@@ -33,19 +26,18 @@ static void* commandBufferPool = nullptr;
 
 static MEM2Resource<GX2ContextState> contextState(GX2_CONTEXT_STATE_ALIGNMENT);
 
-void Graphics::Initialize()
+tp_bool TP_Graphics_Init()
 {
     commandBufferPool = MEMAllocFromDefaultHeapEx(
-        WHB_GFX_COMMAND_BUFFER_POOL_SIZE,
-        GX2_COMMAND_BUFFER_ALIGNMENT);
+    WHB_GFX_COMMAND_BUFFER_POOL_SIZE,
+    GX2_COMMAND_BUFFER_ALIGNMENT);
 
     if (!commandBufferPool)
     {
         throw std::runtime_error("Invalid Texture Filter");
     }
-
     uint32_t initAttribs[] = {
-        GX2_INIT_CMD_BUF_BASE, reinterpret_cast<uintptr_t>(commandBufferPool),
+        GX2_INIT_CMD_BUF_BASE, reinterpret_cast<uint32_t>(commandBufferPool),
         GX2_INIT_CMD_BUF_POOL_SIZE, WHB_GFX_COMMAND_BUFFER_POOL_SIZE,
         GX2_INIT_ARGC, 0,
         GX2_INIT_ARGV, 0,
@@ -82,37 +74,18 @@ void Graphics::Initialize()
                 /* A = [srcA * 1] + [dstA * (1-srcA)] */
                 GX2_BLEND_MODE_INV_SRC_ALPHA, GX2_BLEND_MODE_ONE,
                 GX2_BLEND_COMBINE_MODE_ADD);
-    
+    return tp_true;
 }
 
-void Graphics::DeInitialize()
+void TP_Graphics_DeInit()
 {
     GLSL_Shutdown();
-    Display::DeInitialize();
     DeInitializeMemory();
     GX2Shutdown();
     MEMFreeToDefaultHeap(commandBufferPool);
 }
 
-void Graphics::DrawMesh()
-{
-    const Mesh* meshToDraw = Mesh::activeMesh;
-    assert(meshToDraw != nullptr);
-    
-    if (meshToDraw->platformMesh->indexCount)
-    {
-        GX2DrawIndexedEx(
-            GX2_PRIMITIVE_MODE_TRIANGLES,
-            meshToDraw->platformMesh->indexCount,
-            GX2_INDEX_TYPE_U32,
-            meshToDraw->platformMesh->indexBuffer.data(),
-            0,
-            1);
-    }
-    
-}
-
-void Graphics::SetDepthEnabled(bool depthEnabled)
+void TP_Graphics_SetDepthEnabled(const tp_bool depthEnabled)
 {
     GX2SetDepthOnlyControl(depthEnabled, depthEnabled, GX2_COMPARE_FUNC_LESS);
 }

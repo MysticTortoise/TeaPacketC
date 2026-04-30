@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "TeaPacket/Logging/Logging.h"
+#include "TeaPacket/Memory/Memory.h"
 
 static size_t numPlacesUL(unsigned long x)
 {
@@ -16,6 +17,14 @@ static size_t numPlacesUL(unsigned long x)
     return r;
 }
 
+
+void TP_LogStringS(const TP_String str)
+{
+    TP_StringView strV;
+    strV.p = str.p;
+    strV.size = str.size;
+    TP_LogString(strV);
+}
 void TP_LogChar(const char c)
 {
     TP_StringView str;
@@ -45,7 +54,7 @@ void TP_LogSLong(const signed long x)
 
     size_t digits = numPlacesUL(labs(x));
     if (x < 0) {++digits;}
-    text = (char*)malloc(digits);
+    text = (char*)TP_MemAlloc(digits);
 
     str.p = text;
     str.size = 4;
@@ -61,7 +70,7 @@ void TP_LogULong(const unsigned long x)
     char* text;
 
     const size_t digits = numPlacesUL(x);
-    text = (char*)malloc(digits);
+    text = (char*)TP_MemAlloc(digits);
 
     str.p = text;
     str.size = 4;

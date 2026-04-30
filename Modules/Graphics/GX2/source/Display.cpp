@@ -1,26 +1,25 @@
-#include "TeaPacket/Graphics/Display.hpp"
+#include "TeaPacket/Graphics/Display.h"
 
 #include <gx2/context.h>
 #include <gx2/display.h>
 #include <gx2/event.h>
 #include <gx2/mem.h>
-#include <gx2/registers.h>
 #include <gx2/state.h>
 #include <gx2/swap.h>
 
 #include "GraphicsHeap/DisposableForegroundResource.hpp"
 #include "GraphicsHeap/GraphicsHeap.hpp"
-#include "TeaPacket/Graphics/PlatformDisplay.hpp"
-
-#include "TeaPacket/Graphics/Viewport.hpp"
 #include "TeaPacket/Graphics/PlatformViewport.hpp"
+#include "TeaPacket/Graphics/Viewport.h"
+#include "TeaPacket/Logging/Logging.h"
 
-#include "TeaPacket/Graphics/DisplayParameters.hpp"
-#include "TeaPacket/Graphics/ViewportParameters.hpp"
-#include "TeaPacket/Graphics/Graphics.hpp"
 
-using namespace TeaPacket::Graphics;
-using namespace TeaPacket::GX2;
+using namespace TeaPacket::Graphics::GX2;
+
+static DisposableForegroundMemResource tvScanBuffer;
+static TP_Graphics_Viewport* tvViewport;
+static DisposableForegroundMemResource drcScanBuffer;
+static TP_Graphics_Viewport* drcViewport;
 
 static void AllocateTVScanBuffer(const DisposableForegroundMemResource* scanBuffer)
 {
@@ -43,92 +42,70 @@ static void AllocateDRCScanBuffer(const DisposableForegroundMemResource* scanBuf
         GX2_BUFFERING_MODE_DOUBLE);
 }
 
-Display::Display(const DisplayParameters& parameters):
-platformDisplay(std::make_unique<PlatformDisplay>(PlatformDisplay{
-    .scanBuffer = DisposableForegroundMemResource(),
-    .displayType = (GetDisplayCount() == 0 ? GX2Display::TV : GX2Display::DRC),
-})),
-viewport(ViewportParameters{
-    .width = parameters.width,
-    .height = parameters.height,
-    .flags = {
-        .shaderUsable = false
-    },
-    .ownedDisplay = this
-    })
+void TP_Graphics_InitDefaultDisplays(TP_Graphics_DisplayParamList params)
 {
-    uint32_t size;
-    uint32_t _dump;
-    const bool isTV = GetDisplayCount() == 0;
-    if (isTV)
-    {
-        // TV
-        GX2CalcTVSize(
-            GX2_TV_RENDER_MODE_WIDE_720P,
-            GX2_SURFACE_FORMAT_UNORM_R8_G8_B8_A8,
-            GX2_BUFFERING_MODE_DOUBLE,
-            &size,
-            &_dump);
+    uint32_t size, _dump;
+    (void)params;
 
-        //HeapAllocForeground(size, GX2_SCAN_BUFFER_ALIGNMENT);
-        if (!platformDisplay->scanBuffer.Initialize(
-            ForegroundBucket::Foreground,
-            size,
-            GX2_SCAN_BUFFER_ALIGNMENT,
-            AllocateTVScanBuffer
-        ))
-        {
-            throw std::runtime_error("COULDN'T ALLOC TV SCAN BUFFER");
-        }
-        GX2SetTVScale(parameters.width, parameters.height);
-    } else
-    {
-        // DRC
-        const GX2DrcRenderMode drcRenderMode = GX2GetSystemDRCMode();
-        GX2CalcDRCSize(
-            drcRenderMode,
-            GX2_SURFACE_FORMAT_UNORM_R8_G8_B8_A8,
-            GX2_BUFFERING_MODE_DOUBLE,
-            &size,
-            &_dump);
+    // TV
+    GX2CalcTVSize(
+        GX2_TV_RENDER_MODE_WIDE_720P,
+        GX2_SURFACE_FORMAT_UNORM_R8_G8_B8_A8,
+        GX2_BUFFERING_MODE_DOUBLE,
+        &size,
+        &_dump);
 
-        if (!platformDisplay->scanBuffer.Initialize(
-            ForegroundBucket::Foreground,
-            size,
-            GX2_SCAN_BUFFER_ALIGNMENT,
-            AllocateDRCScanBuffer
-        ))
-        {
-            throw std::runtime_error("COULDN'T ALLOC DRC SCAN BUFFER");
-        }
-        GX2SetDRCScale(parameters.width, parameters.height);
+    //HeapAllocForeground(size, GX2_SCAN_BUFFER_ALIGNMENT);
+    if (!tvScanBuffer.Initialize(
+        ForegroundBucket::Foreground,
+        size,
+        GX2_SCAN_BUFFER_ALIGNMENT,
+        AllocateTVScanBuffer
+    ))
+    {
+        TP_LogConstStr("COULDN'T ALLOC TV SCAN BUFFER.");
     }
+    GX2SetTVScale(1280, 720);
+
+    TP_Graphics_ViewportParams tvViewParams = {
+        .width = 1280,
+        .height = 720,
+        .shaderUsable = false
+    };
+    tvViewport = TP_Graphics_Viewport_Create(&tvViewParams);
+
+
+    // DRC
+    const GX2DrcRenderMode drcRenderMode = GX2GetSystemDRCMode();
+    GX2CalcDRCSize(
+        drcRenderMode,
+        GX2_SURFACE_FORMAT_UNORM_R8_G8_B8_A8,
+        GX2_BUFFERING_MODE_DOUBLE,
+        &size,
+        &_dump);
+
+    if (!drcScanBuffer.Initialize(
+        ForegroundBucket::Foreground,
+        size,
+        GX2_SCAN_BUFFER_ALIGNMENT,
+        AllocateDRCScanBuffer
+    ))
+    {
+        TP_LogConstStr("COULDN'T ALLOC GAMEPAD SCAN BUFFER");
+    }
+    GX2SetDRCScale(854, 480);
+
+    TP_Graphics_ViewportParams drcViewParams = {
+        .width = 1280,
+        .height = 720,
+        .shaderUsable = false
+    };
+    drcViewport = TP_Graphics_Viewport_Create(&drcViewParams);
+
     GX2SetSwapInterval(1);
 }
 
-void Display::InitializeDefaultDisplays(const std::vector<DisplayParameters>& requestedParameters)
-{
-    // TODO: RESPECT REQUESTED PARAMS
-    (void)requestedParameters;
-    Displays.emplace_back(std::make_unique<Display>(DisplayParameters{
-        .width = 1920,
-        .height = 1080
-    }));
-
-    Displays.emplace_back(std::make_unique<Display>(DisplayParameters{
-        .width = 854,
-        .height = 480
-    }));
-}
-
-Display::~Display() = default;
-
-void Display::DeInitialize()
-{
-    Displays.clear();
-}
-
-void Display::WaitForVSync()
+void TP_Graphics_Display_WaitForVSync()
 {
     uint32_t swapCount, flipCount;
     OSTime lastFlip, lastVsync;
@@ -150,12 +127,59 @@ void Display::WaitForVSync()
     }
 }
 
-
-void Display::PresentAll()
+void TP_Graphics_Display_PresentAll()
 {
     GX2SwapScanBuffers();
     GX2Flush();
     GX2DrawDone();
     GX2SetTVEnable(TRUE);
     GX2SetDRCEnable(TRUE);
+}
+TP_Graphics_DisplayID TP_Graphics_Display_GetCount()
+{
+    return 2;
+}
+
+void TP_Graphics_Display_BeginRender(const TP_Graphics_DisplayID id)
+{
+    if (id == 0)
+    {
+        TP_Graphics_Viewport_BeginRender(tvViewport);
+    } else
+    {
+        TP_Graphics_Viewport_BeginRender(drcViewport);
+    }
+}
+
+void TP_Graphics_Display_FinishRender(TP_Graphics_DisplayID id)
+{
+    if (id == 0)
+    {
+        GX2CopyColorBufferToScanBuffer(&tvViewport->colorBuffer, GX2_SCAN_TARGET_TV);
+    } else
+    {
+        GX2CopyColorBufferToScanBuffer(&drcViewport->colorBuffer, GX2_SCAN_TARGET_DRC);
+    }
+}
+
+tp_u16 TP_Graphics_Display_GetWidth(TP_Graphics_DisplayID id)
+{
+    if (id == 0)
+    {
+        return tvViewport->colorBuffer.surface.width;
+    } else
+    {
+        return drcViewport->colorBuffer.surface.width;
+    }
+}
+
+tp_u16 TP_Graphics_Display_GetHeight(TP_Graphics_DisplayID id)
+{
+    if (id == 0)
+    {
+        return tvViewport->colorBuffer.surface.height;
+    } else
+    {
+        return drcViewport->colorBuffer.surface.height;
+    }
 }

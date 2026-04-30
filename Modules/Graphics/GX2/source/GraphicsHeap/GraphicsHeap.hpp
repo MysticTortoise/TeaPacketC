@@ -4,7 +4,7 @@
 #include <functional>
 #include <coreinit/memheap.h>
 
-namespace TeaPacket::GX2
+namespace TeaPacket::Graphics::GX2
 {
     void InitializeMemory();
     void DeInitializeMemory();

@@ -1,10 +1,10 @@
 Destination TeaPacket/Graphics/D3D11/D3D11TextureFilter.gen
 Namespaces TeaPacket::Graphics
-Enum Class TextureFilterMode
+Enum TP_Graphics_Texture_FilterMode
 Enum D3D11_FILTER Alias D3D
-Headers <d3d11.h> "TeaPacket/Graphics/Texture/TextureParameters.hpp"
+Headers <d3d11.h> "TeaPacket/Graphics/Texture/TextureParams.h"
 Data
-Nearest D3D11_FILTER_MIN_MAG_MIP_POINT
-Linear D3D11_FILTER_MIN_MAG_MIP_LINEAR
+TP_Graphics_Texture_FilterMode_Nearest D3D11_FILTER_MIN_MAG_MIP_POINT
+TP_Graphics_Texture_FilterMode_Linear D3D11_FILTER_MIN_MAG_MIP_LINEAR
 End
 Error Invalid Texture Filter

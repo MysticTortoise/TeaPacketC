@@ -13,11 +13,11 @@ float TP_Random_F()
 }
 
 int TP_Random_IRangeInclusive(const int min, const int max) {
-    std::uniform_int_distribution distribution(min ,max);
+    std::uniform_int_distribution<> distribution(min ,max);
     return distribution(gen);
 }
 
 unsigned int TP_Random_UIRangeInclusive(const unsigned int min, const unsigned int max) {
-    std::uniform_int_distribution distribution(min ,max);
+    std::uniform_int_distribution<unsigned int> distribution(min ,max);
     return distribution(gen);
 }

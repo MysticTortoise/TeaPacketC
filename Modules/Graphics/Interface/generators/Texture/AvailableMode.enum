@@ -1,0 +1,4 @@
+TP_Graphics_Texture_AvailableMode tp_u8
+None = 0
+GPU
+CPU

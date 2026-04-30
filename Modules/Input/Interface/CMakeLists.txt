@@ -8,17 +8,5 @@ TP_add_interface_subdirectory(Types)
 include("${TEAPACKET_ROOT}/CMakeCommons/InterfaceCommon.CMake")
 target_link_libraries(TeaPacket_Input_Base INTERFACE TeaPacket_Types_Base)
 
-TP_EnumGenerator(
-        "${CMAKE_CURRENT_SOURCE_DIR}/generators/InputButton.enum"
-        "${CMAKE_CURRENT_SOURCE_DIR}/include/TeaPacket/Input/Button.h"
-        TeaPacket_Input_Base)
-
-TP_EnumGenerator(
-        "${CMAKE_CURRENT_SOURCE_DIR}/generators/InputAxis.enum"
-        "${CMAKE_CURRENT_SOURCE_DIR}/include/TeaPacket/Input/Axis.h"
-        TeaPacket_Input_Base)
-
-TP_EnumGenerator(
-        "${CMAKE_CURRENT_SOURCE_DIR}/generators/ControllerType.enum"
-        "${CMAKE_CURRENT_SOURCE_DIR}/include/TeaPacket/Input/ControllerType.h"
-        TeaPacket_Input_Base)
+# SOMEONE PLEASE FIGURE OUT WHY ADD_SUBDIRECTORY WONT WORK HERE
+include(generators/CMakeLists.txt)

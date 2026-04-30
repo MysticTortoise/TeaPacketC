@@ -1,11 +1,11 @@
 Destination TeaPacket/Graphics/D3D11/D3D11TextureWrap.gen
 Namespaces TeaPacket::Graphics
-Enum Class TextureWrapMode
+Enum TP_Graphics_Texture_WrapMode
 Enum D3D11_TEXTURE_ADDRESS_MODE Alias D3D
-Headers <d3d11.h> "TeaPacket/Graphics/Texture/TextureParameters.hpp"
+Headers <d3d11.h> "TeaPacket/Graphics/Texture/TextureParams.h"
 Data
-Wrap D3D11_TEXTURE_ADDRESS_WRAP
-Clamp D3D11_TEXTURE_ADDRESS_CLAMP
-Mirror D3D11_TEXTURE_ADDRESS_MIRROR
+TP_Graphics_Texture_WrapMode_Wrap D3D11_TEXTURE_ADDRESS_WRAP
+TP_Graphics_Texture_WrapMode_Clamp D3D11_TEXTURE_ADDRESS_CLAMP
+TP_Graphics_Texture_WrapMode_Mirror D3D11_TEXTURE_ADDRESS_MIRROR
 End
 Error Invalid Texture Wrap

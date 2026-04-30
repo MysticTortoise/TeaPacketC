@@ -4,7 +4,7 @@
 #include <functional>
 #include <coreinit/memdefaultheap.h>
 
-namespace TeaPacket::GX2
+namespace TeaPacket::Graphics::GX2
 {
     template<typename T>
     class MEM2Resource

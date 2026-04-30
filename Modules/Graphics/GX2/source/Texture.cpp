@@ -1,4 +1,4 @@
-#include "TeaPacket/Graphics/Texture/Texture.hpp"
+#include "TeaPacket/Graphics/Texture/Texture.h"
 #include "TeaPacket/Graphics/PlatformTexture.hpp"
 
 #include <gx2/texture.h>
@@ -7,124 +7,105 @@
 
 #include "CafeGLSL/CafeGLSLCompiler.hpp"
 #include "GraphicsHeap/MEM2Resource.hpp"
-#include "TeaPacket/Graphics/Texture/TextureParameters.hpp"
+#include <stdexcept>
 #include "TeaPacket/Graphics/GX2/GX2TextureFormat.gen"
 #include "TeaPacket/Graphics/GX2/GX2TextureWrap.gen"
 #include "TeaPacket/Graphics/GX2/GX2TextureFilter.gen"
-#include "TeaPacket/Graphics/Shader/Shader.hpp"
 
-#include "TeaPacket/Extensions/TexturePreparer/TexturePreparer.hpp"
-#include "TeaPacket/Graphics/Texture/TextureFormat.hpp"
-#include "TeaPacket/MacroUtils/ClassDefUtils.hpp"
+#include "TeaPacket/Graphics/Util/TextureFormatBits.h"
 
-using namespace TeaPacket;
-using namespace TeaPacket::Graphics;
-
-Texture::Texture(const TextureParameters& parameters):
-platformTexture(std::make_unique<PlatformTexture>(PlatformTexture{
-    .gx2Texture = GX2Texture{
-        .surface = GX2Surface{
-            .dim = GX2_SURFACE_DIM_TEXTURE_2D,
-            .width = parameters.width,
-            .height = parameters.height,
-            .depth = 1,
-            .mipLevels = 1,
-            .format = TextureFormatToGX2(parameters.format),
-            .aa = GX2_AA_MODE1X,
-            .use = GX2_SURFACE_USE_TEXTURE,
-            .imageSize = 0,
-            .image = nullptr,
-            .mipmapSize = 0,
-            .mipmaps = nullptr,
-            .tileMode = GX2_TILE_MODE_DEFAULT,
-            .swizzle = 0,
-            .alignment = 0,
-            .pitch = 0,
-            .mipLevelOffset = {}
-        },
-        .viewFirstMip = 0,
-        .viewNumMips = 1,
-        .viewFirstSlice = 0,
-        .viewNumSlices = 1,
-        .compMap = GX2_COMP_MAP(GX2_SQ_SEL_R, GX2_SQ_SEL_G, GX2_SQ_SEL_B, GX2_SQ_SEL_A),
-        .regs = {}
-    },
-    .gx2Sampler = GX2Sampler{},
-
-    .isPartOfViewport = parameters.useFlags.renderTargetColor || parameters.useFlags.renderTargetDepth
-}))
+TP_Graphics_Texture* TP_Graphics_Texture_Create(TP_Graphics_TextureParams* params)
 {
-    if (platformTexture->isPartOfViewport)
-    {
-        return; // This texture is purely dummy
-    }
-    GX2CalcSurfaceSizeAndAlignment(&platformTexture->gx2Texture.surface);
-    GX2InitTextureRegs(&platformTexture->gx2Texture);
+    auto* texture = new TP_Graphics_Texture{
+        .gx2Texture = GX2Texture{
+            .surface = GX2Surface{
+                .dim = GX2_SURFACE_DIM_TEXTURE_2D,
+                .width = params->width,
+                .height = params->height,
+                .depth = 1,
+                .mipLevels = 1,
+                .format = TP_Graphics_Texture_FormatToGX2(params->format),
+                .aa = GX2_AA_MODE1X,
+                .use = GX2_SURFACE_USE_TEXTURE,
+                .imageSize = 0,
+                .image = nullptr,
+                .mipmapSize = 0,
+                .mipmaps = nullptr,
+                .tileMode = GX2_TILE_MODE_DEFAULT,
+                .swizzle = 0,
+                .alignment = 0,
+                .pitch = 0,
+                .mipLevelOffset = {}
+            },
+            .viewFirstMip = 0,
+            .viewNumMips = 1,
+            .viewFirstSlice = 0,
+            .viewNumSlices = 1,
+            .compMap = GX2_COMP_MAP(GX2_SQ_SEL_R, GX2_SQ_SEL_G, GX2_SQ_SEL_B, GX2_SQ_SEL_A),
+            .regs = {}
+        },
+        .gx2Sampler = GX2Sampler{},
+    };
+    GX2CalcSurfaceSizeAndAlignment(&texture->gx2Texture.surface);
+    GX2InitTextureRegs(&texture->gx2Texture);
 
-    if (parameters.useFlags.shaderResource)
+    if (params->flags.shaderResource)
     {
         GX2InitSampler(
-            &platformTexture->gx2Sampler,
-            TextureWrapModeToGX2(parameters.wrapMode),
-            TextureFilterModeToGX2(parameters.filterMode));
+            &texture->gx2Sampler,
+            TP_Graphics_Texture_WrapModeToGX2(params->wrapMode),
+            TP_Graphics_Texture_FilterModeToGX2(params->filterMode));
     }
 
-    platformTexture->gx2Texture.surface.image = MEMAllocFromDefaultHeapEx(
-            platformTexture->gx2Texture.surface.imageSize,
-            static_cast<int>(platformTexture->gx2Texture.surface.alignment));
+    texture->gx2Texture.surface.image = MEMAllocFromDefaultHeapEx(
+            texture->gx2Texture.surface.imageSize,
+            static_cast<int>(texture->gx2Texture.surface.alignment));
 
-    if (parameters.data != nullptr)
+    if (params->data != nullptr)
     {
-        GX2Surface proxySurface = platformTexture->gx2Texture.surface;
+        GX2Surface proxySurface = texture->gx2Texture.surface;
         proxySurface.tileMode = GX2_TILE_MODE_LINEAR_SPECIAL;
         proxySurface.pitch = proxySurface.width;
-        proxySurface.image = parameters.data;
-        proxySurface.imageSize = static_cast<uint32_t>(GetTextureFormatBytesPerPixel(parameters.format) *
-            static_cast<float>(parameters.width) *
-            static_cast<float>(parameters.height));
-        GX2CopySurface(&proxySurface, 0, 0, &platformTexture->gx2Texture.surface, 0, 0);
+        proxySurface.image = params->data;
+        proxySurface.imageSize = static_cast<uint32_t>(TP_Graphics_Helper_GetTexFormatBytesPerPixel(params->format) *
+            static_cast<float>(params->width) *
+            static_cast<float>(params->height));
+        GX2CopySurface(&proxySurface, 0, 0, &texture->gx2Texture.surface, 0, 0);
     } else
     {
-        memset(platformTexture->gx2Texture.surface.image, 0, static_cast<int>(platformTexture->gx2Texture.surface.alignment));
+        memset(texture->gx2Texture.surface.image, 0, static_cast<int>(texture->gx2Texture.surface.alignment));
     }
+
+    return texture;
 }
 
-void Texture::SetActive(const uint8_t index)
+void TP_Graphics_Texture_SetActive(TP_Graphics_Texture* texture, tp_u8 slot)
 {
-    GX2SetPixelTexture(&platformTexture->gx2Texture, index);
-    GX2SetPixelSampler(&platformTexture->gx2Sampler, index);
+    GX2SetPixelTexture(&texture->gx2Texture, slot);
+    GX2SetPixelSampler(&texture->gx2Sampler, slot);
 }
 
-uint16_t Texture::GetWidth() const
+tp_u16 TP_Graphics_Texture_GetWidth(TP_Graphics_Texture* const texture)
 {
-    return platformTexture->gx2Texture.surface.width;
+    return texture->gx2Texture.surface.width;
 }
 
-uint16_t Texture::GetHeight() const
+tp_u16 TP_Graphics_Texture_GetHeight(TP_Graphics_Texture* const texture)
 {
-    return platformTexture->gx2Texture.surface.height;
+    return texture->gx2Texture.surface.height;
 }
 
-TextureFormat Texture::GetFormat() const
+TP_Graphics_Texture_Format TP_Graphics_Texture_GetFormat(TP_Graphics_Texture* texture)
 {
-    return GX2ToTextureFormat(platformTexture->gx2Texture.surface.format);
+    return GX2ToTP_Graphics_Texture_Format(texture->gx2Texture.surface.format);
 }
 
-TP_OBJ_IMPL_DESTRUCTOR_MOVE_DEFAULT(Texture);
-
-bool Graphics::IsTextureFormatSupported(const TextureFormat format) {
-    return TextureFormatConvertableToGX2(format);
-}
-
-TextureFormat Graphics::ConvertTextureToSupportedFormat(std::vector<unsigned char>& data, const TextureFormat sourceFormat)
+void TP_Graphics_Texture_Destroy(TP_Graphics_Texture* texture)
 {
+    delete texture;
+}
 
-    switch (sourceFormat)
-    {
-    case TextureFormat::R1:
-            Extensions::TexturePreparer::ConvertTextureToFormat<TextureFormat::R1, TextureFormat::R8>(data);
-            return TextureFormat::R8;
-    default:
-        return sourceFormat;
-    }
+tp_bool TP_Graphics_Texture_IsFormatSupported(const TP_Graphics_Texture_Format format)
+{
+    return TP_Graphics_Texture_FormatConvertableToGX2(format);
 }

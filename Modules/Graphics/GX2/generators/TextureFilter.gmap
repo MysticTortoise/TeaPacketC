@@ -1,10 +1,10 @@
 Destination TeaPacket/Graphics/GX2/GX2TextureFilter.gen
 Namespaces TeaPacket::Graphics
-Enum Class TextureFilterMode
+Enum TP_Graphics_Texture_FilterMode
 Enum GX2TexXYFilterMode Alias GX2
-Headers <gx2/enum.h> "TeaPacket/Graphics/Texture/TextureParameters.hpp"
+Headers <gx2/enum.h> "TeaPacket/Graphics/Texture/TextureParams.h"
 Data
-Nearest GX2_TEX_XY_FILTER_MODE_POINT
-Linear GX2_TEX_XY_FILTER_MODE_LINEAR
+TP_Graphics_Texture_FilterMode_Nearest GX2_TEX_XY_FILTER_MODE_POINT
+TP_Graphics_Texture_FilterMode_Linear GX2_TEX_XY_FILTER_MODE_LINEAR
 End
 Error Invalid Texture Filter

@@ -1,93 +1,90 @@
-#include "TeaPacket/Graphics/Texture/Texture.hpp"
+#include "TeaPacket/Graphics/Texture/Texture.h"
 
 #include <d3d11.h>
 #include <cassert>
 
-#include "TeaPacket/Graphics/Texture/TextureParameters.hpp"
+#include "TeaPacket/Graphics/Util/TextureFormatBits.h"
 #include "TeaPacket/Graphics/PlatformTexture.hpp"
-#include "TeaPacket/Graphics/Texture/TextureFormat.hpp"
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
-#include "TeaPacket/MacroUtils/StructUtils.hpp"
 #include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
-#include "TeaPacket/Graphics/Texture/TextureData.hpp"
-
-#include "TeaPacket/Graphics/D3D11/D3D11TextureFormat.gen"
 #include "TeaPacket/Graphics/D3D11/D3D11TextureFilter.gen"
 #include "TeaPacket/Graphics/D3D11/D3D11TextureWrap.gen"
+#include "TeaPacket/Graphics/D3D11/D3D11TextureFormat.gen"
+#include "TeaPacket/MacroUtils/StructUtils.hpp"
 
-#include "TeaPacket/Extensions/TexturePreparer/TexturePreparer.hpp"
+using namespace TeaPacket::Graphics::D3D11;
 
-using namespace TeaPacket;
-using namespace TeaPacket::Graphics;
-
-static constexpr D3D11_USAGE GetD3DUsage(const TextureUseFlags flags)
+static constexpr D3D11_USAGE GetD3DUsage(const TP_Graphics_TextureUseFlags flags)
 {
     switch (flags.writeMode)
     {
-    case TextureAvailableMode::None:
+    case TP_Graphics_Texture_AvailableMode_None:
         return D3D11_USAGE_IMMUTABLE;
-    case TextureAvailableMode::CPU:
+    case TP_Graphics_Texture_AvailableMode_CPU:
         return D3D11_USAGE_DYNAMIC;
-    case TextureAvailableMode::GPU:
+    case TP_Graphics_Texture_AvailableMode_GPU:
         return D3D11_USAGE_DEFAULT;
     default:
-        throw std::runtime_error("Invalid TextureWriteMode");
+        assert(false);
+        return D3D11_USAGE_DEFAULT;
     }
 }
 
-static constexpr D3D11_BIND_FLAG GetD3DBindFlags(const TextureUseFlags flags)
+static constexpr D3D11_BIND_FLAG GetD3DBindFlags(const TP_Graphics_TextureUseFlags flags)
 {
     UINT flag = 0;
     if (flags.shaderResource) { flag |= D3D11_BIND_SHADER_RESOURCE; }
-    if (flags.renderTargetColor) { flag |= D3D11_BIND_RENDER_TARGET; }
-    if (flags.renderTargetDepth) { flag |= D3D11_BIND_DEPTH_STENCIL; }
+    //if (flags.renderTargetColor) { flag |= D3D11_BIND_RENDER_TARGET; }
+    //if (flags.renderTargetDepth) { flag |= D3D11_BIND_DEPTH_STENCIL; }
     return static_cast<D3D11_BIND_FLAG>(flag);
 }
 
-static constexpr D3D11_CPU_ACCESS_FLAG GetD3DCpuAccessFlags(const TextureUseFlags flags)
+static constexpr D3D11_CPU_ACCESS_FLAG GetD3DCpuAccessFlags(const TP_Graphics_TextureUseFlags flags)
 {
     return static_cast<D3D11_CPU_ACCESS_FLAG>(
-        flags.writeMode == TextureAvailableMode::CPU ? D3D11_CPU_ACCESS_WRITE : 0
+        flags.writeMode == TP_Graphics_Texture_AvailableMode_CPU ? D3D11_CPU_ACCESS_WRITE : 0
         );
 }
 
-Texture::Texture(const TextureParameters& parameters):
-platformTexture(std::make_unique<PlatformTexture>())
+TP_Graphics_Texture* TP_Graphics_Texture_Create(TP_Graphics_TextureParams* params)
 {
-    platformTexture->width = parameters.width;
-    platformTexture->height = parameters.height;
-    platformTexture->format = parameters.format;
+    auto* tex = new TP_Graphics_Texture;
+
+    auto texture = new TP_Graphics_Texture();
+    texture->width = params->width;
+    texture->height = params->height;
+    texture->format = params->format;
 
     D3D11_TEXTURE2D_DESC textureDesc;
-    textureDesc.Width = parameters.width;
-    textureDesc.Height = parameters.height;
+    textureDesc.Width = texture->width;
+    textureDesc.Height = texture->height;
     textureDesc.MipLevels = 1;
     textureDesc.ArraySize = 1;
-    textureDesc.Format = TextureFormatToD3D(parameters.format);
+    textureDesc.Format = TP_Graphics_Texture_FormatToD3D(texture->format);
     textureDesc.SampleDesc.Count = 1;
     textureDesc.SampleDesc.Quality = 0;
-    textureDesc.Usage = GetD3DUsage(parameters.useFlags);
-    textureDesc.BindFlags = GetD3DBindFlags(parameters.useFlags);
-    textureDesc.CPUAccessFlags = GetD3DCpuAccessFlags(parameters.useFlags);
+    textureDesc.Usage = GetD3DUsage(params->flags);
+    textureDesc.BindFlags = GetD3DBindFlags(params->flags);
+    textureDesc.CPUAccessFlags = GetD3DCpuAccessFlags(params->flags);
     textureDesc.MiscFlags = 0;
 
     D3D11_SUBRESOURCE_DATA texData = {
-        .pSysMem = parameters.data,
-        .SysMemPitch = static_cast<UINT>(static_cast<float>(parameters.width) * GetTextureFormatBytesPerPixel(parameters.format)),
+        .pSysMem = params->data,
+        .SysMemPitch = static_cast<UINT>(static_cast<float>(params->width) * TP_Graphics_Helper_GetTexFormatBytesPerPixel(params->format)),
         .SysMemSlicePitch = 0
     };
 
     CheckErrorWinCom(
         device->CreateTexture2D(&textureDesc,
-            parameters.data == nullptr ? nullptr : &texData, platformTexture->texture2D.GetAddressOf())
+            params->data == nullptr ? nullptr : &texData, tex->texture2D.GetAddressOf())
     );
 
-    if (parameters.data == nullptr)
+    if (params->data == nullptr)
     {
-        assert(parameters.useFlags.writeMode != TextureAvailableMode::None);
+        assert(params->flags.writeMode != TP_Graphics_Texture_AvailableMode_None);
     }
 
-    if (parameters.useFlags.shaderResource)
+    if (params->flags.shaderResource)
     {
         D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
         srvDesc.Format = textureDesc.Format;
@@ -96,14 +93,14 @@ platformTexture(std::make_unique<PlatformTexture>())
         srvDesc.Texture2D.MipLevels = UINT_MAX;
         CheckErrorWinCom(
             device->CreateShaderResourceView(
-                platformTexture->texture2D.Get(), &srvDesc, platformTexture->shaderResourceView.GetAddressOf()
+                tex->texture2D.Get(), &srvDesc, tex->shaderResourceView.GetAddressOf()
                 )
         );
-        deviceContext->GenerateMips(platformTexture->shaderResourceView.Get());
+        deviceContext->GenerateMips(tex->shaderResourceView.Get());
 
         D3D11_SAMPLER_DESC samplerDesc;
-        samplerDesc.Filter = TextureFilterModeToD3D(parameters.filterMode);
-        D3D11_TEXTURE_ADDRESS_MODE d3dWrapType = TextureWrapModeToD3D(parameters.wrapMode);
+        samplerDesc.Filter = TP_Graphics_Texture_FilterModeToD3D(params->filterMode);
+        D3D11_TEXTURE_ADDRESS_MODE d3dWrapType = TP_Graphics_Texture_WrapModeToD3D(params->wrapMode);
         samplerDesc.AddressU = d3dWrapType;
         samplerDesc.AddressV = d3dWrapType;
         samplerDesc.AddressW = d3dWrapType;
@@ -115,13 +112,13 @@ platformTexture(std::make_unique<PlatformTexture>())
         samplerDesc.MaxLOD = D3D11_FLOAT32_MAX;
 
         CheckErrorWinCom(
-            device->CreateSamplerState(&samplerDesc, platformTexture->samplerState.GetAddressOf())
+            device->CreateSamplerState(&samplerDesc, tex->samplerState.GetAddressOf())
         );
     }
+
+    return tex;
 }
-
-TP_OBJ_IMPL_DESTRUCTOR_MOVE_DEFAULT(Texture);
-
+/*
 TextureData Texture::GetData() const
 {
     D3D11_TEXTURE2D_DESC stagingDesc;
@@ -164,41 +161,51 @@ TextureData Texture::GetData() const
     }
     deviceContext->Unmap(stagingTex.Get(),0);
     return data;
-}
+}*/
 
-void Texture::SetActive(const uint8_t index)
+void TP_Graphics_Texture_SetActive(TP_Graphics_Texture* texture, tp_u8 slot)
 {
-    deviceContext->PSSetShaderResources(index, 1, platformTexture->shaderResourceView.GetAddressOf());
-    deviceContext->PSSetSamplers(index, 1, platformTexture->samplerState.GetAddressOf());
+    deviceContext->PSSetShaderResources(slot, 1, texture->shaderResourceView.GetAddressOf());
+    deviceContext->PSSetSamplers(slot, 1, texture->samplerState.GetAddressOf());
 }
 
-uint16_t Texture::GetWidth() const
+tp_u16 TP_Graphics_Texture_GetWidth(TP_Graphics_Texture* texture)
 {
-    return platformTexture->width;
+    return texture->width;
 }
 
-uint16_t Texture::GetHeight() const
+tp_u16 TP_Graphics_Texture_GetHeight(TP_Graphics_Texture* texture)
 {
-    return platformTexture->height;
+    return texture->height;
 }
 
-TextureFormat Texture::GetFormat() const
+TP_Graphics_Texture_Format TP_Graphics_Texture_GetFormat(TP_Graphics_Texture* texture)
 {
-    return platformTexture->format;
+    return texture->format;
 }
 
-bool Graphics::IsTextureFormatSupported(const TextureFormat format) {
-    if (!TextureFormatConvertableToD3D(format))
-        return false;
+tp_bool TP_Graphics_Texture_IsFormatSupported(const TP_Graphics_Texture_Format format)
+{
+    // ReSharper disable once CppDFAConstantConditions
+    if (!TP_Graphics_Texture_FormatConvertableToD3D(format))
+        return tp_false;
+
     UINT formatSupport;
-    const HRESULT result = device->CheckFormatSupport(TextureFormatToD3D(format), &formatSupport);
+    const HRESULT result = device->CheckFormatSupport(TP_Graphics_Texture_FormatToD3D(format), &formatSupport);
     if (result == E_INVALIDARG)
     {
-        throw std::exception("D3D11 - INVALID ARGUMENT FORMAT");
+        // shit
+        return tp_false;
     }
-    return formatSupport & (D3D11_FORMAT_SUPPORT_TEXTURE2D);
+    return !!(formatSupport & (D3D11_FORMAT_SUPPORT_TEXTURE2D));
 }
 
+void TP_Graphics_Texture_Destroy(TP_Graphics_Texture* texture)
+{
+    delete texture;
+}
+
+/*
 TextureFormat Graphics::ConvertTextureToSupportedFormat(std::vector<unsigned char>& data, const TextureFormat sourceFormat)
 {
 
@@ -217,4 +224,4 @@ TextureFormat Graphics::ConvertTextureToSupportedFormat(std::vector<unsigned cha
         return sourceFormat;
     }
 }
-
+*/

@@ -3,10 +3,10 @@
 #include <coreinit/memexpheap.h>
 #include <proc_ui/procui.h>
 
-#include "TeaPacket/Logging/Logging.hpp"
+#include "TeaPacket/Logging/Logging.h"
 
-using namespace TeaPacket::GX2;
-using namespace TeaPacket::GX2::_impl;
+using namespace TeaPacket::Graphics::GX2;
+using namespace TeaPacket::Graphics::GX2::_impl;
 
 uint32_t DisposableForegroundMemResource::Allocate(void* resource)
 {
@@ -19,7 +19,7 @@ uint32_t DisposableForegroundMemResource::Allocate(void* resource)
         );
     if (!memResource->data)
     {
-        LogString("HEAP ALLOCATION FAILED!");
+        TP_LogConstStr("HEAP ALLOCATION FAILED!");
         return -1;
     }
     if (memResource->setupFunction != nullptr)
@@ -29,6 +29,7 @@ uint32_t DisposableForegroundMemResource::Allocate(void* resource)
     return 0;
 }
 
+// ReSharper disable once CppDFAConstantFunctionResult
 uint32_t DisposableForegroundMemResource::Deallocate(void* resource)
 {
     
@@ -48,13 +49,13 @@ uint32_t DisposableForegroundMemResource::Deallocate(void* resource)
 
 
 bool DisposableForegroundMemResource::Initialize(
-    const ForegroundBucket bucket, const uint32_t size, const int alignment,
-    const decltype(setupFunction)& setupFunction)
+    const ForegroundBucket pbucket, const uint32_t psize, const int palignment,
+    const decltype(setupFunction)& psetupFunction)
 {
-    this->bucket = bucket;
-    this->size = size;
-    this->alignment = CorrectAlignment(alignment);
-    this->setupFunction = setupFunction;
+    this->bucket = pbucket;
+    this->size = psize;
+    this->alignment = CorrectAlignment(palignment);
+    this->setupFunction = psetupFunction;
     
     ProcUIRegisterCallback(PROCUI_CALLBACK_ACQUIRE, Allocate, this, GX2_DISPRESOURCE_PRIORITY);
     ProcUIRegisterCallback(PROCUI_CALLBACK_RELEASE, Deallocate, this, GX2_DISPRESOURCE_PRIORITY);

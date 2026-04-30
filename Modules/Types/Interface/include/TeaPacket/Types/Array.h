@@ -20,6 +20,7 @@ typedef TP_Array(char) TP_String;
 typedef TP_Array(tp_byte) TP_ByteArray;
 
 typedef TP_ArrayView(char) TP_StringView;
+typedef TP_ArrayView(tp_byte) TP_ByteView;
 
 #define TP_StrViewFromConstStr(msg) {msg, sizeof(msg)-1}
 

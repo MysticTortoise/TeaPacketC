@@ -1,18 +1,15 @@
-#include "TeaPacket/Graphics/Shader/ShaderVariable.hpp"
+#include "TeaPacket/Graphics/Shader/VariableType.h"
 
 #include <stdexcept>
 
 #include "DirectXMath.h"
 
-using namespace TeaPacket::Graphics;
-
-size_t ShaderVariableType::GetSize() const
+size_t TP_Graphics_ShaderVar_GetSize(const TP_Graphics_Shader_VariableType type)
 {
-    switch (this->baseType)
+    switch (type.baseType)
     {
-        using enum ShaderVariableBaseType;
-    case Float:
-        switch (this->amount)
+    case TP_Graphics_Shader_VariableBaseType_Float:
+        switch (type.amount)
         {
     case 1: return sizeof(float);
     case 2: return sizeof(DirectX::XMFLOAT2);
@@ -21,8 +18,8 @@ size_t ShaderVariableType::GetSize() const
     default: break;
         }
         break;
-    case Int:
-        switch (this->amount)
+    case TP_Graphics_Shader_VariableBaseType_Int:
+        switch (type.amount)
         {
     case 1: return sizeof(int32_t);
     case 2: return sizeof(DirectX::XMINT2);
@@ -31,8 +28,8 @@ size_t ShaderVariableType::GetSize() const
     default: break;
         }
         break;
-    case UInt:
-        switch (this->amount)
+    case TP_Graphics_Shader_VariableBaseType_UInt:
+        switch (type.amount)
         {
     case 1: return sizeof(uint32_t);
     case 2: return sizeof(DirectX::XMUINT2);
@@ -41,6 +38,8 @@ size_t ShaderVariableType::GetSize() const
     default: break;
         }
         break;
+    case TP_Graphics_Shader_VariableBaseType_None:
+        return 0;
     }
-    throw std::exception();
+    return 0;
 }

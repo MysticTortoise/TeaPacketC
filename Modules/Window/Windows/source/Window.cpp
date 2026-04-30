@@ -1,6 +1,7 @@
 #include <memory>
 
 #include "TeaPacket/Window/Window.h"
+#include "TeaPacket/Memory/Memory.h"
 
 #include <atomic>
 
@@ -142,7 +143,7 @@ TP_String TP_Window_GetTitle(TP_Window* window)
     const int len = GetWindowTextLengthA(window->windowHandle);
 
     // ReSharper disable once CppDFAMemoryLeak
-    const auto text = static_cast<char*>(malloc(len));
+    const auto text = static_cast<char*>(TP_MemAlloc(len));
     GetWindowTextA(window->windowHandle, text, len);
 
     return {text, static_cast<size_t>(len)};
@@ -201,4 +202,14 @@ void TP_Window_SetTitle(TP_Window* window, const TP_StringView name)
     SetWindowTextA(window->windowHandle, text);
 
     delete[] text;
+}
+
+size_t TP_Window_GetCount()
+{
+    return Windows.size();
+}
+
+TP_Window* TP_Window_Get(const size_t index)
+{
+    return Windows.at(index);
 }

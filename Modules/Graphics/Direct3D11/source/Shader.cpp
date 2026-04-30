@@ -1,4 +1,4 @@
-#include "TeaPacket/Graphics/Shader/Shader.hpp"
+#include "TeaPacket/Graphics/Shader/Shader.h"
 
 #include <vector>
 
@@ -8,65 +8,77 @@
 #include "TeaPacket/Graphics/PlatformShader.hpp"
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
 
-#include "TeaPacket/Graphics/Shader/ShaderParameters.hpp"
+#include "TeaPacket/Graphics/Shader/ShaderParams.h"
 #include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 
-#include "TeaPacket/Logging/Logging.hpp"
-#include "TeaPacket/MacroUtils/StructUtils.hpp"
+#include "TeaPacket/Logging/Logging.h"
 
-using namespace TeaPacket::Graphics;
+using namespace TeaPacket::Graphics::D3D11;
 
 
-static constexpr DXGI_FORMAT GetDXGIFormatFromVertexAttribute(ShaderVariableType shaderVarType)
+static constexpr DXGI_FORMAT GetDXGIFormatFromVertexAttribute(const TP_Graphics_Shader_VariableType shaderVarType)
 {
-    using enum ShaderVariableBaseType;
     switch (shaderVarType.amount)
     {
     case 1:
         switch (shaderVarType.baseType)
         {
-    case Float:     return DXGI_FORMAT_R32_FLOAT;
-    case Int:       return DXGI_FORMAT_R32_SINT;
-    case UInt:      return DXGI_FORMAT_R32_UINT;
+    case TP_Graphics_Shader_VariableBaseType_Float:     return DXGI_FORMAT_R32_FLOAT;
+    case TP_Graphics_Shader_VariableBaseType_Int:       return DXGI_FORMAT_R32_SINT;
+    case TP_Graphics_Shader_VariableBaseType_UInt:      return DXGI_FORMAT_R32_UINT;
+    case TP_Graphics_Shader_VariableBaseType_None:
+    default:
+            return DXGI_FORMAT_UNKNOWN;
         }
         break;
     case 2:
         switch (shaderVarType.baseType)
         {
-    case Float: return DXGI_FORMAT_R32G32_FLOAT;
-    case Int: return DXGI_FORMAT_R32G32_SINT;
-    case UInt: return DXGI_FORMAT_R32G32_UINT;
+    case TP_Graphics_Shader_VariableBaseType_Float: return DXGI_FORMAT_R32G32_FLOAT;
+    case TP_Graphics_Shader_VariableBaseType_Int: return DXGI_FORMAT_R32G32_SINT;
+    case TP_Graphics_Shader_VariableBaseType_UInt: return DXGI_FORMAT_R32G32_UINT;
+    case TP_Graphics_Shader_VariableBaseType_None:
+    default:
+            return DXGI_FORMAT_UNKNOWN;
+
         }
         break;
     case 3:
         switch (shaderVarType.baseType)
         {
-    case Float: return DXGI_FORMAT_R32G32B32_FLOAT;
-    case Int: return DXGI_FORMAT_R32G32B32_SINT;
-    case UInt: return DXGI_FORMAT_R32G32B32_UINT;
+    case TP_Graphics_Shader_VariableBaseType_Float: return DXGI_FORMAT_R32G32B32_FLOAT;
+    case TP_Graphics_Shader_VariableBaseType_Int: return DXGI_FORMAT_R32G32B32_SINT;
+    case TP_Graphics_Shader_VariableBaseType_UInt: return DXGI_FORMAT_R32G32B32_UINT;
+    case TP_Graphics_Shader_VariableBaseType_None:
+    default:
+            return DXGI_FORMAT_UNKNOWN;
         }
         break;
     case 4:
         switch (shaderVarType.baseType)
         {
-    case Float: return DXGI_FORMAT_R32G32B32A32_FLOAT;
-    case Int: return DXGI_FORMAT_R32G32B32A32_SINT;
-    case UInt: return DXGI_FORMAT_R32G32B32A32_UINT;
+    case TP_Graphics_Shader_VariableBaseType_Float: return DXGI_FORMAT_R32G32B32A32_FLOAT;
+    case TP_Graphics_Shader_VariableBaseType_Int: return DXGI_FORMAT_R32G32B32A32_SINT;
+    case TP_Graphics_Shader_VariableBaseType_UInt: return DXGI_FORMAT_R32G32B32A32_UINT;
+    case TP_Graphics_Shader_VariableBaseType_None:
+    default:
+            return DXGI_FORMAT_UNKNOWN;
         }
         break;
-    default: break;
+    default:
+        return DXGI_FORMAT_UNKNOWN;
     }
-    throw std::exception();
 }
 
-Shader::Shader(const ShaderParameters& parameters):
-platformShader(std::make_unique<PlatformShader>())
+TP_Graphics_Shader* TP_Graphics_Shader_Create(TP_Graphics_ShaderParams* const params)
 {
-    Microsoft::WRL::ComPtr<ID3D10Blob> errorMessage, vertexShaderBuffer;
+    Microsoft::WRL::ComPtr<ID3D10Blob> errorMessage;
+
+    Microsoft::WRL::ComPtr<ID3D10Blob> vertexShaderBuffer;
     // Compile Vertex Shader
     HRESULT result = D3DCompile(
-        parameters.vertexShaderCode.c_str(), parameters.vertexShaderCode.length(),
-        NULL, NULL, NULL,
+        params->vertexShaderCode.p, params->vertexShaderCode.size,
+        nullptr, nullptr, nullptr,
         "main", "vs_5_0",
         D3D10_SHADER_ENABLE_STRICTNESS, 0,
         vertexShaderBuffer.GetAddressOf(), errorMessage.GetAddressOf()
@@ -78,18 +90,22 @@ platformShader(std::make_unique<PlatformShader>())
         {
             const char* compileErrors = static_cast<char*>(errorMessage->GetBufferPointer());
             const size_t size = errorMessage->GetBufferSize();
-            LogString(std::string(compileErrors, compileErrors + size));
-            throw std::runtime_error("Vertex shader failed to compile. See Log for errors.");
+            TP_LogCharN(compileErrors, size);
+            TP_LogConstStr("D3D11 Shader failed to compile, see log for errors....");
+            return nullptr;
         }
-        throw std::runtime_error("Vertex shader couldn't compile. Error message not given. Uh Oh.");
+        TP_LogConstStr("D3D11 Shader failed to compile, no error given!!! fuck :D");
+        return nullptr;
     }
+
+
 
     Microsoft::WRL::ComPtr<ID3D10Blob> pixelShaderBuffer;
     // Compile Pixel Shader
     result =
         D3DCompile(
-            parameters.fragmentShaderCode.c_str(), parameters.fragmentShaderCode.length(),
-            NULL, NULL, NULL,
+            params->fragmentShaderCode.p, params->fragmentShaderCode.size,
+            nullptr, nullptr, nullptr,
             "main", "ps_5_0",
             D3D10_SHADER_ENABLE_STRICTNESS, 0,
             pixelShaderBuffer.GetAddressOf(), errorMessage.GetAddressOf()
@@ -101,57 +117,61 @@ platformShader(std::make_unique<PlatformShader>())
         {
             const char* compileErrors = static_cast<char*>(errorMessage->GetBufferPointer());
             const size_t size = errorMessage->GetBufferSize();
-            LogString(std::string(compileErrors, compileErrors + size));
-            throw std::runtime_error("Fragment shader failed to compile. See Log for errors.");
+            TP_LogCharN(compileErrors, size);
+            TP_LogConstStr("D3D11 Shader failed to compile, see log for errors....");
+            return nullptr;
         }
-        throw std::runtime_error("Fragment shader couldn't compile. Error message not given. Uh Oh.");
+        TP_LogConstStr("D3D11 Shader failed to compile, no error given!!! fuck :D");
+        return nullptr;
     }
-    
+
+    auto* shader = new TP_Graphics_Shader;
+
     // Create both shaders
     CheckErrorWinCom(
         device->CreateVertexShader(
             vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(),
-            NULL, platformShader->vertexShader.GetAddressOf()
+            nullptr, shader->vertexShader.GetAddressOf()
             ));
 
     CheckErrorWinCom(
         device->CreatePixelShader(
             pixelShaderBuffer->GetBufferPointer(), pixelShaderBuffer->GetBufferSize(),
-            NULL, platformShader->pixelShader.GetAddressOf()
+            nullptr, shader->pixelShader.GetAddressOf()
     ));
     // Setup input variables
     std::vector<D3D11_INPUT_ELEMENT_DESC> polygonLayout;
-    polygonLayout.reserve(parameters.inputAttributes.size());
-    for (size_t i = 0; i < parameters.inputAttributes.size(); i++)
+    polygonLayout.reserve(params->inputAttributes.size);
+    for (size_t i = 0; i < params->inputAttributes.size; i++)
     {
         polygonLayout.emplace_back(D3D11_INPUT_ELEMENT_DESC{
             .SemanticName = "TEXCOORD",
             .SemanticIndex = static_cast<unsigned int>(i),
-            .Format = GetDXGIFormatFromVertexAttribute(parameters.inputAttributes[i]),
+            .Format = GetDXGIFormatFromVertexAttribute(params->inputAttributes.p[i]),
             .InputSlot = 0,
             .AlignedByteOffset = i == 0 ? 0 : D3D11_APPEND_ALIGNED_ELEMENT,
             .InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA,
             .InstanceDataStepRate = 0
         });
     }
-    
+
     CheckErrorWinCom(
-        device->CreateInputLayout(polygonLayout.data(), static_cast<UINT>(parameters.inputAttributes.size()),
+        device->CreateInputLayout(polygonLayout.data(), static_cast<UINT>(params->inputAttributes.size),
             vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(),
-            platformShader->inputLayout.GetAddressOf()
+            shader->inputLayout.GetAddressOf()
             ));
 
-    
+    return shader;
 }
-void Shader::SetActive()
+
+void TP_Graphics_Shader_SetActive(TP_Graphics_Shader* const shader)
 {
-    deviceContext->IASetInputLayout(platformShader->inputLayout.Get());
-    deviceContext->VSSetShader(platformShader->vertexShader.Get(), NULL, 0);
-    deviceContext->PSSetShader(platformShader->pixelShader.Get(), NULL, 0);
-
-    // Add Uniform support later
+    deviceContext->IASetInputLayout(shader->inputLayout.Get());
+    deviceContext->VSSetShader(shader->vertexShader.Get(), nullptr, 0);
+    deviceContext->PSSetShader(shader->pixelShader.Get(), nullptr, 0);
 }
 
-
-
-TP_OBJ_IMPL_DESTRUCTOR_MOVE_DEFAULT(Shader);
+void TP_Graphics_Shader_Destroy(TP_Graphics_Shader* shader)
+{
+    delete[] shader;
+}

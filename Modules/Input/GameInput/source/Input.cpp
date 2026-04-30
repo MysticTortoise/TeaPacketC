@@ -17,9 +17,10 @@
 #include "TeaPacket/Window/PlatformWindow.hpp"
 #include "TeaPacket/Window/Window.h"
 
-using namespace TeaPacket;
-using namespace TeaPacket::Input;
+#include "TeaPacket/Memory/Memory.h"
 
+#undef min
+// FUCK MICROSOFT
 static GameInputCallbackToken globalCallbackToken;
 
 struct ReadingEntry
@@ -157,13 +158,13 @@ tp_bool TP_Input_IsButtonPressed(TP_Input_Slot slot, TP_Input_Button button)
     {
         GameInputMouseState mouseState{};
         reading->GetMouseState(&mouseState);
-        return mouseState.buttons & TP_Input_ButtonToMouseButton(button);
+        return static_cast<tp_bool>(mouseState.buttons & TP_Input_ButtonToMouseButton(button));
     }
     if (button > TP_Input_Button_START_PAD && button < TP_Input_Button_END_PAD)
     {
         GameInputGamepadState gamepadState{};
         reading->GetGamepadState(&gamepadState);
-        return gamepadState.buttons & TP_Input_ButtonToGamepadButton(button);
+        return static_cast<tp_bool>(gamepadState.buttons & TP_Input_ButtonToGamepadButton(button));
     }
 
     return false;
@@ -246,17 +247,17 @@ tp_bool TP_Input_IsButtonSupported(TP_Input_Slot slot, TP_Input_Button button)
     }
     if (button > TP_Input_Button_START_KEY && button < TP_Input_Button_END_KEY)
     {
-        return info->supportedInput & GameInputKindKeyboard; // TODO: Is there a way to figure this out on a more granular level?
+        return static_cast<tp_bool>(info->supportedInput & GameInputKindKeyboard); // TODO: Is there a way to figure this out on a more granular level?
     } else if (button > TP_Input_Button_START_MOUSE && button < TP_Input_Button_END_MOUSE)
     {
         if (!(info->supportedInput & GameInputKindMouse))
         {
-            return false;
+            return tp_false;
         }
-        return info->mouseInfo->supportedButtons & TP_Input_ButtonToMouseButton(button);
+        return static_cast<tp_bool>(info->mouseInfo->supportedButtons & TP_Input_ButtonToMouseButton(button));
     }
 
-    return false;
+    return tp_false;
 }
 
 tp_bool TP_Input_IsAxisSupported(TP_Input_Slot slot, TP_Input_Axis axis)
@@ -266,13 +267,13 @@ tp_bool TP_Input_IsAxisSupported(TP_Input_Slot slot, TP_Input_Axis axis)
     const auto device = publicDevices_v[slot].Get();
     if (!SUCCEEDED(device->GetDeviceInfo(&info)))
     {
-        return false;
+        return tp_false;
     }
     if (axis == TP_Input_Axis_POINTER_X || axis == TP_Input_Axis_POINTER_Y)
     {
-        return info->supportedInput & GameInputKindMouse;
+        return (tp_bool)(info->supportedInput & GameInputKindMouse);
     }
-    return false;
+    return tp_false;
 }
 
 
@@ -311,7 +312,7 @@ TP_String TP_Input_GetControllerName(TP_Input_Slot slot)
     }
     const size_t length = std::min(strlen(info->displayName),static_cast<size_t>(100));
 
-    const TP_String str = {static_cast<char*>(malloc(length)), length};
+    const TP_String str = {static_cast<char*>(TP_MemAlloc(length)), length};
     memcpy(str.p, info->displayName, length);
     return str;
 }

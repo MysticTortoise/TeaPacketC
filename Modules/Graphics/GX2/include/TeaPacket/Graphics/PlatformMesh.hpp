@@ -4,17 +4,12 @@
 
 #include <vector>
 
-#include "TeaPacket/Graphics/Shader/ShaderVariable.hpp"
+#include "TeaPacket/Graphics/Shader/VariableType.h"
 
-namespace TeaPacket::Graphics
+struct TP_Graphics_Mesh
 {
-    struct PlatformMesh
-    {
-        std::vector<GX2RBuffer> buffers;
-        std::vector<uint32_t> indexBuffer;
+    std::vector<GX2RBuffer> buffers;
+    std::vector<uint32_t> indexBuffer;
 
-        size_t indexCount = 0;
-
-        std::vector<ShaderVariableType> vertexDataInfo;
-    };
-}
+    std::vector<TP_Graphics_Shader_VariableType> vertexDataInfo;
+};

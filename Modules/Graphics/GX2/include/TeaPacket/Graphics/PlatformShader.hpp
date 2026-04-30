@@ -3,15 +3,14 @@
 #include "GraphicsHeap/MEM2Resource.hpp"
 
 #include <gx2/shaders.h>
+#include <memory>
 
-namespace TeaPacket::Graphics
+
+struct TP_Graphics_Shader
 {
-    struct PlatformShader
-    {
-        std::unique_ptr<GX2VertexShader> vertexShader;
-        std::unique_ptr<GX2PixelShader> pixelShader;
+    std::unique_ptr<GX2VertexShader> vertexShader;
+    std::unique_ptr<GX2PixelShader> pixelShader;
 
-        GX2FetchShader fetchShader;
-        GX2::MEM2Resource<void> fetchShaderMemory;
-    };
-}
+    GX2FetchShader fetchShader;
+    TeaPacket::Graphics::GX2::MEM2Resource<void> fetchShaderMemory;
+};

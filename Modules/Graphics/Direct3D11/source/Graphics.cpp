@@ -1,12 +1,12 @@
-#include "TeaPacket/Graphics/Graphics.hpp"
+#include "TeaPacket/Graphics/Graphics.h"
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
 
 #include <d3d11.h>
 #include <cassert>
 
-#include "TeaPacket/Graphics/Display.hpp"
+#include "TeaPacket/Graphics/Display.h"
 #include "TeaPacket/Graphics/PlatformMesh.hpp"
-#include "TeaPacket/Graphics/Mesh/Mesh.hpp"
+#include "TeaPacket/Graphics/Mesh/Mesh.h"
 #include "TeaPacket/MacroUtils/StructUtils.hpp"
 #include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 
@@ -26,7 +26,9 @@ static D3D11_DEPTH_STENCIL_DESC depthStencilDesc;
 static Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilState = nullptr;
 static Microsoft::WRL::ComPtr<ID3D11BlendState> blendState = nullptr;
 
-void Graphics::Initialize()
+using namespace TeaPacket::Graphics::D3D11;
+
+tp_bool TP_Graphics_Init()
 {
     UINT deviceFlags = D3D11_CREATE_DEVICE_BGRA_SUPPORT;
 #if TP_DEBUG > 0
@@ -109,15 +111,17 @@ void Graphics::Initialize()
     );
     //constexpr float bf[] = { 0.f,0.f,0.f,0.f };
     deviceContext->OMSetBlendState(blendState.Get(), nullptr, 0xffffffff);
+
+    return tp_true;
 }
 
-void Graphics::DeInitialize()
+void TP_Graphics_DeInit()
 {
     device.Reset();
     deviceContext.Reset();
-    Display::DeInitialize();
+    //Display::DeInitialize();
 }
-
+/*
 void Graphics::DrawMesh()
 {
     const Mesh* meshToDraw = Mesh::activeMesh;
@@ -127,9 +131,9 @@ void Graphics::DrawMesh()
     {
         deviceContext->DrawIndexed(meshToDraw->platformMesh->indexCount, 0, 0);
     }
-}
+}*/
 
-void Graphics::SetDepthEnabled(const bool depthEnabled)
+void TP_Graphics_SetDepthEnabled(const tp_bool depthEnabled)
 {
     depthStencilDesc.DepthEnable = depthEnabled;
     CheckErrorWinCom(
