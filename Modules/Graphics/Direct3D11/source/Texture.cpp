@@ -30,12 +30,12 @@ static constexpr D3D11_USAGE GetD3DUsage(const TP_Graphics_TextureUseFlags flags
     }
 }
 
-static constexpr D3D11_BIND_FLAG GetD3DBindFlags(const TP_Graphics_TextureUseFlags flags)
+static constexpr D3D11_BIND_FLAG GetD3DBindFlags(const TP_Graphics_TextureUseFlags flags, const DTextureParms dParams)
 {
     UINT flag = 0;
     if (flags.shaderResource) { flag |= D3D11_BIND_SHADER_RESOURCE; }
-    //if (flags.renderTargetColor) { flag |= D3D11_BIND_RENDER_TARGET; }
-    //if (flags.renderTargetDepth) { flag |= D3D11_BIND_DEPTH_STENCIL; }
+    if (dParams.renderTargetColor) { flag |= D3D11_BIND_RENDER_TARGET; }
+    if (dParams.renderTargetDepth) { flag |= D3D11_BIND_DEPTH_STENCIL; }
     return static_cast<D3D11_BIND_FLAG>(flag);
 }
 
@@ -46,10 +46,8 @@ static constexpr D3D11_CPU_ACCESS_FLAG GetD3DCpuAccessFlags(const TP_Graphics_Te
         );
 }
 
-TP_Graphics_Texture* TP_Graphics_Texture_Create(TP_Graphics_TextureParams* params)
+TP_Graphics_Texture* D3D11::MakeTexture(const TP_Graphics_TextureParams* params, DTextureParms dparams)
 {
-    auto* tex = new TP_Graphics_Texture;
-
     auto texture = new TP_Graphics_Texture();
     texture->width = params->width;
     texture->height = params->height;
@@ -64,7 +62,7 @@ TP_Graphics_Texture* TP_Graphics_Texture_Create(TP_Graphics_TextureParams* param
     textureDesc.SampleDesc.Count = 1;
     textureDesc.SampleDesc.Quality = 0;
     textureDesc.Usage = GetD3DUsage(params->flags);
-    textureDesc.BindFlags = GetD3DBindFlags(params->flags);
+    textureDesc.BindFlags = GetD3DBindFlags(params->flags, dparams);
     textureDesc.CPUAccessFlags = GetD3DCpuAccessFlags(params->flags);
     textureDesc.MiscFlags = 0;
 
@@ -76,7 +74,7 @@ TP_Graphics_Texture* TP_Graphics_Texture_Create(TP_Graphics_TextureParams* param
 
     CheckErrorWinCom(
         device->CreateTexture2D(&textureDesc,
-            params->data == nullptr ? nullptr : &texData, tex->texture2D.GetAddressOf())
+            params->data == nullptr ? nullptr : &texData, texture->texture2D.GetAddressOf())
     );
 
     if (params->data == nullptr)
@@ -93,10 +91,10 @@ TP_Graphics_Texture* TP_Graphics_Texture_Create(TP_Graphics_TextureParams* param
         srvDesc.Texture2D.MipLevels = UINT_MAX;
         CheckErrorWinCom(
             device->CreateShaderResourceView(
-                tex->texture2D.Get(), &srvDesc, tex->shaderResourceView.GetAddressOf()
+                texture->texture2D.Get(), &srvDesc, texture->shaderResourceView.GetAddressOf()
                 )
         );
-        deviceContext->GenerateMips(tex->shaderResourceView.Get());
+        deviceContext->GenerateMips(texture->shaderResourceView.Get());
 
         D3D11_SAMPLER_DESC samplerDesc;
         samplerDesc.Filter = TP_Graphics_Texture_FilterModeToD3D(params->filterMode);
@@ -112,11 +110,19 @@ TP_Graphics_Texture* TP_Graphics_Texture_Create(TP_Graphics_TextureParams* param
         samplerDesc.MaxLOD = D3D11_FLOAT32_MAX;
 
         CheckErrorWinCom(
-            device->CreateSamplerState(&samplerDesc, tex->samplerState.GetAddressOf())
+            device->CreateSamplerState(&samplerDesc, texture->samplerState.GetAddressOf())
         );
     }
 
-    return tex;
+    return texture;
+}
+
+TP_Graphics_Texture* TP_Graphics_Texture_Create(const TP_Graphics_TextureParams* params)
+{
+    return MakeTexture(params, {
+        .renderTargetColor = false,
+        .renderTargetDepth = false,
+    });
 }
 /*
 TextureData Texture::GetData() const

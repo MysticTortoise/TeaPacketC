@@ -4,6 +4,8 @@
 #include "stddef.h"
 #include "TeaPacket/Types/Numeric.h"
 
+#include "TeaPacket/MacroUtils/Features.h"
+
 #define TP_Array(Type) \
 struct TP_##Type##Array{\
     Type* p;\
@@ -22,6 +24,20 @@ typedef TP_Array(tp_byte) TP_ByteArray;
 typedef TP_ArrayView(char) TP_StringView;
 typedef TP_ArrayView(tp_byte) TP_ByteView;
 
-#define TP_StrViewFromConstStr(msg) {msg, sizeof(msg)-1}
+TP_INLINE_FUNC TP_StringView TP_StrViewFromStr(const TP_String str) {
+    TP_StringView view;
+    view.p = str.p;
+    view.size = str.size;
+    return view;
+}
+
+TP_INLINE_FUNC TP_StringView TP_StrViewMake(const char* data, const size_t size) {
+    TP_StringView view;
+    view.p = data;
+    view.size = size;
+    return view;
+}
+
+#define TP_StrViewFromConstStr(msg) TP_StrViewMake(msg, sizeof(msg)-1)
 
 #endif

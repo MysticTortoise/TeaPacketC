@@ -285,7 +285,7 @@ TP_Input_Slot TP_Input_GetLastSlotPressed(TP_Input_ControllerType typeFilter)
         nullptr,
         reading.GetAddressOf())))
     {
-        return NoControllerSlot;
+        return TP_Input_NoControllerSlot;
     }
     IGameInputDevice* device;
     reading->GetDevice(&device);
@@ -298,7 +298,7 @@ TP_Input_Slot TP_Input_GetLastSlotPressed(TP_Input_ControllerType typeFilter)
             return static_cast<TP_Input_Slot>(slot);
         }
     }
-    return NoControllerSlot;
+    return TP_Input_NoControllerSlot;
 }
 
 TP_String TP_Input_GetControllerName(TP_Input_Slot slot)

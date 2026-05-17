@@ -2,7 +2,7 @@
 
 #include "TeaPacket/Graphics/Texture/TextureParameters.hpp"
 #include "TeaPacket/Graphics/Texture/TextureFormat.hpp"
-#include "TeaPacket/Assets/ReadAsset.hpp"
+#include "TeaPacket/Types/ReadAsset.hpp"
 
 #include "stb_image.h"
 

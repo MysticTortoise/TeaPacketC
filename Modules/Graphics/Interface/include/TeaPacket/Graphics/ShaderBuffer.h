@@ -10,7 +10,7 @@ extern "C" {
 
 typedef struct TP_Graphics_ShaderBuffer TP_Graphics_ShaderBuffer;
 
-TP_Graphics_ShaderBuffer* TP_Graphics_ShaderBuffer_Create(TP_Graphics_ShaderBufferParams*);
+TP_Graphics_ShaderBuffer* TP_Graphics_ShaderBuffer_Create(const TP_Graphics_ShaderBufferParams*);
 void TP_Graphics_ShaderBuffer_Destroy(TP_Graphics_ShaderBuffer*);
 
 size_t TP_Graphics_ShaderBuffer_GetSize(TP_Graphics_ShaderBuffer*);

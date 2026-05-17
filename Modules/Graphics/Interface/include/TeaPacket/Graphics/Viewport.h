@@ -10,7 +10,7 @@ extern "C" {
 
 typedef struct TP_Graphics_Viewport TP_Graphics_Viewport;
 
-TP_Graphics_Viewport* TP_Graphics_Viewport_Create(TP_Graphics_ViewportParams* params);
+TP_Graphics_Viewport* TP_Graphics_Viewport_Create(const TP_Graphics_ViewportParams* params);
 void TP_Graphics_Viewport_Destroy(const TP_Graphics_Viewport*);
 
 void TP_Graphics_Viewport_BeginRender(TP_Graphics_Viewport*);

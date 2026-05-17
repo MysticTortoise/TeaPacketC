@@ -1,18 +1,18 @@
-#include "TeaPacket/Graphics/Shader/VariableType.h"
+#include "TeaPacket/Graphics/VariableType.h"
 
 #include <stdexcept>
 
-size_t TP_Graphics_ShaderVar_GetSize(const TP_Graphics_Shader_VariableType var)
+size_t TP_Graphics_ShaderVar_GetSize(const TP_Graphics_VariableType var)
 {
     switch (var.baseType)
     {
-    case TP_Graphics_Shader_VariableBaseType_Float:
+    case TP_Graphics_VariableBaseType_Float:
         return sizeof(float) * var.amount;
-    case TP_Graphics_Shader_VariableBaseType_Int:
+    case TP_Graphics_VariableBaseType_Int:
         return sizeof(int) * var.amount;
-    case TP_Graphics_Shader_VariableBaseType_UInt:
+    case TP_Graphics_VariableBaseType_UInt:
         return sizeof(unsigned int) * var.amount;
-    case TP_Graphics_Shader_VariableBaseType_None:
+    case TP_Graphics_VariableBaseType_None:
     default:
         return 0;
     }

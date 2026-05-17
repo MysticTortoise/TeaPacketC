@@ -2,8 +2,6 @@ if(NOT DEFINED TP_DEBUG)
     set(TP_DEBUG 0)
 endif()
 
-set(CMAKE_C_STANDARD 90)
-
 file(GLOB_RECURSE incSources "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h*")
 
 add_library(${PROJECT_NAME} INTERFACE ${incSources})

@@ -7,7 +7,7 @@
 typedef unsigned char tp_byte;
 
 /* BOOLS =========================================== */
-#if TP_C_VER >= TP_C_VER99
+#if TP_C_VER >= TP_C_VER99 || defined(__cplusplus)
 #include <stdbool.h>
 typedef bool tp_bool;
 #define tp_false false
@@ -19,7 +19,7 @@ typedef unsigned char tp_bool;
 #endif
 
 /* FIXED WIDTH INTS ================================ */
-#if TP_C_VER >= TP_C_VER99
+#if TP_C_VER >= TP_C_VER99 || __cplusplus >= 201103L
 #include "stdint.h"
 #define TP_SUPPORT_U8 1
 typedef uint8_t tp_u8;

@@ -25,8 +25,10 @@ extern "C" {
 #if TP_C_VER >= TP_C_VER95
 #define TP_SUPPORT_INLINE 1
 #define TP_INLINE_FUNC inline
-#elif defined(__GNUC__)
-#define TP_INLINE_FUNC inline
+#elif defined(__GNUC__) || defined(__inline__)
+#define TP_INLINE_FUNC __inline__
+#elif defined(_MSC_VER)
+#define TP_INLINE_FUNC __inline
 #else
 #define TP_INLINE_FUNC static
 #endif

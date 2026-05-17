@@ -4,7 +4,7 @@
 extern "C" {
 #endif
 
-#include "TeaPacket/Graphics/Mesh/MeshParams.h"
+#include "TeaPacket/Graphics/MeshParams.h"
 
 typedef struct TP_Graphics_Mesh TP_Graphics_Mesh;
 

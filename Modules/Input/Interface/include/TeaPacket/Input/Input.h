@@ -14,7 +14,7 @@ extern "C" {
 
 
 typedef unsigned int TP_Input_Slot;
-const TP_Input_Slot NoControllerSlot = INT_MAX;
+const TP_Input_Slot TP_Input_NoControllerSlot = INT_MAX;
 
 tp_bool TP_Input_Init(void);
 void TP_Input_DeInit(void);

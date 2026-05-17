@@ -4,11 +4,11 @@
 extern "C" {
 #endif
 
-#include "TeaPacket/Graphics/Shader/ShaderParams.h"
+#include "ShaderParams.h"
 
 typedef struct TP_Graphics_Shader TP_Graphics_Shader;
 
-TP_Graphics_Shader* TP_Graphics_Shader_Create(TP_Graphics_ShaderParams* params);
+TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* params);
 void TP_Graphics_Shader_Destroy(TP_Graphics_Shader*);
 
 void TP_Graphics_Shader_SetActive(TP_Graphics_Shader*);

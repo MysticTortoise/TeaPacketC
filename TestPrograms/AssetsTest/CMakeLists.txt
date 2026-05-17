@@ -8,7 +8,7 @@ TP_add_bundle(${TEAPACKET_PLATFORM} TeaPacket_TestPrograms_Assets)
 TP_add_interface_subdirectory(Bundled)
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../Utility" TP_TestUtility)
 
-target_link_libraries(TeaPacket_TestPrograms_Assets TeaPacket_Bundle TeaPacket_Bundled_Helper TeaPacket_TestUtils)
+target_link_libraries(TeaPacket_TestPrograms_Assets TeaPacket_Bundle TeaPacket_Bundled_Base TeaPacket_TestUtils)
 
 
 TP_AM_BuildAssets(

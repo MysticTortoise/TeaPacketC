@@ -1,4 +1,4 @@
-#include "TeaPacket/Graphics/Shader/Shader.h"
+#include "TeaPacket/Graphics/Shader.h"
 
 #include <gx2/mem.h>
 #include <gx2/shaders.h>
@@ -13,7 +13,7 @@
 
 using namespace TeaPacket::Graphics::GX2;
 
-TP_Graphics_Shader* TP_Graphics_Shader_Create(TP_Graphics_ShaderParams* params)
+TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* params)
 {
     auto* shader = new TP_Graphics_Shader{
         .vertexShader = nullptr,

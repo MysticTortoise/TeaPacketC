@@ -1,16 +1,16 @@
 #pragma once
 #include <gx2/enum.h>
-#include "TeaPacket/Graphics/Shader/VariableType.h"
+#include "TeaPacket/Graphics/VariableType.h"
 #include <stdexcept>
 #include <gx2/utils.h>
 
 namespace TeaPacket::Graphics::GX2
 {
-    constexpr GX2AttribFormat GetGX2AttribFormatFromShaderVarType(const TP_Graphics_Shader_VariableType variableType)
+    constexpr GX2AttribFormat GetGX2AttribFormatFromShaderVarType(const TP_Graphics_VariableType variableType)
     {
         switch (variableType.baseType)
         {
-        case TP_Graphics_Shader_VariableBaseType_Float:
+        case TP_Graphics_VariableBaseType_Float:
             switch (variableType.amount)
             {
         case 1: return GX2_ATTRIB_FORMAT_FLOAT_32;
@@ -19,7 +19,7 @@ namespace TeaPacket::Graphics::GX2
         case 4: return GX2_ATTRIB_FORMAT_FLOAT_32_32_32_32;
                 default: throw std::runtime_error("Bad Value");;
             }
-        case TP_Graphics_Shader_VariableBaseType_Int:
+        case TP_Graphics_VariableBaseType_Int:
             switch (variableType.amount)
             {
         case 1: return GX2_ATTRIB_FORMAT_SINT_8;
@@ -28,7 +28,7 @@ namespace TeaPacket::Graphics::GX2
         case 4: return GX2_ATTRIB_FORMAT_SINT_8_8_8_8;
                 default: throw std::runtime_error("Bad Value");;
             }
-        case TP_Graphics_Shader_VariableBaseType_UInt:
+        case TP_Graphics_VariableBaseType_UInt:
             switch (variableType.amount)
             {
         case 1: return GX2_ATTRIB_FORMAT_UINT_8;
@@ -37,7 +37,7 @@ namespace TeaPacket::Graphics::GX2
         case 4: return GX2_ATTRIB_FORMAT_UINT_8_8_8_8;
                 default: throw std::runtime_error("Bad Value");;
             }
-        case TP_Graphics_Shader_VariableBaseType_None:
+        case TP_Graphics_VariableBaseType_None:
             break;
         }
         throw std::runtime_error("Bad Value");

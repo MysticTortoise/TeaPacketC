@@ -95,17 +95,12 @@ void TP_Graphics_D3D11_DestroyDisplays()
     Displays.clear();
 }
 
-void TP_Graphics_Display_PresentAll()
+void TP_Graphics_Display_PresentAll(const tp_bool waitForVSync)
 {
     for (const auto& display : Displays)
     {
-        CheckErrorWinCom(display.swapchain->Present(0,0));
+        CheckErrorWinCom(display.swapchain->Present(waitForVSync ? 1 : 0,0));
     }
-}
-
-void TP_Graphics_Display_WaitForVSync()
-{
-
 }
 
 TP_Graphics_DisplayID TP_Graphics_Display_GetCount()

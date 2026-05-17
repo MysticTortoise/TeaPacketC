@@ -10,7 +10,7 @@ extern "C" {
 typedef struct TP_Graphics_Texture TP_Graphics_Texture;
 
 
-TP_Graphics_Texture* TP_Graphics_Texture_Create(TP_Graphics_TextureParams*);
+TP_Graphics_Texture* TP_Graphics_Texture_Create(const TP_Graphics_TextureParams*);
 void TP_Graphics_Texture_Destroy(TP_Graphics_Texture*);
 
 tp_u16 TP_Graphics_Texture_GetWidth(TP_Graphics_Texture*);

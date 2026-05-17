@@ -105,35 +105,34 @@ void TP_Graphics_InitDefaultDisplays(TP_Graphics_DisplayParamList params)
     GX2SetSwapInterval(1);
 }
 
-void TP_Graphics_Display_WaitForVSync()
-{
-    uint32_t swapCount, flipCount;
-    OSTime lastFlip, lastVsync;
-    uint32_t waitCount = 0;
-
-    while (true) {
-        GX2GetSwapStatus(&swapCount, &flipCount, &lastFlip, &lastVsync);
-
-        if (flipCount >= swapCount) {
-            break;
-        }
-
-        if (waitCount >= 10) {
-            break;
-        }
-
-        waitCount++;
-        GX2WaitForVsync();
-    }
-}
-
-void TP_Graphics_Display_PresentAll()
+void TP_Graphics_Display_PresentAll(const tp_bool waitForVSync)
 {
     GX2SwapScanBuffers();
     GX2Flush();
     GX2DrawDone();
     GX2SetTVEnable(TRUE);
     GX2SetDRCEnable(TRUE);
+
+    if (waitForVSync) {
+        uint32_t swapCount, flipCount;
+        OSTime lastFlip, lastVsync;
+        uint32_t waitCount = 0;
+
+        while (true) {
+            GX2GetSwapStatus(&swapCount, &flipCount, &lastFlip, &lastVsync);
+
+            if (flipCount >= swapCount) {
+                break;
+            }
+
+            if (waitCount >= 10) {
+                break;
+            }
+
+            waitCount++;
+            GX2WaitForVsync();
+        }
+    }
 }
 TP_Graphics_DisplayID TP_Graphics_Display_GetCount()
 {

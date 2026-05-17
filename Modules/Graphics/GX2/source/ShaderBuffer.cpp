@@ -11,7 +11,7 @@ using namespace TeaPacket::Graphics::GX2;
 
 const tp_bool TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped = true;
 
-TP_Graphics_ShaderBuffer* TP_Graphics_ShaderBuffer_Create(TP_Graphics_ShaderBufferParams* params)
+TP_Graphics_ShaderBuffer* TP_Graphics_ShaderBuffer_Create(const TP_Graphics_ShaderBufferParams* params)
 {
     auto* buffer = new TP_Graphics_ShaderBuffer{
         .data = MEM2Resource<void>(0x100, params->size),

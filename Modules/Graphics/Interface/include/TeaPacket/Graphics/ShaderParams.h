@@ -2,7 +2,7 @@
 #define TEAPACKET_GRAPHICS_SHADERPARAMS_H
 
 #include "TeaPacket/Types/Array.h"
-#include "TeaPacket/Graphics/Shader/VariableType.h"
+#include "VariableType.h"
 
 typedef struct
 {

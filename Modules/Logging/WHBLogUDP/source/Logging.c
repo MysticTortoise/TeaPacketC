@@ -23,3 +23,5 @@ void TP_LogString(const TP_StringView view)
 {
     WHBLogPrintf("%.*s", view.size, view.p);
 }
+
+#include "TeaPacket/Logging/AutoLoggingFuncs.h"

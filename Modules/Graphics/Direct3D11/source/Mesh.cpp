@@ -1,4 +1,4 @@
-#include "TeaPacket/Graphics/Mesh/Mesh.h"
+#include "../../Interface/include/TeaPacket/Graphics/Mesh.h"
 #include "TeaPacket/Graphics/PlatformMesh.hpp"
 
 #include <d3d11.h>

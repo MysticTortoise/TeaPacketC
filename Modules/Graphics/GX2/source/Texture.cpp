@@ -14,7 +14,7 @@
 
 #include "TeaPacket/Graphics/Util/TextureFormatBits.h"
 
-TP_Graphics_Texture* TP_Graphics_Texture_Create(TP_Graphics_TextureParams* params)
+TP_Graphics_Texture* TP_Graphics_Texture_Create(const TP_Graphics_TextureParams* params)
 {
     auto* texture = new TP_Graphics_Texture{
         .gx2Texture = GX2Texture{

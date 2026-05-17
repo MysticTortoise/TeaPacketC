@@ -2,7 +2,7 @@
 #define TEAPACKET_GRAPHICS_MESHPARAMS_H
 
 #include "TeaPacket/Types/Array.h"
-#include "TeaPacket/Graphics/Shader/VariableType.h"
+#include "VariableType.h"
 
 typedef TP_ArrayView(tp_u32) TP_Graphics_MeshIndexList;
 

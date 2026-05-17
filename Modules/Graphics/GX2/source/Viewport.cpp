@@ -1,4 +1,5 @@
 #include "TeaPacket/Graphics/Viewport.h"
+#include "TeaPacket/Graphics/Graphics.h"
 
 #include <gx2/clear.h>
 #include <gx2/context.h>
@@ -22,7 +23,7 @@ static void AllocateGX2Invalidate(const DisposableForegroundMemResource* resourc
         resource->GetSize());
 }
 
-TP_Graphics_Viewport* TP_Graphics_Viewport_Create(TP_Graphics_ViewportParams* params)
+TP_Graphics_Viewport* TP_Graphics_Viewport_Create(const TP_Graphics_ViewportParams* params)
 {
     auto* viewport = new TP_Graphics_Viewport{
         .colorBuffer = {
@@ -147,7 +148,7 @@ tp_u16 TP_Graphics_Viewport_GetHeight(TP_Graphics_Viewport* viewport)
 
 constexpr float CharTo1Factor = 1.0f/255.0f;
 
-void TP_Graphics_ClearColor(tp_u8 r, tp_u8 g, tp_u8 b)
+void TP_Graphics_ClearColor(const tp_u8 r, const tp_u8 g, const tp_u8 b)
 {
     assert(activeViewport != nullptr);
     GX2ClearColor(&activeViewport->colorBuffer,

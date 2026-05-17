@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.28)
-project(TeaPacket_Bundled_Helper)
+project(TeaPacket_Bundled_Base)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonFunctions.CMake")
+
+TP_add_interface_subdirectory(Types)
 
 #file(GLOB_RECURSE sources source/*.c)
 
@@ -13,7 +15,8 @@ add_custom_command(
         VERBATIM
 )
 
-add_library(TeaPacket_Bundled_Helper INTERFACE "include/TeaPacket/Bundled/Init.h" "include/TeaPacket/Bundled/DeInit.h")
-target_include_directories(TeaPacket_Bundled_Helper INTERFACE include)
+add_library(TeaPacket_Bundled_Base INTERFACE "include/TeaPacket/Bundled/Init.h" "include/TeaPacket/Bundled/DeInit.h")
+target_include_directories(TeaPacket_Bundled_Base INTERFACE include)
+target_link_libraries(TeaPacket_Bundled_Base INTERFACE TeaPacket_Types_Base)
 
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

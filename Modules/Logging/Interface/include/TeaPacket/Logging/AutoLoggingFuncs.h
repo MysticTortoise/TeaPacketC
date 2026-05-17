@@ -36,13 +36,13 @@ void TP_LogChar(const char c)
 void TP_LogByte(const tp_byte b)
 {
     TP_StringView str;
-    char text[4];
+    char text[6];
     str.p = text;
     str.size = 4;
 
     text[0] = '0';
     text[1] = 'x';
-    snprintf(&text[2], 2, "%hX", b);
+    snprintf(&text[2], 4, "%hX", b);
 
     TP_LogString(str);
 }

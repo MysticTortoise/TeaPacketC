@@ -1,4 +1,4 @@
-#include "TeaPacket/Graphics/Shader/Shader.h"
+#include "../../Interface/include/TeaPacket/Graphics/Shader.h"
 
 #include <vector>
 
@@ -8,7 +8,7 @@
 #include "TeaPacket/Graphics/PlatformShader.hpp"
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
 
-#include "TeaPacket/Graphics/Shader/ShaderParams.h"
+#include "TeaPacket/Graphics/ShaderParams.h"
 #include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 
 #include "TeaPacket/Logging/Logging.h"
@@ -16,17 +16,17 @@
 using namespace TeaPacket::Graphics::D3D11;
 
 
-static constexpr DXGI_FORMAT GetDXGIFormatFromVertexAttribute(const TP_Graphics_Shader_VariableType shaderVarType)
+static constexpr DXGI_FORMAT GetDXGIFormatFromVertexAttribute(const TP_Graphics_VariableType shaderVarType)
 {
     switch (shaderVarType.amount)
     {
     case 1:
         switch (shaderVarType.baseType)
         {
-    case TP_Graphics_Shader_VariableBaseType_Float:     return DXGI_FORMAT_R32_FLOAT;
-    case TP_Graphics_Shader_VariableBaseType_Int:       return DXGI_FORMAT_R32_SINT;
-    case TP_Graphics_Shader_VariableBaseType_UInt:      return DXGI_FORMAT_R32_UINT;
-    case TP_Graphics_Shader_VariableBaseType_None:
+    case TP_Graphics_VariableBaseType_Float:     return DXGI_FORMAT_R32_FLOAT;
+    case TP_Graphics_VariableBaseType_Int:       return DXGI_FORMAT_R32_SINT;
+    case TP_Graphics_VariableBaseType_UInt:      return DXGI_FORMAT_R32_UINT;
+    case TP_Graphics_VariableBaseType_None:
     default:
             return DXGI_FORMAT_UNKNOWN;
         }
@@ -34,10 +34,10 @@ static constexpr DXGI_FORMAT GetDXGIFormatFromVertexAttribute(const TP_Graphics_
     case 2:
         switch (shaderVarType.baseType)
         {
-    case TP_Graphics_Shader_VariableBaseType_Float: return DXGI_FORMAT_R32G32_FLOAT;
-    case TP_Graphics_Shader_VariableBaseType_Int: return DXGI_FORMAT_R32G32_SINT;
-    case TP_Graphics_Shader_VariableBaseType_UInt: return DXGI_FORMAT_R32G32_UINT;
-    case TP_Graphics_Shader_VariableBaseType_None:
+    case TP_Graphics_VariableBaseType_Float: return DXGI_FORMAT_R32G32_FLOAT;
+    case TP_Graphics_VariableBaseType_Int: return DXGI_FORMAT_R32G32_SINT;
+    case TP_Graphics_VariableBaseType_UInt: return DXGI_FORMAT_R32G32_UINT;
+    case TP_Graphics_VariableBaseType_None:
     default:
             return DXGI_FORMAT_UNKNOWN;
 
@@ -46,10 +46,10 @@ static constexpr DXGI_FORMAT GetDXGIFormatFromVertexAttribute(const TP_Graphics_
     case 3:
         switch (shaderVarType.baseType)
         {
-    case TP_Graphics_Shader_VariableBaseType_Float: return DXGI_FORMAT_R32G32B32_FLOAT;
-    case TP_Graphics_Shader_VariableBaseType_Int: return DXGI_FORMAT_R32G32B32_SINT;
-    case TP_Graphics_Shader_VariableBaseType_UInt: return DXGI_FORMAT_R32G32B32_UINT;
-    case TP_Graphics_Shader_VariableBaseType_None:
+    case TP_Graphics_VariableBaseType_Float: return DXGI_FORMAT_R32G32B32_FLOAT;
+    case TP_Graphics_VariableBaseType_Int: return DXGI_FORMAT_R32G32B32_SINT;
+    case TP_Graphics_VariableBaseType_UInt: return DXGI_FORMAT_R32G32B32_UINT;
+    case TP_Graphics_VariableBaseType_None:
     default:
             return DXGI_FORMAT_UNKNOWN;
         }
@@ -57,10 +57,10 @@ static constexpr DXGI_FORMAT GetDXGIFormatFromVertexAttribute(const TP_Graphics_
     case 4:
         switch (shaderVarType.baseType)
         {
-    case TP_Graphics_Shader_VariableBaseType_Float: return DXGI_FORMAT_R32G32B32A32_FLOAT;
-    case TP_Graphics_Shader_VariableBaseType_Int: return DXGI_FORMAT_R32G32B32A32_SINT;
-    case TP_Graphics_Shader_VariableBaseType_UInt: return DXGI_FORMAT_R32G32B32A32_UINT;
-    case TP_Graphics_Shader_VariableBaseType_None:
+    case TP_Graphics_VariableBaseType_Float: return DXGI_FORMAT_R32G32B32A32_FLOAT;
+    case TP_Graphics_VariableBaseType_Int: return DXGI_FORMAT_R32G32B32A32_SINT;
+    case TP_Graphics_VariableBaseType_UInt: return DXGI_FORMAT_R32G32B32A32_UINT;
+    case TP_Graphics_VariableBaseType_None:
     default:
             return DXGI_FORMAT_UNKNOWN;
         }
@@ -70,7 +70,7 @@ static constexpr DXGI_FORMAT GetDXGIFormatFromVertexAttribute(const TP_Graphics_
     }
 }
 
-TP_Graphics_Shader* TP_Graphics_Shader_Create(TP_Graphics_ShaderParams* const params)
+TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* params)
 {
     Microsoft::WRL::ComPtr<ID3D10Blob> errorMessage;
 
@@ -173,5 +173,5 @@ void TP_Graphics_Shader_SetActive(TP_Graphics_Shader* const shader)
 
 void TP_Graphics_Shader_Destroy(TP_Graphics_Shader* shader)
 {
-    delete[] shader;
+    delete shader;
 }

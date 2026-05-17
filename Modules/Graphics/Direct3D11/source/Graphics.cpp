@@ -6,7 +6,7 @@
 
 #include "TeaPacket/Graphics/Display.h"
 #include "TeaPacket/Graphics/PlatformMesh.hpp"
-#include "TeaPacket/Graphics/Mesh/Mesh.h"
+#include "../../Interface/include/TeaPacket/Graphics/Mesh.h"
 #include "TeaPacket/MacroUtils/StructUtils.hpp"
 #include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 
@@ -121,17 +121,16 @@ void TP_Graphics_DeInit()
     deviceContext.Reset();
     //Display::DeInitialize();
 }
-/*
-void Graphics::DrawMesh()
+
+void TP_Graphics_DrawMesh()
 {
-    const Mesh* meshToDraw = Mesh::activeMesh;
-    assert(meshToDraw != nullptr);
+    assert(activeMesh != nullptr);
     
-    if (meshToDraw->platformMesh->indexBuffer != nullptr)
+    if (activeMesh->indexBuffer != nullptr)
     {
-        deviceContext->DrawIndexed(meshToDraw->platformMesh->indexCount, 0, 0);
+        deviceContext->DrawIndexed(activeMesh->indexCount, 0, 0);
     }
-}*/
+}
 
 void TP_Graphics_SetDepthEnabled(const tp_bool depthEnabled)
 {

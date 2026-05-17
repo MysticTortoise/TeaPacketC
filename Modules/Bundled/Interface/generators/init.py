@@ -17,7 +17,7 @@ with open("include/TeaPacket/Bundled/Init.h", "w") as outfile:
         outfile.write(f"#include \"TeaPacket/{module}/{module}.h\"\n")
         outfile.write("#endif\n")
 
-    outfile.write("\n\ntp_bool TP_Bundled_Init(void) {\n\n")
+    outfile.write("\n\nstatic tp_bool TP_Bundled_Init(void) {\n\n")
 
     for module in modules:
         outfile.write(f"\t#ifdef TeaPacket_{module}_Implemented\n")
@@ -33,7 +33,7 @@ with open("include/TeaPacket/Bundled/DeInit.h", "w") as outfile:
         outfile.write(f"#include \"TeaPacket/{module}/{module}.h\"\n")
         outfile.write("#endif\n")
 
-    outfile.write("\n\nvoid TP_Bundled_DeInit(void) {\n\n")
+    outfile.write("\n\nstatic void TP_Bundled_DeInit(void) {\n\n")
 
     for module in modules:
         outfile.write(f"\t#ifdef TeaPacket_{module}_Implemented\n")

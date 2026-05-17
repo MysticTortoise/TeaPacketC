@@ -1,4 +1,5 @@
-#include "TeaPacket/Graphics/Mesh/Mesh.h"
+#include "TeaPacket/Graphics/Mesh.h"
+#include "TeaPacket/Graphics/Graphics.h"
 
 #include <cstring>
 

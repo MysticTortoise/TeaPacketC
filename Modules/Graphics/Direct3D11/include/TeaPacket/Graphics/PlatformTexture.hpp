@@ -5,6 +5,7 @@
 
 #include "TeaPacket/Types/Numeric.h"
 #include "TeaPacket/Graphics/Texture/Format.h"
+#include "TeaPacket/Graphics/Texture/TextureParams.h"
 
 
 struct TP_Graphics_Texture
@@ -17,3 +18,15 @@ struct TP_Graphics_Texture
     TP_Graphics_Texture_Format format;
 };
 
+namespace TeaPacket::Graphics::D3D11
+{
+    struct DTextureParms
+    {
+        bool renderTargetColor : 1;
+        bool renderTargetDepth : 1;
+    };
+
+    TP_Graphics_Texture* MakeTexture(const TP_Graphics_TextureParams* params, DTextureParms dparams);
+
+
+}

@@ -2,6 +2,7 @@
 
 #include "TeaPacket/Graphics/Texture/TextureParams.h"
 #include "TeaPacket/Graphics/ViewportParams.h"
+#include "TeaPacket/Graphics/Graphics.h"
 
 #include <d3d11.h>
 #include <iostream>
@@ -17,7 +18,7 @@
 
 using namespace TeaPacket::Graphics::D3D11;
 
-TP_Graphics_Viewport* TP_Graphics_Viewport_Create(TP_Graphics_ViewportParams* params)
+TP_Graphics_Viewport* TP_Graphics_Viewport_Create(const TP_Graphics_ViewportParams* params)
 {
     auto* viewport = new TP_Graphics_Viewport;
 
@@ -35,7 +36,10 @@ TP_Graphics_Viewport* TP_Graphics_Viewport_Create(TP_Graphics_ViewportParams* pa
                 .writeMode = TP_Graphics_Texture_AvailableMode_GPU,
             }
         };
-        viewport->colorTex = TP_Graphics_Texture_Create(&texParms);
+        viewport->colorTex = MakeTexture(&texParms, {
+            .renderTargetColor = true,
+            .renderTargetDepth = false
+        });
     }
     {
         auto texParms = TP_Graphics_TextureParams{
@@ -51,7 +55,10 @@ TP_Graphics_Viewport* TP_Graphics_Viewport_Create(TP_Graphics_ViewportParams* pa
                 .writeMode = TP_Graphics_Texture_AvailableMode_GPU,
             }
         };
-        viewport->depthTex = TP_Graphics_Texture_Create(&texParms);
+        viewport->depthTex = MakeTexture(&texParms, {
+            .renderTargetColor = false,
+            .renderTargetDepth = true
+        });
     }
 
     D3D11_RENDER_TARGET_VIEW_DESC renderTargetViewDesc;

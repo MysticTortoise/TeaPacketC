@@ -12,11 +12,12 @@
 
 using namespace TeaPacket::Graphics::D3D11;
 
-TP_Graphics_ShaderBuffer* TP_Graphics_ShaderBuffer_Create(TP_Graphics_ShaderBufferParams* params)
+TP_Graphics_ShaderBuffer* TP_Graphics_ShaderBuffer_Create(const TP_Graphics_ShaderBufferParams* params)
 {
+    const size_t internalSize = params->size + 16 - (params->size % 16);
 
     const auto bufferDesc = D3D11_BUFFER_DESC{
-        .ByteWidth = static_cast<UINT>(params->size),
+        .ByteWidth = static_cast<UINT>(internalSize),
         .Usage = D3D11_USAGE_DYNAMIC,
         .BindFlags = D3D11_BIND_CONSTANT_BUFFER,
         .CPUAccessFlags = D3D11_CPU_ACCESS_WRITE,
@@ -38,7 +39,7 @@ TP_Graphics_ShaderBuffer* TP_Graphics_ShaderBuffer_Create(TP_Graphics_ShaderBuff
             params->data == nullptr ? nullptr : &subResourceData,
             buffer->cbuffer.GetAddressOf())
     );
-    buffer->size = params->size;
+    buffer->size = internalSize;
 
 
     return buffer;
@@ -70,7 +71,7 @@ const tp_bool TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped = tp_true;
 
 void TP_Graphics_ShaderBuffer_Destroy(TP_Graphics_ShaderBuffer* const buffer)
 {
-    delete[] buffer;
+    delete buffer;
 }
 
 size_t TP_Graphics_ShaderBuffer_GetSize(TP_Graphics_ShaderBuffer* const buffer)

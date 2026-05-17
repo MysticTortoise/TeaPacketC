@@ -1,5 +1,16 @@
-#target_compile_definitions(${PROJECT_NAME} INTERFACE
-#        TP_DEBUG=${TP_DEBUG})
+if(DEFINED TP_DEBUG)
+    #message(${TP_DEBUG})
+
+    get_target_property(TP_TARG_TYPE ${PROJECT_NAME} TYPE)
+
+    if(${TP_TARG_TYPE} STREQUAL "INTERFACE_LIBRARY")
+        set(TP_TARG_TYPE INTERFACE)
+    else ()
+        set(TP_TARG_TYPE PUBLIC)
+    endif ()
+    target_compile_definitions(${PROJECT_NAME} ${TP_TARG_TYPE}
+            TP_DEBUG=${TP_DEBUG})
+endif ()
 
 # Enable warnings and treat warnings as errors.
 if(MSVC)

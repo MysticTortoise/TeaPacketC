@@ -23,8 +23,7 @@ void TP_Graphics_Display_FinishRender(TP_Graphics_DisplayID);
 tp_u16 TP_Graphics_Display_GetWidth(TP_Graphics_DisplayID);
 tp_u16 TP_Graphics_Display_GetHeight(TP_Graphics_DisplayID);
 
-void TP_Graphics_Display_PresentAll(void);
-void TP_Graphics_Display_WaitForVSync(void);
+void TP_Graphics_Display_PresentAll(tp_bool waitForVSync);
 
 
 

@@ -26,7 +26,7 @@ TP_String TP_Assets_ReadTextAsset(const TP_StringView assetPath)
         //throw std::runtime_error(assetSource + " does not exist!");
     }
 
-    const auto size = std::filesystem::file_size(assetSource);
+    const size_t size = std::filesystem::file_size(assetSource);
     size_t truSize = 0;
 
     TP_String data {static_cast<char*>(TP_MemAlloc(size)), size};
@@ -56,7 +56,7 @@ TP_ByteArray TP_Assets_ReadBinaryAsset(const TP_StringView assetPath)
         //throw std::runtime_error(assetSource + " does not exist!");
     }
 
-    const auto size = std::filesystem::file_size(assetSource);
+    const size_t size = std::filesystem::file_size(assetSource);
 
     const TP_ByteArray data {static_cast<tp_byte*>(TP_MemAlloc(size)), size};
     in.read(reinterpret_cast<char*>(data.p), static_cast<std::streamsize>(size));
