@@ -96,8 +96,8 @@ void TP_Graphics_InitDefaultDisplays(TP_Graphics_DisplayParamList params)
     GX2SetDRCScale(854, 480);
 
     TP_Graphics_ViewportParams drcViewParams = {
-        .width = 1280,
-        .height = 720,
+        .width = 854,
+        .height = 480,
         .shaderUsable = false
     };
     drcViewport = TP_Graphics_Viewport_Create(&drcViewParams);

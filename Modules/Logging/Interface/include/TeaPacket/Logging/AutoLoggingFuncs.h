@@ -38,7 +38,7 @@ void TP_LogByte(const tp_byte b)
     TP_StringView str;
     char text[6];
     str.p = text;
-    str.size = 4;
+    str.size = 6;
 
     text[0] = '0';
     text[1] = 'x';
@@ -54,12 +54,12 @@ void TP_LogSLong(const signed long x)
 
     size_t digits = numPlacesUL(labs(x));
     if (x < 0) {++digits;}
-    text = (char*)TP_MemAlloc(digits);
+    text = (char*)TP_MemAlloc(digits+1);
 
     str.p = text;
-    str.size = 4;
+    str.size = digits;
 
-    snprintf(text, digits,"%ld", x);
+    snprintf(text, digits+1,"%ld", x);
     TP_LogString(str);
     free(text);
 }
@@ -70,12 +70,12 @@ void TP_LogULong(const unsigned long x)
     char* text;
 
     const size_t digits = numPlacesUL(x);
-    text = (char*)TP_MemAlloc(digits);
+    text = (char*)TP_MemAlloc(digits+1);
 
     str.p = text;
-    str.size = 4;
+    str.size = digits;
 
-    snprintf(text, digits,"%lu", x);
+    snprintf(text, digits+1,"%lu", x);
     TP_LogString(str);
     free(text);
 }

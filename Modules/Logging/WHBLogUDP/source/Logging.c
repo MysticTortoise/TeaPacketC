@@ -1,8 +1,11 @@
 #include "TeaPacket/Logging/Logging.h"
 
+#include <string.h>
 #include <whb/log_udp.h>
 #include <whb/log_cafe.h>
 #include <whb/log.h>
+
+#include "TeaPacket/Memory/Memory.h"
 
 tp_bool TP_Logging_Init(void)
 {
@@ -21,7 +24,11 @@ void TP_Logging_DeInit(void)
 
 void TP_LogString(const TP_StringView view)
 {
-    WHBLogPrintf("%.*s", view.size, view.p);
+    char* b = TP_MemAlloc(view.size + 1);
+    memcpy(b, view.p, view.size);
+    b[view.size] = '\0';
+    WHBLogPrint(b);
+    TP_MemFree(b);
 }
 
 #include "TeaPacket/Logging/AutoLoggingFuncs.h"

@@ -54,7 +54,7 @@ static TP_Graphics_ShaderBuffer* sbuffer;
 static tp_bool Init(void)
 {
     const TP_StringView vertShaderPath = TP_StrViewFromConstStr("shaderbuffer.vert");
-    const TP_StringView fragShaderPath = TP_StrViewFromConstStr("shaderbuffer.vert");
+    const TP_StringView fragShaderPath = TP_StrViewFromConstStr("color.frag");
 
     const TP_String vertCode = TP_Assets_ReadTextAsset(vertShaderPath);
     const TP_String fragCode = TP_Assets_ReadTextAsset(fragShaderPath);

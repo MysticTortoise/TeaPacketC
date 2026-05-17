@@ -4,18 +4,34 @@
 #include <cstring>
 
 #include "TeaPacket/Graphics/PlatformMesh.hpp"
+#include "TeaPacket/Logging/Logging.h"
 
 #include <gx2/draw.h>
 #include <gx2r/draw.h>
 
 static TP_Graphics_Mesh* activeMesh;
 
-TP_Graphics_Mesh* TP_Graphics_Mesh_Create(const TP_Graphics_MeshParams* params)
+TP_Graphics_Mesh* TP_Graphics_Mesh_Create(const TP_Graphics_MeshParams* const params)
 {
+    const auto* ptr = reinterpret_cast<const tp_byte*>(params);
+    for (size_t i = 0; i < sizeof(TP_Graphics_MeshParams); i++)
+    {
+        TP_LogByte(ptr[i]);
+    }
     auto* mesh = new TP_Graphics_Mesh;
 
     mesh->vertexDataInfo = std::vector(params->vertexInfo.p, params->vertexInfo.p + params->vertexInfo.size);
-    mesh->buffers.reserve(params->vertexInfo.size);
+    try
+    {
+        const auto a = mesh->buffers.size();
+        TP_LogULong(a);
+        TP_LogULong(params->vertexInfo.size);
+        mesh->buffers.reserve(params->vertexInfo.size);
+    } catch (std::exception& e)
+    {
+        TP_LogConstStr("FUCK AHH");
+        return nullptr;
+    }
 
     size_t vertexSize = 0;
     for (size_t i = 0; i < params->vertexInfo.size; i++)
@@ -77,6 +93,7 @@ void TP_Graphics_Mesh_SetActive(TP_Graphics_Mesh* mesh)
     {
         GX2RSetAttributeBuffer(&mesh->buffers[i], i, mesh->buffers[i].elemSize, 0);
     }
+    activeMesh = mesh;
 }
 
 void TP_Graphics_DrawMesh()

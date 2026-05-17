@@ -3,8 +3,8 @@
 #include "TeaPacket/Graphics/Display.h"
 
 static const TP_Graphics_DisplayParams dispParams = {
-    256,
-    240,
+    1280,
+    720,
 };
 
 static const TP_Graphics_DisplayParamList dispParamList = {

@@ -31,17 +31,18 @@ if(DEFINED TEAPACKET_PLATFORM)
         wut_create_rpx(${TEAPACKET_BUNDLE_TARGET})
         if(COMMAND TP_AM_BuildAssets)
             set(TP_WUHB_ASSET_PATH "--content=assets")
+
+            add_custom_command(
+                    TARGET ${TEAPACKET_BUNDLE_TARGET}
+                    POST_BUILD
+                    COMMENT "TEAPACKET PROFILE: MAKING WUHB"
+                    COMMAND wuhbtool
+                    "${TEAPACKET_BUNDLE_TARGET}.rpx"
+                    "${TEAPACKET_BUNDLE_TARGET}.wuhb"
+                    ${TP_WUHB_ASSET_PATH}
+                    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+            )
         endif()
-        add_custom_command(
-                TARGET ${TEAPACKET_BUNDLE_TARGET}
-                POST_BUILD
-                COMMENT "TEAPACKET PROFILE: MAKING WUHB"
-                COMMAND wuhbtool
-                "${TEAPACKET_BUNDLE_TARGET}.rpx"
-                "${TEAPACKET_BUNDLE_TARGET}.wuhb"
-                ${TP_WUHB_ASSET_PATH}
-                WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-        )
     else()
         message("UHHH WHAT")
     endif()

@@ -4,7 +4,7 @@
 
 #include "tests.h"
 
-static GfxTestID id = 0;
+static size_t id = 0;
 
 int main()
 {
