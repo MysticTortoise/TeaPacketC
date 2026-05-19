@@ -101,6 +101,8 @@ void TP_Graphics_InitDefaultDisplays(TP_Graphics_DisplayParamList params)
         .shaderUsable = false
     };
     drcViewport = TP_Graphics_Viewport_Create(&drcViewParams);
+    assert(tvViewport != nullptr);
+    assert(drcViewport != nullptr);
 
     GX2SetSwapInterval(1);
 }

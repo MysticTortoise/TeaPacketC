@@ -14,6 +14,7 @@
 
 #include "CafeGLSL/CafeGLSLCompiler.hpp"
 #include "GraphicsHeap/MEM2Resource.hpp"
+#include "TeaPacket/Logging/Logging.h"
 
 #define WHB_GFX_COMMAND_BUFFER_POOL_SIZE (0x400000)
 
@@ -34,7 +35,8 @@ tp_bool TP_Graphics_Init()
 
     if (!commandBufferPool)
     {
-        throw std::runtime_error("Invalid Texture Filter");
+        TP_LogConstStr("bad cmd buffer");
+        return tp_false;
     }
     uint32_t initAttribs[] = {
         GX2_INIT_CMD_BUF_BASE, reinterpret_cast<uint32_t>(commandBufferPool),

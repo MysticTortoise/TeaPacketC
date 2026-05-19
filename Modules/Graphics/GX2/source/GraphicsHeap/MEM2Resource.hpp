@@ -1,6 +1,5 @@
 #pragma once
 
-#include <cstdint>
 #include <functional>
 #include <coreinit/memdefaultheap.h>
 
@@ -26,7 +25,7 @@ namespace TeaPacket::Graphics::GX2
         }
     public:
         
-        
+
         // No Copy
         MEM2Resource& operator=(const MEM2Resource& other)
         {
@@ -92,7 +91,7 @@ namespace TeaPacket::Graphics::GX2
         {
             DeAllocate();
             data = MEMAllocFromDefaultHeapEx(size, alignment);
-            return data == nullptr;
+            return data != nullptr;
         }
         void DeAllocate()
         {
@@ -110,7 +109,7 @@ namespace TeaPacket::Graphics::GX2
         MEM2Resource() = default;
         explicit MEM2Resource(const int alignment, const size_t size):alignment(alignment), size(size)
         {
-            Allocate();
+            assert(Allocate());
         }
 
         ~MEM2Resource()

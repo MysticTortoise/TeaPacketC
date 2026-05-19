@@ -34,10 +34,10 @@ TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* pa
         memcpy(cStrCode, params->vertexShaderCode.p, params->vertexShaderCode.size);
         cStrCode[params->vertexShaderCode.size] = '\0';
 
-        shader->vertexShader = std::unique_ptr<GX2VertexShader>(GLSL_CompileVertexShader(
+        shader->vertexShader = GLSL_CompileVertexShader(
             cStrCode,
             infoLog, sizeof(infoLog),
-            GLSL_COMPILER_FLAG_NONE));
+            GLSL_COMPILER_FLAG_NONE);
         if (!shader->vertexShader)
         {
             TP_LogConstStr("Failed to compile vertex shader. See log for errors.");
@@ -54,10 +54,10 @@ TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* pa
         memcpy(cStrCode, params->fragmentShaderCode.p, params->fragmentShaderCode.size);
         cStrCode[params->fragmentShaderCode.size] = '\0';
 
-        shader->pixelShader = std::unique_ptr<GX2PixelShader>(GLSL_CompilePixelShader(
+        shader->pixelShader = GLSL_CompilePixelShader(
             cStrCode,
             infoLog, sizeof(infoLog),
-            GLSL_COMPILER_FLAG_NONE));
+            GLSL_COMPILER_FLAG_NONE);
         if (!shader->pixelShader)
         {
             TP_LogConstStr("Failed to compile pixel shader. See log for errors.");
@@ -107,13 +107,18 @@ TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* pa
 
 void TP_Graphics_Shader_Destroy(TP_Graphics_Shader* shader)
 {
+    if (shader->vertexShader != nullptr)
+        GLSL_FreeVertexShader(shader->vertexShader);
+    if (shader->pixelShader != nullptr)
+        GLSL_FreePixelShader(shader->pixelShader);
+
     delete shader;
 }
 
 void TP_Graphics_Shader_SetActive(TP_Graphics_Shader* shader)
 {
     GX2SetFetchShader(&shader->fetchShader);
-    GX2SetVertexShader(shader->vertexShader.get());
-    GX2SetPixelShader(shader->pixelShader.get());
+    GX2SetVertexShader(shader->vertexShader);
+    GX2SetPixelShader(shader->pixelShader);
     GX2SetShaderMode(GX2_SHADER_MODE_UNIFORM_BLOCK);
 }

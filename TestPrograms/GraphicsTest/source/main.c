@@ -6,7 +6,7 @@
 
 static size_t id = 0;
 
-int main()
+int main(void)
 {
 
     const GfxTest* tests[GfxTests_MAX] = {
