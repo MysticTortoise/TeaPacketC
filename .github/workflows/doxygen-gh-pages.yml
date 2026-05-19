@@ -23,6 +23,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12 #install the python needed
+      - name: execute py script # run file
+        run: |
+          python3 ./Doxygen/py/generate_doxyfile.py
 
       - name: Doxygen Action
         uses: mattnotmitt/doxygen-action@v1.1.0

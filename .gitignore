@@ -1053,9 +1053,6 @@ external_tools/*
 .idea/.name
 .idea/misc.xml
 
-# Documentation
-./Doxygen/Documentation/*
-
 # CLION SHUT UP
 ./.idea/.name
 generated
