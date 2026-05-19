@@ -67,7 +67,7 @@ void TP_Graphics_ShaderBuffer_SetActive(TP_Graphics_ShaderBuffer* buffer, tp_u8 
     deviceContext->PSSetConstantBuffers(slot, 1, buffer->cbuffer.GetAddressOf());
 }
 
-const tp_bool TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped = tp_true;
+const tp_bool TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped = tp_false;
 
 void TP_Graphics_ShaderBuffer_Destroy(TP_Graphics_ShaderBuffer* const buffer)
 {

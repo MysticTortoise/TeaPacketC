@@ -37,7 +37,7 @@ TP_INLINE_FUNC tp_i32 TP_SwapI32(const tp_i32 x)
 #endif
 
 #if TP_SUPPORT_U64
-TP_INLINE_FUNC tp_u64 TP_SwapU64(const tp_u64 x)
+TP_INLINE_FUNC tp_u64 TP_SwapU64(tp_u64 x)
 {
     x = (x & 0x00000000FFFFFFFF) << 32 | (x & 0xFFFFFFFF00000000) >> 32;
     x = (x & 0x0000FFFF0000FFFF) << 16 | (x & 0xFFFF0000FFFF0000) >> 16;
@@ -47,7 +47,7 @@ TP_INLINE_FUNC tp_u64 TP_SwapU64(const tp_u64 x)
 #endif
 
 #if TP_SUPPORT_I64
-TP_INLINE_FUNC tp_i64 TP_SwapI64(const tp_i64 x)
+TP_INLINE_FUNC tp_i64 TP_SwapI64(tp_i64 x)
 {
     x = (x & 0x00000000FFFFFFFF) << 32 | (x & 0xFFFFFFFF00000000) >> 32;
     x = (x & 0x0000FFFF0000FFFF) << 16 | (x & 0xFFFF0000FFFF0000) >> 16;
@@ -56,8 +56,23 @@ TP_INLINE_FUNC tp_i64 TP_SwapI64(const tp_i64 x)
 }
 #endif
 
+#if TP_SUPPORT_U32
+TP_INLINE_FUNC float TP_SwapF32(const float x)
+{
+    const tp_u32 reinterp = *(tp_u32*)&x;
+    const tp_u32 swapped = TP_SwapU32(reinterp);
+    return *(float*)&swapped;
+}
+#endif
 
-
+#if TP_SUPPORT_U64
+TP_INLINE_FUNC double TP_SwapD64(const double x)
+{
+    const tp_u64 reinterp = *(tp_u64*)&x;
+    const tp_u64 swapped = TP_SwapU64(reinterp);
+    return *(double*)&swapped;
+}
+#endif
 
 #ifdef __cplusplus
 }

@@ -10,6 +10,8 @@
 #include "TeaPacket/Assets/ReadAsset.h"
 #include "TeaPacket/Memory/Memory.h"
 
+#include "TeaPacket/Endianness/Endian.h"
+
 #include <assert.h>
 
 #if GFXTESTS_ALLOWED >= 4
@@ -89,7 +91,21 @@ static void Render(void)
     while (pos[0] > 0.5f) {
         pos[0] -= 0.5f;
     }
+    if (TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped)
+    {
+        for (size_t i = 0; i < sizeof(pos) / sizeof(pos[0]); i++)
+        {
+            pos[i] = TP_SwapF32(pos[i]);
+        }
+    }
     TP_Graphics_ShaderBuffer_SendData(sbuffer, (void*)pos, sizeof(pos), 0);
+    if (TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped)
+    {
+        for (size_t i = 0; i < sizeof(pos) / sizeof(pos[0]); i++)
+        {
+            pos[i] = TP_SwapF32(pos[i]);
+        }
+    }
 
     TP_Graphics_Mesh_SetActive(mesh);
     TP_Graphics_Shader_SetActive(shader);
