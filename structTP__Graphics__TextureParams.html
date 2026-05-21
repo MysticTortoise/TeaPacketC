@@ -94,10 +94,21 @@ $(function(){initNavTree('structTP__Graphics__TextureParams.html','','structTP__
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="TextureParams_8h_source.html">TextureParams.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for TP_Graphics_TextureParams:</div>
+<div class="dyncontent">
+<div class="center"><img src="structTP__Graphics__TextureParams__coll__graph.png" border="0" usemap="#aTP__Graphics__TextureParams_coll__map" loading="lazy" alt="Collaboration graph"/></div>
+<map name="aTP__Graphics__TextureParams_coll__map" id="aTP__Graphics__TextureParams_coll__map">
+<area shape="rect" title=" " alt="" coords="11,102,203,128"/>
+<area shape="rect" href="structTP__Graphics__TextureUseFlags.html" title=" " alt="" coords="5,5,209,31"/>
+<area shape="poly" title=" " alt="" coords="110,46,110,101,104,101,104,46"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a950975d55ab9d53d03709a7aae4aebd2" id="r_a950975d55ab9d53d03709a7aae4aebd2"><td class="memItemLeft">void *&#160;</td><td class="memItemRight"><a class="el" href="#a950975d55ab9d53d03709a7aae4aebd2">data</a></td></tr>
+<tr class="memitem:a3e67ef9b1d712aff79701add8e0a5dd6" id="r_a3e67ef9b1d712aff79701add8e0a5dd6"><td class="memItemLeft"><a class="el" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3e67ef9b1d712aff79701add8e0a5dd6">pitch</a></td></tr>
 <tr class="memitem:a380a1b95d00e66f9c6df322df55b1a91" id="r_a380a1b95d00e66f9c6df322df55b1a91"><td class="memItemLeft"><a class="el" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a>&#160;</td><td class="memItemRight"><a class="el" href="#a380a1b95d00e66f9c6df322df55b1a91">width</a></td></tr>
 <tr class="memitem:a85b3a8c896b8de0d96b366e03c4d1eac" id="r_a85b3a8c896b8de0d96b366e03c4d1eac"><td class="memItemLeft"><a class="el" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a>&#160;</td><td class="memItemRight"><a class="el" href="#a85b3a8c896b8de0d96b366e03c4d1eac">height</a></td></tr>
 <tr class="memitem:a1c8b5ec35b9048cd6977b930e4144940" id="r_a1c8b5ec35b9048cd6977b930e4144940"><td class="memItemLeft">TP_Graphics_Texture_Format&#160;</td><td class="memItemRight"><a class="el" href="#a1c8b5ec35b9048cd6977b930e4144940">format</a></td></tr>
@@ -105,7 +116,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a402fd5002e5ff6e7455e06ed1830c5f1" id="r_a402fd5002e5ff6e7455e06ed1830c5f1"><td class="memItemLeft">TP_Graphics_Texture_WrapMode&#160;</td><td class="memItemRight"><a class="el" href="#a402fd5002e5ff6e7455e06ed1830c5f1">wrapMode</a></td></tr>
 <tr class="memitem:a56d1748f8d740c83f6ff36dbcad292dd" id="r_a56d1748f8d740c83f6ff36dbcad292dd"><td class="memItemLeft"><a class="el" href="structTP__Graphics__TextureUseFlags.html">TP_Graphics_TextureUseFlags</a>&#160;</td><td class="memItemRight"><a class="el" href="#a56d1748f8d740c83f6ff36dbcad292dd">flags</a></td></tr>
 </table>
-<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Contains parameters for determining how a Texture should be created. </p>
+</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="a950975d55ab9d53d03709a7aae4aebd2" name="a950975d55ab9d53d03709a7aae4aebd2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a950975d55ab9d53d03709a7aae4aebd2">&#9670;&#160;</a></span>data</h2>
 
@@ -117,6 +130,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>A pointer to the data to be used to fill the texture. The format of that data depends on the foramt of this Texture. </p>
 
 </div>
 </div>
@@ -131,6 +145,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>How the texture is filtered when sampled from. </p>
 
 </div>
 </div>
@@ -145,6 +160,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Flags determining how the texture should be used. </p>
 
 </div>
 </div>
@@ -159,6 +175,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The format of the Texture. </p>
 
 </div>
 </div>
@@ -173,6 +190,23 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The height of the Texture, in pixels. </p>
+
+</div>
+</div>
+<a id="a3e67ef9b1d712aff79701add8e0a5dd6" name="a3e67ef9b1d712aff79701add8e0a5dd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e67ef9b1d712aff79701add8e0a5dd6">&#9670;&#160;</a></span>pitch</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> TP_Graphics_TextureParams::pitch</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The pitch of the texture. This defines how many bytes one row of pixels is.</p>
+<p>If 0, then the width of the image multiplied by the bytes per pixel of the format should be used as the pitch. </p>
 
 </div>
 </div>
@@ -187,6 +221,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The width of the Texture, in pixels. </p>
 
 </div>
 </div>
@@ -201,11 +236,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>How the texture is sampled from when UVs are out of the 0-1 range. </p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/github/workspace/Modules/Graphics/Interface/include/TeaPacket/Graphics/Texture/<a class="el" href="TextureParams_8h_source.html">TextureParams.h</a></li>
+<li>Graphics/Texture/<a class="el" href="TextureParams_8h_source.html">TextureParams.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: /github/workspace/Modules/Types/Interface/include/TeaPacket/Types/Array.h File Reference</title>
+<title>TeaPacket: Types/Array.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -95,6 +95,59 @@ $(function(){initNavTree('Array_8h.html','',''); });
 <div class="textblock"><code>#include &quot;stddef.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="Numeric_8h_source.html">TeaPacket/Types/Numeric.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Features_8h_source.html">TeaPacket/MacroUtils/Features.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for Array.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="Array_8h__incl.png" border="0" usemap="#aTypes_2Array_8h" loading="lazy" alt=""/></div>
+<map name="aTypes_2Array_8h" id="aTypes_2Array_8h">
+<area shape="rect" title=" " alt="" coords="60,5,160,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,73,105"/>
+<area shape="poly" title=" " alt="" coords="100,33,63,70,60,66,96,29"/>
+<area shape="rect" href="Numeric_8h.html" title=" " alt="" coords="147,79,334,105"/>
+<area shape="poly" title=" " alt="" coords="133,29,206,69,204,74,131,34"/>
+<area shape="rect" href="Features_8h.html" title=" " alt="" coords="34,153,185,193"/>
+<area shape="poly" title=" " alt="" coords="112,31,112,137,107,137,107,31"/>
+<area shape="poly" title=" " alt="" coords="222,107,156,147,153,142,219,103"/>
+<area shape="rect" title=" " alt="" coords="209,160,272,186"/>
+<area shape="poly" title=" " alt="" coords="243,105,243,144,238,144,238,105"/>
+<area shape="rect" title=" " alt="" coords="296,160,369,186"/>
+<area shape="poly" title=" " alt="" coords="256,103,309,148,305,152,253,107"/>
+<area shape="rect" title=" " alt="" coords="393,160,456,186"/>
+<area shape="poly" title=" " alt="" coords="271,103,383,150,385,151,383,156,381,155,269,108"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="Array_8h__dep__incl.png" border="0" usemap="#aTypes_2Array_8hdep" loading="lazy" alt=""/></div>
+<map name="aTypes_2Array_8hdep" id="aTypes_2Array_8hdep">
+<area shape="rect" title=" " alt="" coords="442,5,542,31"/>
+<area shape="rect" href="Assets_8h.html" title=" " alt="" coords="5,79,123,105"/>
+<area shape="poly" title=" " alt="" coords="427,33,124,83,123,78,426,28"/>
+<area shape="rect" href="Display_8h.html" title=" " alt="" coords="147,79,277,105"/>
+<area shape="poly" title=" " alt="" coords="431,38,260,81,259,76,429,33"/>
+<area shape="rect" href="MeshParams_8h.html" title=" " alt="" coords="244,153,409,178"/>
+<area shape="poly" title=" " alt="" coords="427,32,381,50,360,63,342,81,333,98,328,117,328,152,322,152,323,117,328,96,338,77,356,59,378,45,426,27"/>
+<area shape="rect" href="ShaderParams_8h.html" title=" " alt="" coords="444,153,617,178"/>
+<area shape="poly" title=" " alt="" coords="512,43,529,78,535,119,535,152,529,152,530,119,524,80,507,45"/>
+<area shape="rect" href="VariableType_8h.html" title=" " alt="" coords="352,79,514,105"/>
+<area shape="poly" title=" " alt="" coords="475,45,445,80,441,77,470,41"/>
+<area shape="rect" href="Input_8h.html" title=" " alt="" coords="589,79,683,105"/>
+<area shape="poly" title=" " alt="" coords="531,36,613,76,610,81,529,41"/>
+<area shape="rect" href="Logging_8h.html" title=" " alt="" coords="707,79,834,105"/>
+<area shape="poly" title=" " alt="" coords="554,33,724,76,723,81,553,38"/>
+<area shape="rect" href="WindowParams_8h.html" title=" " alt="" coords="858,79,1030,105"/>
+<area shape="poly" title=" " alt="" coords="558,27,867,76,866,81,557,32"/>
+<area shape="rect" href="Mesh_8h.html" title=" " alt="" coords="267,226,386,252"/>
+<area shape="poly" title=" " alt="" coords="329,194,329,226,324,226,324,194"/>
+<area shape="rect" href="Shader_8h.html" title=" " alt="" coords="466,226,595,252"/>
+<area shape="poly" title=" " alt="" coords="533,194,533,226,528,226,528,194"/>
+<area shape="poly" title=" " alt="" coords="404,116,346,154,343,150,401,111"/>
+<area shape="poly" title=" " alt="" coords="464,112,516,150,513,154,460,116"/>
+<area shape="rect" href="Window_8h.html" title=" " alt="" coords="880,153,1008,178"/>
+<area shape="poly" title=" " alt="" coords="947,120,947,152,941,152,941,120"/>
+</map>
+</div>
 </div>
 <p><a href="Array_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -132,7 +185,9 @@ Functions</h2></td></tr>
 <div class="line">    Type* p;\</div>
 <div class="line">    <span class="keywordtype">size_t</span> size;\</div>
 <div class="line">}</div>
-</div><!-- fragment -->
+</div><!-- fragment --><p>The TP_Array base type represents a modifiable array with a size. This should be used instead of separating the array with a pointer and a size.</p>
+<p>Any public TP_Array types should be allocated with TP_MemAlloc and freed with TP_MemFree. </p>
+
 </div>
 </div>
 <a id="a0be908a2008c98031855bbe049c37010" name="a0be908a2008c98031855bbe049c37010"></a>
@@ -153,7 +208,8 @@ Functions</h2></td></tr>
 <div class="line"><span class="keyword">const</span> Type* p;\</div>
 <div class="line"><span class="keywordtype">size_t</span> size;\</div>
 <div class="line">}</div>
-</div><!-- fragment -->
+</div><!-- fragment --><p>The TP_ArrayView base type represents a non-modifiable view of data with a size. This should be used to send data to functions that will not modify it. </p>
+
 </div>
 </div>
 <a id="a63b14b9dd0eb5785786409f9820fc280" name="a63b14b9dd0eb5785786409f9820fc280"></a>
@@ -171,8 +227,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_function" href="#a15dca29aba629c43a7710e2c62088d20">TP_StrViewMake</a>(msg, <span class="keyword">sizeof</span>(msg)-1)</div>
-<div class="ttc" id="aArray_8h_html_a15dca29aba629c43a7710e2c62088d20"><div class="ttname"><a href="#a15dca29aba629c43a7710e2c62088d20">TP_StrViewMake</a></div><div class="ttdeci">TP_INLINE_FUNC TP_StringView TP_StrViewMake(const char *data, const size_t size)</div><div class="ttdef"><b>Definition</b> Array.h:34</div></div>
-</div><!-- fragment -->
+<div class="ttc" id="aArray_8h_html_a15dca29aba629c43a7710e2c62088d20"><div class="ttname"><a href="#a15dca29aba629c43a7710e2c62088d20">TP_StrViewMake</a></div><div class="ttdeci">TP_INLINE_FUNC TP_StringView TP_StrViewMake(const char *data, const size_t size)</div><div class="ttdef"><b>Definition</b> Array.h:67</div></div>
+</div><!-- fragment --><p>Creates a StringView from an inline string literal. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The constant message to create a StringView for. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
@@ -190,6 +252,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Represents a String, with a size. Should always be used instead of C Strings in TeaPacket. </p>
 
 </div>
 </div>
@@ -224,6 +287,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Represents a view of a String, with a size. Should always be used similar to C++'s std::string_view. </p>
 
 </div>
 </div>
@@ -258,6 +322,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a TP_StringView from a TP_String. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The string to create a TP_StringView of. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The created TP_StringView. </dd></dl>
 
 </div>
 </div>
@@ -279,6 +350,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a TP_StringView from a source pointer and a size. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>A pointer to the source data to view. </td></tr>
+    <tr><td class="paramname">size</td><td>The size of the source data to view. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The created TP_StringView. </dd></dl>
 
 </div>
 </div>
@@ -295,7 +374,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_4332622734cddde5f771acacb5010a61.html">Types</a></li><li class="navelem"><a href="dir_c9fd02df4b5a47f9430ac36131071fb5.html">Interface</a></li><li class="navelem"><a href="dir_bf99d514b4b925505e1e121270cf4349.html">include</a></li><li class="navelem"><a href="dir_eb7c99d7da19d51eb8a14c1fdbad2d8c.html">TeaPacket</a></li><li class="navelem"><a href="dir_90710d1986845bbe321df71e29146a85.html">Types</a></li><li class="navelem"><a href="Array_8h.html">Array.h</a></li>
+    <li class="navelem"><a href="dir_90710d1986845bbe321df71e29146a85.html">Types</a></li><li class="navelem"><a href="Array_8h.html">Array.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

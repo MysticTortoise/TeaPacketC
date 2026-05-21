@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: /github/workspace/Modules/System/Interface/include/TeaPacket/System/System.h Source File</title>
+<title>TeaPacket: System/System.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,28 +92,29 @@ $(function(){initNavTree('System_8h_source.html','',''); });
   <div class="headertitle"><div class="title">System.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="System_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<a href="System_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* Copyright (C) 2026 Kevin &quot;MysticTortoise&quot; Tessier */</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef TEAPACKET_SYSTEM_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define TEAPACKET_SYSTEM_H</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="Numeric_8h.html">TeaPacket/Types/Numeric.h</a>&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="System_8h.html#a647f52b5cce803e97aaacfe08f3f8063">   10</a></span><a class="code hl_typedef" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> <a class="code hl_function" href="System_8h.html#a647f52b5cce803e97aaacfe08f3f8063">TP_System_Init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="System_8h.html#a807945a7e0863afec1057efc9ebd0da4">   11</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="System_8h.html#a807945a7e0863afec1057efc9ebd0da4">TP_System_DeInit</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="System_8h.html#aee9634d499dd61414c6a5af5f951ce43">   13</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="System_8h.html#aee9634d499dd61414c6a5af5f951ce43">TP_System_Process</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="System_8h.html#a5fac4c6c3068fb9377ec85f6523dd5f2">   15</a></span><a class="code hl_typedef" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> <a class="code hl_function" href="System_8h.html#a5fac4c6c3068fb9377ec85f6523dd5f2">TP_System_ShouldRun</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="Numeric_8h.html">TeaPacket/Types/Numeric.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="System_8h.html#a647f52b5cce803e97aaacfe08f3f8063">   11</a></span><a class="code hl_typedef" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> <a class="code hl_function" href="System_8h.html#a647f52b5cce803e97aaacfe08f3f8063">TP_System_Init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="System_8h.html#a807945a7e0863afec1057efc9ebd0da4">   12</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="System_8h.html#a807945a7e0863afec1057efc9ebd0da4">TP_System_DeInit</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="System_8h.html#aee9634d499dd61414c6a5af5f951ce43">   18</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="System_8h.html#aee9634d499dd61414c6a5af5f951ce43">TP_System_Process</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="System_8h.html#a5fac4c6c3068fb9377ec85f6523dd5f2">   26</a></span><a class="code hl_typedef" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> <a class="code hl_function" href="System_8h.html#a5fac4c6c3068fb9377ec85f6523dd5f2">TP_System_ShouldRun</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aNumeric_8h_html"><div class="ttname"><a href="Numeric_8h.html">Numeric.h</a></div></div>
-<div class="ttc" id="aNumeric_8h_html_a4b32425ab06ad510852bcb2cab482e8b"><div class="ttname"><a href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a></div><div class="ttdeci">bool tp_bool</div><div class="ttdef"><b>Definition</b> Numeric.h:12</div></div>
+<div class="ttc" id="aNumeric_8h_html_a4b32425ab06ad510852bcb2cab482e8b"><div class="ttname"><a href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a></div><div class="ttdeci">bool tp_bool</div><div class="ttdef"><b>Definition</b> Numeric.h:13</div></div>
 <div class="ttc" id="aSystem_8h_html_a5fac4c6c3068fb9377ec85f6523dd5f2"><div class="ttname"><a href="System_8h.html#a5fac4c6c3068fb9377ec85f6523dd5f2">TP_System_ShouldRun</a></div><div class="ttdeci">tp_bool TP_System_ShouldRun(void)</div></div>
 <div class="ttc" id="aSystem_8h_html_a647f52b5cce803e97aaacfe08f3f8063"><div class="ttname"><a href="System_8h.html#a647f52b5cce803e97aaacfe08f3f8063">TP_System_Init</a></div><div class="ttdeci">tp_bool TP_System_Init(void)</div></div>
 <div class="ttc" id="aSystem_8h_html_a807945a7e0863afec1057efc9ebd0da4"><div class="ttname"><a href="System_8h.html#a807945a7e0863afec1057efc9ebd0da4">TP_System_DeInit</a></div><div class="ttdeci">void TP_System_DeInit(void)</div></div>
@@ -124,7 +125,7 @@ $(function(){initNavTree('System_8h_source.html','',''); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_9af51e3826d4f9e80d9103b2de543e84.html">System</a></li><li class="navelem"><a href="dir_f7c8c66a0004741771ad6c01ca748506.html">Interface</a></li><li class="navelem"><a href="dir_d79e83ed4ea7dc42b6f39a30c8310db6.html">include</a></li><li class="navelem"><a href="dir_59c45ecb46c7ccc54e7dcf4a57606153.html">TeaPacket</a></li><li class="navelem"><a href="dir_4497682bd1571be23f712bc796e8ac91.html">System</a></li><li class="navelem"><a href="System_8h.html">System.h</a></li>
+    <li class="navelem"><a href="dir_4497682bd1571be23f712bc796e8ac91.html">System</a></li><li class="navelem"><a href="System_8h.html">System.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

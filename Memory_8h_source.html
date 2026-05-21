@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: /github/workspace/Modules/Memory/Interface/include/TeaPacket/Memory/Memory.h Source File</title>
+<title>TeaPacket: Memory/Memory.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,28 +92,29 @@ $(function(){initNavTree('Memory_8h_source.html','',''); });
   <div class="headertitle"><div class="title">Memory.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="Memory_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef TEAPACKET_MEMORY_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define TEAPACKET_MEMORY_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="Memory_8h.html#a12666bef8b6247b7ca8b12bd3f7d0004">   10</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="Memory_8h.html#a12666bef8b6247b7ca8b12bd3f7d0004">TP_Memory_Init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="Memory_8h.html#a40548a4fd4281dc30d9b0cd3e688f5f9">   11</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Memory_8h.html#a40548a4fd4281dc30d9b0cd3e688f5f9">TP_Memory_DeInit</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="Memory_8h.html#a8d7c99dbb81fd524d7d0bb9d7937c0c9">   13</a></span><span class="keywordtype">void</span>* <a class="code hl_function" href="Memory_8h.html#a8d7c99dbb81fd524d7d0bb9d7937c0c9">TP_MemAlloc</a>(<span class="keywordtype">size_t</span> amount);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="Memory_8h.html#a376105500cfd33d529d80785295398a6">   14</a></span><span class="keywordtype">void</span>* <a class="code hl_function" href="Memory_8h.html#a376105500cfd33d529d80785295398a6">TP_ReAlloc</a>(<span class="keywordtype">void</span>* ptr, <span class="keywordtype">size_t</span> newSize);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="Memory_8h.html#a473e9115ab9e0ec85263bedf2a7d8b4c">   15</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Memory_8h.html#a473e9115ab9e0ec85263bedf2a7d8b4c">TP_MemFree</a>(<span class="keywordtype">void</span>* data);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="Memory_8h.html#ae82deeca72e6a46d2c508e693da34043">   17</a></span><span class="keywordtype">void</span>* <a class="code hl_function" href="Memory_8h.html#ae82deeca72e6a46d2c508e693da34043">TP_MemAllocNull</a>(<span class="keywordtype">size_t</span> amount);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#endif</span></div>
+<a href="Memory_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* Copyright (C) 2026 Kevin &quot;MysticTortoise&quot; Tessier */</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef TEAPACKET_MEMORY_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define TEAPACKET_MEMORY_H</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="Memory_8h.html#a12666bef8b6247b7ca8b12bd3f7d0004">   11</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="Memory_8h.html#a12666bef8b6247b7ca8b12bd3f7d0004">TP_Memory_Init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="Memory_8h.html#a40548a4fd4281dc30d9b0cd3e688f5f9">   12</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Memory_8h.html#a40548a4fd4281dc30d9b0cd3e688f5f9">TP_Memory_DeInit</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="Memory_8h.html#a8d7c99dbb81fd524d7d0bb9d7937c0c9">   19</a></span><span class="keywordtype">void</span>* <a class="code hl_function" href="Memory_8h.html#a8d7c99dbb81fd524d7d0bb9d7937c0c9">TP_MemAlloc</a>(<span class="keywordtype">size_t</span> amount);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="Memory_8h.html#a376105500cfd33d529d80785295398a6">   26</a></span><span class="keywordtype">void</span>* <a class="code hl_function" href="Memory_8h.html#a376105500cfd33d529d80785295398a6">TP_ReAlloc</a>(<span class="keywordtype">void</span>* ptr, <span class="keywordtype">size_t</span> newSize);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="Memory_8h.html#a473e9115ab9e0ec85263bedf2a7d8b4c">   31</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Memory_8h.html#a473e9115ab9e0ec85263bedf2a7d8b4c">TP_MemFree</a>(<span class="keywordtype">void</span>* data);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="Memory_8h.html#ae82deeca72e6a46d2c508e693da34043">   38</a></span><span class="keywordtype">void</span>* <a class="code hl_function" href="Memory_8h.html#ae82deeca72e6a46d2c508e693da34043">TP_MemAllocNull</a>(<span class="keywordtype">size_t</span> amount);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aMemory_8h_html_a12666bef8b6247b7ca8b12bd3f7d0004"><div class="ttname"><a href="Memory_8h.html#a12666bef8b6247b7ca8b12bd3f7d0004">TP_Memory_Init</a></div><div class="ttdeci">unsigned int TP_Memory_Init(void)</div></div>
 <div class="ttc" id="aMemory_8h_html_a376105500cfd33d529d80785295398a6"><div class="ttname"><a href="Memory_8h.html#a376105500cfd33d529d80785295398a6">TP_ReAlloc</a></div><div class="ttdeci">void * TP_ReAlloc(void *ptr, size_t newSize)</div></div>
 <div class="ttc" id="aMemory_8h_html_a40548a4fd4281dc30d9b0cd3e688f5f9"><div class="ttname"><a href="Memory_8h.html#a40548a4fd4281dc30d9b0cd3e688f5f9">TP_Memory_DeInit</a></div><div class="ttdeci">void TP_Memory_DeInit(void)</div></div>
@@ -126,7 +127,7 @@ $(function(){initNavTree('Memory_8h_source.html','',''); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_4bbfcbe99b666a19955ad2d97ce526ac.html">Memory</a></li><li class="navelem"><a href="dir_4d8cdfab1dbbb3c737f0599ba13ed9af.html">Interface</a></li><li class="navelem"><a href="dir_016278d918b03e7936f39946b1527789.html">include</a></li><li class="navelem"><a href="dir_5f611b26d59f425cca8373a56898c2cf.html">TeaPacket</a></li><li class="navelem"><a href="dir_1b8e6f3986087e69ad7ece91c809d115.html">Memory</a></li><li class="navelem"><a href="Memory_8h.html">Memory.h</a></li>
+    <li class="navelem"><a href="dir_1b8e6f3986087e69ad7ece91c809d115.html">Memory</a></li><li class="navelem"><a href="Memory_8h.html">Memory.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

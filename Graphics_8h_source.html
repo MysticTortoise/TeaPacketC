@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: /github/workspace/Modules/Graphics/Interface/include/TeaPacket/Graphics/Graphics.h Source File</title>
+<title>TeaPacket: Graphics/Graphics.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,45 +92,53 @@ $(function(){initNavTree('Graphics_8h_source.html','',''); });
   <div class="headertitle"><div class="title">Graphics.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="Graphics_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_H</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="Numeric_8h.html">TeaPacket/Types/Numeric.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif</span></div>
+<a href="Graphics_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* Copyright (C) 2026 Kevin &quot;MysticTortoise&quot; Tessier */</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">/* Contains functions for Graphics not tied to any one object.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Primarily contains drawing functions.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="Numeric_8h.html">TeaPacket/Types/Numeric.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="Graphics_8h.html#adec42d29e07d46d64e6f086f90f1517f">   13</a></span><a class="code hl_typedef" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> <a class="code hl_function" href="Graphics_8h.html#adec42d29e07d46d64e6f086f90f1517f">TP_Graphics_Init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="Graphics_8h.html#af3f74ede2cd3c54c70b835ab9b29ccb1">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Graphics_8h.html#af3f74ede2cd3c54c70b835ab9b29ccb1">TP_Graphics_DeInit</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="Graphics_8h.html#a0267c43182e77d37f4f3426d51ef5ca4">   16</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Graphics_8h.html#a0267c43182e77d37f4f3426d51ef5ca4">TP_Graphics_DrawMesh</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="Graphics_8h.html#a69b852c396fc5feb048f9fdf22cef708">   17</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Graphics_8h.html#a69b852c396fc5feb048f9fdf22cef708">TP_Graphics_ClearColor</a>(<a class="code hl_typedef" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> r, <a class="code hl_typedef" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> g, <a class="code hl_typedef" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> b);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="Graphics_8h.html#a8abbb95059170523f16e964c81d29945">   19</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Graphics_8h.html#a8abbb95059170523f16e964c81d29945">TP_Graphics_SetDepthEnabled</a>(<a class="code hl_typedef" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> depthEnabled);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="Graphics_8h.html#adec42d29e07d46d64e6f086f90f1517f">   17</a></span><a class="code hl_typedef" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> <a class="code hl_function" href="Graphics_8h.html#adec42d29e07d46d64e6f086f90f1517f">TP_Graphics_Init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="Graphics_8h.html#af3f74ede2cd3c54c70b835ab9b29ccb1">   18</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Graphics_8h.html#af3f74ede2cd3c54c70b835ab9b29ccb1">TP_Graphics_DeInit</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="Graphics_8h.html#a0267c43182e77d37f4f3426d51ef5ca4">   24</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Graphics_8h.html#a0267c43182e77d37f4f3426d51ef5ca4">TP_Graphics_DrawMesh</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="Graphics_8h.html#a69b852c396fc5feb048f9fdf22cef708">   33</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Graphics_8h.html#a69b852c396fc5feb048f9fdf22cef708">TP_Graphics_ClearColor</a>(<a class="code hl_typedef" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> r,</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                            <a class="code hl_typedef" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> g,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                            <a class="code hl_typedef" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> b);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="Graphics_8h.html#a8abbb95059170523f16e964c81d29945">   41</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Graphics_8h.html#a8abbb95059170523f16e964c81d29945">TP_Graphics_SetDepthEnabled</a>(<a class="code hl_typedef" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> depthEnabled);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aGraphics_8h_html_a0267c43182e77d37f4f3426d51ef5ca4"><div class="ttname"><a href="Graphics_8h.html#a0267c43182e77d37f4f3426d51ef5ca4">TP_Graphics_DrawMesh</a></div><div class="ttdeci">void TP_Graphics_DrawMesh(void)</div></div>
 <div class="ttc" id="aGraphics_8h_html_a69b852c396fc5feb048f9fdf22cef708"><div class="ttname"><a href="Graphics_8h.html#a69b852c396fc5feb048f9fdf22cef708">TP_Graphics_ClearColor</a></div><div class="ttdeci">void TP_Graphics_ClearColor(tp_u8 r, tp_u8 g, tp_u8 b)</div></div>
 <div class="ttc" id="aGraphics_8h_html_a8abbb95059170523f16e964c81d29945"><div class="ttname"><a href="Graphics_8h.html#a8abbb95059170523f16e964c81d29945">TP_Graphics_SetDepthEnabled</a></div><div class="ttdeci">void TP_Graphics_SetDepthEnabled(tp_bool depthEnabled)</div></div>
 <div class="ttc" id="aGraphics_8h_html_adec42d29e07d46d64e6f086f90f1517f"><div class="ttname"><a href="Graphics_8h.html#adec42d29e07d46d64e6f086f90f1517f">TP_Graphics_Init</a></div><div class="ttdeci">tp_bool TP_Graphics_Init(void)</div></div>
 <div class="ttc" id="aGraphics_8h_html_af3f74ede2cd3c54c70b835ab9b29ccb1"><div class="ttname"><a href="Graphics_8h.html#af3f74ede2cd3c54c70b835ab9b29ccb1">TP_Graphics_DeInit</a></div><div class="ttdeci">void TP_Graphics_DeInit(void)</div></div>
 <div class="ttc" id="aNumeric_8h_html"><div class="ttname"><a href="Numeric_8h.html">Numeric.h</a></div></div>
-<div class="ttc" id="aNumeric_8h_html_a4b32425ab06ad510852bcb2cab482e8b"><div class="ttname"><a href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a></div><div class="ttdeci">bool tp_bool</div><div class="ttdef"><b>Definition</b> Numeric.h:12</div></div>
-<div class="ttc" id="aNumeric_8h_html_af14919785d1013bf520294d3eb1b26a8"><div class="ttname"><a href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a></div><div class="ttdeci">uint8_t tp_u8</div><div class="ttdef"><b>Definition</b> Numeric.h:25</div></div>
+<div class="ttc" id="aNumeric_8h_html_a4b32425ab06ad510852bcb2cab482e8b"><div class="ttname"><a href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a></div><div class="ttdeci">bool tp_bool</div><div class="ttdef"><b>Definition</b> Numeric.h:13</div></div>
+<div class="ttc" id="aNumeric_8h_html_af14919785d1013bf520294d3eb1b26a8"><div class="ttname"><a href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a></div><div class="ttdeci">uint8_t tp_u8</div><div class="ttdef"><b>Definition</b> Numeric.h:38</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_64f7452aef2cdad98d34a70f5ea329e2.html">Graphics</a></li><li class="navelem"><a href="dir_98a8826e5ade2c054fd1955b4a7e86a3.html">Interface</a></li><li class="navelem"><a href="dir_ef88305b69299824d2f7d6182fee7d2f.html">include</a></li><li class="navelem"><a href="dir_0e46d44a1d43457859fb717403074cc4.html">TeaPacket</a></li><li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="Graphics_8h.html">Graphics.h</a></li>
+    <li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="Graphics_8h.html">Graphics.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

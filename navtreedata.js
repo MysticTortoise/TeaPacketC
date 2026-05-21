@@ -49,7 +49,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Array_8h.html",
-"dir_5f611b26d59f425cca8373a56898c2cf.html"
+"structTP__Graphics__ShaderBufferParams.html#a8848606f194582df857ab337e17cc937"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

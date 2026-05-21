@@ -113,6 +113,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The index data to be used for this mesh. If size is 0, index data is not used.</p>
+<p>This list should be comprised of groups of 3 32-bit Integers, each defining a vertex index that a face should connect to.</p>
+<dl class="section warning"><dt>Warning</dt><dd>Any values pointing to vertices outside the valid range of vertices given is undefined behavior. The size of this list must be a multiple of 3. Not doing so is undefined behavior. </dd></dl>
 
 </div>
 </div>
@@ -127,6 +130,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>A pointer to the bytes used to create the vertices for this mesh.</p>
+<p>Data is swizzled in these bytes according to vertexInfo. One vertex should consist of a sequence of bytes. These bytes are ordered and formatting based on the ordering and formatting of vertexInfo.</p>
+<p>For example, a vertexInfo of a Float with an amount of 2, and an Int with an amount of 4, will require bytes to be formatted as two Floats for Vertex 0, three Ints for Vertex 0, two Floats for Vertex 1, three Ints for Vertex 1, and so on... </p>
 
 </div>
 </div>
@@ -141,11 +147,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>A list describing the attributes each vertex on this Mesh has.</p>
+<p>Each entry in this list maps to one of the IN attributes in a shader, using its position in the list as the layout position of the attribute to bind to.</p>
+<dl class="section warning"><dt>Warning</dt><dd>Drawing a Mesh with a Shader whose IN attributes do not match with the Mesh's vertex attributes is undefined behavior. </dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/github/workspace/Modules/Graphics/Interface/include/TeaPacket/Graphics/<a class="el" href="MeshParams_8h_source.html">MeshParams.h</a></li>
+<li>Graphics/<a class="el" href="MeshParams_8h_source.html">MeshParams.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

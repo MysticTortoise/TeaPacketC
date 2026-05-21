@@ -112,6 +112,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The vector size of this type.</p>
+<p>1 maps to a singular of this type (i.e. baseType = float, amount = 1 is a float). Any number above that maps to a vector of this type (i.e. baseType=float, amount = 4 is a float4 or vec4)</p>
+<p>Any amount above the highest supported by this module implementation (typically 4) is undefined behavior. </p>
 
 </div>
 </div>
@@ -126,11 +129,12 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The integral type of this type. </p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/github/workspace/Modules/Graphics/Interface/include/TeaPacket/Graphics/<a class="el" href="VariableType_8h_source.html">VariableType.h</a></li>
+<li>Graphics/<a class="el" href="VariableType_8h_source.html">VariableType.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

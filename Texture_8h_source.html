@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: /github/workspace/Modules/Graphics/Interface/include/TeaPacket/Graphics/Texture/Texture.h Source File</title>
+<title>TeaPacket: Graphics/Texture/Texture.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,36 +92,45 @@ $(function(){initNavTree('Texture_8h_source.html','',''); });
   <div class="headertitle"><div class="title">Texture.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="Texture_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_TEXTURE_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_TEXTURE_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="TextureParams_8h.html">TeaPacket/Graphics/Texture/TextureParams.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#endif</span></div>
+<a href="Texture_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* Copyright (C) 2026 Kevin &quot;MysticTortoise&quot; Tessier */</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">/* Textures contain image data used in rendering.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * A Texture alone is attached to a Shader and used within.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_TEXTURE_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_TEXTURE_H</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">   10</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a> <a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="TextureParams_8h.html">TeaPacket/Graphics/Texture/TextureParams.h</a>&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="Texture_8h.html#a9df4c2fe34478fe1d573877ca62aa74f">   13</a></span><a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>* <a class="code hl_function" href="Texture_8h.html#a9df4c2fe34478fe1d573877ca62aa74f">TP_Graphics_Texture_Create</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structTP__Graphics__TextureParams.html">TP_Graphics_TextureParams</a>*);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="Texture_8h.html#a951918bab6b761d1a24bf3d3db2959ab">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Texture_8h.html#a951918bab6b761d1a24bf3d3db2959ab">TP_Graphics_Texture_Destroy</a>(<a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>*);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="Texture_8h.html#ac572c49219386f44771b1d43ea773393">   16</a></span><a class="code hl_typedef" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> <a class="code hl_function" href="Texture_8h.html#ac572c49219386f44771b1d43ea773393">TP_Graphics_Texture_GetWidth</a>(<a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>*);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="Texture_8h.html#a741efb96139ae1c337a7901dcad52ee4">   17</a></span><a class="code hl_typedef" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> <a class="code hl_function" href="Texture_8h.html#a741efb96139ae1c337a7901dcad52ee4">TP_Graphics_Texture_GetHeight</a>(<a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>*);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="Texture_8h.html#a632c718d966c3b47916ad0e2dfe357e2">   18</a></span>TP_Graphics_Texture_Format <a class="code hl_function" href="Texture_8h.html#a632c718d966c3b47916ad0e2dfe357e2">TP_Graphics_Texture_GetFormat</a>(<a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>*);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="Texture_8h.html#acf41a4c9359ab93b8e8e32f7911dc5da">   20</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Texture_8h.html#acf41a4c9359ab93b8e8e32f7911dc5da">TP_Graphics_Texture_SetActive</a>(<a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>* texture, <a class="code hl_typedef" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> slot);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="Texture_8h.html#a7a1c666e72974a4ce435c09537a6ca11">   22</a></span><a class="code hl_typedef" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> <a class="code hl_function" href="Texture_8h.html#a7a1c666e72974a4ce435c09537a6ca11">TP_Graphics_Texture_IsFormatSupported</a>(TP_Graphics_Texture_Format format);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aNumeric_8h_html_a031720b1155047e9fb121d96567d01b6"><div class="ttname"><a href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a></div><div class="ttdeci">uint16_t tp_u16</div><div class="ttdef"><b>Definition</b> Numeric.h:29</div></div>
-<div class="ttc" id="aNumeric_8h_html_a4b32425ab06ad510852bcb2cab482e8b"><div class="ttname"><a href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a></div><div class="ttdeci">bool tp_bool</div><div class="ttdef"><b>Definition</b> Numeric.h:12</div></div>
-<div class="ttc" id="aNumeric_8h_html_af14919785d1013bf520294d3eb1b26a8"><div class="ttname"><a href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a></div><div class="ttdeci">uint8_t tp_u8</div><div class="ttdef"><b>Definition</b> Numeric.h:25</div></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">   17</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a> <a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="Texture_8h.html#a9df4c2fe34478fe1d573877ca62aa74f">   23</a></span><a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>* <a class="code hl_function" href="Texture_8h.html#a9df4c2fe34478fe1d573877ca62aa74f">TP_Graphics_Texture_Create</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structTP__Graphics__TextureParams.html">TP_Graphics_TextureParams</a>*);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="Texture_8h.html#a951918bab6b761d1a24bf3d3db2959ab">   27</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Texture_8h.html#a951918bab6b761d1a24bf3d3db2959ab">TP_Graphics_Texture_Destroy</a>(<a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>*);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="Texture_8h.html#ac572c49219386f44771b1d43ea773393">   33</a></span><a class="code hl_typedef" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> <a class="code hl_function" href="Texture_8h.html#ac572c49219386f44771b1d43ea773393">TP_Graphics_Texture_GetWidth</a>(<a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>*);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="Texture_8h.html#a741efb96139ae1c337a7901dcad52ee4">   39</a></span><a class="code hl_typedef" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> <a class="code hl_function" href="Texture_8h.html#a741efb96139ae1c337a7901dcad52ee4">TP_Graphics_Texture_GetHeight</a>(<a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>*);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="Texture_8h.html#a632c718d966c3b47916ad0e2dfe357e2">   45</a></span>TP_Graphics_Texture_Format <a class="code hl_function" href="Texture_8h.html#a632c718d966c3b47916ad0e2dfe357e2">TP_Graphics_Texture_GetFormat</a>(<a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>*);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="Texture_8h.html#acf41a4c9359ab93b8e8e32f7911dc5da">   52</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Texture_8h.html#acf41a4c9359ab93b8e8e32f7911dc5da">TP_Graphics_Texture_SetActive</a>(<a class="code hl_typedef" href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a>* texture,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                                   <a class="code hl_typedef" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> slot);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="Texture_8h.html#a7a1c666e72974a4ce435c09537a6ca11">   60</a></span><a class="code hl_typedef" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> <a class="code hl_function" href="Texture_8h.html#a7a1c666e72974a4ce435c09537a6ca11">TP_Graphics_Texture_IsFormatSupported</a>(TP_Graphics_Texture_Format format);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aNumeric_8h_html_a031720b1155047e9fb121d96567d01b6"><div class="ttname"><a href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a></div><div class="ttdeci">uint16_t tp_u16</div><div class="ttdef"><b>Definition</b> Numeric.h:42</div></div>
+<div class="ttc" id="aNumeric_8h_html_a4b32425ab06ad510852bcb2cab482e8b"><div class="ttname"><a href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a></div><div class="ttdeci">bool tp_bool</div><div class="ttdef"><b>Definition</b> Numeric.h:13</div></div>
+<div class="ttc" id="aNumeric_8h_html_af14919785d1013bf520294d3eb1b26a8"><div class="ttname"><a href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a></div><div class="ttdeci">uint8_t tp_u8</div><div class="ttdef"><b>Definition</b> Numeric.h:38</div></div>
 <div class="ttc" id="aTextureParams_8h_html"><div class="ttname"><a href="TextureParams_8h.html">TextureParams.h</a></div></div>
 <div class="ttc" id="aTexture_8h_html_a632c718d966c3b47916ad0e2dfe357e2"><div class="ttname"><a href="Texture_8h.html#a632c718d966c3b47916ad0e2dfe357e2">TP_Graphics_Texture_GetFormat</a></div><div class="ttdeci">TP_Graphics_Texture_Format TP_Graphics_Texture_GetFormat(TP_Graphics_Texture *)</div></div>
 <div class="ttc" id="aTexture_8h_html_a741efb96139ae1c337a7901dcad52ee4"><div class="ttname"><a href="Texture_8h.html#a741efb96139ae1c337a7901dcad52ee4">TP_Graphics_Texture_GetHeight</a></div><div class="ttdeci">tp_u16 TP_Graphics_Texture_GetHeight(TP_Graphics_Texture *)</div></div>
@@ -129,16 +138,16 @@ $(function(){initNavTree('Texture_8h_source.html','',''); });
 <div class="ttc" id="aTexture_8h_html_a951918bab6b761d1a24bf3d3db2959ab"><div class="ttname"><a href="Texture_8h.html#a951918bab6b761d1a24bf3d3db2959ab">TP_Graphics_Texture_Destroy</a></div><div class="ttdeci">void TP_Graphics_Texture_Destroy(TP_Graphics_Texture *)</div></div>
 <div class="ttc" id="aTexture_8h_html_a9df4c2fe34478fe1d573877ca62aa74f"><div class="ttname"><a href="Texture_8h.html#a9df4c2fe34478fe1d573877ca62aa74f">TP_Graphics_Texture_Create</a></div><div class="ttdeci">TP_Graphics_Texture * TP_Graphics_Texture_Create(const TP_Graphics_TextureParams *)</div></div>
 <div class="ttc" id="aTexture_8h_html_ac572c49219386f44771b1d43ea773393"><div class="ttname"><a href="Texture_8h.html#ac572c49219386f44771b1d43ea773393">TP_Graphics_Texture_GetWidth</a></div><div class="ttdeci">tp_u16 TP_Graphics_Texture_GetWidth(TP_Graphics_Texture *)</div></div>
-<div class="ttc" id="aTexture_8h_html_ac7933fa59a5a4e0439053e6085d7c8a6"><div class="ttname"><a href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a></div><div class="ttdeci">struct TP_Graphics_Texture TP_Graphics_Texture</div><div class="ttdef"><b>Definition</b> Texture.h:10</div></div>
+<div class="ttc" id="aTexture_8h_html_ac7933fa59a5a4e0439053e6085d7c8a6"><div class="ttname"><a href="Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6">TP_Graphics_Texture</a></div><div class="ttdeci">struct TP_Graphics_Texture TP_Graphics_Texture</div><div class="ttdef"><b>Definition</b> Texture.h:17</div></div>
 <div class="ttc" id="aTexture_8h_html_acf41a4c9359ab93b8e8e32f7911dc5da"><div class="ttname"><a href="Texture_8h.html#acf41a4c9359ab93b8e8e32f7911dc5da">TP_Graphics_Texture_SetActive</a></div><div class="ttdeci">void TP_Graphics_Texture_SetActive(TP_Graphics_Texture *texture, tp_u8 slot)</div></div>
-<div class="ttc" id="astructTP__Graphics__TextureParams_html"><div class="ttname"><a href="structTP__Graphics__TextureParams.html">TP_Graphics_TextureParams</a></div><div class="ttdef"><b>Definition</b> TextureParams.h:20</div></div>
+<div class="ttc" id="astructTP__Graphics__TextureParams_html"><div class="ttname"><a href="structTP__Graphics__TextureParams.html">TP_Graphics_TextureParams</a></div><div class="ttdef"><b>Definition</b> TextureParams.h:38</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_64f7452aef2cdad98d34a70f5ea329e2.html">Graphics</a></li><li class="navelem"><a href="dir_98a8826e5ade2c054fd1955b4a7e86a3.html">Interface</a></li><li class="navelem"><a href="dir_ef88305b69299824d2f7d6182fee7d2f.html">include</a></li><li class="navelem"><a href="dir_0e46d44a1d43457859fb717403074cc4.html">TeaPacket</a></li><li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="dir_2cd0f0a5002192716cef0a6b7fbccf50.html">Texture</a></li><li class="navelem"><a href="Texture_8h.html">Texture.h</a></li>
+    <li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="dir_2cd0f0a5002192716cef0a6b7fbccf50.html">Texture</a></li><li class="navelem"><a href="Texture_8h.html">Texture.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

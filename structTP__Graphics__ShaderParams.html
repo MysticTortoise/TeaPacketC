@@ -113,6 +113,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>A view of the code to compile the fragment/pixel part of this shader. </p>
 
 </div>
 </div>
@@ -127,6 +128,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>A list of input attributes.</p>
+<p>Each entry in this list maps to an IN attribute in the shader.</p>
+<p><a class="el" href="structTP__Graphics__MeshParams.html">TP_Graphics_MeshParams</a> has a more detailed explanation of how these map to the Shader. </p>
 
 </div>
 </div>
@@ -141,11 +145,13 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>A view of the code to compile the vertex part of this shader.</p>
+<p>Shader code may be in any format - which format to be used is dependent on the Module Implementation. However, GLSL is reccomended as a baseline and any Module Implementations that require another language are highly suggested to provide an AssetMixer pass to convert shaders from GLSL to the native language. </p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/github/workspace/Modules/Graphics/Interface/include/TeaPacket/Graphics/<a class="el" href="ShaderParams_8h_source.html">ShaderParams.h</a></li>
+<li>Graphics/<a class="el" href="ShaderParams_8h_source.html">ShaderParams.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

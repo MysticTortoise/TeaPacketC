@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['title_0',['title',['../structTP__Window__Params.html#a96c0355143774d36622c870abea48770',1,'TP_Window_Params']]],
-  ['tp_5fgraphics_5fshaderbuffer_5fshouldbeendianswapped_1',['TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped',['../ShaderBuffer_8h.html#a8f9b677f90ea3af3e4dd7e272bce8570',1,'ShaderBuffer.h']]],
-  ['tp_5finput_5fnocontrollerslot_2',['TP_Input_NoControllerSlot',['../Input_8h.html#ae684e47ae4df4e82a2cf1e1d332032f0',1,'Input.h']]]
+  ['shaderresource_0',['shaderResource',['../structTP__Graphics__TextureUseFlags.html#a941090213010e9586f8618cbac42b7b3',1,'TP_Graphics_TextureUseFlags']]],
+  ['shaderusable_1',['shaderUsable',['../structTP__Graphics__ViewportParams.html#a1f72ba6ae29c2cf78b357341c6cd8b22',1,'TP_Graphics_ViewportParams']]],
+  ['size_2',['size',['../structTP__Graphics__ShaderBufferParams.html#a8848606f194582df857ab337e17cc937',1,'TP_Graphics_ShaderBufferParams']]]
 ];

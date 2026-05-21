@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: /github/workspace/Modules/Graphics/Interface/include/TeaPacket/Graphics/ShaderBufferParams.h Source File</title>
+<title>TeaPacket: Graphics/ShaderBufferParams.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,31 +92,34 @@ $(function(){initNavTree('ShaderBufferParams_8h_source.html','',''); });
   <div class="headertitle"><div class="title">ShaderBufferParams.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="ShaderBufferParams_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef TEAPACKET_TEAPACKET_GRAPHICS_SHADERBUFFERPARAMETERS_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define TEAPACKET_TEAPACKET_GRAPHICS_SHADERBUFFERPARAMETERS_H</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="structTP__Graphics__ShaderBufferParams.html">    7</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="structTP__Graphics__ShaderBufferParams.html#a1b2bba3bca740189cfd56d4cb51a5bcd">    9</a></span>    <span class="keywordtype">void</span>* <a class="code hl_variable" href="structTP__Graphics__ShaderBufferParams.html#a1b2bba3bca740189cfd56d4cb51a5bcd">data</a>;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="structTP__Graphics__ShaderBufferParams.html#a8848606f194582df857ab337e17cc937">   10</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structTP__Graphics__ShaderBufferParams.html#a8848606f194582df857ab337e17cc937">size</a>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>} <a class="code hl_struct" href="structTP__Graphics__ShaderBufferParams.html">TP_Graphics_ShaderBufferParams</a>;</div>
+<a href="ShaderBufferParams_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* Copyright (C) 2026 Kevin &quot;MysticTortoise&quot; Tessier */</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">/* This file contains all parameters used in the creation of a ShaderBuffer.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef TEAPACKET_TEAPACKET_GRAPHICS_SHADERBUFFERPARAMETERS_H</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define TEAPACKET_TEAPACKET_GRAPHICS_SHADERBUFFERPARAMETERS_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="structTP__Graphics__ShaderBufferParams.html">   10</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structTP__Graphics__ShaderBufferParams.html#a1b2bba3bca740189cfd56d4cb51a5bcd">   16</a></span>    <span class="keywordtype">void</span>* <a class="code hl_variable" href="structTP__Graphics__ShaderBufferParams.html#a1b2bba3bca740189cfd56d4cb51a5bcd">data</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structTP__Graphics__ShaderBufferParams.html#a8848606f194582df857ab337e17cc937">   20</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structTP__Graphics__ShaderBufferParams.html#a8848606f194582df857ab337e17cc937">size</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>} <a class="code hl_struct" href="structTP__Graphics__ShaderBufferParams.html">TP_Graphics_ShaderBufferParams</a>;</div>
 </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructTP__Graphics__ShaderBufferParams_html"><div class="ttname"><a href="structTP__Graphics__ShaderBufferParams.html">TP_Graphics_ShaderBufferParams</a></div><div class="ttdef"><b>Definition</b> ShaderBufferParams.h:8</div></div>
-<div class="ttc" id="astructTP__Graphics__ShaderBufferParams_html_a1b2bba3bca740189cfd56d4cb51a5bcd"><div class="ttname"><a href="structTP__Graphics__ShaderBufferParams.html#a1b2bba3bca740189cfd56d4cb51a5bcd">TP_Graphics_ShaderBufferParams::data</a></div><div class="ttdeci">void * data</div><div class="ttdef"><b>Definition</b> ShaderBufferParams.h:9</div></div>
-<div class="ttc" id="astructTP__Graphics__ShaderBufferParams_html_a8848606f194582df857ab337e17cc937"><div class="ttname"><a href="structTP__Graphics__ShaderBufferParams.html#a8848606f194582df857ab337e17cc937">TP_Graphics_ShaderBufferParams::size</a></div><div class="ttdeci">size_t size</div><div class="ttdef"><b>Definition</b> ShaderBufferParams.h:10</div></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="astructTP__Graphics__ShaderBufferParams_html"><div class="ttname"><a href="structTP__Graphics__ShaderBufferParams.html">TP_Graphics_ShaderBufferParams</a></div><div class="ttdef"><b>Definition</b> ShaderBufferParams.h:11</div></div>
+<div class="ttc" id="astructTP__Graphics__ShaderBufferParams_html_a1b2bba3bca740189cfd56d4cb51a5bcd"><div class="ttname"><a href="structTP__Graphics__ShaderBufferParams.html#a1b2bba3bca740189cfd56d4cb51a5bcd">TP_Graphics_ShaderBufferParams::data</a></div><div class="ttdeci">void * data</div><div class="ttdef"><b>Definition</b> ShaderBufferParams.h:16</div></div>
+<div class="ttc" id="astructTP__Graphics__ShaderBufferParams_html_a8848606f194582df857ab337e17cc937"><div class="ttname"><a href="structTP__Graphics__ShaderBufferParams.html#a8848606f194582df857ab337e17cc937">TP_Graphics_ShaderBufferParams::size</a></div><div class="ttdeci">size_t size</div><div class="ttdef"><b>Definition</b> ShaderBufferParams.h:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_64f7452aef2cdad98d34a70f5ea329e2.html">Graphics</a></li><li class="navelem"><a href="dir_98a8826e5ade2c054fd1955b4a7e86a3.html">Interface</a></li><li class="navelem"><a href="dir_ef88305b69299824d2f7d6182fee7d2f.html">include</a></li><li class="navelem"><a href="dir_0e46d44a1d43457859fb717403074cc4.html">TeaPacket</a></li><li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="ShaderBufferParams_8h.html">ShaderBufferParams.h</a></li>
+    <li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="ShaderBufferParams_8h.html">ShaderBufferParams.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: /github/workspace/Modules/Graphics/Interface/include/TeaPacket/Graphics/ShaderBuffer.h Source File</title>
+<title>TeaPacket: Graphics/ShaderBuffer.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,53 +92,62 @@ $(function(){initNavTree('ShaderBuffer_8h_source.html','',''); });
   <div class="headertitle"><div class="title">ShaderBuffer.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="ShaderBuffer_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_SHADERBUFFER_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_SHADERBUFFER_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="ShaderBufferParams_8h.html">TeaPacket/Graphics/ShaderBufferParams.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="Numeric_8h.html">TeaPacket/Types/Numeric.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">   11</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a> <a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a>;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="ShaderBuffer_8h.html#ac99d83f38fd9f77c1874957cf76896cc">   13</a></span><a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a>* <a class="code hl_function" href="ShaderBuffer_8h.html#ac99d83f38fd9f77c1874957cf76896cc">TP_Graphics_ShaderBuffer_Create</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structTP__Graphics__ShaderBufferParams.html">TP_Graphics_ShaderBufferParams</a>*);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="ShaderBuffer_8h.html#a9f31d2bccd9cc2b79ea8fa98e63968c5">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="ShaderBuffer_8h.html#a9f31d2bccd9cc2b79ea8fa98e63968c5">TP_Graphics_ShaderBuffer_Destroy</a>(<a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a>*);</div>
+<a href="ShaderBuffer_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* Copyright (C) 2026 Kevin &quot;MysticTortoise&quot; Tessier */</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">/* ShaderBuffers are groups of non-specific data that can be sent to a shader.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * In other APIs they can be known as Uniform Buffers or Constant Buffers.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_SHADERBUFFER_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_SHADERBUFFER_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="ShaderBufferParams_8h.html">TeaPacket/Graphics/ShaderBufferParams.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="Numeric_8h.html">TeaPacket/Types/Numeric.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="ShaderBuffer_8h.html#aad348bdcecf7359f683db24e7f39a013">   16</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="ShaderBuffer_8h.html#aad348bdcecf7359f683db24e7f39a013">TP_Graphics_ShaderBuffer_GetSize</a>(<a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a>*);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="ShaderBuffer_8h.html#a41442b092b1f55f1f5ecd776ee4ab715">   18</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="ShaderBuffer_8h.html#a41442b092b1f55f1f5ecd776ee4ab715">TP_Graphics_ShaderBuffer_SendData</a>(<a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a>*, <span class="keyword">const</span> <span class="keywordtype">void</span>* data, <span class="keywordtype">size_t</span> length, <span class="keywordtype">size_t</span> offset);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="ShaderBuffer_8h.html#aa2b13563238ea325ff82397c6adfa592">   19</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="ShaderBuffer_8h.html#aa2b13563238ea325ff82397c6adfa592">TP_Graphics_ShaderBuffer_SetActive</a>(<a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a>*, <a class="code hl_typedef" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> slot);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_typedef" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> <a class="code hl_variable" href="ShaderBuffer_8h.html#a8f9b677f90ea3af3e4dd7e272bce8570">TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped</a>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">   16</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a> <a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="ShaderBuffer_8h.html#ac99d83f38fd9f77c1874957cf76896cc">   22</a></span><a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a>* <a class="code hl_function" href="ShaderBuffer_8h.html#ac99d83f38fd9f77c1874957cf76896cc">TP_Graphics_ShaderBuffer_Create</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structTP__Graphics__ShaderBufferParams.html">TP_Graphics_ShaderBufferParams</a>*);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="ShaderBuffer_8h.html#a9f31d2bccd9cc2b79ea8fa98e63968c5">   26</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="ShaderBuffer_8h.html#a9f31d2bccd9cc2b79ea8fa98e63968c5">TP_Graphics_ShaderBuffer_Destroy</a>(<a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a>*);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="ShaderBuffer_8h.html#aad348bdcecf7359f683db24e7f39a013">   32</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="ShaderBuffer_8h.html#aad348bdcecf7359f683db24e7f39a013">TP_Graphics_ShaderBuffer_GetSize</a>(<a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a>*);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="ShaderBuffer_8h.html#a41442b092b1f55f1f5ecd776ee4ab715">   42</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="ShaderBuffer_8h.html#a41442b092b1f55f1f5ecd776ee4ab715">TP_Graphics_ShaderBuffer_SendData</a>(<a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a>*,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                                       <span class="keyword">const</span> <span class="keywordtype">void</span>* data,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                                       <span class="keywordtype">size_t</span> length,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                                       <span class="keywordtype">size_t</span> offset);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="ShaderBuffer_8h.html#aa2b13563238ea325ff82397c6adfa592">   52</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="ShaderBuffer_8h.html#aa2b13563238ea325ff82397c6adfa592">TP_Graphics_ShaderBuffer_SetActive</a>(<a class="code hl_typedef" href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a>*,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                                        <a class="code hl_typedef" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> slot);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">extern</span> <span class="keyword">const</span> <a class="code hl_typedef" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> <a class="code hl_variable" href="ShaderBuffer_8h.html#a8f9b677f90ea3af3e4dd7e272bce8570">TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aNumeric_8h_html"><div class="ttname"><a href="Numeric_8h.html">Numeric.h</a></div></div>
-<div class="ttc" id="aNumeric_8h_html_a4b32425ab06ad510852bcb2cab482e8b"><div class="ttname"><a href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a></div><div class="ttdeci">bool tp_bool</div><div class="ttdef"><b>Definition</b> Numeric.h:12</div></div>
-<div class="ttc" id="aNumeric_8h_html_af14919785d1013bf520294d3eb1b26a8"><div class="ttname"><a href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a></div><div class="ttdeci">uint8_t tp_u8</div><div class="ttdef"><b>Definition</b> Numeric.h:25</div></div>
+<div class="ttc" id="aNumeric_8h_html_a4b32425ab06ad510852bcb2cab482e8b"><div class="ttname"><a href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a></div><div class="ttdeci">bool tp_bool</div><div class="ttdef"><b>Definition</b> Numeric.h:13</div></div>
+<div class="ttc" id="aNumeric_8h_html_af14919785d1013bf520294d3eb1b26a8"><div class="ttname"><a href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a></div><div class="ttdeci">uint8_t tp_u8</div><div class="ttdef"><b>Definition</b> Numeric.h:38</div></div>
 <div class="ttc" id="aShaderBufferParams_8h_html"><div class="ttname"><a href="ShaderBufferParams_8h.html">ShaderBufferParams.h</a></div></div>
-<div class="ttc" id="aShaderBuffer_8h_html_a1af3c1f6b38b22bccb61784d520efc62"><div class="ttname"><a href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a></div><div class="ttdeci">struct TP_Graphics_ShaderBuffer TP_Graphics_ShaderBuffer</div><div class="ttdef"><b>Definition</b> ShaderBuffer.h:11</div></div>
+<div class="ttc" id="aShaderBuffer_8h_html_a1af3c1f6b38b22bccb61784d520efc62"><div class="ttname"><a href="ShaderBuffer_8h.html#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a></div><div class="ttdeci">struct TP_Graphics_ShaderBuffer TP_Graphics_ShaderBuffer</div><div class="ttdef"><b>Definition</b> ShaderBuffer.h:16</div></div>
 <div class="ttc" id="aShaderBuffer_8h_html_a41442b092b1f55f1f5ecd776ee4ab715"><div class="ttname"><a href="ShaderBuffer_8h.html#a41442b092b1f55f1f5ecd776ee4ab715">TP_Graphics_ShaderBuffer_SendData</a></div><div class="ttdeci">void TP_Graphics_ShaderBuffer_SendData(TP_Graphics_ShaderBuffer *, const void *data, size_t length, size_t offset)</div></div>
 <div class="ttc" id="aShaderBuffer_8h_html_a8f9b677f90ea3af3e4dd7e272bce8570"><div class="ttname"><a href="ShaderBuffer_8h.html#a8f9b677f90ea3af3e4dd7e272bce8570">TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped</a></div><div class="ttdeci">const tp_bool TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped</div></div>
 <div class="ttc" id="aShaderBuffer_8h_html_a9f31d2bccd9cc2b79ea8fa98e63968c5"><div class="ttname"><a href="ShaderBuffer_8h.html#a9f31d2bccd9cc2b79ea8fa98e63968c5">TP_Graphics_ShaderBuffer_Destroy</a></div><div class="ttdeci">void TP_Graphics_ShaderBuffer_Destroy(TP_Graphics_ShaderBuffer *)</div></div>
 <div class="ttc" id="aShaderBuffer_8h_html_aa2b13563238ea325ff82397c6adfa592"><div class="ttname"><a href="ShaderBuffer_8h.html#aa2b13563238ea325ff82397c6adfa592">TP_Graphics_ShaderBuffer_SetActive</a></div><div class="ttdeci">void TP_Graphics_ShaderBuffer_SetActive(TP_Graphics_ShaderBuffer *, tp_u8 slot)</div></div>
 <div class="ttc" id="aShaderBuffer_8h_html_aad348bdcecf7359f683db24e7f39a013"><div class="ttname"><a href="ShaderBuffer_8h.html#aad348bdcecf7359f683db24e7f39a013">TP_Graphics_ShaderBuffer_GetSize</a></div><div class="ttdeci">size_t TP_Graphics_ShaderBuffer_GetSize(TP_Graphics_ShaderBuffer *)</div></div>
 <div class="ttc" id="aShaderBuffer_8h_html_ac99d83f38fd9f77c1874957cf76896cc"><div class="ttname"><a href="ShaderBuffer_8h.html#ac99d83f38fd9f77c1874957cf76896cc">TP_Graphics_ShaderBuffer_Create</a></div><div class="ttdeci">TP_Graphics_ShaderBuffer * TP_Graphics_ShaderBuffer_Create(const TP_Graphics_ShaderBufferParams *)</div></div>
-<div class="ttc" id="astructTP__Graphics__ShaderBufferParams_html"><div class="ttname"><a href="structTP__Graphics__ShaderBufferParams.html">TP_Graphics_ShaderBufferParams</a></div><div class="ttdef"><b>Definition</b> ShaderBufferParams.h:8</div></div>
+<div class="ttc" id="astructTP__Graphics__ShaderBufferParams_html"><div class="ttname"><a href="structTP__Graphics__ShaderBufferParams.html">TP_Graphics_ShaderBufferParams</a></div><div class="ttdef"><b>Definition</b> ShaderBufferParams.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_64f7452aef2cdad98d34a70f5ea329e2.html">Graphics</a></li><li class="navelem"><a href="dir_98a8826e5ade2c054fd1955b4a7e86a3.html">Interface</a></li><li class="navelem"><a href="dir_ef88305b69299824d2f7d6182fee7d2f.html">include</a></li><li class="navelem"><a href="dir_0e46d44a1d43457859fb717403074cc4.html">TeaPacket</a></li><li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="ShaderBuffer_8h.html">ShaderBuffer.h</a></li>
+    <li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="ShaderBuffer_8h.html">ShaderBuffer.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

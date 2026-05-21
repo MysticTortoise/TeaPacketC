@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: /github/workspace/Modules/Graphics/Interface/include/TeaPacket/Graphics/VariableType.h Source File</title>
+<title>TeaPacket: Graphics/VariableType.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,50 +92,54 @@ $(function(){initNavTree('VariableType_8h_source.html','',''); });
   <div class="headertitle"><div class="title">VariableType.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="VariableType_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_SHADER_VARIABLETYPE_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_SHADER_VARIABLETYPE_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;VariableBaseType.h&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="Array_8h.html">TeaPacket/Types/Array.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="structTP__Graphics__VariableType.html">    7</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="structTP__Graphics__VariableType.html#abdfad71256ac196dd3358d52ec9b2f10">    9</a></span>    TP_Graphics_VariableBaseType <a class="code hl_variable" href="structTP__Graphics__VariableType.html#abdfad71256ac196dd3358d52ec9b2f10">baseType</a>;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="structTP__Graphics__VariableType.html#aa92a6ea89ce13e4a400aaeae93cb5fff">   10</a></span>    <a class="code hl_typedef" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> <a class="code hl_variable" href="structTP__Graphics__VariableType.html#aa92a6ea89ce13e4a400aaeae93cb5fff">amount</a>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>} <a class="code hl_struct" href="structTP__Graphics__VariableType.html">TP_Graphics_VariableType</a>;</div>
+<a href="VariableType_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* Copyright (C) 2026 Kevin &quot;MysticTortoise&quot; Tessier */</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">/* TP_Graphics_VariableType is a struct that describes a type in a Shader.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_SHADER_VARIABLETYPE_H</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_SHADER_VARIABLETYPE_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;VariableBaseType.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="Array_8h.html">TeaPacket/Types/Array.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structTP__Graphics__VariableType.html">   11</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structTP__Graphics__VariableType.html#abdfad71256ac196dd3358d52ec9b2f10">   16</a></span>    TP_Graphics_VariableBaseType <a class="code hl_variable" href="structTP__Graphics__VariableType.html#abdfad71256ac196dd3358d52ec9b2f10">baseType</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structTP__Graphics__VariableType.html#aa92a6ea89ce13e4a400aaeae93cb5fff">   24</a></span>    <a class="code hl_typedef" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> <a class="code hl_variable" href="structTP__Graphics__VariableType.html#aa92a6ea89ce13e4a400aaeae93cb5fff">amount</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>} <a class="code hl_struct" href="structTP__Graphics__VariableType.html">TP_Graphics_VariableType</a>;</div>
 </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="VariableType_8h.html#a984403193ea63c2b3e16f76752a1fc89">   13</a></span><span class="keyword">typedef</span> <a class="code hl_define" href="Array_8h.html#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a>(<a class="code hl_struct" href="structTP__Graphics__VariableType.html">TP_Graphics_VariableType</a>) TP_Graphics_Shader_VarList;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="VariableType_8h.html#afe604b55602fa7e4e54f8b42e8470105">   19</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="VariableType_8h.html#afe604b55602fa7e4e54f8b42e8470105">TP_Graphics_ShaderVar_GetSize</a>(<a class="code hl_struct" href="structTP__Graphics__VariableType.html">TP_Graphics_VariableType</a>);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="VariableType_8h.html#a984403193ea63c2b3e16f76752a1fc89">   27</a></span><span class="keyword">typedef</span> <a class="code hl_define" href="Array_8h.html#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a>(<a class="code hl_struct" href="structTP__Graphics__VariableType.html">TP_Graphics_VariableType</a>) TP_Graphics_Shader_VarList;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="VariableType_8h.html#afe604b55602fa7e4e54f8b42e8470105">   37</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="VariableType_8h.html#afe604b55602fa7e4e54f8b42e8470105">TP_Graphics_ShaderVar_GetSize</a>(<a class="code hl_struct" href="structTP__Graphics__VariableType.html">TP_Graphics_VariableType</a>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aArray_8h_html"><div class="ttname"><a href="Array_8h.html">Array.h</a></div></div>
-<div class="ttc" id="aArray_8h_html_a0be908a2008c98031855bbe049c37010"><div class="ttname"><a href="Array_8h.html#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a></div><div class="ttdeci">#define TP_ArrayView(Type)</div><div class="ttdef"><b>Definition</b> Array.h:15</div></div>
-<div class="ttc" id="aNumeric_8h_html_af14919785d1013bf520294d3eb1b26a8"><div class="ttname"><a href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a></div><div class="ttdeci">uint8_t tp_u8</div><div class="ttdef"><b>Definition</b> Numeric.h:25</div></div>
+<div class="ttc" id="aArray_8h_html_a0be908a2008c98031855bbe049c37010"><div class="ttname"><a href="Array_8h.html#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a></div><div class="ttdeci">#define TP_ArrayView(Type)</div><div class="ttdef"><b>Definition</b> Array.h:30</div></div>
+<div class="ttc" id="aNumeric_8h_html_af14919785d1013bf520294d3eb1b26a8"><div class="ttname"><a href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a></div><div class="ttdeci">uint8_t tp_u8</div><div class="ttdef"><b>Definition</b> Numeric.h:38</div></div>
 <div class="ttc" id="aVariableType_8h_html_afe604b55602fa7e4e54f8b42e8470105"><div class="ttname"><a href="VariableType_8h.html#afe604b55602fa7e4e54f8b42e8470105">TP_Graphics_ShaderVar_GetSize</a></div><div class="ttdeci">size_t TP_Graphics_ShaderVar_GetSize(TP_Graphics_VariableType)</div></div>
-<div class="ttc" id="astructTP__Graphics__VariableType_html"><div class="ttname"><a href="structTP__Graphics__VariableType.html">TP_Graphics_VariableType</a></div><div class="ttdef"><b>Definition</b> VariableType.h:8</div></div>
-<div class="ttc" id="astructTP__Graphics__VariableType_html_aa92a6ea89ce13e4a400aaeae93cb5fff"><div class="ttname"><a href="structTP__Graphics__VariableType.html#aa92a6ea89ce13e4a400aaeae93cb5fff">TP_Graphics_VariableType::amount</a></div><div class="ttdeci">tp_u8 amount</div><div class="ttdef"><b>Definition</b> VariableType.h:10</div></div>
-<div class="ttc" id="astructTP__Graphics__VariableType_html_abdfad71256ac196dd3358d52ec9b2f10"><div class="ttname"><a href="structTP__Graphics__VariableType.html#abdfad71256ac196dd3358d52ec9b2f10">TP_Graphics_VariableType::baseType</a></div><div class="ttdeci">TP_Graphics_VariableBaseType baseType</div><div class="ttdef"><b>Definition</b> VariableType.h:9</div></div>
+<div class="ttc" id="astructTP__Graphics__VariableType_html"><div class="ttname"><a href="structTP__Graphics__VariableType.html">TP_Graphics_VariableType</a></div><div class="ttdef"><b>Definition</b> VariableType.h:12</div></div>
+<div class="ttc" id="astructTP__Graphics__VariableType_html_aa92a6ea89ce13e4a400aaeae93cb5fff"><div class="ttname"><a href="structTP__Graphics__VariableType.html#aa92a6ea89ce13e4a400aaeae93cb5fff">TP_Graphics_VariableType::amount</a></div><div class="ttdeci">tp_u8 amount</div><div class="ttdef"><b>Definition</b> VariableType.h:24</div></div>
+<div class="ttc" id="astructTP__Graphics__VariableType_html_abdfad71256ac196dd3358d52ec9b2f10"><div class="ttname"><a href="structTP__Graphics__VariableType.html#abdfad71256ac196dd3358d52ec9b2f10">TP_Graphics_VariableType::baseType</a></div><div class="ttdeci">TP_Graphics_VariableBaseType baseType</div><div class="ttdef"><b>Definition</b> VariableType.h:16</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_64f7452aef2cdad98d34a70f5ea329e2.html">Graphics</a></li><li class="navelem"><a href="dir_98a8826e5ade2c054fd1955b4a7e86a3.html">Interface</a></li><li class="navelem"><a href="dir_ef88305b69299824d2f7d6182fee7d2f.html">include</a></li><li class="navelem"><a href="dir_0e46d44a1d43457859fb717403074cc4.html">TeaPacket</a></li><li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="VariableType_8h.html">VariableType.h</a></li>
+    <li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="VariableType_8h.html">VariableType.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

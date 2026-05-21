@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: /github/workspace/Modules/Graphics/Interface/include/TeaPacket/Graphics/ShaderBuffer.h File Reference</title>
+<title>TeaPacket: Graphics/ShaderBuffer.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -94,6 +94,28 @@ $(function(){initNavTree('ShaderBuffer_8h.html','',''); });
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="ShaderBufferParams_8h_source.html">TeaPacket/Graphics/ShaderBufferParams.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Numeric_8h_source.html">TeaPacket/Types/Numeric.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for ShaderBuffer.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="ShaderBuffer_8h__incl.png" border="0" usemap="#aGraphics_2ShaderBuffer_8h" loading="lazy" alt=""/></div>
+<map name="aGraphics_2ShaderBuffer_8h" id="aGraphics_2ShaderBuffer_8h">
+<area shape="rect" title=" " alt="" coords="99,5,262,31"/>
+<area shape="rect" href="ShaderBufferParams_8h.html" title=" " alt="" coords="5,79,161,120"/>
+<area shape="poly" title=" " alt="" coords="167,33,121,71,117,67,164,29"/>
+<area shape="rect" href="Numeric_8h.html" title=" " alt="" coords="219,86,406,112"/>
+<area shape="poly" title=" " alt="" coords="202,29,280,76,278,80,199,34"/>
+<area shape="rect" title=" " alt="" coords="15,175,82,201"/>
+<area shape="poly" title=" " alt="" coords="78,121,61,162,56,160,73,119"/>
+<area shape="rect" href="Features_8h.html" title=" " alt="" coords="106,168,257,208"/>
+<area shape="poly" title=" " alt="" coords="296,115,225,161,222,157,293,110"/>
+<area shape="rect" title=" " alt="" coords="281,175,344,201"/>
+<area shape="poly" title=" " alt="" coords="315,113,315,159,310,159,310,113"/>
+<area shape="rect" title=" " alt="" coords="368,175,441,201"/>
+<area shape="poly" title=" " alt="" coords="327,111,382,162,379,166,323,115"/>
+<area shape="rect" title=" " alt="" coords="465,175,528,201"/>
+<area shape="poly" title=" " alt="" coords="339,110,458,166,456,171,337,115"/>
+</map>
+</div>
 </div>
 <p><a href="ShaderBuffer_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -143,6 +165,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a ShaderBuffer from the given parameters. </p><dl class="section return"><dt>Returns</dt><dd>The created ShaderBuffer </dd></dl>
 
 </div>
 </div>
@@ -160,6 +183,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Destroys a ShaderBuffer. </p>
 
 </div>
 </div>
@@ -177,6 +201,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Gets the size of a Shader Buffer's data. </p><dl class="section return"><dt>Returns</dt><dd>The size of the Shader Buffer's data, in bytes. </dd></dl>
 
 </div>
 </div>
@@ -208,6 +233,15 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Updates data in a Shader Buffer at a given position. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The beginning of the source data to send. </td></tr>
+    <tr><td class="paramname">length</td><td>The size of the source data to send. </td></tr>
+    <tr><td class="paramname">offset</td><td>The offset within the shader buffer to place this data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Warning</dt><dd>Sending data while a buffer is currently active or being drawn with is undefined behavior. Always send data to a buffer BEFORE drawing anything with it. </dd></dl>
 
 </div>
 </div>
@@ -229,6 +263,13 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Binds a ShaderBuffer to a slot to a shader.</p>
+<p>Slots correspond to the binding location of a ShaderBuffer in the shader language (i.e. the binding location of a uniform block in GLSL) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td>The slot to bind this buffer to. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -252,6 +293,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Whether or not the data sent to the GPU through a ShaderBuffer must be endian swapped.</p>
+<dl class="section warning"><dt>Warning</dt><dd>THIS MUST BE CHECKED AND ACCOUNTED FOR WHEN SENDING DATA TO A SHADERBUFFER! FAILURE TO DO SO WILL CAUSE ERRORS ON SOME PLATFORMS! </dd></dl>
 
 </div>
 </div>
@@ -268,7 +311,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_64f7452aef2cdad98d34a70f5ea329e2.html">Graphics</a></li><li class="navelem"><a href="dir_98a8826e5ade2c054fd1955b4a7e86a3.html">Interface</a></li><li class="navelem"><a href="dir_ef88305b69299824d2f7d6182fee7d2f.html">include</a></li><li class="navelem"><a href="dir_0e46d44a1d43457859fb717403074cc4.html">TeaPacket</a></li><li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="ShaderBuffer_8h.html">ShaderBuffer.h</a></li>
+    <li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="ShaderBuffer_8h.html">ShaderBuffer.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

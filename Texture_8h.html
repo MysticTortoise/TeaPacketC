@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: /github/workspace/Modules/Graphics/Interface/include/TeaPacket/Graphics/Texture/Texture.h File Reference</title>
+<title>TeaPacket: Graphics/Texture/Texture.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -93,6 +93,34 @@ $(function(){initNavTree('Texture_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="TextureParams_8h_source.html">TeaPacket/Graphics/Texture/TextureParams.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for Texture.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="Texture_8h__incl.png" border="0" usemap="#aGraphics_2Texture_2Texture_8h" loading="lazy" alt=""/></div>
+<map name="aGraphics_2Texture_2Texture_8h" id="aGraphics_2Texture_2Texture_8h">
+<area shape="rect" title=" " alt="" coords="346,5,523,31"/>
+<area shape="rect" href="TextureParams_8h.html" title=" " alt="" coords="349,79,520,120"/>
+<area shape="poly" title=" " alt="" coords="437,31,437,64,432,64,432,31"/>
+<area shape="rect" title=" " alt="" coords="5,168,173,208"/>
+<area shape="poly" title=" " alt="" coords="356,123,183,166,181,161,355,118"/>
+<area shape="rect" title=" " alt="" coords="197,168,341,208"/>
+<area shape="poly" title=" " alt="" coords="398,123,321,163,318,158,396,118"/>
+<area shape="rect" title=" " alt="" coords="364,168,504,208"/>
+<area shape="poly" title=" " alt="" coords="437,120,437,152,432,152,432,120"/>
+<area shape="rect" title=" " alt="" coords="529,168,673,208"/>
+<area shape="poly" title=" " alt="" coords="473,118,551,158,549,163,471,123"/>
+<area shape="rect" href="Numeric_8h.html" title=" " alt="" coords="697,175,884,201"/>
+<area shape="poly" title=" " alt="" coords="516,118,726,168,725,174,515,123"/>
+<area shape="rect" href="Features_8h.html" title=" " alt="" coords="537,256,689,297"/>
+<area shape="poly" title=" " alt="" coords="766,204,668,252,666,247,764,199"/>
+<area shape="rect" title=" " alt="" coords="712,264,775,290"/>
+<area shape="poly" title=" " alt="" coords="786,203,760,251,755,249,782,200"/>
+<area shape="rect" title=" " alt="" coords="799,264,872,290"/>
+<area shape="poly" title=" " alt="" coords="799,200,825,249,820,251,794,203"/>
+<area shape="rect" title=" " alt="" coords="896,264,959,290"/>
+<area shape="poly" title=" " alt="" coords="811,199,897,253,894,257,808,204"/>
+</map>
+</div>
 </div>
 <p><a href="Texture_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -140,6 +168,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a texture from a set of parameters. </p><dl class="section return"><dt>Returns</dt><dd>The created texture. </dd></dl>
 
 </div>
 </div>
@@ -157,6 +186,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Destroys a texture. </p>
 
 </div>
 </div>
@@ -174,6 +204,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Gets the format of a texture. </p><dl class="section return"><dt>Returns</dt><dd>The texture's format. </dd></dl>
 
 </div>
 </div>
@@ -191,6 +222,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Gets the height of a texture. </p><dl class="section return"><dt>Returns</dt><dd>The texture's height, in pixels. </dd></dl>
 
 </div>
 </div>
@@ -208,6 +240,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Gets the width of a texture. </p><dl class="section return"><dt>Returns</dt><dd>The texture's width, in pixels. </dd></dl>
 
 </div>
 </div>
@@ -225,6 +258,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Checks whether a Texture Format is supported by the current implementation. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>The format to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether the format is supported or not. </dd></dl>
 
 </div>
 </div>
@@ -246,6 +286,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Binds a texture to a slot. Slots correspond to location of a texture in GLSL. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">texture</td><td>The texture to bind. </td></tr>
+    <tr><td class="paramname">slot</td><td>The slot to bind the texture to. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -262,7 +309,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_64f7452aef2cdad98d34a70f5ea329e2.html">Graphics</a></li><li class="navelem"><a href="dir_98a8826e5ade2c054fd1955b4a7e86a3.html">Interface</a></li><li class="navelem"><a href="dir_ef88305b69299824d2f7d6182fee7d2f.html">include</a></li><li class="navelem"><a href="dir_0e46d44a1d43457859fb717403074cc4.html">TeaPacket</a></li><li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="dir_2cd0f0a5002192716cef0a6b7fbccf50.html">Texture</a></li><li class="navelem"><a href="Texture_8h.html">Texture.h</a></li>
+    <li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="dir_2cd0f0a5002192716cef0a6b7fbccf50.html">Texture</a></li><li class="navelem"><a href="Texture_8h.html">Texture.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

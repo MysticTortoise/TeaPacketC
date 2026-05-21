@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: /github/workspace/Modules/Window/Interface/include/TeaPacket/Window/Window.h File Reference</title>
+<title>TeaPacket: Window/Window.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -93,6 +93,32 @@ $(function(){initNavTree('Window_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="WindowParams_8h_source.html">TeaPacket/Window/WindowParams.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for Window.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="Window_8h__incl.png" border="0" usemap="#aWindow_2Window_8h" loading="lazy" alt=""/></div>
+<map name="aWindow_2Window_8h" id="aWindow_2Window_8h">
+<area shape="rect" title=" " alt="" coords="110,5,237,31"/>
+<area shape="rect" href="WindowParams_8h.html" title=" " alt="" coords="54,79,293,105"/>
+<area shape="poly" title=" " alt="" coords="176,31,176,63,171,63,171,31"/>
+<area shape="rect" href="Array_8h.html" title=" " alt="" coords="30,153,197,178"/>
+<area shape="poly" title=" " alt="" coords="166,107,136,142,131,139,162,103"/>
+<area shape="rect" href="Numeric_8h.html" title=" " alt="" coords="147,226,334,252"/>
+<area shape="poly" title=" " alt="" coords="184,104,212,152,235,211,230,212,207,154,180,106"/>
+<area shape="rect" title=" " alt="" coords="5,226,73,252"/>
+<area shape="poly" title=" " alt="" coords="103,181,64,218,60,214,99,177"/>
+<area shape="poly" title=" " alt="" coords="136,177,207,216,204,221,134,181"/>
+<area shape="rect" href="Features_8h.html" title=" " alt="" coords="34,300,185,341"/>
+<area shape="poly" title=" " alt="" coords="116,179,113,285,108,284,111,179"/>
+<area shape="poly" title=" " alt="" coords="222,255,156,294,153,290,219,250"/>
+<area shape="rect" title=" " alt="" coords="209,308,272,333"/>
+<area shape="poly" title=" " alt="" coords="243,252,243,292,238,292,238,252"/>
+<area shape="rect" title=" " alt="" coords="296,308,369,333"/>
+<area shape="poly" title=" " alt="" coords="256,250,309,295,305,299,253,254"/>
+<area shape="rect" title=" " alt="" coords="393,308,456,333"/>
+<area shape="poly" title=" " alt="" coords="271,250,383,298,385,298,383,303,381,302,269,255"/>
+</map>
+</div>
 </div>
 <p><a href="Window_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -148,6 +174,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a Window with the given parameters. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">params</td><td>The parameters to create the Window with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The created Window. </dd></dl>
 
 </div>
 </div>
@@ -165,6 +198,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Destroys a window. </p>
 
 </div>
 </div>
@@ -182,6 +216,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Gets a Window by its index. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index of the Window to get. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The Window with that index. </dd></dl>
 
 </div>
 </div>
@@ -199,6 +240,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Gets the current amount of Windows active. </p><dl class="section return"><dt>Returns</dt><dd>The amount of Windows currently active. </dd></dl>
 
 </div>
 </div>
@@ -233,6 +275,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Gets the title of a Window.</p>
+<p>The title of a Window typically appears on a bar above the Window itself. </p><dl class="section return"><dt>Returns</dt><dd>The title of the Window. </dd></dl>
 
 </div>
 </div>
@@ -301,6 +345,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Process all events relating to a Window. On many platforms, this is called by the System module. </p>
 
 </div>
 </div>
@@ -343,6 +388,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Sets a Window's title. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The new title of the Window. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -422,7 +473,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_7cf6de273bacbb83ea929e60009d025f.html">Window</a></li><li class="navelem"><a href="dir_a1560b1560024d4a0fbbd0fda9f58a42.html">Interface</a></li><li class="navelem"><a href="dir_bfd2b978ed2455e9abd4702bdf469d5f.html">include</a></li><li class="navelem"><a href="dir_f180c1a4cdf942cd6c4c247770867070.html">TeaPacket</a></li><li class="navelem"><a href="dir_c6b979dd895914534895bfe9f8102897.html">Window</a></li><li class="navelem"><a href="Window_8h.html">Window.h</a></li>
+    <li class="navelem"><a href="dir_c6b979dd895914534895bfe9f8102897.html">Window</a></li><li class="navelem"><a href="Window_8h.html">Window.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

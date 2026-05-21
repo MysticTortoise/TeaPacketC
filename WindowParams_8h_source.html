@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: /github/workspace/Modules/Window/Interface/include/TeaPacket/Window/WindowParams.h Source File</title>
+<title>TeaPacket: Window/WindowParams.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,49 +92,52 @@ $(function(){initNavTree('WindowParams_8h_source.html','',''); });
   <div class="headertitle"><div class="title">WindowParams.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="WindowParams_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef TEAPACKET_WINDOW_PARAMS_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define TEAPACKET_WINDOW_PARAMS_H</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="Array_8h.html">TeaPacket/Types/Array.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="Numeric_8h.html">TeaPacket/Types/Numeric.h</a>&quot;</span></div>
+<a href="WindowParams_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* Copyright (C) 2026 Kevin &quot;MysticTortoise&quot; Tessier */</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">/* This file contains all parameters used to create a Window.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef TEAPACKET_WINDOW_PARAMS_H</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define TEAPACKET_WINDOW_PARAMS_H</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structTP__Window__Params.html">   12</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structTP__Window__Params.html#af71c9a1dc843f18cfb12af5a35ff53b9">   14</a></span>    <a class="code hl_typedef" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> <a class="code hl_variable" href="structTP__Window__Params.html#af71c9a1dc843f18cfb12af5a35ff53b9">x</a>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structTP__Window__Params.html#abf2821c3c3d1699f4e86fca08e40c7f0">   15</a></span>    <a class="code hl_typedef" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> <a class="code hl_variable" href="structTP__Window__Params.html#abf2821c3c3d1699f4e86fca08e40c7f0">y</a>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structTP__Window__Params.html#af4bdb93c1f0710f23bbd251325aba137">   16</a></span>    <a class="code hl_typedef" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> <a class="code hl_variable" href="structTP__Window__Params.html#af4bdb93c1f0710f23bbd251325aba137">width</a>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structTP__Window__Params.html#afe2ce6bc9a4f662e6a2d82f5039e06a6">   17</a></span>    <a class="code hl_typedef" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> <a class="code hl_variable" href="structTP__Window__Params.html#afe2ce6bc9a4f662e6a2d82f5039e06a6">height</a>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structTP__Window__Params.html#a96c0355143774d36622c870abea48770">   19</a></span>    TP_StringView <a class="code hl_variable" href="structTP__Window__Params.html#a96c0355143774d36622c870abea48770">title</a>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>} <a class="code hl_struct" href="structTP__Window__Params.html">TP_Window_Params</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="Array_8h.html">TeaPacket/Types/Array.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="Numeric_8h.html">TeaPacket/Types/Numeric.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structTP__Window__Params.html">   15</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structTP__Window__Params.html#af71c9a1dc843f18cfb12af5a35ff53b9">   20</a></span>    <a class="code hl_typedef" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> <a class="code hl_variable" href="structTP__Window__Params.html#af71c9a1dc843f18cfb12af5a35ff53b9">x</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structTP__Window__Params.html#abf2821c3c3d1699f4e86fca08e40c7f0">   24</a></span>    <a class="code hl_typedef" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> <a class="code hl_variable" href="structTP__Window__Params.html#abf2821c3c3d1699f4e86fca08e40c7f0">y</a>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structTP__Window__Params.html#af4bdb93c1f0710f23bbd251325aba137">   28</a></span>    <a class="code hl_typedef" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> <a class="code hl_variable" href="structTP__Window__Params.html#af4bdb93c1f0710f23bbd251325aba137">width</a>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structTP__Window__Params.html#afe2ce6bc9a4f662e6a2d82f5039e06a6">   32</a></span>    <a class="code hl_typedef" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> <a class="code hl_variable" href="structTP__Window__Params.html#afe2ce6bc9a4f662e6a2d82f5039e06a6">height</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structTP__Window__Params.html#a96c0355143774d36622c870abea48770">   37</a></span>    TP_StringView <a class="code hl_variable" href="structTP__Window__Params.html#a96c0355143774d36622c870abea48770">title</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>} <a class="code hl_struct" href="structTP__Window__Params.html">TP_Window_Params</a>;</div>
 </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aArray_8h_html"><div class="ttname"><a href="Array_8h.html">Array.h</a></div></div>
 <div class="ttc" id="aNumeric_8h_html"><div class="ttname"><a href="Numeric_8h.html">Numeric.h</a></div></div>
-<div class="ttc" id="aNumeric_8h_html_a031720b1155047e9fb121d96567d01b6"><div class="ttname"><a href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a></div><div class="ttdeci">uint16_t tp_u16</div><div class="ttdef"><b>Definition</b> Numeric.h:29</div></div>
-<div class="ttc" id="astructTP__Window__Params_html"><div class="ttname"><a href="structTP__Window__Params.html">TP_Window_Params</a></div><div class="ttdef"><b>Definition</b> WindowParams.h:13</div></div>
-<div class="ttc" id="astructTP__Window__Params_html_a96c0355143774d36622c870abea48770"><div class="ttname"><a href="structTP__Window__Params.html#a96c0355143774d36622c870abea48770">TP_Window_Params::title</a></div><div class="ttdeci">TP_StringView title</div><div class="ttdef"><b>Definition</b> WindowParams.h:19</div></div>
-<div class="ttc" id="astructTP__Window__Params_html_abf2821c3c3d1699f4e86fca08e40c7f0"><div class="ttname"><a href="structTP__Window__Params.html#abf2821c3c3d1699f4e86fca08e40c7f0">TP_Window_Params::y</a></div><div class="ttdeci">tp_u16 y</div><div class="ttdef"><b>Definition</b> WindowParams.h:15</div></div>
-<div class="ttc" id="astructTP__Window__Params_html_af4bdb93c1f0710f23bbd251325aba137"><div class="ttname"><a href="structTP__Window__Params.html#af4bdb93c1f0710f23bbd251325aba137">TP_Window_Params::width</a></div><div class="ttdeci">tp_u16 width</div><div class="ttdef"><b>Definition</b> WindowParams.h:16</div></div>
-<div class="ttc" id="astructTP__Window__Params_html_af71c9a1dc843f18cfb12af5a35ff53b9"><div class="ttname"><a href="structTP__Window__Params.html#af71c9a1dc843f18cfb12af5a35ff53b9">TP_Window_Params::x</a></div><div class="ttdeci">tp_u16 x</div><div class="ttdef"><b>Definition</b> WindowParams.h:14</div></div>
-<div class="ttc" id="astructTP__Window__Params_html_afe2ce6bc9a4f662e6a2d82f5039e06a6"><div class="ttname"><a href="structTP__Window__Params.html#afe2ce6bc9a4f662e6a2d82f5039e06a6">TP_Window_Params::height</a></div><div class="ttdeci">tp_u16 height</div><div class="ttdef"><b>Definition</b> WindowParams.h:17</div></div>
+<div class="ttc" id="aNumeric_8h_html_a031720b1155047e9fb121d96567d01b6"><div class="ttname"><a href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a></div><div class="ttdeci">uint16_t tp_u16</div><div class="ttdef"><b>Definition</b> Numeric.h:42</div></div>
+<div class="ttc" id="astructTP__Window__Params_html"><div class="ttname"><a href="structTP__Window__Params.html">TP_Window_Params</a></div><div class="ttdef"><b>Definition</b> WindowParams.h:16</div></div>
+<div class="ttc" id="astructTP__Window__Params_html_a96c0355143774d36622c870abea48770"><div class="ttname"><a href="structTP__Window__Params.html#a96c0355143774d36622c870abea48770">TP_Window_Params::title</a></div><div class="ttdeci">TP_StringView title</div><div class="ttdef"><b>Definition</b> WindowParams.h:37</div></div>
+<div class="ttc" id="astructTP__Window__Params_html_abf2821c3c3d1699f4e86fca08e40c7f0"><div class="ttname"><a href="structTP__Window__Params.html#abf2821c3c3d1699f4e86fca08e40c7f0">TP_Window_Params::y</a></div><div class="ttdeci">tp_u16 y</div><div class="ttdef"><b>Definition</b> WindowParams.h:24</div></div>
+<div class="ttc" id="astructTP__Window__Params_html_af4bdb93c1f0710f23bbd251325aba137"><div class="ttname"><a href="structTP__Window__Params.html#af4bdb93c1f0710f23bbd251325aba137">TP_Window_Params::width</a></div><div class="ttdeci">tp_u16 width</div><div class="ttdef"><b>Definition</b> WindowParams.h:28</div></div>
+<div class="ttc" id="astructTP__Window__Params_html_af71c9a1dc843f18cfb12af5a35ff53b9"><div class="ttname"><a href="structTP__Window__Params.html#af71c9a1dc843f18cfb12af5a35ff53b9">TP_Window_Params::x</a></div><div class="ttdeci">tp_u16 x</div><div class="ttdef"><b>Definition</b> WindowParams.h:20</div></div>
+<div class="ttc" id="astructTP__Window__Params_html_afe2ce6bc9a4f662e6a2d82f5039e06a6"><div class="ttname"><a href="structTP__Window__Params.html#afe2ce6bc9a4f662e6a2d82f5039e06a6">TP_Window_Params::height</a></div><div class="ttdeci">tp_u16 height</div><div class="ttdef"><b>Definition</b> WindowParams.h:32</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_7cf6de273bacbb83ea929e60009d025f.html">Window</a></li><li class="navelem"><a href="dir_a1560b1560024d4a0fbbd0fda9f58a42.html">Interface</a></li><li class="navelem"><a href="dir_bfd2b978ed2455e9abd4702bdf469d5f.html">include</a></li><li class="navelem"><a href="dir_f180c1a4cdf942cd6c4c247770867070.html">TeaPacket</a></li><li class="navelem"><a href="dir_c6b979dd895914534895bfe9f8102897.html">Window</a></li><li class="navelem"><a href="WindowParams_8h.html">WindowParams.h</a></li>
+    <li class="navelem"><a href="dir_c6b979dd895914534895bfe9f8102897.html">Window</a></li><li class="navelem"><a href="WindowParams_8h.html">WindowParams.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

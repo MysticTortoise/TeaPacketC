@@ -1,0 +1,11 @@
+<map id="Graphics/VariableType.h" name="Graphics/VariableType.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="102,5,265,31"/>
+<area shape="rect" id="Node000002" href="$MeshParams_8h.html" title=" " alt="" coords="5,79,170,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,43,105,81,102,76,154,38"/>
+<area shape="rect" id="Node000004" href="$ShaderParams_8h.html" title=" " alt="" coords="194,79,368,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="214,38,266,76,263,81,211,43"/>
+<area shape="rect" id="Node000003" href="$Mesh_8h.html" title=" " alt="" coords="28,153,147,178"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="90,120,90,152,85,152,85,120"/>
+<area shape="rect" id="Node000005" href="$Shader_8h.html" title=" " alt="" coords="217,153,345,178"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="284,120,284,152,278,152,278,120"/>
+</map>

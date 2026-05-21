@@ -1,6 +1,14 @@
 var Numeric_8h =
 [
     [ "tp_false", "Numeric_8h.html#a6f76e3485c1d4889537996084d3234fc", null ],
+    [ "TP_MAX_I64", "Numeric_8h.html#a9cfe7894221729820809fd84870b10db", null ],
+    [ "TP_MAX_U64", "Numeric_8h.html#abc913c46dae7ad4ad6454534f8f4857f", null ],
+    [ "TP_MAXI16", "Numeric_8h.html#a7b546fcb18345c1f5ff545d21f1cad44", null ],
+    [ "TP_MAXI32", "Numeric_8h.html#a51374c07386d2ee572244cf8ea53edeb", null ],
+    [ "TP_MAXI8", "Numeric_8h.html#aa22045757cf380df476f45e4f6f7d84f", null ],
+    [ "TP_MAXU16", "Numeric_8h.html#a340ee2a642711ec5091ba436c5b92aaa", null ],
+    [ "TP_MAXU32", "Numeric_8h.html#a3ace5611926ab37187ba297eb3bedc75", null ],
+    [ "TP_MAXU8", "Numeric_8h.html#afabe6c80219790c3d139bb2e9af90583", null ],
     [ "TP_SUPPORT_I16", "Numeric_8h.html#ac8246a9218c744d1d273c8fdceb0c826", null ],
     [ "TP_SUPPORT_I32", "Numeric_8h.html#aff1b624977ecd387c1564d0dbe90c132", null ],
     [ "TP_SUPPORT_I64", "Numeric_8h.html#a4de394086ad8831ace448082fdb4fd7a", null ],
