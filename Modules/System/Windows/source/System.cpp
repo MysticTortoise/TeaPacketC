@@ -1,3 +1,4 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/System/System.h"
 
 #include "TeaPacket/Window/PlatformWindow.hpp"

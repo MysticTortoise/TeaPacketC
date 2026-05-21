@@ -1,4 +1,5 @@
-#include "../../Interface/include/TeaPacket/Graphics/Shader.h"
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
+#include "TeaPacket/Graphics/Shader.h"
 
 #include <vector>
 
@@ -6,12 +7,10 @@
 #include <wrl/client.h>
 
 #include "TeaPacket/Graphics/PlatformShader.hpp"
-#include "TeaPacket/Graphics/WindowsGraphics.hpp"
-
 #include "TeaPacket/Graphics/ShaderParams.h"
-#include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
-
+#include "TeaPacket/Graphics/WindowsGraphics.hpp"
 #include "TeaPacket/Logging/Logging.h"
+#include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 
 using namespace TeaPacket::Graphics::D3D11;
 
@@ -23,45 +22,44 @@ static constexpr DXGI_FORMAT GetDXGIFormatFromVertexAttribute(const TP_Graphics_
     case 1:
         switch (shaderVarType.baseType)
         {
-    case TP_Graphics_VariableBaseType_Float:     return DXGI_FORMAT_R32_FLOAT;
-    case TP_Graphics_VariableBaseType_Int:       return DXGI_FORMAT_R32_SINT;
-    case TP_Graphics_VariableBaseType_UInt:      return DXGI_FORMAT_R32_UINT;
-    case TP_Graphics_VariableBaseType_None:
-    default:
+        case TP_Graphics_VariableBaseType_Float: return DXGI_FORMAT_R32_FLOAT;
+        case TP_Graphics_VariableBaseType_Int: return DXGI_FORMAT_R32_SINT;
+        case TP_Graphics_VariableBaseType_UInt: return DXGI_FORMAT_R32_UINT;
+        case TP_Graphics_VariableBaseType_None:
+        default:
             return DXGI_FORMAT_UNKNOWN;
         }
         break;
     case 2:
         switch (shaderVarType.baseType)
         {
-    case TP_Graphics_VariableBaseType_Float: return DXGI_FORMAT_R32G32_FLOAT;
-    case TP_Graphics_VariableBaseType_Int: return DXGI_FORMAT_R32G32_SINT;
-    case TP_Graphics_VariableBaseType_UInt: return DXGI_FORMAT_R32G32_UINT;
-    case TP_Graphics_VariableBaseType_None:
-    default:
+        case TP_Graphics_VariableBaseType_Float: return DXGI_FORMAT_R32G32_FLOAT;
+        case TP_Graphics_VariableBaseType_Int: return DXGI_FORMAT_R32G32_SINT;
+        case TP_Graphics_VariableBaseType_UInt: return DXGI_FORMAT_R32G32_UINT;
+        case TP_Graphics_VariableBaseType_None:
+        default:
             return DXGI_FORMAT_UNKNOWN;
-
         }
         break;
     case 3:
         switch (shaderVarType.baseType)
         {
-    case TP_Graphics_VariableBaseType_Float: return DXGI_FORMAT_R32G32B32_FLOAT;
-    case TP_Graphics_VariableBaseType_Int: return DXGI_FORMAT_R32G32B32_SINT;
-    case TP_Graphics_VariableBaseType_UInt: return DXGI_FORMAT_R32G32B32_UINT;
-    case TP_Graphics_VariableBaseType_None:
-    default:
+        case TP_Graphics_VariableBaseType_Float: return DXGI_FORMAT_R32G32B32_FLOAT;
+        case TP_Graphics_VariableBaseType_Int: return DXGI_FORMAT_R32G32B32_SINT;
+        case TP_Graphics_VariableBaseType_UInt: return DXGI_FORMAT_R32G32B32_UINT;
+        case TP_Graphics_VariableBaseType_None:
+        default:
             return DXGI_FORMAT_UNKNOWN;
         }
         break;
     case 4:
         switch (shaderVarType.baseType)
         {
-    case TP_Graphics_VariableBaseType_Float: return DXGI_FORMAT_R32G32B32A32_FLOAT;
-    case TP_Graphics_VariableBaseType_Int: return DXGI_FORMAT_R32G32B32A32_SINT;
-    case TP_Graphics_VariableBaseType_UInt: return DXGI_FORMAT_R32G32B32A32_UINT;
-    case TP_Graphics_VariableBaseType_None:
-    default:
+        case TP_Graphics_VariableBaseType_Float: return DXGI_FORMAT_R32G32B32A32_FLOAT;
+        case TP_Graphics_VariableBaseType_Int: return DXGI_FORMAT_R32G32B32A32_SINT;
+        case TP_Graphics_VariableBaseType_UInt: return DXGI_FORMAT_R32G32B32A32_UINT;
+        case TP_Graphics_VariableBaseType_None:
+        default:
             return DXGI_FORMAT_UNKNOWN;
         }
         break;
@@ -82,7 +80,7 @@ TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* pa
         "main", "vs_5_0",
         D3D10_SHADER_ENABLE_STRICTNESS, 0,
         vertexShaderBuffer.GetAddressOf(), errorMessage.GetAddressOf()
-        );
+    );
     // Check Vertex Shader Compilation for errors
     if (FAILED(result))
     {
@@ -99,7 +97,6 @@ TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* pa
     }
 
 
-
     Microsoft::WRL::ComPtr<ID3D10Blob> pixelShaderBuffer;
     // Compile Pixel Shader
     result =
@@ -109,7 +106,7 @@ TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* pa
             "main", "ps_5_0",
             D3D10_SHADER_ENABLE_STRICTNESS, 0,
             pixelShaderBuffer.GetAddressOf(), errorMessage.GetAddressOf()
-            );
+        );
     // Check Pixel Shader for errors
     if (FAILED(result))
     {
@@ -132,13 +129,13 @@ TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* pa
         device->CreateVertexShader(
             vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(),
             nullptr, shader->vertexShader.GetAddressOf()
-            ));
+        ));
 
     CheckErrorWinCom(
         device->CreatePixelShader(
             pixelShaderBuffer->GetBufferPointer(), pixelShaderBuffer->GetBufferSize(),
             nullptr, shader->pixelShader.GetAddressOf()
-    ));
+        ));
     // Setup input variables
     std::vector<D3D11_INPUT_ELEMENT_DESC> polygonLayout;
     polygonLayout.reserve(params->inputAttributes.size);
@@ -157,9 +154,9 @@ TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* pa
 
     CheckErrorWinCom(
         device->CreateInputLayout(polygonLayout.data(), static_cast<UINT>(params->inputAttributes.size),
-            vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(),
-            shader->inputLayout.GetAddressOf()
-            ));
+                                  vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(),
+                                  shader->inputLayout.GetAddressOf()
+        ));
 
     return shader;
 }

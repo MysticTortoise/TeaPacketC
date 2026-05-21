@@ -1,3 +1,4 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Graphics/ShaderBuffer.h"
 
 #include <cassert>
@@ -5,8 +6,8 @@
 
 #include <memory>
 
-#include "TeaPacket/Graphics/ShaderBufferParams.h"
 #include "TeaPacket/Graphics/PlatformUniformBuffer.hpp"
+#include "TeaPacket/Graphics/ShaderBufferParams.h"
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
 #include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 
@@ -45,11 +46,12 @@ TP_Graphics_ShaderBuffer* TP_Graphics_ShaderBuffer_Create(const TP_Graphics_Shad
     return buffer;
 }
 
-void TP_Graphics_ShaderBuffer_SendData(TP_Graphics_ShaderBuffer* const buffer, const void* data, const size_t length, size_t offset)
+void TP_Graphics_ShaderBuffer_SendData(TP_Graphics_ShaderBuffer* const buffer, const void* data, const size_t length,
+                                       size_t offset)
 {
     ID3D11Buffer* bufferPtr = buffer->cbuffer.Get();
     D3D11_MAPPED_SUBRESOURCE mappedResource;
-    CheckErrorWinCom( deviceContext->Map(
+    CheckErrorWinCom(deviceContext->Map(
         bufferPtr,
         0,
         D3D11_MAP_WRITE_DISCARD,
@@ -78,4 +80,3 @@ size_t TP_Graphics_ShaderBuffer_GetSize(TP_Graphics_ShaderBuffer* const buffer)
 {
     return buffer->size;
 }
-

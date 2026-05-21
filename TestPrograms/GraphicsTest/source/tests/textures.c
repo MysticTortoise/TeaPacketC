@@ -8,7 +8,7 @@
 #include "TeaPacket/Graphics/Texture/Texture.h"
 
 
-#include "TeaPacket/Assets/ReadAsset.h"
+#include "TeaPacket/Assets/Assets.h"
 #include "TeaPacket/Memory/Memory.h"
 
 #include <assert.h>

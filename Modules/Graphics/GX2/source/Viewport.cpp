@@ -1,3 +1,4 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Graphics/Viewport.h"
 #include "TeaPacket/Graphics/Graphics.h"
 
@@ -126,13 +127,12 @@ void TP_Graphics_Viewport_BeginRender(TP_Graphics_Viewport* viewport)
     activeViewport = viewport;
     GX2SetColorBuffer(&viewport->colorBuffer, GX2_RENDER_TARGET_0);
     GX2SetDepthBuffer(&viewport->depthBuffer);
-    GX2SetViewport(0, 0,TP_Graphics_Viewport_GetWidth(viewport),TP_Graphics_Viewport_GetHeight(viewport),0.0f, 1.0f);
-    GX2SetScissor(0, 0, TP_Graphics_Viewport_GetWidth(viewport),TP_Graphics_Viewport_GetHeight(viewport));
+    GX2SetViewport(0, 0, TP_Graphics_Viewport_GetWidth(viewport), TP_Graphics_Viewport_GetHeight(viewport), 0.0f, 1.0f);
+    GX2SetScissor(0, 0, TP_Graphics_Viewport_GetWidth(viewport), TP_Graphics_Viewport_GetHeight(viewport));
 }
 
-void TP_Graphics_Viewport_FinishRender(TP_Graphics_Viewport* viewport)
+void TP_Graphics_Viewport_FinishRender()
 {
-    (void)viewport;
     activeViewport = nullptr;
 }
 
@@ -146,17 +146,20 @@ tp_u16 TP_Graphics_Viewport_GetHeight(TP_Graphics_Viewport* viewport)
     return viewport->colorBuffer.surface.height;
 }
 
-constexpr float CharTo1Factor = 1.0f/255.0f;
+constexpr float CharTo1Factor = 1.0f / 255.0f;
 
 void TP_Graphics_ClearColor(const tp_u8 r, const tp_u8 g, const tp_u8 b)
 {
     assert(activeViewport != nullptr);
     GX2ClearColor(&activeViewport->colorBuffer,
-        r * CharTo1Factor, g * CharTo1Factor, b * CharTo1Factor, 1.0f);
+                  static_cast<float>(r) * CharTo1Factor,
+                  static_cast<float>(g) * CharTo1Factor,
+                  static_cast<float>(b) * CharTo1Factor,
+                  1.0f);
     GX2ClearDepthStencilEx(&activeViewport->depthBuffer,
-        activeViewport->depthBuffer.depthClear,
-        activeViewport->depthBuffer.stencilClear,
-        GX2_CLEAR_FLAGS_DEPTH | GX2_CLEAR_FLAGS_STENCIL);
+                           activeViewport->depthBuffer.depthClear,
+                           activeViewport->depthBuffer.stencilClear,
+                           GX2_CLEAR_FLAGS_DEPTH | GX2_CLEAR_FLAGS_STENCIL);
 }
 
 

@@ -1,12 +1,12 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
+
 #include "GraphicsHeap/GraphicsHeap.hpp"
 
-#include <stdexcept>
-
-#include <proc_ui/procui.h>
 
 #include <coreinit/memexpheap.h>
 #include <coreinit/memfrmheap.h>
 #include <coreinit/memheap.h>
+#include <proc_ui/procui.h>
 
 using namespace TeaPacket::Graphics::GX2;
 using namespace TeaPacket::Graphics::GX2::_impl;
@@ -24,25 +24,25 @@ static uint32_t InitializeBuckets([[maybe_unused]] void* context)
 
     if (!MEMRecordStateForFrmHeap(heap, GFX_FRAME_HEAP_TAG))
     {
-        throw std::runtime_error("MEMRecordStateForFrmHeap failed");
+        return 1;
     }
 
     uint32_t size = MEMGetAllocatableSizeForFrmHeapEx(heap, 4);
     if (!size)
     {
-        throw std::runtime_error("MEMGetAllocatableSizeForFrmHeapEx failed");
+        return 1;
     }
 
     void* base = MEMAllocFromFrmHeapEx(heap, size, 4);
     if (!base)
     {
-        throw std::runtime_error("MEMGetAllocatableSizeForFrmHeapEx failed");
+        return 1;
     }
 
     GfxHeapMEM1 = MEMCreateExpHeapEx(base, size, 0);
     if (!GfxHeapMEM1)
     {
-        throw std::runtime_error("MEMCreateExpHeapEx failed");
+        return 1;
     }
 
 
@@ -52,17 +52,17 @@ static uint32_t InitializeBuckets([[maybe_unused]] void* context)
 
     size = MEMGetAllocatableSizeForFrmHeapEx(heap, 4);
     if (!size) {
-        throw std::runtime_error("MEMGetAllocatableSizeForFrmHeapEx failed");
+        return 1;
     }
 
     base = MEMAllocFromFrmHeapEx(heap, size, 4);
     if (!base) {
-        throw std::runtime_error("MEMAllocFromFrmHeapEx failed");
+        return 1;
     }
 
     GfxHeapForeground = MEMCreateExpHeapEx(base, size, 0);
     if (!GfxHeapForeground) {
-        throw std::runtime_error("MEMCreateExpHeapEx failed");
+        return 1;
     }
     return 0;
 }
@@ -80,7 +80,10 @@ static uint32_t FreeBuckets([[maybe_unused]] void* context)
         MEMDestroyExpHeap(GfxHeapMEM1);
         GfxHeapMEM1 = nullptr;
     }
-    MEMFreeByStateToFrmHeap(heap, GFX_FRAME_HEAP_TAG);
+    if (!MEMFreeByStateToFrmHeap(heap, GFX_FRAME_HEAP_TAG))
+    {
+        return 1;
+    };
 
     heap = MEMGetBaseHeapHandle(MEM_BASE_HEAP_FG);
     if (GfxHeapForeground)

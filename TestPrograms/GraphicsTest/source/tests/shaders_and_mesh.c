@@ -6,7 +6,7 @@
 #include "TeaPacket/Graphics/Mesh.h"
 #include "TeaPacket/Graphics/Shader.h"
 
-#include "TeaPacket/Assets/ReadAsset.h"
+#include "TeaPacket/Assets/Assets.h"
 #include "TeaPacket/Memory/Memory.h"
 
 #include <assert.h>

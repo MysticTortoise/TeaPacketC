@@ -23,7 +23,7 @@ add_library(TeaPacket_Graphics_Direct3D11 STATIC ${sources})
 
 include("${TEAPACKET_ROOT}/Generators/EnumMapGen/Functions.CMake")
 
-TP_EnumMapGen("${CMAKE_CURRENT_SOURCE_DIR}/generators/Texture.gmap" TeaPacket_Graphics_Direct3D11)
+TP_EnumMapGen("${CMAKE_CURRENT_SOURCE_DIR}/generators/TextureFormat.gmap" TeaPacket_Graphics_Direct3D11)
 TP_EnumMapGen("${CMAKE_CURRENT_SOURCE_DIR}/generators/TextureFilter.gmap" TeaPacket_Graphics_Direct3D11)
 TP_EnumMapGen("${CMAKE_CURRENT_SOURCE_DIR}/generators/TextureWrap.gmap" TeaPacket_Graphics_Direct3D11)
 

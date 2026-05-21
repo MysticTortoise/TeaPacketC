@@ -1,17 +1,20 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Graphics/Texture/Texture.h"
 
-#include <d3d11.h>
 #include <cassert>
 
-#include "TeaPacket/Graphics/Util/TextureFormatBits.h"
+#include <d3d11.h>
+
 #include "TeaPacket/Graphics/PlatformTexture.hpp"
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
-#include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 #include "TeaPacket/Graphics/D3D11/D3D11TextureFilter.gen"
-#include "TeaPacket/Graphics/D3D11/D3D11TextureWrap.gen"
 #include "TeaPacket/Graphics/D3D11/D3D11TextureFormat.gen"
-#include "TeaPacket/MacroUtils/StructUtils.hpp"
+#include "TeaPacket/Graphics/D3D11/D3D11TextureWrap.gen"
+#include "TeaPacket/Graphics/Util/TextureFormatBits.h"
+#include "TeaPacket/MacroUtils/StructUtils.h"
+#include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 
+using namespace TeaPacket::Graphics;
 using namespace TeaPacket::Graphics::D3D11;
 
 static constexpr D3D11_USAGE GetD3DUsage(const TP_Graphics_TextureUseFlags flags)

@@ -1,6 +1,9 @@
 #pragma once
 #include <stdint.h>
 
+/* File created by Crementif and Exzap as part of the CafeGLSL project.
+     Thanks!*/
+
 #if defined(__WUT__) || defined(__WIIU__)
 #include <gx2/shaders.h>
 #include <coreinit/dynload.h>

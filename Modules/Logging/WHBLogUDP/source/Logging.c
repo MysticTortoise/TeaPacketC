@@ -1,3 +1,4 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Logging/Logging.h"
 
 #include <string.h>
@@ -31,4 +32,4 @@ void TP_LogString(const TP_StringView view)
     TP_MemFree(b);
 }
 
-#include "TeaPacket/Logging/AutoLoggingFuncs.h"
+#include "TeaPacket/Logging/AutoLoggingFuncs.inc"

@@ -1,0 +1,1 @@
+This implementation of the Random module that uses C++'s standard random library.

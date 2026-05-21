@@ -1,6 +1,5 @@
-#include "../../Interface/include/TeaPacket/Graphics/VariableType.h"
-
-#include <stdexcept>
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
+#include "TeaPacket/Graphics/VariableType.h"
 
 #include "DirectXMath.h"
 

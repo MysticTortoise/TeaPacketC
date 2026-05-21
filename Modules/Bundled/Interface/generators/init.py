@@ -1,5 +1,9 @@
 import os
 
+# Copyright (C) 2026 Kevin "MysticTortoise" Tessier
+
+# Python script to generate the headers included in the "Bundled" Module Interface
+
 os.chdir(os.path.dirname(os.getcwd()))
 print(os.getcwd())
 
@@ -11,13 +15,14 @@ with open("generators/InitModuleList.txt", "r") as infile:
 
 with open("include/TeaPacket/Bundled/Init.h", "w") as outfile:
     outfile.write("#include \"TeaPacket/Types/Numeric.h\"\n")
+    outfile.write("#include \"TeaPacket/MacroUtils/Features.h\"\n")
 
     for module in modules:
         outfile.write(f"#ifdef TeaPacket_{module}_Implemented\n")
         outfile.write(f"#include \"TeaPacket/{module}/{module}.h\"\n")
         outfile.write("#endif\n")
 
-    outfile.write("\n\nstatic tp_bool TP_Bundled_Init(void) {\n\n")
+    outfile.write("\n\nTP_INLINE_FUNC tp_bool TP_Bundled_Init(void) {\n\n")
 
     for module in modules:
         outfile.write(f"\t#ifdef TeaPacket_{module}_Implemented\n")

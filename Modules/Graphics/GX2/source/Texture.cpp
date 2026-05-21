@@ -1,16 +1,17 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Graphics/Texture/Texture.h"
 #include "TeaPacket/Graphics/PlatformTexture.hpp"
 
-#include <gx2/texture.h>
+#include <cstdlib>
+
 #include <gx2/mem.h>
+#include <gx2/texture.h>
 #include <gx2/utils.h>
 
 #include "CafeGLSL/CafeGLSLCompiler.hpp"
-#include "GraphicsHeap/MEM2Resource.hpp"
-#include <stdexcept>
+#include "TeaPacket/Graphics/GX2/GX2TextureFilter.gen"
 #include "TeaPacket/Graphics/GX2/GX2TextureFormat.gen"
 #include "TeaPacket/Graphics/GX2/GX2TextureWrap.gen"
-#include "TeaPacket/Graphics/GX2/GX2TextureFilter.gen"
 
 #include "TeaPacket/Graphics/Util/TextureFormatBits.h"
 
@@ -57,9 +58,9 @@ TP_Graphics_Texture* TP_Graphics_Texture_Create(const TP_Graphics_TextureParams*
             TP_Graphics_Texture_FilterModeToGX2(params->filterMode));
     }
 
-    texture->gx2Texture.surface.image = MEMAllocFromDefaultHeapEx(
-            texture->gx2Texture.surface.imageSize,
-            static_cast<int>(texture->gx2Texture.surface.alignment));
+    texture->gx2Texture.surface.image = std::aligned_alloc(
+        texture->gx2Texture.surface.alignment,
+        texture->gx2Texture.surface.imageSize);
 
     if (params->data != nullptr)
     {
@@ -102,6 +103,7 @@ TP_Graphics_Texture_Format TP_Graphics_Texture_GetFormat(TP_Graphics_Texture* te
 
 void TP_Graphics_Texture_Destroy(TP_Graphics_Texture* texture)
 {
+    std::free(texture->gx2Texture.surface.image);
     delete texture;
 }
 

@@ -1,8 +1,10 @@
 #pragma once
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 
-#include "winerror.h"
-#include "comdef.h"
 #include <stdexcept>
+
+#include "comdef.h"
+#include "winerror.h"
 
 inline void CheckErrorWinCom(HRESULT result)
 {

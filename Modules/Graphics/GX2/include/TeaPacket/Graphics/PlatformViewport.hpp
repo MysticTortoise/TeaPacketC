@@ -1,7 +1,9 @@
 #pragma once
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
+
+#include <gx2/surface.h>
 
 #include <GraphicsHeap/DisposableForegroundResource.hpp>
-#include <gx2/surface.h>
 
 struct TP_Graphics_Viewport
 {

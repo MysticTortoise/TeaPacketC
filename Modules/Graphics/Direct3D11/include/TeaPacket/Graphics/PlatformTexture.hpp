@@ -1,11 +1,12 @@
 #pragma once
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 
-#include "wrl/client.h"
 #include <d3d11.h>
+#include <wrl/client.h>
 
-#include "TeaPacket/Types/Numeric.h"
 #include "TeaPacket/Graphics/Texture/Format.h"
 #include "TeaPacket/Graphics/Texture/TextureParams.h"
+#include "TeaPacket/Types/Numeric.h"
 
 
 struct TP_Graphics_Texture
@@ -27,6 +28,4 @@ namespace TeaPacket::Graphics::D3D11
     };
 
     TP_Graphics_Texture* MakeTexture(const TP_Graphics_TextureParams* params, DTextureParms dparams);
-
-
 }

@@ -1,14 +1,20 @@
 #pragma once
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 
 #include <cstdint>
 #include <functional>
 
-#include "GraphicsHeap.hpp"
+#include "GraphicsHeap/GraphicsHeap.hpp"
 
 
 namespace TeaPacket::Graphics::GX2
 {
     enum class ForegroundBucket : bool;
+
+    /**
+     * A class that automatically manages a piece of memory that gets deleted and re-allocated when the foreground is lost.
+     * Initialize must be called for this class to work properly.
+     */
     class DisposableForegroundMemResource
     {
     private:
@@ -19,14 +25,14 @@ namespace TeaPacket::Graphics::GX2
 
         static uint32_t Allocate(void* resource);
         static uint32_t Deallocate(void* resource);
-    
+
     public:
         void* data;
 
         bool Initialize(ForegroundBucket bucket, uint32_t size, int alignment,
-            const decltype(setupFunction)& setupFunction = nullptr);
+                        const decltype(setupFunction)& setupFunction = nullptr);
 
-        
+
         DisposableForegroundMemResource& operator=(const DisposableForegroundMemResource&) = delete;
         //DisposableForegroundMemResource& operator=(DisposableForegroundMemResource&&) = delete;
         DisposableForegroundMemResource(const DisposableForegroundMemResource&) = delete;
@@ -38,7 +44,9 @@ namespace TeaPacket::Graphics::GX2
             size(0),
             alignment(0),
             data(nullptr)
-        {}
+        {
+        }
+
         ~DisposableForegroundMemResource();
 
         // Getters

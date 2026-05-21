@@ -3,7 +3,6 @@ project(TeaPacket_Assets_Base)
 
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonFunctions.CMake")
 
-
 TP_add_interface_subdirectory(Types)
 
 include("${TEAPACKET_ROOT}/CMakeCommons/InterfaceCommon.CMake")

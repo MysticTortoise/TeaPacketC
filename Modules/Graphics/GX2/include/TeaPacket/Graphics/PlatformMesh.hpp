@@ -1,8 +1,9 @@
 #pragma once
-
-#include <gx2r/buffer.h>
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 
 #include <vector>
+
+#include <gx2r/buffer.h>
 
 #include "TeaPacket/Graphics/VariableType.h"
 

@@ -65,6 +65,17 @@ void CALLBACK OnDeviceEnumerated(
             if (i.Get() == device)
             {
                 i = nullptr;
+
+                size_t toResize = connectedDevices_v.size();
+                for (size_t j = connectedDevices_v.size(); j > 0; j--)
+                {
+                    if (connectedDevices_v.at(j) == nullptr)
+                        toResize--;
+                    else
+                        break;
+                }
+                if (toResize != connectedDevices_v.size())
+                    connectedDevices_v.resize(toResize);
                 return;
             }
         }
@@ -307,10 +318,10 @@ TP_String TP_Input_GetControllerName(TP_Input_Slot slot)
     std::shared_lock lock(publicDevices_m);
     if (!SUCCEEDED(publicDevices_v[slot]->GetDeviceInfo(&info)))
     {
-        const TP_String str = {static_cast<char*>(calloc(1, 1)), 1};
+        const TP_String str = {static_cast<char*>(TP_MemAllocNull(1)), 1};
         return str;
     }
-    const size_t length = std::min(strlen(info->displayName),static_cast<size_t>(100));
+    const size_t length = std::min(strlen(reinterpret_cast<char const*>(info->displayName)),static_cast<size_t>(100));
 
     const TP_String str = {static_cast<char*>(TP_MemAlloc(length)), length};
     memcpy(str.p, info->displayName, length);

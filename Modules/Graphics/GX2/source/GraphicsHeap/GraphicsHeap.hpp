@@ -1,7 +1,9 @@
 #pragma once
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 
 #include <cstdint>
 #include <functional>
+
 #include <coreinit/memheap.h>
 
 namespace TeaPacket::Graphics::GX2
@@ -26,12 +28,13 @@ namespace TeaPacket::Graphics::GX2
         void SetupGX2R();
         void DeInitGX2R();
 
-        
+
         inline int CorrectAlignment(const int alignment) { return std::max(alignment, 4); }
         inline int CorrectAlignment(const uint32_t alignment) { return CorrectAlignment(static_cast<int>(alignment)); }
 
         inline MEMHeapHandle& GetMemHeapHandleFromType(const ForegroundBucket bucketType)
-        { return bucketType == ForegroundBucket::Foreground ? GfxHeapForeground : GfxHeapMEM1; }
+        {
+            return bucketType == ForegroundBucket::Foreground ? GfxHeapForeground : GfxHeapMEM1;
+        }
     }
-    
 }

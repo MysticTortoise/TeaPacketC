@@ -1,6 +1,8 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Graphics/ShaderBuffer.h"
 
 #include <cstring>
+
 #include <gx2/mem.h>
 #include <gx2/shaders.h>
 
@@ -39,14 +41,16 @@ size_t TP_Graphics_ShaderBuffer_GetSize(TP_Graphics_ShaderBuffer* buffer)
     return buffer->size;
 }
 
-void TP_Graphics_ShaderBuffer_SendData(TP_Graphics_ShaderBuffer* buffer, const void* data, const size_t length, const size_t offset)
+void TP_Graphics_ShaderBuffer_SendData(TP_Graphics_ShaderBuffer* buffer, const void* data, const size_t length,
+                                       const size_t offset)
 {
-    memcpy(static_cast<tp_byte*>(buffer->data.get()) + offset, data, length);
-    GX2Invalidate(GX2_INVALIDATE_MODE_CPU | GX2_INVALIDATE_MODE_UNIFORM_BLOCK, buffer->data.get(), buffer->size);
+    void* const dest = static_cast<tp_byte*>(buffer->data.get()) + offset;
+    memcpy(dest, data, length);
+    GX2Invalidate(GX2_INVALIDATE_MODE_CPU | GX2_INVALIDATE_MODE_UNIFORM_BLOCK, dest, length);
 }
 
 void TP_Graphics_ShaderBuffer_SetActive(TP_Graphics_ShaderBuffer* buffer, const tp_u8 slot)
 {
     GX2SetVertexUniformBlock(slot, buffer->size, buffer->data.get());
-    GX2SetPixelUniformBlock (slot, buffer->size, buffer->data.get());
+    GX2SetPixelUniformBlock(slot, buffer->size, buffer->data.get());
 }

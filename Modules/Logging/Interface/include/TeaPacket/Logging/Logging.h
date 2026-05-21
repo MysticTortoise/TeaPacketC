@@ -1,4 +1,7 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 
+/* Contains all logging functions provided by the Logging module.
+ */
 #ifndef TEAPACKET_LOGGING_H
 #define TEAPACKET_LOGGING_H
 #ifdef __cplusplus

@@ -1,4 +1,5 @@
 #pragma once
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 
 #include <gx2/sampler.h>
 #include <gx2/texture.h>

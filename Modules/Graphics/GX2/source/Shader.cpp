@@ -1,3 +1,4 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Graphics/Shader.h"
 
 #include <gx2/mem.h>
@@ -5,10 +6,10 @@
 
 #include "TeaPacket/Graphics/PlatformShader.hpp"
 
-#include "CafeGLSL/CafeGLSLCompiler.hpp"
 #include "TeaPacket/Logging/Logging.h"
 
 #include "ShaderAttributeFormat.hpp"
+#include "CafeGLSL/CafeGLSLCompiler.hpp"
 #include "GraphicsHeap/MEM2Resource.hpp"
 
 using namespace TeaPacket::Graphics::GX2;
@@ -20,17 +21,17 @@ TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* pa
         .pixelShader = nullptr,
         .fetchShader = GX2FetchShader(),
         .fetchShaderMemory = MEM2Resource<void>(GX2_SHADER_PROGRAM_ALIGNMENT, GX2CalcFetchShaderSizeEx(
-                params->inputAttributes.size,
-                GX2_FETCH_SHADER_TESSELLATION_NONE,
-                GX2_TESSELLATION_MODE_DISCRETE
-            ))
+                                                    params->inputAttributes.size,
+                                                    GX2_FETCH_SHADER_TESSELLATION_NONE,
+                                                    GX2_TESSELLATION_MODE_DISCRETE
+                                                ))
     };
 
     char infoLog[1024];
 
     {
         // Compile vert shader
-        const auto cStrCode = new char[params->vertexShaderCode.size+1];
+        const auto cStrCode = new char[params->vertexShaderCode.size + 1];
         memcpy(cStrCode, params->vertexShaderCode.p, params->vertexShaderCode.size);
         cStrCode[params->vertexShaderCode.size] = '\0';
 
@@ -50,7 +51,7 @@ TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* pa
 
     {
         // Compile pixel shader
-        const auto cStrCode = new char[params->fragmentShaderCode.size+1];
+        const auto cStrCode = new char[params->fragmentShaderCode.size + 1];
         memcpy(cStrCode, params->fragmentShaderCode.p, params->fragmentShaderCode.size);
         cStrCode[params->fragmentShaderCode.size] = '\0';
 
@@ -95,7 +96,7 @@ TP_Graphics_Shader* TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams* pa
         attributeStreams.data(),
         GX2_FETCH_SHADER_TESSELLATION_NONE,
         GX2_TESSELLATION_MODE_DISCRETE
-        );
+    );
 
     // Invalidate shaders
     GX2Invalidate(GX2_INVALIDATE_MODE_CPU_SHADER, shader->vertexShader->program, shader->vertexShader->size);

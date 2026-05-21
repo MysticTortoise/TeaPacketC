@@ -1,19 +1,19 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Graphics/Viewport.h"
 
-#include "TeaPacket/Graphics/Texture/TextureParams.h"
-#include "TeaPacket/Graphics/ViewportParams.h"
-#include "TeaPacket/Graphics/Graphics.h"
-
+#include <cassert>
 #include <d3d11.h>
 #include <iostream>
-#include <cassert>
 
+#include "TeaPacket/Graphics/Graphics.h"
 #include "TeaPacket/Graphics/PlatformTexture.hpp"
 #include "TeaPacket/Graphics/PlatformViewport.hpp"
-#include "TeaPacket/Graphics/Texture/Format.h"
+#include "TeaPacket/Graphics/ViewportParams.h"
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
+#include "TeaPacket/Graphics/Texture/Format.h"
 #include "TeaPacket/Graphics/Texture/Texture.h"
-#include "TeaPacket/MacroUtils/StructUtils.hpp"
+#include "TeaPacket/Graphics/Texture/TextureParams.h"
+#include "TeaPacket/MacroUtils/StructUtils.h"
 #include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 
 using namespace TeaPacket::Graphics::D3D11;
@@ -119,7 +119,7 @@ void TP_Graphics_Viewport_BeginRender(TP_Graphics_Viewport* viewport)
     deviceContext->RSSetViewports(1, &viewport->d3dViewport);
 }
 
-void TP_Graphics_Viewport_FinishRender(TP_Graphics_Viewport*)
+void TP_Graphics_Viewport_FinishRender()
 {
     activeViewport = nullptr;
 }

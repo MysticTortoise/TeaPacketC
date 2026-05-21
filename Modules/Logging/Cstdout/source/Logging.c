@@ -1,3 +1,4 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Logging/Logging.h"
 
 #include <stdio.h>
@@ -11,4 +12,4 @@ void TP_LogString(const TP_StringView view)
     fwrite(view.p, sizeof(char), view.size, stdout);
 }
 
-#include "TeaPacket/Logging/AutoLoggingFuncs.h"
+#include "TeaPacket/Logging/AutoLoggingFuncs.inc"

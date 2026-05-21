@@ -1,6 +1,5 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Graphics/VariableType.h"
-
-#include <stdexcept>
 
 size_t TP_Graphics_ShaderVar_GetSize(const TP_Graphics_VariableType var)
 {

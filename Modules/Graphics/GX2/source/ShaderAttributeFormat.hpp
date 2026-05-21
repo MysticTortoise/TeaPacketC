@@ -1,8 +1,11 @@
 #pragma once
-#include <gx2/enum.h>
-#include "TeaPacket/Graphics/VariableType.h"
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include <stdexcept>
+
+#include <gx2/enum.h>
 #include <gx2/utils.h>
+
+#include "TeaPacket/Graphics/VariableType.h"
 
 namespace TeaPacket::Graphics::GX2
 {

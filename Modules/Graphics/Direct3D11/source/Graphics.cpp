@@ -1,13 +1,15 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Graphics/Graphics.h"
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
 
-#include <d3d11.h>
 #include <cassert>
 
+#include <d3d11.h>
+
 #include "TeaPacket/Graphics/Display.h"
+#include "TeaPacket/Graphics/Mesh.h"
 #include "TeaPacket/Graphics/PlatformMesh.hpp"
-#include "../../Interface/include/TeaPacket/Graphics/Mesh.h"
-#include "TeaPacket/MacroUtils/StructUtils.hpp"
+#include "TeaPacket/MacroUtils/StructUtils.h"
 #include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 
 using namespace TeaPacket;
@@ -40,13 +42,13 @@ tp_bool TP_Graphics_Init()
         D3D11CreateDevice(
             nullptr,
             D3D_DRIVER_TYPE_HARDWARE,
-            0,
+            nullptr,
             deviceFlags,
             d3dFeatureLevels,
             ARRAYSIZE(d3dFeatureLevels),
             D3D11_SDK_VERSION,
             device.ReleaseAndGetAddressOf(),
-            NULL,
+            nullptr,
             deviceContext.ReleaseAndGetAddressOf()
         )
     );

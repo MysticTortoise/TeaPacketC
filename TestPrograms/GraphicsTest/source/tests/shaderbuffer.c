@@ -7,7 +7,7 @@
 #include "TeaPacket/Graphics/Shader.h"
 #include "TeaPacket/Graphics/ShaderBuffer.h"
 
-#include "TeaPacket/Assets/ReadAsset.h"
+#include "TeaPacket/Assets/Assets.h"
 #include "TeaPacket/Memory/Memory.h"
 
 #include "TeaPacket/Endianness/Endian.h"

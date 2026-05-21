@@ -5,7 +5,7 @@ if(NOT COMMAND TP_EnumGenerator)
                 DEPENDS "${SourceFile}"
                 WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
                 COMMENT "Generating ${DestFile} from ${SourceFile}"
-                COMMAND python3 "${TEAPACKET_ROOT}/Generators/EnumGenerator/main.py" cgen "${SourceFile}" "${DestFile}"
+                COMMAND python "${TEAPACKET_ROOT}/Generators/EnumGenerator/main.py" cgen "${SourceFile}" "${DestFile}"
                 VERBATIM
         )
         target_sources(${Target} PUBLIC "${DestFile}")
@@ -23,7 +23,7 @@ if(NOT COMMAND TP_EnumGenerator_CPPWrap)
                 DEPENDS "${SourceFile}"
                 WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
                 COMMENT "Generating ${DestFile} from ${SourceFile}"
-                COMMAND python3 "${TEAPACKET_ROOT}/Generators/EnumGenerator/main.py" cppgen
+                COMMAND python "${TEAPACKET_ROOT}/Generators/EnumGenerator/main.py" cppgen
                 "${SourceFile}" "${DestFile}" "${OGPath}" ${NamespaceRemoval}
                 VERBATIM
         )

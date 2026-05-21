@@ -1,13 +1,13 @@
-#include <memory>
-
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Window/Window.h"
+#include "TeaPacket/Window/PlatformWindow.hpp"
+
 #include "TeaPacket/Memory/Memory.h"
 
 #include <atomic>
-
+#include <memory>
 #include <vector>
 
-#include "TeaPacket/Window/PlatformWindow.hpp"
 
 static LRESULT WindowProc(const HWND hWnd, const UINT message, const WPARAM wParam, const LPARAM lParam)
 {
@@ -38,7 +38,7 @@ static void InitializeWindowClass()
     windowClass.hInstance = GetModuleHandle(nullptr);
     windowClass.hIcon = nullptr;
     windowClass.hCursor = LoadCursor(nullptr, IDC_ARROW);
-    windowClass.hbrBackground = CreateSolidBrush(RGB(29,29,38));
+    windowClass.hbrBackground = CreateSolidBrush(RGB(29, 29, 38));
     windowClass.lpszMenuName = nullptr;
     windowClass.lpszClassName = "TeaPacket_MainWindowClass";
 
@@ -48,13 +48,13 @@ static void InitializeWindowClass()
     }
 }
 
-static inline std::vector<TP_Window*> Windows;
+static inline auto Windows = std::vector<TP_Window*>();
 
 TP_Window* TP_Window_Create(const TP_Window_Params* params)
 {
     if (!IsWindowClassInitialized.load()) { InitializeWindowClass(); }
     const size_t nameSize = params->title.size;
-    const auto titleName = new char[nameSize+1];
+    const auto titleName = new char[nameSize + 1];
     memcpy(titleName, params->title.p, nameSize);
     titleName[nameSize] = '\0';
 
@@ -77,7 +77,7 @@ TP_Window* TP_Window_Create(const TP_Window_Params* params)
     }
     ShowWindow(winHandle, SW_SHOWNORMAL);
 
-    const auto window = new TP_Window{
+    auto* window = new TP_Window{
         winHandle,
         params->x,
         params->y,
@@ -85,12 +85,13 @@ TP_Window* TP_Window_Create(const TP_Window_Params* params)
         params->height
     };
 
-    Windows.push_back(window);
+    Windows.emplace_back(window);
 
 
     delete[] titleName;
     return window;
 }
+
 static thread_local MSG msg;
 
 void TP_Window_ProcessEvents(TP_Window* window)
@@ -120,7 +121,7 @@ void TP_Window_Destroy(TP_Window* window)
 
 tp_u16 TP_Window_GetXPos(TP_Window* window)
 {
-    return  window->x;
+    return window->x;
 }
 
 tp_u16 TP_Window_GetYPos(TP_Window* window)
@@ -175,27 +176,27 @@ void TP_Window_SetWidth(TP_Window* window, const tp_u16 width)
 {
     window->w = width;
     SetWindowPos(
-    window->windowHandle,
-    nullptr,
-    0, 0,
-    width, window->h,
-    SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+        window->windowHandle,
+        nullptr,
+        0, 0,
+        width, window->h,
+        SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
 }
 
 void TP_Window_SetHeight(TP_Window* window, const tp_u16 height)
 {
     window->h = height;
     SetWindowPos(
-    window->windowHandle,
-    nullptr,
-    0, 0,
-    window->w, height,
-    SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+        window->windowHandle,
+        nullptr,
+        0, 0,
+        window->w, height,
+        SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
 }
 
 void TP_Window_SetTitle(TP_Window* window, const TP_StringView name)
 {
-    const auto text = new char[name.size+1];
+    const auto text = new char[name.size + 1];
     memcpy(text, name.p, name.size);
     text[name.size] = '\0';
 

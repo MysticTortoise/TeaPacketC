@@ -1,3 +1,4 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Graphics/Display.h"
 
 #include <gx2/context.h>
@@ -31,6 +32,7 @@ static void AllocateTVScanBuffer(const DisposableForegroundMemResource* scanBuff
         GX2_SURFACE_FORMAT_UNORM_R8_G8_B8_A8,
         GX2_BUFFERING_MODE_DOUBLE);
 }
+
 static void AllocateDRCScanBuffer(const DisposableForegroundMemResource* scanBuffer)
 {
     GX2Invalidate(GX2_INVALIDATE_MODE_CPU, scanBuffer->data, scanBuffer->GetSize());
@@ -115,19 +117,23 @@ void TP_Graphics_Display_PresentAll(const tp_bool waitForVSync)
     GX2SetTVEnable(TRUE);
     GX2SetDRCEnable(TRUE);
 
-    if (waitForVSync) {
+    if (waitForVSync)
+    {
         uint32_t swapCount, flipCount;
         OSTime lastFlip, lastVsync;
         uint32_t waitCount = 0;
 
-        while (true) {
+        while (true)
+        {
             GX2GetSwapStatus(&swapCount, &flipCount, &lastFlip, &lastVsync);
 
-            if (flipCount >= swapCount) {
+            if (flipCount >= swapCount)
+            {
                 break;
             }
 
-            if (waitCount >= 10) {
+            if (waitCount >= 10)
+            {
                 break;
             }
 
@@ -136,13 +142,17 @@ void TP_Graphics_Display_PresentAll(const tp_bool waitForVSync)
         }
     }
 }
+
 TP_Graphics_DisplayID TP_Graphics_Display_GetCount()
 {
     return 2;
 }
 
+static TP_Graphics_DisplayID currentDisplay;
+
 void TP_Graphics_Display_BeginRender(const TP_Graphics_DisplayID id)
 {
+    currentDisplay = id;
     if (id == 0)
     {
         TP_Graphics_Viewport_BeginRender(tvViewport);
@@ -152,9 +162,9 @@ void TP_Graphics_Display_BeginRender(const TP_Graphics_DisplayID id)
     }
 }
 
-void TP_Graphics_Display_FinishRender(TP_Graphics_DisplayID id)
+void TP_Graphics_Display_FinishRender()
 {
-    if (id == 0)
+    if (currentDisplay == 0)
     {
         GX2CopyColorBufferToScanBuffer(&tvViewport->colorBuffer, GX2_SCAN_TARGET_TV);
     } else

@@ -1,11 +1,12 @@
 #pragma once
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 
+#include <cstdlib>
 #include <functional>
-#include <coreinit/memdefaultheap.h>
 
 namespace TeaPacket::Graphics::GX2
 {
-    template<typename T>
+    template <typename T>
     class MEM2Resource
     {
     private:
@@ -14,33 +15,25 @@ namespace TeaPacket::Graphics::GX2
         bool Allocate()
         {
             DeAllocate();
-            data = static_cast<T*>(MEMAllocFromDefaultHeapEx(sizeof(T), alignment));
+            data = static_cast<T*>(std::aligned_alloc(alignment, sizeof(T)));
             return data == nullptr;
         }
 
         void DeAllocate()
         {
-            if (data == nullptr){ return; }
-            MEMFreeToDefaultHeap(data);
+            if (data == nullptr) { return; }
+            std::free(data);
         }
-    public:
-        
 
+    public:
         // No Copy
-        MEM2Resource& operator=(const MEM2Resource& other)
-        {
-            Allocate();
-            memcpy(data, other.data, sizeof(T));
-        };
-        MEM2Resource(const MEM2Resource& other)
-        {
-            Allocate();
-            memcpy(data, other.data, sizeof(T));
-        };
-        
+        MEM2Resource& operator=(const MEM2Resource& other) = delete;
+        MEM2Resource(const MEM2Resource& other) = delete;
+
         // Constructors
         MEM2Resource() = default;
-        explicit MEM2Resource(const int alignment):alignment(alignment)
+
+        explicit MEM2Resource(const int alignment) : alignment(alignment)
         {
             Allocate();
         }
@@ -59,12 +52,14 @@ namespace TeaPacket::Graphics::GX2
         T& operator*()
         {
             assert(data != nullptr);
+            // ReSharper disable once CppDFANullDereference
             return *data;
         }
 
         const T& operator*() const
         {
             assert(data != nullptr);
+            // ReSharper disable once CppDFANullDereference
             return *data;
         }
 
@@ -77,10 +72,9 @@ namespace TeaPacket::Graphics::GX2
         {
             return data != nullptr;
         }
-        
     };
 
-    template<>
+    template <>
     class MEM2Resource<void>
     {
     private:
@@ -90,24 +84,25 @@ namespace TeaPacket::Graphics::GX2
         bool Allocate()
         {
             DeAllocate();
-            data = MEMAllocFromDefaultHeapEx(size, alignment);
+            data = std::aligned_alloc(alignment, size);
             return data != nullptr;
         }
-        void DeAllocate()
+
+        void DeAllocate() const
         {
-            if (data == nullptr){ return; }
-            MEMFreeToDefaultHeap(data);
+            if (data == nullptr) { return; }
+            std::free(data);
         }
+
     public:
-        
-        
         // No Copy
         MEM2Resource& operator=(const MEM2Resource& other) = delete;
         MEM2Resource(const MEM2Resource& other) = delete;
-        
+
         // Constructors
         MEM2Resource() = default;
-        explicit MEM2Resource(const int alignment, const size_t size):alignment(alignment), size(size)
+
+        explicit MEM2Resource(const int alignment, const size_t size) : alignment(alignment), size(size)
         {
             assert(Allocate());
         }
@@ -133,6 +128,5 @@ namespace TeaPacket::Graphics::GX2
         {
             return data != nullptr;
         }
-        
     };
 }

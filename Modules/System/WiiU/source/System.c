@@ -1,3 +1,4 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/System/System.h"
 
 #include <whb/proc.h>
@@ -15,7 +16,6 @@ void TP_System_DeInit()
 
 void TP_System_Process()
 {
-
 }
 
 tp_bool TP_System_ShouldRun()

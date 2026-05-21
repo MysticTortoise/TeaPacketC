@@ -1,8 +1,16 @@
 # TeaPacket
-This repository is a partial rewrite of my last revision of the TeaPacket game engine.
+TeaPacket is a modular framework for building apps on a wide range of platforms.
 
-This is updated infrequently and in random pockets of spare time. Do not expect anything crazy, substantial, or even functional yet. It is not one of my current active projects.
+Its purpose is to support as many strange platforms as possible, trading portability for robustness.
 
-Go see my previous TeaPacket repository for more info.
+It primarily serves as a game engine, but it can be used for any variety of needs.
 
-Make sure you run `prebuild.py` before compiling anything. Building using the CMakeLists.txt in the root directory is reccomended but not required (ensure that TEAPACKET_ROOT is set to the root directory though.)
+Contributions are welcome! Just make sure you follow any guidelines set in place.
+
+\
+\
+Don't expect frequent updates, as this is a hobby project of mine. Almost all of this was written by one man alone, so cut me some slack if you find issues.
+
+# License
+This software is licensed and distributed under the MIT License. 
+You are permitted to do whatever you want with it, but if you make a closed source version, I will be sad. :(

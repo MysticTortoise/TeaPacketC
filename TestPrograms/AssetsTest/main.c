@@ -2,7 +2,7 @@
 #include "TeaPacket/Bundled/Init.h"
 #include "TeaPacket/Bundled/DeInit.h"
 
-#include "TeaPacket/Assets/ReadAsset.h"
+#include "TeaPacket/Assets/Assets.h"
 #include "TeaPacket/Memory/Memory.h"
 
 #include "TeaPacket/TestUtil/String.h"

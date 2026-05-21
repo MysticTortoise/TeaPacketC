@@ -1,13 +1,14 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Graphics/Mesh.h"
 #include "TeaPacket/Graphics/Graphics.h"
 
 #include <cstring>
 
-#include "TeaPacket/Graphics/PlatformMesh.hpp"
-#include "TeaPacket/Logging/Logging.h"
-
 #include <gx2/draw.h>
 #include <gx2r/draw.h>
+
+#include "TeaPacket/Graphics/PlatformMesh.hpp"
+#include "TeaPacket/Logging/Logging.h"
 
 static TP_Graphics_Mesh* activeMesh;
 
@@ -21,17 +22,7 @@ TP_Graphics_Mesh* TP_Graphics_Mesh_Create(const TP_Graphics_MeshParams* const pa
     auto* mesh = new TP_Graphics_Mesh;
 
     mesh->vertexDataInfo = std::vector(params->vertexInfo.p, params->vertexInfo.p + params->vertexInfo.size);
-    try
-    {
-        const auto a = mesh->buffers.size();
-        TP_LogULong(a);
-        TP_LogULong(params->vertexInfo.size);
-        mesh->buffers.reserve(params->vertexInfo.size);
-    } catch (std::exception& e)
-    {
-        TP_LogConstStr("FUCK AHH");
-        return nullptr;
-    }
+    mesh->buffers.reserve(params->vertexInfo.size);
 
     size_t vertexSize = 0;
     for (size_t i = 0; i < params->vertexInfo.size; i++)
@@ -43,7 +34,6 @@ TP_Graphics_Mesh* TP_Graphics_Mesh_Create(const TP_Graphics_MeshParams* const pa
 
     for (size_t i = 0; i < params->vertexInfo.size; i++)
     {
-
         const size_t sizeOfElem = TP_Graphics_ShaderVar_GetSize(params->vertexInfo.p[i]);
         GX2RBuffer& buffer = mesh->buffers.emplace_back(GX2RBuffer{
             .flags = GX2R_RESOURCE_BIND_VERTEX_BUFFER | GX2R_RESOURCE_USAGE_CPU_WRITE | GX2R_RESOURCE_USAGE_GPU_READ,
@@ -71,7 +61,7 @@ TP_Graphics_Mesh* TP_Graphics_Mesh_Create(const TP_Graphics_MeshParams* const pa
         static_assert(std::is_same_v<
             std::remove_cvref_t<decltype(mesh->indexBuffer[0])>,
             std::remove_cvref_t<decltype(params->indexList.p[0])>
-            >);
+        >);
         mesh->indexBuffer = std::vector(params->indexList.p, params->indexList.p + params->indexList.size);
         //Log(platformMesh->indexCount);
     } else
@@ -100,7 +90,7 @@ void TP_Graphics_DrawMesh()
 {
     assert(activeMesh != nullptr);
 
-    if (activeMesh->indexBuffer.size() != 0)
+    if (!activeMesh->indexBuffer.empty())
     {
         GX2DrawIndexedEx(
             GX2_PRIMITIVE_MODE_TRIANGLES,
@@ -110,5 +100,4 @@ void TP_Graphics_DrawMesh()
             0,
             1);
     }
-
 }

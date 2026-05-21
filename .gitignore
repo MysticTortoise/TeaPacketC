@@ -1050,8 +1050,8 @@ build/*
 external_tools/*
 # Any TeaPacket generated headers
 *.gen
-.idea/.name
-.idea/misc.xml
+
+.idea/*
 
 # CLION SHUT UP
 ./.idea/.name

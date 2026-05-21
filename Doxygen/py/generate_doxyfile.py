@@ -1,6 +1,9 @@
 import os
 import shutil
 
+# Copyright (C) 2026 Kevin "MysticTortoise" Tessier
+
+# Python script to generate the Doxyfile used by TeaPacket.
 
 def generate_doxyfile():
     # CHANGE  CWD
@@ -19,8 +22,16 @@ def generate_doxyfile():
     to_add:str = ""
 
     # ADD INPUTS
+    to_add += "INPUT = "
     for module in modules:
-        to_add += f"INPUT += ../Modules/{module}/Interface/include\n"
+        to_add += f"../Modules/{module}/Interface/include "
+    to_add += "\n"
+
+    # ADD STRIP
+    to_add += "STRIP_FROM_PATH = "
+    for module in modules:
+        to_add += f"../Modules/{module}/Interface/include/TeaPacket "
+    to_add += "\n"
 
 
     # GENERATE OUT FILE

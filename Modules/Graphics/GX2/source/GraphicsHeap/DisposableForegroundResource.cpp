@@ -1,3 +1,5 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
+/* Implementation file for the DisposableForegroundResource class. */
 #include "GraphicsHeap/DisposableForegroundResource.hpp"
 
 #include <coreinit/memexpheap.h>

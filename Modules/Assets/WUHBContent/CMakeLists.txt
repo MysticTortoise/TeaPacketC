@@ -12,7 +12,6 @@ file(GLOB_RECURSE sources source/*.c*)
 
 add_library(TeaPacket_Assets_WUHBContent STATIC ${sources})
 target_include_directories(TeaPacket_Assets_WUHBContent PRIVATE source)
-#target_include_directories(TeaPacket_Assets_STDFile PUBLIC include)
 target_link_libraries(TeaPacket_Assets_WUHBContent TeaPacket_Assets_Base
         TeaPacket_Memory_Base TeaPacket_Logging_Base)
 

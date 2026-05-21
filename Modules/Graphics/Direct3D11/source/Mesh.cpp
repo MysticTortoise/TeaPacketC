@@ -1,8 +1,9 @@
-#include "../../Interface/include/TeaPacket/Graphics/Mesh.h"
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
+#include "TeaPacket/Graphics/Mesh.h"
 #include "TeaPacket/Graphics/PlatformMesh.hpp"
 
-#include <d3d11.h>
 #include <cassert>
+#include <d3d11.h>
 
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
 #include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
@@ -71,7 +72,7 @@ void TP_Graphics_Mesh_SetActive(TP_Graphics_Mesh* const mesh)
 
     constexpr unsigned int offset = 0;
     deviceContext->IASetVertexBuffers(0, 1,
-        mesh->vertexBuffer.GetAddressOf(), &mesh->vertexSize, &offset);
+                                      mesh->vertexBuffer.GetAddressOf(), &mesh->vertexSize, &offset);
 
     if (mesh->indexBuffer != nullptr)
     {

@@ -1,22 +1,21 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
 #include "TeaPacket/Graphics/Display.h"
-
-#include "TeaPacket/Graphics/PlatformDisplay.hpp"
-#include "TeaPacket/Window/Window.h"
-#include "TeaPacket/MacroUtils/StructUtils.hpp"
 
 #include <dxgi1_3.h>
 #include <memory>
 #include <vector>
 
 #include "TeaPacket/Graphics/DisplayParams.h"
+#include "TeaPacket/Graphics/Graphics.h"
+#include "TeaPacket/Graphics/PlatformDisplay.hpp"
 #include "TeaPacket/Graphics/PlatformTexture.hpp"
 #include "TeaPacket/Graphics/PlatformViewport.hpp"
 #include "TeaPacket/Graphics/ViewportParams.h"
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
+#include "TeaPacket/MacroUtils/StructUtils.h"
 #include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
 #include "TeaPacket/Window/PlatformWindow.hpp"
-#include "TeaPacket/Graphics/Graphics.h"
-
+#include "TeaPacket/Window/Window.h"
 
 using namespace TeaPacket::Graphics::D3D11;
 
@@ -70,7 +69,7 @@ PlatformDisplay::PlatformDisplay(const TP_Graphics_DisplayParams* const params)
 
     CheckErrorWinCom(
         this->swapchain->GetBuffer(0, __uuidof(ID3D11Texture2D),
-                                              reinterpret_cast<LPVOID*>(viewport->colorTex->texture2D.ReleaseAndGetAddressOf()))
+                                   reinterpret_cast<LPVOID*>(viewport->colorTex->texture2D.ReleaseAndGetAddressOf()))
     );
 
     CheckErrorWinCom(
@@ -99,7 +98,7 @@ void TP_Graphics_Display_PresentAll(const tp_bool waitForVSync)
 {
     for (const auto& display : Displays)
     {
-        CheckErrorWinCom(display.swapchain->Present(waitForVSync ? 1 : 0,0));
+        CheckErrorWinCom(display.swapchain->Present(waitForVSync ? 1 : 0, 0));
     }
 }
 
@@ -108,15 +107,17 @@ TP_Graphics_DisplayID TP_Graphics_Display_GetCount()
     return static_cast<TP_Graphics_DisplayID>(Displays.size());
 }
 
+static TP_Graphics_DisplayID currentDisplay;
 
-void TP_Graphics_Display_BeginRender(const TP_Graphics_DisplayID display)
+void TP_Graphics_Display_BeginRender(const TP_Graphics_DisplayID id)
 {
-    TP_Graphics_Viewport_BeginRender(Displays[display].viewport);
+    TP_Graphics_Viewport_BeginRender(Displays[id].viewport);
+    currentDisplay = id;
 }
 
-void TP_Graphics_Display_FinishRender(const TP_Graphics_DisplayID display)
+void TP_Graphics_Display_FinishRender()
 {
-    TP_Graphics_Viewport_FinishRender(Displays[display].viewport);
+    TP_Graphics_Viewport_FinishRender();
 }
 
 tp_u16 TP_Graphics_Display_GetWidth(const TP_Graphics_DisplayID display)
