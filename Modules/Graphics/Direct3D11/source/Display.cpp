@@ -13,7 +13,7 @@
 #include "TeaPacket/Graphics/ViewportParams.h"
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
 #include "TeaPacket/MacroUtils/StructUtils.h"
-#include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
+#include "TeaPacket/Graphics/D3D11/WinMacro.hpp"
 #include "TeaPacket/Window/PlatformWindow.hpp"
 #include "TeaPacket/Window/Window.h"
 

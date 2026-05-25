@@ -10,7 +10,7 @@
 #include "TeaPacket/Graphics/Mesh.h"
 #include "TeaPacket/Graphics/PlatformMesh.hpp"
 #include "TeaPacket/MacroUtils/StructUtils.h"
-#include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
+#include "TeaPacket/Graphics/D3D11/WinMacro.hpp"
 
 using namespace TeaPacket;
 

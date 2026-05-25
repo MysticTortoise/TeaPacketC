@@ -10,7 +10,7 @@
 #include "TeaPacket/Graphics/ShaderParams.h"
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
 #include "TeaPacket/Logging/Logging.h"
-#include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
+#include "TeaPacket/Graphics/D3D11/WinMacro.hpp"
 
 using namespace TeaPacket::Graphics::D3D11;
 

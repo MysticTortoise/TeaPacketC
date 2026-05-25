@@ -7,10 +7,9 @@ add_executable(TeaPacket_TestPrograms_Graphics source/main.c)
 target_include_directories(TeaPacket_TestPrograms_Graphics PUBLIC source)
 add_subdirectory(source)
 
-TP_add_interface_subdirectory(Bundled)
-TP_add_bundle(${TEAPACKET_PLATFORM} TeaPacket_TestPrograms_Graphics)
-
-target_link_libraries(TeaPacket_TestPrograms_Graphics TeaPacket_Bundled_Base TeaPacket_Bundle)
+TP_add_bundle(${TEAPACKET_PLATFORM})
+TP_build_bundle(${TEAPACKET_PLATFORM})
+TP_link_bundle(TeaPacket_TestPrograms_Graphics ${TEAPACKET_PLATFORM})
 
 TP_AM_BuildAssets(
         TARGET TeaPacket_TestPrograms_Graphics 

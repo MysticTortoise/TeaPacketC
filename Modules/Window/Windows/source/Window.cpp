@@ -11,6 +11,23 @@
 
 static LRESULT WindowProc(const HWND hWnd, const UINT message, const WPARAM wParam, const LPARAM lParam)
 {
+    const auto ptr = reinterpret_cast<TP_Window*>(GetWindowLongPtr(hWnd, GWLP_USERDATA));
+    if (ptr != nullptr)
+    {
+        for (const auto func : ptr->windowProcs)
+        {
+            const std::optional<LRESULT> result = func(hWnd, message, wParam, lParam);
+            if (result.has_value())
+                return result.value();
+        }
+    }
+    return DefWindowProc(hWnd, message, wParam, lParam);
+}
+
+static std::optional<LRESULT> WindowProcQuit([[maybe_unused]] const HWND hWnd, const UINT message,
+                                             [[maybe_unused]] const WPARAM wParam,
+                                             [[maybe_unused]] const LPARAM lParam)
+{
     switch (message)
     {
     case WM_DESTROY:
@@ -19,8 +36,7 @@ static LRESULT WindowProc(const HWND hWnd, const UINT message, const WPARAM wPar
         // TODO: multiple windows on closing can be closed individually
         TP_Window::shouldQuit = true;
         return 0;
-    default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
+    default: return std::nullopt;
     }
 }
 
@@ -75,8 +91,6 @@ TP_Window* TP_Window_Create(const TP_Window_Params* params)
     {
         // Error handling
     }
-    ShowWindow(winHandle, SW_SHOWNORMAL);
-
     auto* window = new TP_Window{
         winHandle,
         params->x,
@@ -84,6 +98,9 @@ TP_Window* TP_Window_Create(const TP_Window_Params* params)
         params->width,
         params->height
     };
+    SetWindowLongPtr(winHandle, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(window));
+    window->windowProcs.emplace_back(WindowProcQuit);
+    ShowWindow(winHandle, SW_SHOWNORMAL);
 
     Windows.emplace_back(window);
 

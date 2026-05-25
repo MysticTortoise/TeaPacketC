@@ -7,7 +7,7 @@
 #include <shared_mutex>
 #include <vector>
 
-#include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
+#include "TeaPacket/Input/GameInput/WinMacro.hpp"
 
 #include "TeaPacket/Input/GameInputGlobal.hpp"
 #include "TeaPacket/Input/GameInput/VirtualKey.gen"

@@ -19,7 +19,7 @@ if(NOT COMMAND TP_AM_BuildAssets)
                 TARGET ${TP_AM_BuildAssets_TARGET}
                 PRE_BUILD
                 COMMENT "Building assets..."
-                COMMAND python3
+                COMMAND python
                     "${TEAPACKET_ROOT}/Subtools/AssetMixer/main.py"
                     "${TP_AM_BuildAssets_SOURCE}"
                     "${TP_AM_BuildAssets_DESTINATION}"

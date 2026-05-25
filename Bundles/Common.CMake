@@ -1,0 +1,3 @@
+TP_add_interface_subdirectory(Endianness)
+TP_add_interface_subdirectory(MacroUtils)
+TP_add_interface_subdirectory(Types)

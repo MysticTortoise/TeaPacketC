@@ -22,6 +22,8 @@ with open("include/TeaPacket/Bundled/Init.h", "w") as outfile:
         outfile.write(f"#include \"TeaPacket/{module}/{module}.h\"\n")
         outfile.write("#endif\n")
 
+    outfile.write("#ifdef __cplusplus\nextern \"C\" {\n#endif")
+
     outfile.write("\n\nTP_INLINE_FUNC tp_bool TP_Bundled_Init(void) {\n\n")
 
     for module in modules:
@@ -32,11 +34,15 @@ with open("include/TeaPacket/Bundled/Init.h", "w") as outfile:
     outfile.write("\treturn tp_true;\n")
     outfile.write("}\n")
 
+    outfile.write("#ifdef __cplusplus\n}\n#endif")
+
 with open("include/TeaPacket/Bundled/DeInit.h", "w") as outfile:
     for module in modules:
         outfile.write(f"#ifdef TeaPacket_{module}_Implemented\n")
         outfile.write(f"#include \"TeaPacket/{module}/{module}.h\"\n")
         outfile.write("#endif\n")
+
+    outfile.write("#ifdef __cplusplus\nextern \"C\" {\n#endif")
 
     outfile.write("\n\nstatic void TP_Bundled_DeInit(void) {\n\n")
 
@@ -46,5 +52,7 @@ with open("include/TeaPacket/Bundled/DeInit.h", "w") as outfile:
         outfile.write(f"\t#endif\n\n")
 
     outfile.write("}\n")
+
+    outfile.write("#ifdef __cplusplus\n}\n#endif")
 
 

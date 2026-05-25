@@ -23,9 +23,10 @@ extern "C" {
 
 
 /* inline keyword support */
-#if TP_C_VER >= TP_C_VER95
-#define TP_SUPPORT_INLINE 1
+#if defined(__cplusplus)
 #define TP_INLINE_FUNC inline
+#elif TP_C_VER >= TP_C_VER95
+#define TP_INLINE_FUNC static inline
 #elif defined(__GNUC__) || defined(__inline__) /* use GCC inline macro */
 #define TP_INLINE_FUNC __inline__
 #elif defined(_MSC_VER) /* use MSVC inline macro */

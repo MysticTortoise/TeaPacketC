@@ -13,7 +13,7 @@ static tp_bool Init(void)
 static void Render(void)
 {
     TP_Graphics_Display_BeginRender(0);
-    TP_Graphics_Display_FinishRender(0);
+    TP_Graphics_Display_FinishRender();
 
     TP_Graphics_Display_PresentAll(tp_true);
 }

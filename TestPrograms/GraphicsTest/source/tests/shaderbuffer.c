@@ -112,7 +112,7 @@ static void Render(void)
     TP_Graphics_ShaderBuffer_SetActive(sbuffer, 0);
     TP_Graphics_DrawMesh();
 
-    TP_Graphics_Display_FinishRender(0);
+    TP_Graphics_Display_FinishRender();
     TP_Graphics_Display_PresentAll(tp_true);
 }
 

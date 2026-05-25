@@ -6,7 +6,7 @@
 #include <d3d11.h>
 
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
-#include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
+#include "TeaPacket/Graphics/D3D11/WinMacro.hpp"
 
 using namespace TeaPacket::Graphics::D3D11;
 

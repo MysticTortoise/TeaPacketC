@@ -1,7 +1,17 @@
 #pragma once
 
+#include <unordered_map>
+
 #include <windows.h>
 #include "TeaPacket/Types/Numeric.h"
+#include <optional>
+
+namespace TeaPacket::Window::Windows
+{
+    typedef std::optional<LRESULT> (CALLBACK* TPWndProc)(HWND, UINT, WPARAM, LPARAM);
+
+}
+
 
 struct TP_Window
 {
@@ -9,6 +19,9 @@ struct TP_Window
     HWND windowHandle;
 
     tp_u16 x, y, w, h;
+
+    /// A list of windowProcs that will be used.
+    std::vector<TeaPacket::Window::Windows::TPWndProc> windowProcs;
 
     static inline bool shouldQuit = false;
 };

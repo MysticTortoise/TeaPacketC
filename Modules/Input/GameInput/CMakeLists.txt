@@ -12,8 +12,6 @@ TP_add_interface_subdirectory(Logging)
 TP_add_interface_subdirectory(Memory)
 TP_add_impl_subdirectory(Window Windows)
 
-add_subdirectory_no_overwrite(TeaPacket_MacroUtils_WinSpecific "${TEAPACKET_ROOT}/Modules/MacroUtils/WindowsSpecific" WindowsSpecificMacros)
-
 file(GLOB_RECURSE sources source/*.c*)
 
 add_library(TeaPacket_Input_GameInput STATIC ${sources})
@@ -37,7 +35,7 @@ target_include_directories(TeaPacket_Input_GameInput PRIVATE source)
 target_include_directories(TeaPacket_Input_GameInput PUBLIC include 
 "${GAMEINPUT_DIR}/include")
 target_link_libraries(TeaPacket_Input_GameInput TeaPacket_Input_Base 
-        TeaPacket_Logging_Base TeaPacket_MacroUtils_WinSpecific
+        TeaPacket_Logging_Base
         TeaPacket_Window_Windows
         TeaPacket_Types_Base
         TeaPacket_Memory_Base

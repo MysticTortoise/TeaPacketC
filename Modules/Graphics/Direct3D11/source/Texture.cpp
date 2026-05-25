@@ -12,7 +12,7 @@
 #include "TeaPacket/Graphics/D3D11/D3D11TextureWrap.gen"
 #include "TeaPacket/Graphics/Util/TextureFormatBits.h"
 #include "TeaPacket/MacroUtils/StructUtils.h"
-#include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
+#include "TeaPacket/Graphics/D3D11/WinMacro.hpp"
 
 using namespace TeaPacket::Graphics;
 using namespace TeaPacket::Graphics::D3D11;

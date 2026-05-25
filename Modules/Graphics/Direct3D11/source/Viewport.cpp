@@ -14,7 +14,7 @@
 #include "TeaPacket/Graphics/Texture/Texture.h"
 #include "TeaPacket/Graphics/Texture/TextureParams.h"
 #include "TeaPacket/MacroUtils/StructUtils.h"
-#include "TeaPacket/MacroUtils/WindowsSpecific.hpp"
+#include "TeaPacket/Graphics/D3D11/WinMacro.hpp"
 
 using namespace TeaPacket::Graphics::D3D11;
 

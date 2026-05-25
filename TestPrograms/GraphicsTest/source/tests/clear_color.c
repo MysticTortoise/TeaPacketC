@@ -18,7 +18,7 @@ static void Render(void)
     i = (i+3)%255;
     TP_Graphics_ClearColor(i, 0, 0);
 
-    TP_Graphics_Display_FinishRender(0);
+    TP_Graphics_Display_FinishRender();
     TP_Graphics_Display_PresentAll(tp_true);
 }
 
