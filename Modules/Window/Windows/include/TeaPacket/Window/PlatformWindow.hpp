@@ -2,9 +2,9 @@
 
 #include <unordered_map>
 
+#include <optional>
 #include <windows.h>
 #include "TeaPacket/Types/Numeric.h"
-#include <optional>
 
 namespace TeaPacket::Window::Windows
 {

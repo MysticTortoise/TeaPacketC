@@ -1,5 +1,4 @@
 Destination TeaPacket/Input/GameInput/VirtualKey.gen
-Namespaces TeaPacket::Input
 Enum TP_Input_Button
 Enum uint8_t Alias VK
 Headers <WinUser.h> "TeaPacket/Input/Button.h" <cstdint>
@@ -67,4 +66,4 @@ TP_Input_Button_KEY_ARROW_RIGHT VK_RIGHT
 TP_Input_Button_KEY_ARROW_DOWN VK_DOWN
 TP_Input_Button_KEY_ARROW_LEFT VK_LEFT
 End
-Error Invalid KeyboardButton
+Default TP_Input_Button_NONE 0x00

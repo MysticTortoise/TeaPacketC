@@ -1,5 +1,4 @@
 Destination TeaPacket/Input/GameInput/GamepadButtons.gen
-Namespaces TeaPacket::Input
 Enum TP_Input_Button
 Enum GameInputGamepadButtons Alias GamepadButton
 Headers <GameInput.h> "TeaPacket/Input/Button.h"

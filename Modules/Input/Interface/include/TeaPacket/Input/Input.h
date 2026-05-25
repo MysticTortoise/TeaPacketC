@@ -83,7 +83,7 @@ TP_Input_Slot TP_Input_GetLastSlotPressed(TP_Input_ControllerType typeFilter);
  * Gets the current slot count.
  *
  * @details On platforms that support a fixed number of controllers, this function will return that number.
- * On platforms that support a variable number of controllers (i.e. desktops, mobile, etc.) this function will return the current highest slot connected.
+ * On platforms that support a variable number of controllers (i.e. desktops, mobile, etc.) this function will return the current highest slot connected + 1.
  * @return The current slot count.
  */
 TP_Input_Slot TP_Input_GetSlotCount(void);
