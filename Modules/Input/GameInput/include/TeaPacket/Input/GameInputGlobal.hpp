@@ -4,12 +4,10 @@
 #include <wrl/client.h>
 
 #undef max // stupid ass windows header
-using namespace GameInput::v3;
 
 namespace TeaPacket::Input
 {
-    inline Microsoft::WRL::ComPtr<IGameInput> gameInput;
+    inline Microsoft::WRL::ComPtr<GameInput::v3::IGameInput> gameInput;
 
-    using GameInputKindType = std::underlying_type_t<GameInputKind>;
-    constexpr auto GameInputKindAny = static_cast<GameInputKind>(0x000FFFFF);
+    constexpr GameInput::v3::GameInputKind GameInputKindAny = static_cast<GameInput::v3::GameInputKind>(0x000FFFFF);
 }

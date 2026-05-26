@@ -8,7 +8,7 @@ add_executable(TeaPacket_TestPrograms_Input main.c)
 
 TP_add_bundle(${TEAPACKET_PLATFORM})
 
-set(TP_Bundle_Windows_InputLib WinMessage)
+#set(TP_Bundle_Windows_InputLib WinMessage)
 
 TP_build_bundle(${TEAPACKET_PLATFORM})
 TP_link_bundle(TeaPacket_TestPrograms_Input ${TEAPACKET_PLATFORM})

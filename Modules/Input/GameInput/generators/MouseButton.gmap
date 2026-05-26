@@ -1,10 +1,10 @@
 Destination TeaPacket/Input/GameInput/MouseButtons.gen
 Enum TP_Input_Button
-Enum GameInputMouseButtons Alias MouseButton
+Enum GameInput::v3::GameInputMouseButtons Alias MouseButton
 Headers <GameInput.h> "TeaPacket/Input/Button.h"
 Data
-TP_Input_Button_MOUSE_LEFT GameInputMouseLeftButton
-TP_Input_Button_MOUSE_RIGHT GameInputMouseRightButton
-TP_Input_Button_MOUSE_MIDDLE GameInputMouseMiddleButton
+TP_Input_Button_MOUSE_LEFT GameInput::v3::GameInputMouseLeftButton
+TP_Input_Button_MOUSE_RIGHT GameInput::v3::GameInputMouseRightButton
+TP_Input_Button_MOUSE_MIDDLE GameInput::v3::GameInputMouseMiddleButton
 End
-Default TP_Input_Button_NONE GameInputMouseNone
+Default TP_Input_Button_NONE GameInput::v3::GameInputMouseNone

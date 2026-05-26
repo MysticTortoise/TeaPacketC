@@ -1,12 +1,12 @@
 Destination TeaPacket/Input/GameInput/ControllerType.gen
 Enum TP_Input_ControllerType
-Enum GameInputKind
+Enum GameInput::v3::GameInputKind Alias GameInputKind
 Headers <GameInput.h> "TeaPacket/Input/ControllerType.h" "TeaPacket/Input/GameInputGlobal.hpp"
 Data
-TP_Input_ControllerType_None GameInputKindUnknown
-TP_Input_ControllerType_Any GameInputKindAny
-TP_Input_ControllerType_Keyboard GameInputKindKeyboard
-TP_Input_ControllerType_Mouse GameInputKindMouse
-TP_Input_ControllerType_Gamepad GameInputKindController
+TP_Input_ControllerType_None GameInput::v3::GameInputKindUnknown
+TP_Input_ControllerType_Any TeaPacket::Input::GameInputKindAny
+TP_Input_ControllerType_Keyboard GameInput::v3::GameInputKindKeyboard
+TP_Input_ControllerType_Mouse GameInput::v3::GameInputKindMouse
+TP_Input_ControllerType_Gamepad GameInput::v3::GameInputKindController
 End
-Default TP_Input_ControllerType_None GameInputKindUnknown
+Default TP_Input_ControllerType_None GameInput::v3::GameInputKindUnknown

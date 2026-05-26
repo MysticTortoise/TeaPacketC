@@ -20,6 +20,8 @@
 #include "TeaPacket/Memory/Memory.h"
 
 #undef min
+using namespace GameInput::v3;
+using namespace TeaPacket::Input;
 // FUCK MICROSOFT
 static GameInputCallbackToken globalCallbackToken;
 
