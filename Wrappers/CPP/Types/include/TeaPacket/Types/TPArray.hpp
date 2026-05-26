@@ -22,5 +22,5 @@ namespace TeaPacket
     };
 
 #define SpanToTPArray(span) { span.data(), span.size() }
-#define SpanToTPArrayCast(span, newType) { reinterpret_cast<newType*>(span.data()), span.size() }
+#define SpanToTPArrayCast(span, newType) { reinterpret_cast<const newType*>(span.data()), span.size() }
 }

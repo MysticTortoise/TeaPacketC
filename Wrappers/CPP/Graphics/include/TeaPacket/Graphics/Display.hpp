@@ -1,8 +1,8 @@
 #pragma once
 #include "TeaPacket/Graphics/Display.h"
 
-#include <span>
 #include "TeaPacket/Graphics/DisplayParams.hpp"
+#include "TeaPacket/Types/SpanView.hpp"
 #include "TeaPacket/Types/TPArray.hpp"
 
 namespace TeaPacket::Graphics
@@ -19,7 +19,7 @@ namespace TeaPacket::Graphics
 
         }
 
-        static void InitDefaultDisplays(std::span<DisplayParams> params)
+        static void InitDefaultDisplays(SpanView<DisplayParams> params)
         {
             TP_Graphics_InitDefaultDisplays(SpanToTPArrayCast(params, TP_Graphics_DisplayParams));
         }
@@ -34,29 +34,29 @@ namespace TeaPacket::Graphics
             TP_Graphics_Display_BeginRender(id);
         }
 
-        void FinishRender() const
+        static void BeginRender(const DisplayID id)
         {
-            TP_Graphics_Display_FinishRender(id);
+            TP_Graphics_Display_BeginRender(id);
         }
 
-        tp_u16 GetWidth() const
+        static void FinishRender()
+        {
+            TP_Graphics_Display_FinishRender();
+        }
+
+        [[nodiscard]] tp_u16 GetWidth() const
         {
             return TP_Graphics_Display_GetWidth(id);
         }
 
-        tp_u16 GetHeight() const
+        [[nodiscard]] tp_u16 GetHeight() const
         {
             return TP_Graphics_Display_GetHeight(id);
         }
 
-        static void PresentAll()
+        static void PresentAll(const bool waitForVSync)
         {
-            TP_Graphics_Display_PresentAll();
-        }
-
-        static void WaitForVSync()
-        {
-            TP_Graphics_Display_WaitForVSync();
+            TP_Graphics_Display_PresentAll(waitForVSync);
         }
     };
 }

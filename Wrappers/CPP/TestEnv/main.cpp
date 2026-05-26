@@ -14,8 +14,7 @@ int main()
         return -1;
     }
 
-    std::array paramList = {Graphics::DisplayParams{1920, 1080}};
-    Graphics::Display::InitDefaultDisplays(paramList);
+    Graphics::Display::InitDefaultDisplays({Graphics::DisplayParams{1920, 1080}});
 
     while (System::ShouldRun())
     {
@@ -25,10 +24,9 @@ int main()
         display.BeginRender();
         Graphics::ClearColor(255, 0, 0);
 
-        display.FinishRender();
+        Graphics::Display::FinishRender();
 
-        Graphics::Display::PresentAll();
-        Graphics::Display::WaitForVSync();
+        Graphics::Display::PresentAll(true);
     }
 
     Bundled::DeInit();

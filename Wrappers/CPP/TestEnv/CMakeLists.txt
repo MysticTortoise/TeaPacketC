@@ -5,7 +5,9 @@ include("${TEAPACKET_ROOT}/Subtools/AssetMixer/Functions.CMake")
 
 
 add_executable(TeaPacket_TestPrograms_CPP main.cpp)
-TP_add_bundle(${TEAPACKET_PLATFORM} TeaPacket_TestPrograms_CPP)
+TP_add_bundle(${TEAPACKET_PLATFORM})
+TP_build_bundle(${TEAPACKET_PLATFORM})
+TP_link_bundle(TeaPacket_TestPrograms_CPP ${TEAPACKET_PLATFORM})
 
 TP_add_interface_cpp_subdirectory(Assets)
 TP_add_interface_cpp_subdirectory(Bundled)
@@ -21,7 +23,7 @@ TP_add_interface_cpp_subdirectory(Window)
 
 
 #TP_add_extension_subdirectory(STBImageLoader)
-target_link_libraries(TeaPacket_TestPrograms_CPP TeaPacket_Bundle
+target_link_libraries(TeaPacket_TestPrograms_CPP PRIVATE
         TeaPacket_Assets_CPP TeaPacket_Types_CPP
         TeaPacket_Bundled_CPP
         TeaPacket_Endianness_CPP
