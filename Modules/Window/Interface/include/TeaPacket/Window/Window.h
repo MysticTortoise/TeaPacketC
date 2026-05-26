@@ -70,6 +70,11 @@ void TP_Window_SetHeight(TP_Window*, tp_u16 height);
  */
 void TP_Window_SetTitle(TP_Window*, TP_StringView name);
 
+/**
+ * Gets a Window's ID.
+ * @return The ID used by this Window. Will match the Display ID of the Window.
+ */
+tp_u16 TP_Window_GetID(const TP_Window*);
 
 #ifdef __cplusplus
 }

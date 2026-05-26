@@ -231,3 +231,13 @@ TP_Window* TP_Window_Get(const size_t index)
 {
     return Windows.at(index);
 }
+
+tp_u16 TP_Window_GetID(const TP_Window* window)
+{
+    for (size_t i = 0; i < Windows.size(); ++i)
+    {
+        if (window == Windows.at(i))
+            return static_cast<tp_u16>(i);
+    }
+    return TP_MAXU16;
+}
