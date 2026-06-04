@@ -25,3 +25,5 @@ struct TP_Window
 
     static inline bool shouldQuit = false;
 };
+
+TP_Window* TP_Window_Windows_GetWindowFromHWND(HWND hWnd);

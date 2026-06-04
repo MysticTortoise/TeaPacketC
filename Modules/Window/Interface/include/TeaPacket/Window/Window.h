@@ -76,6 +76,12 @@ void TP_Window_SetTitle(TP_Window*, TP_StringView name);
  */
 tp_u16 TP_Window_GetID(const TP_Window*);
 
+/**
+ * Gets the last active (focused) Window.
+ * @return The last active Window.
+ */
+TP_Window* TP_Window_GetActive(void);
+
 #ifdef __cplusplus
 }
 #endif

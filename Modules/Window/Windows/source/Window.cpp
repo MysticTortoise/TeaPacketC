@@ -8,6 +8,18 @@
 #include <memory>
 #include <vector>
 
+static inline auto Windows = std::vector<TP_Window*>();
+static TP_Window* CurrentActiveWindow = nullptr;
+
+TP_Window* TP_Window_Windows_GetWindowFromHWND(const HWND hWnd)
+{
+    for (TP_Window* window : Windows)
+    {
+        if (window->windowHandle == hWnd)
+            return window;
+    }
+    return nullptr;
+}
 
 static LRESULT WindowProc(const HWND hWnd, const UINT message, const WPARAM wParam, const LPARAM lParam)
 {
@@ -24,7 +36,7 @@ static LRESULT WindowProc(const HWND hWnd, const UINT message, const WPARAM wPar
     return DefWindowProc(hWnd, message, wParam, lParam);
 }
 
-static std::optional<LRESULT> WindowProcQuit([[maybe_unused]] const HWND hWnd, const UINT message,
+static std::optional<LRESULT> WindowProcWindowCore([[maybe_unused]] const HWND hWnd, const UINT message,
                                              [[maybe_unused]] const WPARAM wParam,
                                              [[maybe_unused]] const LPARAM lParam)
 {
@@ -35,6 +47,9 @@ static std::optional<LRESULT> WindowProcQuit([[maybe_unused]] const HWND hWnd, c
         PostQuitMessage(0);
         // TODO: multiple windows on closing can be closed individually
         TP_Window::shouldQuit = true;
+        return 0;
+    case WM_SETFOCUS:
+        CurrentActiveWindow = TP_Window_Windows_GetWindowFromHWND(hWnd);
         return 0;
     default: return std::nullopt;
     }
@@ -64,7 +79,6 @@ static void InitializeWindowClass()
     }
 }
 
-static inline auto Windows = std::vector<TP_Window*>();
 
 TP_Window* TP_Window_Create(const TP_Window_Params* params)
 {
@@ -99,8 +113,11 @@ TP_Window* TP_Window_Create(const TP_Window_Params* params)
         params->height
     };
     SetWindowLongPtr(winHandle, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(window));
-    window->windowProcs.emplace_back(WindowProcQuit);
+    window->windowProcs.emplace_back(WindowProcWindowCore);
     ShowWindow(winHandle, SW_SHOWNORMAL);
+
+    if (CurrentActiveWindow == nullptr)
+        CurrentActiveWindow = window;
 
     Windows.emplace_back(window);
 
@@ -240,4 +257,9 @@ tp_u16 TP_Window_GetID(const TP_Window* window)
             return static_cast<tp_u16>(i);
     }
     return TP_MAXU16;
+}
+
+TP_Window* TP_Window_GetActive()
+{
+    return CurrentActiveWindow;
 }
