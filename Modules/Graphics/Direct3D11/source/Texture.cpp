@@ -52,9 +52,9 @@ static constexpr D3D11_CPU_ACCESS_FLAG GetD3DCpuAccessFlags(const TP_Graphics_Te
 TP_Graphics_Texture* D3D11::MakeTexture(const TP_Graphics_TextureParams* params, DTextureParms dparams)
 {
     auto texture = new TP_Graphics_Texture();
-    texture->width = params->width;
-    texture->height = params->height;
-    texture->format = params->format;
+    texture->width = params->imageData.width;
+    texture->height = params->imageData.height;
+    texture->format = params->imageData.format;
 
     D3D11_TEXTURE2D_DESC textureDesc;
     textureDesc.Width = texture->width;
@@ -70,17 +70,17 @@ TP_Graphics_Texture* D3D11::MakeTexture(const TP_Graphics_TextureParams* params,
     textureDesc.MiscFlags = 0;
 
     D3D11_SUBRESOURCE_DATA texData = {
-        .pSysMem = params->data,
-        .SysMemPitch = static_cast<UINT>(static_cast<float>(params->width) * TP_Graphics_Helper_GetTexFormatBytesPerPixel(params->format)),
+        .pSysMem = params->imageData.data,
+        .SysMemPitch = static_cast<UINT>(static_cast<float>(params->imageData.pitch) * TP_Graphics_Helper_GetTexFormatBytesPerPixel(params->imageData.format)),
         .SysMemSlicePitch = 0
     };
 
     CheckErrorWinCom(
         device->CreateTexture2D(&textureDesc,
-            params->data == nullptr ? nullptr : &texData, texture->texture2D.GetAddressOf())
+            params->imageData.data == nullptr ? nullptr : &texData, texture->texture2D.GetAddressOf())
     );
 
-    if (params->data == nullptr)
+    if (params->imageData.data == nullptr)
     {
         assert(params->flags.writeMode != TP_Graphics_Texture_AvailableMode_None);
     }

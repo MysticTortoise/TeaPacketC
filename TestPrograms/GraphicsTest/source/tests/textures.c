@@ -65,10 +65,13 @@ static TP_Graphics_ShaderParams shaderParams = {
 static TP_Graphics_Shader* shader;
 
 static const TP_Graphics_TextureParams texParams = {
-    .data = (void*)texData,
-    .width = 3,
-    .height = 3,
-    .format = TP_Graphics_Texture_Format_RGBA8,
+    .imageData = {
+        .data = (void*)texData,
+        .pitch = 3,
+        .width = 3,
+        .height = 3,
+        .format = TP_Graphics_Texture_Format_RGBA8,
+    },
     .filterMode = TP_Graphics_Texture_FilterMode_Nearest,
     .wrapMode = TP_Graphics_Texture_WrapMode_Wrap,
     .flags = {

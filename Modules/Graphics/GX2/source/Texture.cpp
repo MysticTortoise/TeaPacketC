@@ -21,11 +21,11 @@ TP_Graphics_Texture* TP_Graphics_Texture_Create(const TP_Graphics_TextureParams*
         .gx2Texture = GX2Texture{
             .surface = GX2Surface{
                 .dim = GX2_SURFACE_DIM_TEXTURE_2D,
-                .width = params->width,
-                .height = params->height,
+                .width = params->imageData.width,
+                .height = params->imageData.height,
                 .depth = 1,
                 .mipLevels = 1,
-                .format = TP_Graphics_Texture_FormatToGX2(params->format),
+                .format = TP_Graphics_Texture_FormatToGX2(params->imageData.format),
                 .aa = GX2_AA_MODE1X,
                 .use = GX2_SURFACE_USE_TEXTURE,
                 .imageSize = 0,
@@ -62,15 +62,15 @@ TP_Graphics_Texture* TP_Graphics_Texture_Create(const TP_Graphics_TextureParams*
         texture->gx2Texture.surface.alignment,
         texture->gx2Texture.surface.imageSize);
 
-    if (params->data != nullptr)
+    if (params->imageData.data != nullptr)
     {
         GX2Surface proxySurface = texture->gx2Texture.surface;
         proxySurface.tileMode = GX2_TILE_MODE_LINEAR_SPECIAL;
         proxySurface.pitch = proxySurface.width;
-        proxySurface.image = params->data;
-        proxySurface.imageSize = static_cast<uint32_t>(TP_Graphics_Helper_GetTexFormatBytesPerPixel(params->format) *
-            static_cast<float>(params->width) *
-            static_cast<float>(params->height));
+        proxySurface.image = params->imageData.data;
+        proxySurface.imageSize = static_cast<uint32_t>(TP_Graphics_Helper_GetTexFormatBytesPerPixel(params->imageData.format) *
+            static_cast<float>(params->imageData.width) *
+            static_cast<float>(params->imageData.height));
         GX2CopySurface(&proxySurface, 0, 0, &texture->gx2Texture.surface, 0, 0);
     } else
     {

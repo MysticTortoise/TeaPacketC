@@ -17,9 +17,13 @@ namespace TeaPacket::Graphics
 
         explicit Texture(TextureParams& params):
         Texture(TP_Graphics_TextureParams{
-            .data = params.data,
-            .width = params.width,
-            .format = static_cast<TP_Graphics_Texture_Format>(params.format),
+            .imageData = {
+                .data = params.imageData.data,
+                .pitch = params.imageData.pitch,
+                .width = params.imageData.width,
+                .height = params.imageData.height,
+                .format = static_cast<TP_Graphics_Texture_Format>(params.imageData.format)
+            },
             .filterMode = static_cast<TP_Graphics_Texture_FilterMode>(params.filterMode),
             .wrapMode = static_cast<TP_Graphics_Texture_WrapMode>(params.wrapMode)
         })

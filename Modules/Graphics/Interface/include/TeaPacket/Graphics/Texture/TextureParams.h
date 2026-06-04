@@ -8,9 +8,9 @@
 
 #include "TeaPacket/Graphics/Texture/AvailableMode.h"
 #include "TeaPacket/Graphics/Texture/FilterMode.h"
-#include "TeaPacket/Graphics/Texture/Format.h"
 #include "TeaPacket/Graphics/Texture/WrapMode.h"
 #include "TeaPacket/Types/Numeric.h"
+#include "TeaPacket/Graphics/Texture/ImageData.h"
 
 /**
  * Contains flags determining how a Texture should be used.
@@ -36,27 +36,7 @@ typedef struct
  */
 typedef struct
 {
-    /**
-     * A pointer to the data to be used to fill the texture. The format of that data depends on the foramt of this Texture.
-     */
-    void* data;
-    /**
-     * The pitch of the texture. This defines how many bytes one row of pixels is.
-     * @details If 0, then the width of the image multiplied by the bytes per pixel of the format should be used as the pitch.
-     */
-    tp_u16 pitch;
-    /**
-     * The width of the Texture, in pixels.
-     */
-    tp_u16 width;
-    /**
-     * The height of the Texture, in pixels.
-     */
-    tp_u16 height;
-    /**
-     * The format of the Texture.
-     */
-    TP_Graphics_Texture_Format format;
+    TP_Graphics_ImageData imageData;
     /**
      * How the texture is filtered when sampled from.
      */

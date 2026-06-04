@@ -3,7 +3,7 @@
 
 #include "TeaPacket/Graphics/Texture/AvailableMode.hpp"
 #include "TeaPacket/Graphics/Texture/FilterMode.hpp"
-#include "TeaPacket/Graphics/Texture/Format.hpp"
+#include "TeaPacket/Graphics/Texture/ImageData.hpp"
 #include "TeaPacket/Graphics/Texture/WrapMode.hpp"
 
 namespace TeaPacket::Graphics
@@ -17,10 +17,7 @@ namespace TeaPacket::Graphics
 
     struct TextureParams
     {
-        void* data;
-        tp_u16 width;
-        tp_u16 height;
-        TextureFormat format;
+        ImageData imageData;
         TextureFilterMode filterMode;
         TextureWrapMode wrapMode;
         TextureUseFlags flags;

@@ -24,10 +24,13 @@ TP_Graphics_Viewport* TP_Graphics_Viewport_Create(const TP_Graphics_ViewportPara
 
     {
         auto texParms = TP_Graphics_TextureParams{
-            .data = nullptr,
-            .width = params->width,
-            .height = params->height,
-            .format = TP_Graphics_Texture_Format_BGRA8,
+            .imageData = {
+                .data = nullptr,
+                .pitch = params->width,
+                .width = params->width,
+                .height = params->height,
+                .format = TP_Graphics_Texture_Format_BGRA8,
+            },
             .filterMode = TP_Graphics_Texture_FilterMode_Linear,
             .wrapMode = TP_Graphics_Texture_WrapMode_Wrap,
             .flags = {
@@ -43,10 +46,13 @@ TP_Graphics_Viewport* TP_Graphics_Viewport_Create(const TP_Graphics_ViewportPara
     }
     {
         auto texParms = TP_Graphics_TextureParams{
-            .data = nullptr,
-            .width = params->width,
-            .height = params->height,
-            .format = TP_Graphics_Texture_Format_D24S8,
+            .imageData = {
+                .data = nullptr,
+                .pitch = params->width,
+                .width = params->width,
+                .height = params->height,
+                .format = TP_Graphics_Texture_Format_D24S8
+            },
             .filterMode = TP_Graphics_Texture_FilterMode_Linear,
             .wrapMode = TP_Graphics_Texture_WrapMode_Wrap,
             .flags = {
