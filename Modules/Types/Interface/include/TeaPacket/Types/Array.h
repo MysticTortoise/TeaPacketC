@@ -77,4 +77,10 @@ TP_INLINE_FUNC TP_StringView TP_StrViewMake(const char* data, const size_t size)
  */
 #define TP_StrViewFromConstStr(msg) TP_StrViewMake(msg, sizeof(msg)-1)
 
+/**
+ * Creates a StringView brace init list from an inline string literal.
+ * @param msg The constant message to create a StringView for.
+ */
+#define TP_StrViewFromConstStrBrace(msg) {msg, sizeof(msg)-1}
+
 #endif
