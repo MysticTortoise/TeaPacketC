@@ -4,6 +4,7 @@ project(TeaPacket_Logging_Base)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonFunctions.CMake")
 TP_add_interface_subdirectory(Types)
 TP_add_interface_subdirectory(Memory)
+TP_add_interface_subdirectory(MacroUtils)
 
 include("${TEAPACKET_ROOT}/CMakeCommons/InterfaceCommon.CMake")
-target_link_libraries(TeaPacket_Logging_Base INTERFACE TeaPacket_Types_Base TeaPacket_Memory_Base)
+target_link_libraries(TeaPacket_Logging_Base INTERFACE TeaPacket_Types_Base TeaPacket_Memory_Base TeaPacket_MacroUtils_Base)

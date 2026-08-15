@@ -1,4 +1,5 @@
 set(TP_Bundle_Windows_AssetsLib     CPPSTDFile  PARENT_SCOPE)
+set(TP_Bundle_Windows_ClipboardLib  Windows     PARENT_SCOPE)
 set(TP_Bundle_Windows_GraphicsLib   Direct3D11  PARENT_SCOPE)
 set(TP_Bundle_Windows_InputLib      GameInput   PARENT_SCOPE)
 set(TP_Bundle_Windows_LoggingLib    STDIO       PARENT_SCOPE)

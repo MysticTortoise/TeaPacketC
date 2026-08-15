@@ -18,6 +18,15 @@ tp_u16 TP_Graphics_Helper_GetTexFormatBitsPerPixel(const TP_Graphics_Texture_For
     case TP_Graphics_Texture_Format_D24S8: return 32;
     case TP_Graphics_Texture_Format_R8: return 8;
     case TP_Graphics_Texture_Format_R1: return 1;
+    case TP_Graphics_Texture_Format_R16: return 16;
+    case TP_Graphics_Texture_Format_RGB8: 
+    case TP_Graphics_Texture_Format_BGR8: return 8;
+    case TP_Graphics_Texture_Format_R5G6B5:
+    case TP_Graphics_Texture_Format_B5G6R5:
+    case TP_Graphics_Texture_Format_RGB5A1:
+    case TP_Graphics_Texture_Format_BGR5A1: return 16;
+    case TP_Graphics_Texture_Format_R2: return 2;
+    case TP_Graphics_Texture_Format_R4: return 4;
     case TP_Graphics_Texture_Format_NONE:
     default: return 0;
     }

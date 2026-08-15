@@ -2,6 +2,7 @@
 #include "TeaPacket/Graphics/Texture/Texture.h"
 
 #include <cassert>
+#include <cmath>
 
 #include <d3d11.h>
 
@@ -51,6 +52,13 @@ static constexpr D3D11_CPU_ACCESS_FLAG GetD3DCpuAccessFlags(const TP_Graphics_Te
 
 TP_Graphics_Texture* D3D11::MakeTexture(const TP_Graphics_TextureParams* params, DTextureParms dparams)
 {
+    assert(TP_Graphics_Texture_IsFormatSupported(params->imageData.format));
+    
+    const size_t pitch = params->imageData.pitch != 0 ?
+        params->imageData.pitch :
+        static_cast<tp_u32>(std::ceil(static_cast<float>(params->imageData.width) *
+            TP_Graphics_Helper_GetTexFormatBytesPerPixel(params->imageData.format)));
+    
     auto texture = new TP_Graphics_Texture();
     texture->width = params->imageData.width;
     texture->height = params->imageData.height;
@@ -71,7 +79,7 @@ TP_Graphics_Texture* D3D11::MakeTexture(const TP_Graphics_TextureParams* params,
 
     D3D11_SUBRESOURCE_DATA texData = {
         .pSysMem = params->imageData.data,
-        .SysMemPitch = static_cast<UINT>(static_cast<float>(params->imageData.pitch) * TP_Graphics_Helper_GetTexFormatBytesPerPixel(params->imageData.format)),
+        .SysMemPitch = static_cast<UINT>(pitch),
         .SysMemSlicePitch = 0
     };
 

@@ -50,7 +50,10 @@ endif()
 if(NOT COMMAND TP_add_extension_subdirectory)
     function(TP_add_extension_subdirectory extensionName)
         message(${extensionName})
-        set(target_name TeaPacket_Extension_${extensionName})
+        
+        string(REPLACE / _ target_name_suffix "${extensionName}")
+        
+        set(target_name TeaPacket_Extension_${target_name_suffix})
         set(subdir "${TEAPACKET_ROOT}/Extensions/${extensionName}")
         if(NOT TARGET ${target_name})
             add_subdirectory_no_overwrite(${target_name} ${subdir} "${extensionName}")

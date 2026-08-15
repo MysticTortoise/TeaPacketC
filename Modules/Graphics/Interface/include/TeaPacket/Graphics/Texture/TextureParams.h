@@ -20,15 +20,15 @@ typedef struct
     /**
      * Whether this Texture is to be used by a shader. Almost always TRUE.
      */
-    tp_bool shaderResource : 1;
+    tp_bfint shaderResource : 1;
     /**
      * Whether this Texture should be readable by the CPU. Reccomended default is FALSE.
      */
-    tp_bool cpuReadable : 1;
+    tp_bfint cpuReadable : 1;
     /**
      * The write accessibility of the Texture.
      */
-    TP_Graphics_Texture_AvailableMode writeMode : 2;
+    tp_bfint writeMode : 2;
 } TP_Graphics_TextureUseFlags;
 
 /**

@@ -12,7 +12,19 @@ file(GLOB_RECURSE sources source/*.c*)
 
 add_library(TeaPacket_Assets_CPPSTDFile STATIC ${sources})
 target_include_directories(TeaPacket_Assets_CPPSTDFile PRIVATE source)
+target_include_directories(TeaPacket_Assets_CPPSTDFile PUBLIC include)
 target_link_libraries(TeaPacket_Assets_CPPSTDFile TeaPacket_Assets_Base
         TeaPacket_Memory_Base TeaPacket_Logging_Base)
+
+if(NOT DEFINED TeaPacket_Assets_AssetPrepend)
+    set(TeaPacket_Assets_AssetPrepend "assets/")
+    
+    if(TEAPACKET_PLATFORM STREQUAL "WiiU" OR DEFINED WUT_ROOT)
+        set(TeaPacket_Assets_AssetPrepend "/vol/content/")
+    endif()
+endif()
+
+
+target_compile_definitions(TeaPacket_Assets_CPPSTDFile PRIVATE TP_ASSETS_ASSETPREPEND="${TeaPacket_Assets_AssetPrepend}")
 
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

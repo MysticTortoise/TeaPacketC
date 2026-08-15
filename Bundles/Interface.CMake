@@ -1,4 +1,5 @@
 TP_add_interface_subdirectory(Assets)
+TP_add_interface_subdirectory(Clipboard)
 TP_add_interface_subdirectory(Endianness)
 TP_add_interface_subdirectory(Graphics)
 TP_add_interface_subdirectory(Input)
@@ -14,6 +15,7 @@ TP_add_interface_subdirectory(Window)
 add_library(TeaPacket_Bundle_Interface INTERFACE)
 target_link_libraries(TeaPacket_Bundle_Interface INTERFACE
         TeaPacket_Assets_Base
+        TeaPacket_Clipboard_Base
         TeaPacket_Endianness_Base
         TeaPacket_Graphics_Base
         TeaPacket_Input_Base

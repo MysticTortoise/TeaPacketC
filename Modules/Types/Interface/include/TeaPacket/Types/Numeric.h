@@ -52,7 +52,31 @@ typedef uint64_t tp_u64;
 typedef int64_t tp_i64;
 
 #else
+
+/* MSVC SPECIFIC INT SIZES */
+#ifdef TP_HAS_MSC
+
+#define TP_SUPPORT_U8 1
+typedef unsigned __int8 tp_u8;
+#define TP_SUPPORT_I8 1
+typedef __int8 tp_i8;
+#define TP_SUPPORT_U16 1
+typedef unsigned __int16 tp_u16;
+#define TP_SUPPORT_I16 1
+typedef __int16 tp_i16;
+#define TP_SUPPORT_U32 1
+typedef unsigned __int32 tp_u32;
+#define TP_SUPPORT_I32 1
+typedef __int32 tp_i32;
+#define TP_SUPPORT_U64 1
+typedef unsigned __int64 tp_u64;
+#define TP_SUPPORT_I64 1
+typedef __int64 tp_i64;
+
+#else
+
 /* <C99 - WE GOTTA FAKE IT :D*/
+
 
 /* 8 bit int */
 #if CHAR_BIT == 8
@@ -136,9 +160,16 @@ typedef unsigned int tp_u64;
 #elif ULONG_MAX == TP_MAX_U64
 #define TP_SUPPORT_U64 1
 typedef unsigned long tp_u64;
+#elif defined(TP_HAS_GNUC)
+#define TP_SUPPORT_U64 1
+__extension__ typedef unsigned long long int tp_u64;
+#endif
+
 #endif
 
 #endif /* ENDIF C90*/
 
+
+typedef unsigned int tp_bfint;
 
 #endif

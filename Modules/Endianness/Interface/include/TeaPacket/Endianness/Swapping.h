@@ -1,0 +1,88 @@
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
+#ifndef TEAPACKET_ENDIAN_SWAPPING_H
+#define TEAPACKET_ENDIAN_SWAPPING_H
+
+#include "TeaPacket/Types/Numeric.h"
+#include <stdlib.h>
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+/* 16-BIT INTEGERS */
+#if TP_SUPPORT_U16
+TP_INLINE_FUNC tp_u16 TP_SwapU16(const tp_u16 x)
+{
+#   ifdef TP_HAS_MSC
+        return _byteswap_ushort(x);
+#   elif defined(TP_HAS_GNUC)
+        return __builtin_bswap16(x);
+#   else
+        return (x >> 8) | (x << 8);
+#   endif
+}
+#endif
+
+#if TP_SUPPORT_I16
+TP_INLINE_FUNC tp_i16 TP_SwapI16(const tp_i16 x)
+{
+    return (x >> 8) | (x << 8);
+}
+#endif
+
+/* 32-BIT INTEGERS */
+#if TP_SUPPORT_U32
+TP_INLINE_FUNC tp_u32 TP_SwapU32(const tp_u32 x)
+{
+#   ifdef TP_HAS_MSC
+        return _byteswap_ulong(x);
+#   elif defined(TP_HAS_GNUC)
+        return __builtin_bswap32(x);
+#   else
+        return ((x >> 24) & 0xff) | ((x << 8) & 0xff0000) | ((x >> 8) & 0xff00) | ((x << 24) & 0xff000000);
+#   endif
+}
+#endif
+
+
+#if TP_SUPPORT_I32
+TP_INLINE_FUNC tp_i32 TP_SwapI32(const tp_i32 x)
+{
+    return ((x >> 24) & 0xff) | ((x << 8) & 0xff0000) | ((x >> 8) & 0xff00) | ((x << 24) & 0xff000000);
+}
+#endif
+
+    
+/* 64-BIT INTEGERS */
+#if TP_SUPPORT_U64
+    TP_INLINE_FUNC tp_u64 TP_SwapU64(tp_u64 x)
+{
+#   ifdef TP_HAS_MSC
+        return _byteswap_uint64(x);
+#   elif defined(TP_HAS_GNUC)
+        return __builtin_bswap64(x);
+#   else
+        x = (x & 0x00000000FFFFFFFF) << 32 | (x & 0xFFFFFFFF00000000) >> 32;
+        x = (x & 0x0000FFFF0000FFFF) << 16 | (x & 0xFFFF0000FFFF0000) >> 16;
+        x = (x & 0x00FF00FF00FF00FF) << 8 | (x & 0xFF00FF00FF00FF00) >> 8;
+        return x;
+#   endif
+}
+#endif
+
+#if TP_SUPPORT_I64
+    TP_INLINE_FUNC tp_i64 TP_SwapI64(tp_i64 x)
+{
+    x = (x & 0x00000000FFFFFFFF) << 32 | (x & 0xFFFFFFFF00000000) >> 32;
+    x = (x & 0x0000FFFF0000FFFF) << 16 | (x & 0xFFFF0000FFFF0000) >> 16;
+    x = (x & 0x00FF00FF00FF00FF) << 8 | (x & 0xFF00FF00FF00FF00) >> 8;
+    return x;
+}
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

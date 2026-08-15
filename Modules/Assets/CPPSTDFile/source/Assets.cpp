@@ -9,17 +9,15 @@
 #include <fstream>
 #include <string>
 
+#include "General.hpp"
 #include "TeaPacket/Logging/Logging.h"
 #include "TeaPacket/Memory/Memory.h"
 
 
-static constexpr auto assetPrepend = "assets/";
-
+using namespace TeaPacket::Assets::CPPSTDFile;
 TP_String TP_Assets_ReadTextAsset(const TP_StringView assetPath)
 {
-    std::string assetSource(assetPrepend);
-    assetSource.append(assetPath.p, assetPath.size);
-
+    const std::string assetSource = GetFilePath(assetPath);
     std::ifstream in(assetSource);
     if (!in.is_open())
     {
@@ -47,8 +45,7 @@ TP_String TP_Assets_ReadTextAsset(const TP_StringView assetPath)
 
 TP_ByteArray TP_Assets_ReadBinaryAsset(const TP_StringView assetPath)
 {
-    std::string assetSource(assetPrepend);
-    assetSource.append(assetPath.p, assetPath.size);
+    const std::string assetSource = GetFilePath(assetPath);
 
     std::ifstream in(assetSource, std::ios::binary);
     if (!in.is_open())

@@ -1,4 +1,4 @@
-set(TP_Bundle_WiiU_AssetsLib     WUHBContent    PARENT_SCOPE)
+set(TP_Bundle_WiiU_AssetsLib     CPPSTDFile     PARENT_SCOPE)
 set(TP_Bundle_WiiU_GraphicsLib   GX2            PARENT_SCOPE)
 set(TP_Bundle_WiiU_InputLib      WiiU           PARENT_SCOPE)
 set(TP_Bundle_WiiU_LoggingLib    WHBLogUDP      PARENT_SCOPE)

@@ -26,7 +26,7 @@ TP_Graphics_Viewport* TP_Graphics_Viewport_Create(const TP_Graphics_ViewportPara
         auto texParms = TP_Graphics_TextureParams{
             .imageData = {
                 .data = nullptr,
-                .pitch = params->width,
+                .pitch = 0,
                 .width = params->width,
                 .height = params->height,
                 .format = TP_Graphics_Texture_Format_BGRA8,
@@ -48,7 +48,7 @@ TP_Graphics_Viewport* TP_Graphics_Viewport_Create(const TP_Graphics_ViewportPara
         auto texParms = TP_Graphics_TextureParams{
             .imageData = {
                 .data = nullptr,
-                .pitch = params->width,
+                .pitch = 0,
                 .width = params->width,
                 .height = params->height,
                 .format = TP_Graphics_Texture_Format_D24S8

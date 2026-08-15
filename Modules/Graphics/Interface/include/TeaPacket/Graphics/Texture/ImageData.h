@@ -18,7 +18,7 @@ typedef struct
      * The pitch of the image. This defines how many bytes one row of pixels is.
      * @details If 0, then the width of the image multiplied by the bytes per pixel of the format should be used as the pitch.
      */
-    tp_u16 pitch;
+    tp_u32 pitch;
     /**
      * The width of the image, in pixels.
      */
