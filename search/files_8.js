@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['numeric_2eh_0',['Numeric.h',['../Numeric_8h.html',1,'']]]
+  ['logging_2eh_0',['Logging.h',['../Logging_8h.html',1,'']]]
 ];

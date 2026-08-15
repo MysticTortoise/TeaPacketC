@@ -1,6 +1,7 @@
 var dir_8da666e09d0c2e7551ed53e944c3bba4 =
 [
     [ "Texture", "dir_2cd0f0a5002192716cef0a6b7fbccf50.html", "dir_2cd0f0a5002192716cef0a6b7fbccf50" ],
+    [ "Color.h", "Color_8h.html", "Color_8h" ],
     [ "Display.h", "Display_8h.html", "Display_8h" ],
     [ "DisplayParams.h", "DisplayParams_8h.html", "DisplayParams_8h" ],
     [ "Graphics.h", "Graphics_8h.html", "Graphics_8h" ],

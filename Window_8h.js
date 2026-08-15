@@ -4,6 +4,7 @@ var Window_8h =
     [ "TP_Window_Create", "Window_8h.html#afa7919bdc57bf504dbcf619b3fda54ca", null ],
     [ "TP_Window_Destroy", "Window_8h.html#a2e2c1e5176b3408c7376aca28679fe27", null ],
     [ "TP_Window_Get", "Window_8h.html#af55ad25dc7b6a4c3eb87a6b3850cb012", null ],
+    [ "TP_Window_GetActive", "Window_8h.html#a02fcd36b102fe44f5ec0aca21d97c9e4", null ],
     [ "TP_Window_GetCount", "Window_8h.html#ae2e5341c56e3f193e06773473a1a2557", null ],
     [ "TP_Window_GetHeight", "Window_8h.html#a3f77fe0dd1d96b552988dcc1b3f935a9", null ],
     [ "TP_Window_GetID", "Window_8h.html#a0b422e59f79ce0b666521c84f70ba689", null ],

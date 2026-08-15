@@ -1,9 +1,6 @@
 <map id="Endianness" name="Endianness">
-<area shape="rect" id="node1" href="dir_8aca7be3682da8d2b55adefb07002043.html" title="Endianness" alt="" coords="50,5,138,31"/>
-<area shape="rect" id="node2" href="dir_833ee2dd7319fd1388710f0b043e836f.html" title="MacroUtils" alt="" coords="5,79,90,105"/>
-<area shape="poly" id="edge1" href="dir_000001_000005.html" alt="" coords="89,33,66,67,61,64,84,30"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000001_000005.html" title="1" alt="" coords="69,61,76,76"/>
-<area shape="rect" id="node3" href="dir_90710d1986845bbe321df71e29146a85.html" title="Types" alt="" coords="114,79,170,105"/>
-<area shape="poly" id="edge2" href="dir_000001_000011.html" alt="" coords="104,30,128,64,123,67,100,33"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000001_000011.html" title="1" alt="" coords="127,51,134,66"/>
+<area shape="rect" id="node1" href="dir_8aca7be3682da8d2b55adefb07002043.html" title="Endianness" alt="" coords="5,5,94,31"/>
+<area shape="rect" id="node2" href="dir_90710d1986845bbe321df71e29146a85.html" title="Types" alt="" coords="21,79,78,105"/>
+<area shape="poly" id="edge1" href="dir_000002_000012.html" alt="" coords="52,31,52,63,47,63,47,31"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000002_000012.html" title="5" alt="" coords="54,53,61,68"/>
 </map>

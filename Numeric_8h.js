@@ -18,6 +18,7 @@ var Numeric_8h =
     [ "TP_SUPPORT_U64", "Numeric_8h.html#ae73766949233b987c82673bedd551631", null ],
     [ "TP_SUPPORT_U8", "Numeric_8h.html#a0110f4a40d8ade72c18ec48b9a2030db", null ],
     [ "tp_true", "Numeric_8h.html#a1ab7f46907f9ff259797eb072094ee33", null ],
+    [ "tp_bfint", "Numeric_8h.html#a0557db9fad2b89480f0a546115be1a33", null ],
     [ "tp_bool", "Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b", null ],
     [ "tp_byte", "Numeric_8h.html#aa7e0f23d3ed0e687be8bc0f0e1d454b4", null ],
     [ "tp_i16", "Numeric_8h.html#a11489720ae7c4aa50753c4d1a9ee26e8", null ],

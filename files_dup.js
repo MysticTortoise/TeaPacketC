@@ -1,6 +1,7 @@
 var files_dup =
 [
     [ "Assets", "dir_89edd1b08e288545bbb35266c200ae56.html", "dir_89edd1b08e288545bbb35266c200ae56" ],
+    [ "Clipboard", "dir_11300cce11fd15e1f55d84569a7b2164.html", "dir_11300cce11fd15e1f55d84569a7b2164" ],
     [ "Endianness", "dir_8aca7be3682da8d2b55adefb07002043.html", "dir_8aca7be3682da8d2b55adefb07002043" ],
     [ "Graphics", "dir_8da666e09d0c2e7551ed53e944c3bba4.html", "dir_8da666e09d0c2e7551ed53e944c3bba4" ],
     [ "Input", "dir_c0f275fda4129f254180aea817b782be.html", "dir_c0f275fda4129f254180aea817b782be" ],

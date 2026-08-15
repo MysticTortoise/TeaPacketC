@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['vertexdata_0',['vertexData',['../structTP__Graphics__MeshParams.html#a7c793c977b15b18d48a0a1e307773bff',1,'TP_Graphics_MeshParams']]],
-  ['vertexinfo_1',['vertexInfo',['../structTP__Graphics__MeshParams.html#ac6487d3f2a43f758c2e51dce6aae3e04',1,'TP_Graphics_MeshParams']]],
-  ['vertexshadercode_2',['vertexShaderCode',['../structTP__Graphics__ShaderParams.html#a918835486648987f74f4aee328cf54ff',1,'TP_Graphics_ShaderParams']]]
+  ['shaderresource_0',['shaderResource',['../structTP__Graphics__TextureUseFlags.html#aaa3dc04a8346d1cb9d27ade1a83aa510',1,'TP_Graphics_TextureUseFlags']]],
+  ['shaderusable_1',['shaderUsable',['../structTP__Graphics__ViewportParams.html#a1f72ba6ae29c2cf78b357341c6cd8b22',1,'TP_Graphics_ViewportParams']]],
+  ['size_2',['size',['../structTP__Graphics__ShaderBufferParams.html#a8848606f194582df857ab337e17cc937',1,'TP_Graphics_ShaderBufferParams']]]
 ];
