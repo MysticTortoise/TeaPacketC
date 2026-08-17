@@ -120,27 +120,38 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('ShaderBuffer_8
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="ShaderBufferParams_8h_source.html">TeaPacket/Graphics/ShaderBufferParams.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="VariableType_8h_source.html">TeaPacket/Graphics/VariableType.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Numeric_8h_source.html">TeaPacket/Types/Numeric.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ShaderBuffer.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="ShaderBuffer_8h__incl.png" border="0" usemap="#aGraphics_2ShaderBuffer_8h" loading="lazy" alt=""/></div>
 <map name="aGraphics_2ShaderBuffer_8h" id="aGraphics_2ShaderBuffer_8h">
-<area shape="rect" title=" " alt="" coords="99,5,262,31"/>
-<area shape="rect" href="ShaderBufferParams_8h.html" title=" " alt="" coords="5,79,161,120"/>
-<area shape="poly" title=" " alt="" coords="167,33,121,71,117,67,164,29"/>
-<area shape="rect" href="Numeric_8h.html" title=" " alt="" coords="219,86,406,112"/>
-<area shape="poly" title=" " alt="" coords="202,29,280,76,278,80,199,34"/>
-<area shape="rect" title=" " alt="" coords="15,175,82,201"/>
-<area shape="poly" title=" " alt="" coords="78,121,61,162,56,160,73,119"/>
-<area shape="rect" href="Features_8h.html" title=" " alt="" coords="106,168,257,208"/>
-<area shape="poly" title=" " alt="" coords="296,115,225,161,222,157,293,110"/>
-<area shape="rect" title=" " alt="" coords="281,175,344,201"/>
-<area shape="poly" title=" " alt="" coords="315,113,315,159,310,159,310,113"/>
-<area shape="rect" title=" " alt="" coords="368,175,441,201"/>
-<area shape="poly" title=" " alt="" coords="327,111,382,162,379,166,323,115"/>
-<area shape="rect" title=" " alt="" coords="465,175,528,201"/>
-<area shape="poly" title=" " alt="" coords="339,110,458,166,456,171,337,115"/>
+<area shape="rect" title=" " alt="" coords="220,5,382,31"/>
+<area shape="rect" href="ShaderBufferParams_8h.html" title=" " alt="" coords="109,79,264,120"/>
+<area shape="poly" title=" " alt="" coords="285,34,228,72,225,68,282,29"/>
+<area shape="rect" href="VariableType_8h.html" title=" " alt="" coords="156,168,296,208"/>
+<area shape="poly" title=" " alt="" coords="302,32,294,72,278,121,255,157,251,154,273,119,289,71,297,31"/>
+<area shape="rect" href="Numeric_8h.html" title=" " alt="" coords="293,330,479,356"/>
+<area shape="poly" title=" " alt="" coords="307,31,382,314,377,316,301,32"/>
+<area shape="rect" title=" " alt="" coords="51,330,119,356"/>
+<area shape="poly" title=" " alt="" coords="150,123,115,145,75,176,39,214,11,257,9,275,17,291,31,307,49,320,46,324,27,311,12,294,4,276,6,255,35,210,72,172,111,141,148,118"/>
+<area shape="poly" title=" " alt="" coords="198,119,213,153,208,155,193,121"/>
+<area shape="rect" title=" " alt="" coords="21,256,157,282"/>
+<area shape="poly" title=" " alt="" coords="193,211,124,251,121,246,191,207"/>
+<area shape="rect" href="Array_8h.html" title=" " alt="" coords="181,256,349,282"/>
+<area shape="poly" title=" " alt="" coords="238,208,255,241,250,243,233,210"/>
+<area shape="poly" title=" " alt="" coords="235,285,131,326,129,321,233,280"/>
+<area shape="poly" title=" " alt="" coords="287,280,354,319,351,324,284,285"/>
+<area shape="rect" href="Features_8h.html" title=" " alt="" coords="180,404,331,444"/>
+<area shape="poly" title=" " alt="" coords="267,283,260,388,255,388,261,282"/>
+<area shape="poly" title=" " alt="" coords="368,358,302,398,299,393,365,354"/>
+<area shape="rect" title=" " alt="" coords="355,411,417,437"/>
+<area shape="poly" title=" " alt="" coords="389,356,389,395,384,395,384,356"/>
+<area shape="rect" title=" " alt="" coords="442,411,515,437"/>
+<area shape="poly" title=" " alt="" coords="402,354,454,399,451,403,398,358"/>
+<area shape="rect" title=" " alt="" coords="539,411,602,437"/>
+<area shape="poly" title=" " alt="" coords="417,354,529,401,531,402,528,407,527,406,414,359"/>
 </map>
 </div>
 </div>
@@ -155,12 +166,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac99d83f38fd9f77c1874957cf76896cc" id="r_ac99d83f38fd9f77c1874957cf76896cc"><td class="memItemLeft"><a class="el" href="#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ac99d83f38fd9f77c1874957cf76896cc">TP_Graphics_ShaderBuffer_Create</a> (const <a class="el" href="structTP__Graphics__ShaderBufferParams.html">TP_Graphics_ShaderBufferParams</a> *)</td></tr>
 <tr class="memitem:a9f31d2bccd9cc2b79ea8fa98e63968c5" id="r_a9f31d2bccd9cc2b79ea8fa98e63968c5"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9f31d2bccd9cc2b79ea8fa98e63968c5">TP_Graphics_ShaderBuffer_Destroy</a> (<a class="el" href="#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a> *)</td></tr>
 <tr class="memitem:aad348bdcecf7359f683db24e7f39a013" id="r_aad348bdcecf7359f683db24e7f39a013"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#aad348bdcecf7359f683db24e7f39a013">TP_Graphics_ShaderBuffer_GetSize</a> (<a class="el" href="#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a> *)</td></tr>
-<tr class="memitem:a41442b092b1f55f1f5ecd776ee4ab715" id="r_a41442b092b1f55f1f5ecd776ee4ab715"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a41442b092b1f55f1f5ecd776ee4ab715">TP_Graphics_ShaderBuffer_SendData</a> (<a class="el" href="#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a> *, const void *data, size_t length, size_t offset)</td></tr>
+<tr class="memitem:ac0a17a445cde8a70e7622811d66f5954" id="r_ac0a17a445cde8a70e7622811d66f5954"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac0a17a445cde8a70e7622811d66f5954">TP_Graphics_ShaderBuffer_SendData</a> (<a class="el" href="#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a> *, const void *data, size_t offset, <a class="el" href="structTP__Graphics__VariableType.html">TP_Graphics_VariableType</a> dataType)</td></tr>
+<tr class="memitem:a081046a9cd150fd32ee3d03bdce98f11" id="r_a081046a9cd150fd32ee3d03bdce98f11"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a081046a9cd150fd32ee3d03bdce98f11">TP_Graphics_ShaderBuffer_SendRawData</a> (<a class="el" href="#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a> *, const void *data, size_t length, size_t offset)</td></tr>
 <tr class="memitem:aa2b13563238ea325ff82397c6adfa592" id="r_aa2b13563238ea325ff82397c6adfa592"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa2b13563238ea325ff82397c6adfa592">TP_Graphics_ShaderBuffer_SetActive</a> (<a class="el" href="#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a> *, <a class="el" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> slot)</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a8f9b677f90ea3af3e4dd7e272bce8570" id="r_a8f9b677f90ea3af3e4dd7e272bce8570"><td class="memItemLeft">const <a class="el" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a>&#160;</td><td class="memItemRight"><a class="el" href="#a8f9b677f90ea3af3e4dd7e272bce8570">TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped</a></td></tr>
 </table>
 <a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
 <a id="a1af3c1f6b38b22bccb61784d520efc62" name="a1af3c1f6b38b22bccb61784d520efc62"></a>
@@ -232,14 +240,45 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a41442b092b1f55f1f5ecd776ee4ab715" name="a41442b092b1f55f1f5ecd776ee4ab715"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41442b092b1f55f1f5ecd776ee4ab715">&#9670;&#160;</a></span>TP_Graphics_ShaderBuffer_SendData()</h2>
+<a id="ac0a17a445cde8a70e7622811d66f5954" name="ac0a17a445cde8a70e7622811d66f5954"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0a17a445cde8a70e7622811d66f5954">&#9670;&#160;</a></span>TP_Graphics_ShaderBuffer_SendData()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void TP_Graphics_ShaderBuffer_SendData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>offset</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structTP__Graphics__VariableType.html">TP_Graphics_VariableType</a></td>          <td class="paramname"><span class="paramname"><em>dataType</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a081046a9cd150fd32ee3d03bdce98f11" name="a081046a9cd150fd32ee3d03bdce98f11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a081046a9cd150fd32ee3d03bdce98f11">&#9670;&#160;</a></span>TP_Graphics_ShaderBuffer_SendRawData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TP_Graphics_ShaderBuffer_SendRawData </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a1af3c1f6b38b22bccb61784d520efc62">TP_Graphics_ShaderBuffer</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
         </tr>
@@ -260,7 +299,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Updates data in a Shader Buffer at a given position. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Sends raw data to a ShaderBuffer. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>The beginning of the source data to send. </td></tr>
     <tr><td class="paramname">length</td><td>The size of the source data to send. </td></tr>
@@ -268,7 +307,8 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section warning"><dt>Warning</dt><dd>Sending data while a buffer is currently active or being drawn with is undefined behavior. Always send data to a buffer BEFORE drawing anything with it. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Sending data while a buffer is currently active or being drawn with is undefined behavior. Always send data to a buffer BEFORE drawing anything with it.</dd></dl>
+<p>Additionally, the target platform may expect your data in a specific format (i.e. Endian Swapped) Check your target platform for specific information. </p>
 
 </div>
 </div>
@@ -297,31 +337,6 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
-<a id="a8f9b677f90ea3af3e4dd7e272bce8570" name="a8f9b677f90ea3af3e4dd7e272bce8570"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f9b677f90ea3af3e4dd7e272bce8570">&#9670;&#160;</a></span>TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Whether or not the data sent to the GPU through a ShaderBuffer must be endian swapped.</p>
-<dl class="section warning"><dt>Warning</dt><dd>THIS MUST BE CHECKED AND ACCOUNTED FOR WHEN SENDING DATA TO A SHADERBUFFER! FAILURE TO DO SO WILL CAUSE ERRORS ON SOME PLATFORMS! </dd></dl>
 
 </div>
 </div>

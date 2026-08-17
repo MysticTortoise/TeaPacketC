@@ -1,11 +1,16 @@
 <map id="Graphics/VariableType.h" name="Graphics/VariableType.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="102,5,265,31"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="197,5,359,31"/>
 <area shape="rect" id="Node000002" href="$MeshParams_8h.html" title=" " alt="" coords="5,79,170,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,43,105,81,102,76,154,38"/>
-<area shape="rect" id="Node000004" href="$ShaderParams_8h.html" title=" " alt="" coords="194,79,368,105"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="214,38,266,76,263,81,211,43"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,39,121,81,119,76,231,34"/>
+<area shape="rect" id="Node000004" href="$ShaderBuffer_8h.html" title=" " alt="" coords="220,153,382,178"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="256,43,236,73,232,88,235,104,255,131,281,150,278,154,252,134,230,106,227,88,231,70,251,40"/>
+<area shape="rect" id="Node000005" href="$ShaderBufferParams_8h.html" title=" " alt="" coords="245,79,452,105"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="302,40,339,77,335,80,299,44"/>
+<area shape="rect" id="Node000006" href="$ShaderParams_8h.html" title=" " alt="" coords="477,79,650,105"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="342,33,516,76,514,81,341,38"/>
 <area shape="rect" id="Node000003" href="$Mesh_8h.html" title=" " alt="" coords="28,153,147,178"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="90,120,90,152,85,152,85,120"/>
-<area shape="rect" id="Node000005" href="$Shader_8h.html" title=" " alt="" coords="217,153,345,178"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="284,120,284,152,278,152,278,120"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="335,119,311,154,307,151,330,116"/>
+<area shape="rect" id="Node000007" href="$Shader_8h.html" title=" " alt="" coords="499,153,628,178"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="566,120,566,152,561,152,561,120"/>
 </map>
