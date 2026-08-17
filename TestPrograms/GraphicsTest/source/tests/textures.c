@@ -67,7 +67,7 @@ static TP_Graphics_Shader* shader;
 static const TP_Graphics_TextureParams texParams = {
     .imageData = {
         .data = (void*)texData,
-        .pitch = 3,
+        .pitch = 3*4,
         .width = 3,
         .height = 3,
         .format = TP_Graphics_Texture_Format_RGBA8,

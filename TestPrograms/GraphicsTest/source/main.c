@@ -36,7 +36,7 @@ int main(void)
 
 
         curTime++;
-        if (curTime >= 1)
+        if (curTime >= 100)
         {
             tests[id]->deInitFunc();
             curTime = 0;

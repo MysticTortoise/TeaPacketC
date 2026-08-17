@@ -48,9 +48,11 @@ static TP_Graphics_ShaderParams shaderParams = {
 };
 static TP_Graphics_Shader* shader;
 
+static const TP_Graphics_VariableType varList = TP_Graphics_VariableType_FVEC2;
+
 static const TP_Graphics_ShaderBufferParams bufParams = {
     0,
-    sizeof(float) * 2
+    {&varList, 1}
 };
 static TP_Graphics_ShaderBuffer* sbuffer;
 
@@ -92,23 +94,7 @@ static void Render(void)
     while (pos[0] > 0.5f) {
         pos[0] -= 0.5f;
     }
-    if (TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped)
-    {
-        for (size_t i = 0; i < sizeof(pos) / sizeof(pos[0]); i++)
-        {
-            const tp_u32 x = TP_SwapF32(pos[i]);
-            pos[i] = *(float*)(&x);
-        }
-    }
-    TP_Graphics_ShaderBuffer_SendData(sbuffer, (void*)pos, sizeof(pos), 0);
-    if (TP_Graphics_ShaderBuffer_ShouldBeEndianSwapped)
-    {
-        for (size_t i = 0; i < sizeof(pos) / sizeof(pos[0]); i++)
-        {
-            const tp_u32 x = TP_SwapF32(pos[i]);
-            pos[i] = *(float*)(&x);
-        }
-    }
+    TP_Graphics_ShaderBuffer_SendData(sbuffer, (void*)pos, 0, varList);
 
     TP_Graphics_Mesh_SetActive(mesh);
     TP_Graphics_Shader_SetActive(shader);

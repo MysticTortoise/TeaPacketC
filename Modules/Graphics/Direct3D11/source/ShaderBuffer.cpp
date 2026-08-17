@@ -8,14 +8,22 @@
 
 #include "TeaPacket/Graphics/PlatformUniformBuffer.hpp"
 #include "TeaPacket/Graphics/ShaderBufferParams.h"
+#include "TeaPacket/Graphics/VariableType.h"
 #include "TeaPacket/Graphics/WindowsGraphics.hpp"
 #include "TeaPacket/Graphics/D3D11/WinMacro.hpp"
 
 using namespace TeaPacket::Graphics::D3D11;
 
+
 TP_Graphics_ShaderBuffer* TP_Graphics_ShaderBuffer_Create(const TP_Graphics_ShaderBufferParams* params)
 {
-    const size_t internalSize = params->size + 16 - (params->size % 16);
+    size_t bufSize = 0;
+    for (size_t i = 0; i < params->infoList.size; i++)
+    {
+        bufSize += TP_Graphics_ShaderVar_GetSize(params->infoList.p[i]);
+    }
+
+    const size_t internalSize = bufSize + 16 - (bufSize % 16);
 
     const auto bufferDesc = D3D11_BUFFER_DESC{
         .ByteWidth = static_cast<UINT>(internalSize),
@@ -46,7 +54,7 @@ TP_Graphics_ShaderBuffer* TP_Graphics_ShaderBuffer_Create(const TP_Graphics_Shad
     return buffer;
 }
 
-void TP_Graphics_ShaderBuffer_SendData(TP_Graphics_ShaderBuffer* const buffer, const void* data, const size_t length,
+void TP_Graphics_ShaderBuffer_SendRawData(TP_Graphics_ShaderBuffer* const buffer, const void* data, const size_t length,
                                        size_t offset)
 {
     ID3D11Buffer* bufferPtr = buffer->cbuffer.Get();
@@ -61,6 +69,11 @@ void TP_Graphics_ShaderBuffer_SendData(TP_Graphics_ShaderBuffer* const buffer, c
     assert(offset + length <= buffer->size);
     memcpy(static_cast<char*>(mappedResource.pData) + offset, data, length);
     deviceContext->Unmap(bufferPtr, 0);
+}
+
+void TP_Graphics_ShaderBuffer_SendData(TP_Graphics_ShaderBuffer* const buffer, const void* data, const size_t offset, const TP_Graphics_VariableType varType)
+{
+    TP_Graphics_ShaderBuffer_SendRawData(buffer, data, TP_Graphics_ShaderVar_GetSize(varType), offset);
 }
 
 void TP_Graphics_ShaderBuffer_SetActive(TP_Graphics_ShaderBuffer* buffer, tp_u8 slot)

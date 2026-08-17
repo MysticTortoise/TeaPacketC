@@ -24,6 +24,22 @@ typedef struct
     tp_u8 amount;
 } TP_Graphics_VariableType;
 
+#define TP_Graphics_VariableType_SINT {TP_Graphics_VariableBaseType_Int, 1}
+#define TP_Graphics_VariableType_UINT {TP_Graphics_VariableBaseType_UInt, 1}
+#define TP_Graphics_VariableType_FLOAT {TP_Graphics_VariableBaseType_Float, 1}
+
+#define TP_Graphics_VariableType_IVEC2 {TP_Graphics_VariableBaseType_Int, 2}
+#define TP_Graphics_VariableType_UVEC2 {TP_Graphics_VariableBaseType_UInt, 2}
+#define TP_Graphics_VariableType_FVEC2 {TP_Graphics_VariableBaseType_Float, 2}
+
+#define TP_Graphics_VariableType_IVEC3 {TP_Graphics_VariableBaseType_Int, 3}
+#define TP_Graphics_VariableType_UVEC3 {TP_Graphics_VariableBaseType_UInt, 3}
+#define TP_Graphics_VariableType_FVEC3 {TP_Graphics_VariableBaseType_Float, 3}
+
+#define TP_Graphics_VariableType_IVEC4 {TP_Graphics_VariableBaseType_Int, 4}
+#define TP_Graphics_VariableType_UVEC4 {TP_Graphics_VariableBaseType_UInt, 4}
+#define TP_Graphics_VariableType_FVEC4 {TP_Graphics_VariableBaseType_Float, 4}
+
 typedef TP_ArrayView(TP_Graphics_VariableType) TP_Graphics_Shader_VarList;
 
 #ifdef __cplusplus

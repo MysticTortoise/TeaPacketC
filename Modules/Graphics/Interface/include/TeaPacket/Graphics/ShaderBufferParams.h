@@ -6,6 +6,8 @@
 #define TEAPACKET_TEAPACKET_GRAPHICS_SHADERBUFFERPARAMETERS_H
 #include <stddef.h>
 
+#include "TeaPacket/Graphics/VariableType.h"
+
 
 typedef struct
 {
@@ -14,10 +16,12 @@ typedef struct
      * @details If nullptr, then this ShaderBuffer will not be initialized.
      */
     void* data;
+
     /**
-     * The size of this ShaderBuffer, in bytes.
+     * A description of how this buffer is laid out.
+     * @details Each entry in this list must be
      */
-    size_t size;
+    TP_Graphics_Shader_VarList infoList;
 } TP_Graphics_ShaderBufferParams;
 
 #endif
