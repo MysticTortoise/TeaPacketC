@@ -1,10 +1,13 @@
 #include "TeaPacket/Clipboard/Clipboard.h"
 
-#include "ProcessDIBFile.hpp"
+#include <cassert>
+
 #include "TeaPacket/Window/PlatformWindow.hpp"
 #include "TeaPacket/Window/Window.h"
 
 #include "windows.h"
+#include "TeaPacket/Extensions/Format/Image/BMP.h"
+#include "TeaPacket/Extensions/Format/Image/BMP_impl.h"
 #include "TeaPacket/Memory/Memory.h"
 
 static UINT Types[TP_Clipboard_ContentsType_MAX-1] = {
@@ -98,12 +101,20 @@ TP_Graphics_ImageData TP_Clipboard_GetImageData()
 
     const auto clipboardHandle = GetClipboardData(CF_DIB);
     TP_Graphics_ImageData imageData{};
+
     if (clipboardHandle != nullptr && clipboardHandle != INVALID_HANDLE_VALUE)
     {
         const auto dibData = GlobalLock(clipboardHandle);
+        TP_Extension_IStream stream = TP_Extensions_IStream_StreamFromMemory({static_cast<const tp_byte*>(dibData), 0});
         if (dibData != nullptr)
         {
-            imageData = TeaPacket::Clipboard::Windows::GetImageDataFromDIB(*static_cast<BITMAPINFO*>(dibData));
+            constexpr TP_Ext_Format_Image_BMP_FileHeader fileHeader{
+                TP_U16_MEMORDER(42, 4D),
+                0,
+                0
+            };
+            TP_Extensions_Formats_Image_BMP_ReadOptions opts{};
+            imageData = TP_Ext_Format_Image_BMP_ReadDIB(&stream, &opts, &fileHeader);
             GlobalUnlock(clipboardHandle);
         }
     }
@@ -114,40 +125,9 @@ TP_Graphics_ImageData TP_Clipboard_GetImageData()
 
 tp_bool TP_Clipboard_WriteImageData(const TP_Graphics_ImageData imageData)
 {
-    switch (imageData.format)
-    {
-    case TP_Graphics_Texture_Format_BGRA8:
-    case TP_Graphics_Texture_Format_RGBA8:
-        break;
-    default: return tp_false;
-    }
-
-    if (!OpenClipboard(TP_Window_GetActive()->windowHandle))
-        return tp_false;
-
-    EmptyClipboard();
-
-    HGLOBAL globalHandle = GlobalAlloc(GMEM_MOVEABLE, TeaPacket::Clipboard::Windows::GetDIBSizeFromImageData(imageData));
-    if (globalHandle == nullptr)
-    {
-        CloseClipboard();
-        return tp_false;
-    }
-
-    const auto bitmapData = static_cast<BITMAPINFO*>(GlobalLock(globalHandle));
-    if (bitmapData)
-    {
-        TeaPacket::Clipboard::Windows::WriteImageDataToDIB(bitmapData, imageData);
-    } else
-    {
-        CloseClipboard();
-        return tp_false;
-    }
-
-
-    GlobalUnlock(globalHandle);
-    SetClipboardData(CF_DIB, globalHandle);
-    CloseClipboard();
+    (void)imageData;
+    assert(0);
+    // TODO: Implement
     return tp_true;
 
 }

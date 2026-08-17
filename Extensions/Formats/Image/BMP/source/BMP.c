@@ -276,15 +276,10 @@ void TP_Ext_Format_Image_BMP_SetError(TP_StringView msg)
     /* TP_LogString(msg);*/
 }
 
-
-TP_Graphics_ImageData TP_Extensions_Formats_Image_ReadBMP(TP_Extension_IStream* data,
-    TP_Extensions_Formats_Image_BMP_ReadOptions* readOptions)
+TP_Graphics_ImageData TP_Ext_Format_Image_BMP_ReadDIB(TP_Extension_IStream* data,
+                                                          TP_Extensions_Formats_Image_BMP_ReadOptions* readOptions, const TP_Ext_Format_Image_BMP_FileHeader* fileHeader)
 {
-    TP_Ext_Format_Image_BMP_FileHeader header;
     TP_Ext_Format_Image_BMP_Info info;
-    TP_Extensions_Formats_Image_BMP_ReadHeader(data, &header);
-
-
     /* READ DIB HEADER */
     info = TP_Ext_Format_Image_BMP_ReadDIBHeader(data);
     if (!TP_Ext_Format_Image_BMP_ValidateDIBHeader(&info))
@@ -292,18 +287,21 @@ TP_Graphics_ImageData TP_Extensions_Formats_Image_ReadBMP(TP_Extension_IStream* 
         const TP_Graphics_ImageData blankData = {0};
         return blankData;
     }
-    
+
     if (info.colorIndexCount > 0)
     {
         TP_Ext_Format_Image_BMP_ReadColorTable(data, &info);
     }
-    
+
     if (readOptions->colorTable != 0 && info.colorIndexCount > 0)
     {
         *readOptions->colorTable = info.colorTable;
     }
-    
-    TP_Extension_IStream_Seek(data, (ptrdiff_t)header.startingAddress, TP_Assets_Stream_SeekBase_Begin);
+
+    if (fileHeader->startingAddress != 0)
+    {
+        TP_Extension_IStream_Seek(data, (ptrdiff_t)fileHeader->startingAddress, TP_Assets_Stream_SeekBase_Begin);
+    }
 
     {
         TP_Graphics_ImageData imgData = TP_Ext_Format_Image_BMP_ReadImage(data, &info);
@@ -336,6 +334,15 @@ TP_Graphics_ImageData TP_Extensions_Formats_Image_ReadBMP(TP_Extension_IStream* 
 
         return imgData;
     }
+}
+
+
+TP_Graphics_ImageData TP_Extensions_Formats_Image_ReadBMP(TP_Extension_IStream* data,
+                                                          TP_Extensions_Formats_Image_BMP_ReadOptions* readOptions)
+{
+    TP_Ext_Format_Image_BMP_FileHeader header;
+    TP_Extensions_Formats_Image_BMP_ReadHeader(data, &header);
+    return TP_Ext_Format_Image_BMP_ReadDIB(data, readOptions, &header);
 }
 
 TP_Graphics_ImageData TP_Extensions_Formats_Image_ReadBMPFromAsset(const TP_StringView assetPath,

@@ -6,7 +6,7 @@
   <component name="CMakePythonSetting">
     <option name="pythonIntegrationState" value="YES" />
   </component>
-  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/Extensions/Formats/Image/BMP/test">
+  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/TestPrograms/GraphicsTest">
     <contentRoot DIR="$PROJECT_DIR$" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.14 (TeaPacketC)" project-jdk-type="Python SDK" />

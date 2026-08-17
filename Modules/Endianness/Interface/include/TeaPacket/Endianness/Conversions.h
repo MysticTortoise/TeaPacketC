@@ -53,11 +53,7 @@ TP_ENDIAN_DEF(i64, I64)
 
 
 
-#ifndef TP_ENDIAN_DEF_NO_REMOVE
-#undef TP_ENDIAN_DEF
-#undef TP_ENDIAN_DEF_MAKE_BIG
-#undef TP_ENDIAN_DEF_MAKE_LITTLE
-#endif
+
     
 #ifdef __cplusplus
 }

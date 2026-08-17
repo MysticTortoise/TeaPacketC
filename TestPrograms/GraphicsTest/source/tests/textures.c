@@ -83,15 +83,11 @@ static const TP_Graphics_TextureParams texParams = {
 static TP_Graphics_Texture* texture;
 
 
-#include "TeaPacket/Clipboard/Clipboard.h"
 
 static tp_bool Init(void)
 {
     mesh = TP_Graphics_Mesh_Create(&meshParams);
 
-    TP_Graphics_ImageData imagDat = TP_Clipboard_GetImageData();
-    (void)imagDat;
-    TP_Clipboard_WriteImageData(texParams.imageData);
 
     const TP_String vertCode = TP_Assets_ReadTextAsset(TP_StrViewFromConstStr("textured.vert"));
     const TP_String fragCode = TP_Assets_ReadTextAsset(TP_StrViewFromConstStr("textured.frag"));

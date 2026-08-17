@@ -11,6 +11,7 @@
 #include "TeaPacket/Memory/Memory.h"
 
 #include "TeaPacket/Endianness/Endian.h"
+#include "TeaPacket/Endianness/FloatingEndian.h"
 
 #include <assert.h>
 
@@ -95,7 +96,8 @@ static void Render(void)
     {
         for (size_t i = 0; i < sizeof(pos) / sizeof(pos[0]); i++)
         {
-            pos[i] = TP_SwapF32(pos[i]);
+            const tp_u32 x = TP_SwapF32(pos[i]);
+            pos[i] = *(float*)(&x);
         }
     }
     TP_Graphics_ShaderBuffer_SendData(sbuffer, (void*)pos, sizeof(pos), 0);
@@ -103,7 +105,8 @@ static void Render(void)
     {
         for (size_t i = 0; i < sizeof(pos) / sizeof(pos[0]); i++)
         {
-            pos[i] = TP_SwapF32(pos[i]);
+            const tp_u32 x = TP_SwapF32(pos[i]);
+            pos[i] = *(float*)(&x);
         }
     }
 

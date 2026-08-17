@@ -20,14 +20,14 @@ typedef enum
     TP_Ext_Format_Image_BMP_Type_OS2Ptr = TP_U16_MEMORDER(50,54)
 } TP_Ext_Format_Image_BMP_Type;
 
-typedef struct
+struct TP_Ext_Format_Image_BMP_FileHeader
 {
     tp_u16 type;
     tp_u32 filesize;
     tp_u32 startingAddress;
-} TP_Ext_Format_Image_BMP_FileHeader;
+};
 
-void TP_Extensions_Formats_Image_BMP_ReadHeader(TP_Extension_IStream* istream, TP_Ext_Format_Image_BMP_FileHeader* header);
+void TP_Extensions_Formats_Image_BMP_ReadHeader(TP_Extension_IStream* istream, struct TP_Ext_Format_Image_BMP_FileHeader* header);
 
 
 typedef enum
