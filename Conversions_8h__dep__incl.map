@@ -1,8 +1,7 @@
 <map id="Endianness/Conversions.h" name="Endianness/Conversions.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="42,5,216,31"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="82,5,256,31"/>
 <area shape="rect" id="Node000002" href="$Endian_8h.html" title=" " alt="" coords="5,79,147,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,45,87,80,83,77,109,42"/>
-<area shape="rect" id="Node000003" href="$FloatingEndian_8h.html" title=" " alt="" coords="36,153,223,178"/>
-<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="147,44,161,78,162,100,157,121,140,153,136,151,152,119,157,99,156,80,142,46"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="96,115,122,151,118,154,92,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,43,93,81,90,77,140,39"/>
+<area shape="rect" id="Node000003" href="$FloatingEndian_8h.html" title=" " alt="" coords="170,79,358,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,39,250,77,247,81,196,43"/>
 </map>
