@@ -127,7 +127,7 @@ static TP_Graphics_ImageData ReadTrueColor(TP_Extension_IStream* stream,
     {
         if (info->compressionType == TP_Ext_Format_Image_BMP_CompressionType_RGB)
         {
-            /*image.format = TP_Graphics_Texture_Format_RGB5A1;
+            image.format = TP_Graphics_Texture_Format_RGB5A1;
             if (
             info->colorMasks.r == 0x001F &&
             info->colorMasks.g == 0x03E0 &&
