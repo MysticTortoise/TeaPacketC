@@ -5,6 +5,7 @@
 #include <optional>
 #include <windows.h>
 #include "TeaPacket/Types/Numeric.h"
+#include <vector>
 
 namespace TeaPacket::Window::Windows
 {

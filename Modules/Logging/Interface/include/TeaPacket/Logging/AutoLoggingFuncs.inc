@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
+#include <string.h>
 
 #include "TeaPacket/Logging/Logging.h"
 #include "TeaPacket/Memory/Memory.h"
