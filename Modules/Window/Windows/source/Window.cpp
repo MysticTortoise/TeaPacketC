@@ -88,13 +88,19 @@ TP_Window* TP_Window_Create(const TP_Window_Params* params)
     memcpy(titleName, params->title.p, nameSize);
     titleName[nameSize] = '\0';
 
+    constexpr DWORD style = WS_OVERLAPPEDWINDOW;
+
+    RECT rect = {0,0, params->width, params->height};
+    AdjustWindowRectEx(&rect, style, FALSE, 0);
+
     HWND winHandle = CreateWindowExA(
         0,
         "TeaPacket_MainWindowClass",
         titleName,
-        WS_OVERLAPPEDWINDOW,
+        style,
         params->x, params->y,
-        params->width, params->height,
+        rect.right - rect.left,
+        rect.bottom - rect.top,
         nullptr,
         nullptr,
         GetModuleHandle(nullptr),
@@ -110,7 +116,8 @@ TP_Window* TP_Window_Create(const TP_Window_Params* params)
         params->x,
         params->y,
         params->width,
-        params->height
+        params->height,
+        {}
     };
     SetWindowLongPtr(winHandle, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(window));
     window->windowProcs.emplace_back(WindowProcWindowCore);
