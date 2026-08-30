@@ -2,8 +2,8 @@ if(NOT COMMAND TP_AM_BuildAssets)
     function(TP_AM_BuildAssets)
         #message("Building assets...")
         set(options REBUILD)
-        set(oneValueArgs SOURCE DESTINATION TARGET)
-        set(multiValueArgs PASSES)
+        set(oneValueArgs DESTINATION TARGET)
+        set(multiValueArgs SOURCE PASSES)
         cmake_parse_arguments(PARSE_ARGV 0 TP_AM_BuildAssets
                 "${options}" "${oneValueArgs}" "${multiValueArgs}"
         )
@@ -21,11 +21,13 @@ if(NOT COMMAND TP_AM_BuildAssets)
                 COMMENT "Building assets..."
                 COMMAND python
                     "${TEAPACKET_ROOT}/Subtools/AssetMixer/main.py"
-                    "${TP_AM_BuildAssets_SOURCE}"
-                    "${TP_AM_BuildAssets_DESTINATION}"
                     "--passes"
                     ${TP_AM_BuildAssets_PASSES}
                     ${TP_AM_BuildAssets_REBUILD}
+                    --asset_sources
+                    ${TP_AM_BuildAssets_SOURCE}
+                    --asset_destination
+                    "${TP_AM_BuildAssets_DESTINATION}"
         )
     endfunction()
 endif()

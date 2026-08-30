@@ -6,40 +6,45 @@ from pathlib import Path
 from typing import Callable
 
 
-def get_need_files(src_dir : str, dest_dir : str, loaded_modules, rebuild_all : bool) -> set[Path]:
-    need_files = set()
+def get_need_files(src_dirs : list[str], dest_dir : str, loaded_modules, rebuild_all : bool) -> set[Path]:
+    need_files: set[Path] = set()
 
     if rebuild_all:
-        return set([
-            p for p in Path(src_dir).rglob("*")
-            if not p.is_dir()])
+        all_files = set()
+        for src_dir in src_dirs:
+            for p in Path(src_dir).rglob("*"):
+                if not p.is_dir():
+                    all_files.add(p)
+        return all_files
 
-    for file in Path(src_dir).rglob("*"):
-        if file.is_dir():
-            continue
+    for src_dir in src_dirs:
+        for file in Path(src_dir).rglob("*"):
+            if file.is_dir():
+                continue
 
-        rel_src_path = file.relative_to(src_dir)
-        rel_dest_path = Path(dest_dir) / rel_src_path
-        if (
-                not rel_dest_path.exists() or
-                file.stat().st_mtime > rel_dest_path.stat().st_mtime
-        ):
-            need_files.add(file)
+            rel_src_path = file.relative_to(src_dir)
+            rel_dest_path = Path(dest_dir) / rel_src_path
+            if (
+                    not rel_dest_path.exists() or
+                    file.stat().st_mtime > rel_dest_path.stat().st_mtime
+            ):
+                need_files.add(file)
 
     for module in loaded_modules:
         if not hasattr(module, "get_updated_files"):
             continue
 
-        function: Callable[[str, str, list[Path]], list[Path]] = getattr(module, "get_updated_files")
+        function: Callable[[str, str, set[Path]], set[Path]] = getattr(module, "get_updated_files")
 
         if function and callable(function):
-            need_files = function(src_dir, dest_dir, need_files)
+            for src_dir in src_dirs:
+                need_files = function(src_dir, dest_dir, need_files)
         else:
             raise Exception(f"Error loading asset pass script: {module}")
 
     return need_files
 
-def build_assets(src_dir : str, dest_dir, asset_pass_scripts=None, rebuild_all = False):
+def build_assets(src_dirs : list[str], dest_dir, asset_pass_scripts=None, rebuild_all = False):
     if asset_pass_scripts is None:
         asset_pass_scripts = list()
 
@@ -55,14 +60,23 @@ def build_assets(src_dir : str, dest_dir, asset_pass_scripts=None, rebuild_all =
         loaded_modules.append(default_module)
 
 
-    need_files : set[Path] = get_need_files(src_dir, dest_dir, loaded_modules, rebuild_all)
+    need_files : set[Path] = get_need_files(src_dirs, dest_dir, loaded_modules, rebuild_all)
     #print(need_files)
 
     with tempfile.TemporaryDirectory() as temp_dir:
 
         # Move to temporary dir
         for file in need_files:
-            rel_src_path = file.relative_to(src_dir)
+            rel_src_path = file.resolve()
+
+            for src_dir in src_dirs:
+                if rel_src_path.is_relative_to(Path(src_dir).resolve()):
+                    rel_src_path = file.relative_to(src_dir)
+                    break
+
+            if rel_src_path.is_absolute():
+                raise Exception("shit bad path!")
+
             rel_temp_path = Path(temp_dir) / rel_src_path
 
             rel_temp_path.parent.mkdir(parents=True, exist_ok=True)
