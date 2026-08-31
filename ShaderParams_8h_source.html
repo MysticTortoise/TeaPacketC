@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: Graphics/ShaderParams.h Source File</title>
+<title>TeaPacket: Graphics/GS/ShaderParams.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="codefolding.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
@@ -123,35 +123,35 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('ShaderParams_8
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">/* This file contains all parameters used in the creation of a Shader.</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_SHADERPARAMS_H</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_SHADERPARAMS_H</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_GS_SHADERPARAMS_H</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_GS_SHADERPARAMS_H</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="Array_8h.html">TeaPacket/Types/Array.h</a>&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="VariableType_8h.html">VariableType.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="VariableType_8h.html">TeaPacket/Graphics/GS/VariableType.h</a>&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structTP__Graphics__ShaderParams.html">   11</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structTP__GfxGS__ShaderParams.html">   11</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structTP__Graphics__ShaderParams.html#a918835486648987f74f4aee328cf54ff">   19</a></span>    TP_StringView <a class="code hl_variable" href="structTP__Graphics__ShaderParams.html#a918835486648987f74f4aee328cf54ff">vertexShaderCode</a>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structTP__Graphics__ShaderParams.html#a186a28a21ff2549b54d884db0a7cfea9">   23</a></span>    TP_StringView <a class="code hl_variable" href="structTP__Graphics__ShaderParams.html#a186a28a21ff2549b54d884db0a7cfea9">fragmentShaderCode</a>;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structTP__Graphics__ShaderParams.html#a68ec134889b7aa998347ff11c59081b7">   30</a></span>    TP_Graphics_Shader_VarList <a class="code hl_variable" href="structTP__Graphics__ShaderParams.html#a68ec134889b7aa998347ff11c59081b7">inputAttributes</a>;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>} <a class="code hl_struct" href="structTP__Graphics__ShaderParams.html">TP_Graphics_ShaderParams</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structTP__GfxGS__ShaderParams.html#a6c1301b460030b2f31bd212dc351cc60">   19</a></span>    TP_StringView <a class="code hl_variable" href="structTP__GfxGS__ShaderParams.html#a6c1301b460030b2f31bd212dc351cc60">vertexShaderCode</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structTP__GfxGS__ShaderParams.html#a6a212e6ecc14eae03834c9e6dfbcc9ae">   23</a></span>    TP_StringView <a class="code hl_variable" href="structTP__GfxGS__ShaderParams.html#a6a212e6ecc14eae03834c9e6dfbcc9ae">fragmentShaderCode</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structTP__GfxGS__ShaderParams.html#abf51845e201ce154d3b7d4c6fd646c8f">   30</a></span>    TP_GfxGS_Shader_VarList <a class="code hl_variable" href="structTP__GfxGS__ShaderParams.html#abf51845e201ce154d3b7d4c6fd646c8f">inputAttributes</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>} <a class="code hl_struct" href="structTP__GfxGS__ShaderParams.html">TP_GfxGS_ShaderParams</a>;</div>
 </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aArray_8h_html"><div class="ttname"><a href="Array_8h.html">Array.h</a></div></div>
 <div class="ttc" id="aVariableType_8h_html"><div class="ttname"><a href="VariableType_8h.html">VariableType.h</a></div></div>
-<div class="ttc" id="astructTP__Graphics__ShaderParams_html"><div class="ttname"><a href="structTP__Graphics__ShaderParams.html">TP_Graphics_ShaderParams</a></div><div class="ttdef"><b>Definition</b> ShaderParams.h:12</div></div>
-<div class="ttc" id="astructTP__Graphics__ShaderParams_html_a186a28a21ff2549b54d884db0a7cfea9"><div class="ttname"><a href="structTP__Graphics__ShaderParams.html#a186a28a21ff2549b54d884db0a7cfea9">TP_Graphics_ShaderParams::fragmentShaderCode</a></div><div class="ttdeci">TP_StringView fragmentShaderCode</div><div class="ttdef"><b>Definition</b> ShaderParams.h:23</div></div>
-<div class="ttc" id="astructTP__Graphics__ShaderParams_html_a68ec134889b7aa998347ff11c59081b7"><div class="ttname"><a href="structTP__Graphics__ShaderParams.html#a68ec134889b7aa998347ff11c59081b7">TP_Graphics_ShaderParams::inputAttributes</a></div><div class="ttdeci">TP_Graphics_Shader_VarList inputAttributes</div><div class="ttdef"><b>Definition</b> ShaderParams.h:30</div></div>
-<div class="ttc" id="astructTP__Graphics__ShaderParams_html_a918835486648987f74f4aee328cf54ff"><div class="ttname"><a href="structTP__Graphics__ShaderParams.html#a918835486648987f74f4aee328cf54ff">TP_Graphics_ShaderParams::vertexShaderCode</a></div><div class="ttdeci">TP_StringView vertexShaderCode</div><div class="ttdef"><b>Definition</b> ShaderParams.h:19</div></div>
+<div class="ttc" id="astructTP__GfxGS__ShaderParams_html"><div class="ttname"><a href="structTP__GfxGS__ShaderParams.html">TP_GfxGS_ShaderParams</a></div><div class="ttdef"><b>Definition</b> ShaderParams.h:12</div></div>
+<div class="ttc" id="astructTP__GfxGS__ShaderParams_html_a6a212e6ecc14eae03834c9e6dfbcc9ae"><div class="ttname"><a href="structTP__GfxGS__ShaderParams.html#a6a212e6ecc14eae03834c9e6dfbcc9ae">TP_GfxGS_ShaderParams::fragmentShaderCode</a></div><div class="ttdeci">TP_StringView fragmentShaderCode</div><div class="ttdef"><b>Definition</b> ShaderParams.h:23</div></div>
+<div class="ttc" id="astructTP__GfxGS__ShaderParams_html_a6c1301b460030b2f31bd212dc351cc60"><div class="ttname"><a href="structTP__GfxGS__ShaderParams.html#a6c1301b460030b2f31bd212dc351cc60">TP_GfxGS_ShaderParams::vertexShaderCode</a></div><div class="ttdeci">TP_StringView vertexShaderCode</div><div class="ttdef"><b>Definition</b> ShaderParams.h:19</div></div>
+<div class="ttc" id="astructTP__GfxGS__ShaderParams_html_abf51845e201ce154d3b7d4c6fd646c8f"><div class="ttname"><a href="structTP__GfxGS__ShaderParams.html#abf51845e201ce154d3b7d4c6fd646c8f">TP_GfxGS_ShaderParams::inputAttributes</a></div><div class="ttdeci">TP_GfxGS_Shader_VarList inputAttributes</div><div class="ttdef"><b>Definition</b> ShaderParams.h:30</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="ShaderParams_8h.html">ShaderParams.h</a></li>
+    <li class="navelem"><a href="dir_ad48409b27ba43b3ac61f20887beb093.html">Graphics</a></li><li class="navelem"><a href="dir_0dfa553d2ed790368cdfd7366739073d.html">GS</a></li><li class="navelem"><a href="ShaderParams_8h.html">ShaderParams.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
   </ul>
 </div>

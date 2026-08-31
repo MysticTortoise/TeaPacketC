@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pitch_0',['pitch',['../structTP__Graphics__ImageData.html#ae0e4145125b7b106e50d4d9b73d13e4d',1,'TP_Graphics_ImageData']]]
+  ['pitch_0',['pitch',['../structTP__Gfx__ImageData.html#af494b243a90d9f983f8145f3a650ef4a',1,'TP_Gfx_ImageData']]]
 ];

@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['width_0',['width',['../structTP__Graphics__DisplayParams.html#ae76eaa84495714c738300279a3ca9349',1,'TP_Graphics_DisplayParams::width'],['../structTP__Graphics__ImageData.html#ab4d99e5f9441a15913e3cb9111177d7f',1,'TP_Graphics_ImageData::width'],['../structTP__Graphics__ViewportParams.html#abe6fb3e54c9a88185774935e3535da55',1,'TP_Graphics_ViewportParams::width'],['../structTP__Window__Params.html#af4bdb93c1f0710f23bbd251325aba137',1,'TP_Window_Params::width']]],
+  ['width_0',['width',['../structTP__GfxGS__DisplayParams.html#a568a948435722b076b2d40c27307b8b5',1,'TP_GfxGS_DisplayParams::width'],['../structTP__GfxGS__ViewportParams.html#a019c6715c73659501abbc399de22f17f',1,'TP_GfxGS_ViewportParams::width'],['../structTP__Gfx__ImageData.html#aa0fbf1c70b4bdd486d9ee393405a3514',1,'TP_Gfx_ImageData::width'],['../structTP__Window__Params.html#af4bdb93c1f0710f23bbd251325aba137',1,'TP_Window_Params::width']]],
   ['window_2eh_1',['Window.h',['../Window_8h.html',1,'']]],
   ['windowparams_2eh_2',['WindowParams.h',['../WindowParams_8h.html',1,'']]],
-  ['wrapmode_3',['wrapMode',['../structTP__Graphics__TextureParams.html#a402fd5002e5ff6e7455e06ed1830c5f1',1,'TP_Graphics_TextureParams']]],
-  ['writemode_4',['writeMode',['../structTP__Graphics__TextureUseFlags.html#ab08a1cef757eaa62b36b3c71796e5664',1,'TP_Graphics_TextureUseFlags']]]
+  ['wrapmode_3',['wrapMode',['../structTP__GfxGS__TextureParams.html#a4d71f70c0b827c03a6af54102b538778',1,'TP_GfxGS_TextureParams']]]
 ];

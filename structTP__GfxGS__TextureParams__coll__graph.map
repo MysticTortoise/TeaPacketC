@@ -1,0 +1,7 @@
+<map id="TP_GfxGS_TextureParams" name="TP_GfxGS_TextureParams">
+<area shape="rect" id="Node000001" title=" " alt="" coords="77,102,256,128"/>
+<area shape="rect" id="Node000002" href="$structTP__Gfx__ImageData.html" title=" " alt="" coords="5,5,141,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,40,156,100,152,103,93,44"/>
+<area shape="rect" id="Node000003" href="$structTP__GfxGS__TextureUseFlags.html" title=" " alt="" coords="164,5,355,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="241,45,208,80,183,103,179,99,204,76,238,41"/>
+</map>

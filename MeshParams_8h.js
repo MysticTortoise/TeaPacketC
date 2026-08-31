@@ -1,5 +1,5 @@
 var MeshParams_8h =
 [
-    [ "TP_Graphics_MeshParams", "structTP__Graphics__MeshParams.html", "structTP__Graphics__MeshParams" ],
-    [ "TP_ArrayView", "MeshParams_8h.html#a0036e65cb84c39a7e195158bacce6f6e", null ]
+    [ "TP_GfxGS_MeshParams", "structTP__GfxGS__MeshParams.html", "structTP__GfxGS__MeshParams" ],
+    [ "TP_ArrayView", "MeshParams_8h.html#a8b1007c06299c32fa798462308bc905e", null ]
 ];

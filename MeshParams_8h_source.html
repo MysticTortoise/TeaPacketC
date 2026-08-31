@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: Graphics/MeshParams.h Source File</title>
+<title>TeaPacket: Graphics/GS/MeshParams.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="codefolding.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
@@ -123,21 +123,21 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('MeshParams_8h_
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">/* This file contains all parameters used in the creation of a Mesh.</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_MESHPARAMS_H</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_MESHPARAMS_H</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_GS_MESHPARAMS_H</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_GS_MESHPARAMS_H</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="VariableType_8h.html">TeaPacket/Graphics/VariableType.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="VariableType_8h.html">TeaPacket/Graphics/GS/VariableType.h</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="Array_8h.html">TeaPacket/Types/Array.h</a>&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="MeshParams_8h.html#a0036e65cb84c39a7e195158bacce6f6e">   11</a></span><span class="keyword">typedef</span> <a class="code hl_define" href="Array_8h.html#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a>(<a class="code hl_typedef" href="Numeric_8h.html#ab17e3a9790c46cfe4f0fb2e5006ca527">tp_u32</a>) TP_Graphics_MeshIndexList;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="MeshParams_8h.html#a8b1007c06299c32fa798462308bc905e">   11</a></span><span class="keyword">typedef</span> <a class="code hl_define" href="Array_8h.html#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a>(<a class="code hl_typedef" href="Numeric_8h.html#ab17e3a9790c46cfe4f0fb2e5006ca527">tp_u32</a>) TP_GfxGS_MeshIndexList;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structTP__Graphics__MeshParams.html">   13</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structTP__GfxGS__MeshParams.html">   13</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structTP__Graphics__MeshParams.html#a7c793c977b15b18d48a0a1e307773bff">   25</a></span>    TP_ByteView <a class="code hl_variable" href="structTP__Graphics__MeshParams.html#a7c793c977b15b18d48a0a1e307773bff">vertexData</a>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structTP__Graphics__MeshParams.html#ac6487d3f2a43f758c2e51dce6aae3e04">   33</a></span>    TP_Graphics_Shader_VarList <a class="code hl_variable" href="structTP__Graphics__MeshParams.html#ac6487d3f2a43f758c2e51dce6aae3e04">vertexInfo</a>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structTP__Graphics__MeshParams.html#a94d8984e18b8965d1824da2f350fca81">   41</a></span>    TP_Graphics_MeshIndexList <a class="code hl_variable" href="structTP__Graphics__MeshParams.html#a94d8984e18b8965d1824da2f350fca81">indexList</a>;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>} <a class="code hl_struct" href="structTP__Graphics__MeshParams.html">TP_Graphics_MeshParams</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structTP__GfxGS__MeshParams.html#a0aa3dc63a4d6c1e5fed285e3e6c40134">   25</a></span>    TP_ByteView <a class="code hl_variable" href="structTP__GfxGS__MeshParams.html#a0aa3dc63a4d6c1e5fed285e3e6c40134">vertexData</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structTP__GfxGS__MeshParams.html#a83e8bd162aba4b17faf501ad7e1d994a">   33</a></span>    TP_GfxGS_Shader_VarList <a class="code hl_variable" href="structTP__GfxGS__MeshParams.html#a83e8bd162aba4b17faf501ad7e1d994a">vertexInfo</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structTP__GfxGS__MeshParams.html#a80d24448f54fbeb92ac33fb3429d82b1">   41</a></span>    TP_GfxGS_MeshIndexList <a class="code hl_variable" href="structTP__GfxGS__MeshParams.html#a80d24448f54fbeb92ac33fb3429d82b1">indexList</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>} <a class="code hl_struct" href="structTP__GfxGS__MeshParams.html">TP_GfxGS_MeshParams</a>;</div>
 </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif</span></div>
@@ -145,17 +145,17 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('MeshParams_8h_
 <div class="ttc" id="aArray_8h_html_a0be908a2008c98031855bbe049c37010"><div class="ttname"><a href="Array_8h.html#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a></div><div class="ttdeci">#define TP_ArrayView(Type)</div><div class="ttdef"><b>Definition</b> Array.h:30</div></div>
 <div class="ttc" id="aNumeric_8h_html_ab17e3a9790c46cfe4f0fb2e5006ca527"><div class="ttname"><a href="Numeric_8h.html#ab17e3a9790c46cfe4f0fb2e5006ca527">tp_u32</a></div><div class="ttdeci">uint32_t tp_u32</div><div class="ttdef"><b>Definition</b> Numeric.h:46</div></div>
 <div class="ttc" id="aVariableType_8h_html"><div class="ttname"><a href="VariableType_8h.html">VariableType.h</a></div></div>
-<div class="ttc" id="astructTP__Graphics__MeshParams_html"><div class="ttname"><a href="structTP__Graphics__MeshParams.html">TP_Graphics_MeshParams</a></div><div class="ttdef"><b>Definition</b> MeshParams.h:14</div></div>
-<div class="ttc" id="astructTP__Graphics__MeshParams_html_a7c793c977b15b18d48a0a1e307773bff"><div class="ttname"><a href="structTP__Graphics__MeshParams.html#a7c793c977b15b18d48a0a1e307773bff">TP_Graphics_MeshParams::vertexData</a></div><div class="ttdeci">TP_ByteView vertexData</div><div class="ttdef"><b>Definition</b> MeshParams.h:25</div></div>
-<div class="ttc" id="astructTP__Graphics__MeshParams_html_a94d8984e18b8965d1824da2f350fca81"><div class="ttname"><a href="structTP__Graphics__MeshParams.html#a94d8984e18b8965d1824da2f350fca81">TP_Graphics_MeshParams::indexList</a></div><div class="ttdeci">TP_Graphics_MeshIndexList indexList</div><div class="ttdef"><b>Definition</b> MeshParams.h:41</div></div>
-<div class="ttc" id="astructTP__Graphics__MeshParams_html_ac6487d3f2a43f758c2e51dce6aae3e04"><div class="ttname"><a href="structTP__Graphics__MeshParams.html#ac6487d3f2a43f758c2e51dce6aae3e04">TP_Graphics_MeshParams::vertexInfo</a></div><div class="ttdeci">TP_Graphics_Shader_VarList vertexInfo</div><div class="ttdef"><b>Definition</b> MeshParams.h:33</div></div>
+<div class="ttc" id="astructTP__GfxGS__MeshParams_html"><div class="ttname"><a href="structTP__GfxGS__MeshParams.html">TP_GfxGS_MeshParams</a></div><div class="ttdef"><b>Definition</b> MeshParams.h:14</div></div>
+<div class="ttc" id="astructTP__GfxGS__MeshParams_html_a0aa3dc63a4d6c1e5fed285e3e6c40134"><div class="ttname"><a href="structTP__GfxGS__MeshParams.html#a0aa3dc63a4d6c1e5fed285e3e6c40134">TP_GfxGS_MeshParams::vertexData</a></div><div class="ttdeci">TP_ByteView vertexData</div><div class="ttdef"><b>Definition</b> MeshParams.h:25</div></div>
+<div class="ttc" id="astructTP__GfxGS__MeshParams_html_a80d24448f54fbeb92ac33fb3429d82b1"><div class="ttname"><a href="structTP__GfxGS__MeshParams.html#a80d24448f54fbeb92ac33fb3429d82b1">TP_GfxGS_MeshParams::indexList</a></div><div class="ttdeci">TP_GfxGS_MeshIndexList indexList</div><div class="ttdef"><b>Definition</b> MeshParams.h:41</div></div>
+<div class="ttc" id="astructTP__GfxGS__MeshParams_html_a83e8bd162aba4b17faf501ad7e1d994a"><div class="ttname"><a href="structTP__GfxGS__MeshParams.html#a83e8bd162aba4b17faf501ad7e1d994a">TP_GfxGS_MeshParams::vertexInfo</a></div><div class="ttdeci">TP_GfxGS_Shader_VarList vertexInfo</div><div class="ttdef"><b>Definition</b> MeshParams.h:33</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="MeshParams_8h.html">MeshParams.h</a></li>
+    <li class="navelem"><a href="dir_ad48409b27ba43b3ac61f20887beb093.html">Graphics</a></li><li class="navelem"><a href="dir_0dfa553d2ed790368cdfd7366739073d.html">GS</a></li><li class="navelem"><a href="MeshParams_8h.html">MeshParams.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
   </ul>
 </div>

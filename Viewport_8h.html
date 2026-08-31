@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: Graphics/Viewport.h File Reference</title>
+<title>TeaPacket: Graphics/GS/Viewport.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="codefolding.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
@@ -119,14 +119,14 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('Viewport_8h.ht
   <div class="headertitle"><div class="title">Viewport.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="ViewportParams_8h_source.html">TeaPacket/Graphics/ViewportParams.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="ViewportParams_8h_source.html">TeaPacket/Graphics/GS/ViewportParams.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Viewport.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="Viewport_8h__incl.png" border="0" usemap="#aGraphics_2Viewport_8h" loading="lazy" alt=""/></div>
-<map name="aGraphics_2Viewport_8h" id="aGraphics_2Viewport_8h">
-<area shape="rect" title=" " alt="" coords="188,5,326,31"/>
-<area shape="rect" href="ViewportParams_8h.html" title=" " alt="" coords="187,79,327,120"/>
+<div class="center"><img src="Viewport_8h__incl.png" border="0" usemap="#aGraphics_2GS_2Viewport_8h" loading="lazy" alt=""/></div>
+<map name="aGraphics_2GS_2Viewport_8h" id="aGraphics_2GS_2Viewport_8h">
+<area shape="rect" title=" " alt="" coords="176,5,338,31"/>
+<area shape="rect" href="ViewportParams_8h.html" title=" " alt="" coords="180,79,334,120"/>
 <area shape="poly" title=" " alt="" coords="260,31,260,64,254,64,254,31"/>
 <area shape="rect" href="Numeric_8h.html" title=" " alt="" coords="164,168,350,193"/>
 <area shape="poly" title=" " alt="" coords="260,120,260,152,254,152,254,120"/>
@@ -145,26 +145,26 @@ Include dependency graph for Viewport.h:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a5f1987d3d415bbfac093a2d64d91499e" id="r_a5f1987d3d415bbfac093a2d64d91499e"><td class="memItemLeft">typedef struct <a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a>&#160;</td><td class="memItemRight"><a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a></td></tr>
+<tr class="memitem:a1af77342ee6a0f0b9e66c85a98a942b8" id="r_a1af77342ee6a0f0b9e66c85a98a942b8"><td class="memItemLeft">typedef struct <a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a>&#160;</td><td class="memItemRight"><a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5c1b98fd4a1541fa9c5726cc6926b401" id="r_a5c1b98fd4a1541fa9c5726cc6926b401"><td class="memItemLeft"><a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a5c1b98fd4a1541fa9c5726cc6926b401">TP_Graphics_Viewport_Create</a> (const <a class="el" href="structTP__Graphics__ViewportParams.html">TP_Graphics_ViewportParams</a> *params)</td></tr>
-<tr class="memitem:a1dfa6547858cecf38e9b9eaf4e48db36" id="r_a1dfa6547858cecf38e9b9eaf4e48db36"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1dfa6547858cecf38e9b9eaf4e48db36">TP_Graphics_Viewport_Destroy</a> (const <a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a> *)</td></tr>
-<tr class="memitem:a5a9cbdda94b67a158147100a6d828f1b" id="r_a5a9cbdda94b67a158147100a6d828f1b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5a9cbdda94b67a158147100a6d828f1b">TP_Graphics_Viewport_BeginRender</a> (<a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a> *viewport)</td></tr>
-<tr class="memitem:a78e2a26a1d35fa64cbc375aeaafba000" id="r_a78e2a26a1d35fa64cbc375aeaafba000"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a78e2a26a1d35fa64cbc375aeaafba000">TP_Graphics_Viewport_FinishRender</a> (void)</td></tr>
-<tr class="memitem:afc6b0ce8ae463b21208dc9c92384e370" id="r_afc6b0ce8ae463b21208dc9c92384e370"><td class="memItemLeft"><a class="el" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a>&#160;</td><td class="memItemRight"><a class="el" href="#afc6b0ce8ae463b21208dc9c92384e370">TP_Graphics_Viewport_GetWidth</a> (<a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a> *)</td></tr>
-<tr class="memitem:af9732c7d82552d589774d49d57fe18ba" id="r_af9732c7d82552d589774d49d57fe18ba"><td class="memItemLeft"><a class="el" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a>&#160;</td><td class="memItemRight"><a class="el" href="#af9732c7d82552d589774d49d57fe18ba">TP_Graphics_Viewport_GetHeight</a> (<a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a> *)</td></tr>
+<tr class="memitem:a87de03d80a43598697f82f59c14b5a74" id="r_a87de03d80a43598697f82f59c14b5a74"><td class="memItemLeft"><a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a87de03d80a43598697f82f59c14b5a74">TP_GfxGS_Viewport_Create</a> (const <a class="el" href="structTP__GfxGS__ViewportParams.html">TP_GfxGS_ViewportParams</a> *params)</td></tr>
+<tr class="memitem:abdc83e20a45910660f2878518091d1fd" id="r_abdc83e20a45910660f2878518091d1fd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abdc83e20a45910660f2878518091d1fd">TP_GfxGS_Viewport_Destroy</a> (const <a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a> *)</td></tr>
+<tr class="memitem:a855b1d946877dd544948123d2cd13641" id="r_a855b1d946877dd544948123d2cd13641"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a855b1d946877dd544948123d2cd13641">TP_GfxGS_Viewport_BeginRender</a> (<a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a> *viewport)</td></tr>
+<tr class="memitem:aa32389a852151e64afc21987831671fe" id="r_aa32389a852151e64afc21987831671fe"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa32389a852151e64afc21987831671fe">TP_GfxGS_Viewport_FinishRender</a> (void)</td></tr>
+<tr class="memitem:a292d901eaeff49eb7b511dc4b843ad69" id="r_a292d901eaeff49eb7b511dc4b843ad69"><td class="memItemLeft"><a class="el" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a>&#160;</td><td class="memItemRight"><a class="el" href="#a292d901eaeff49eb7b511dc4b843ad69">TP_GfxGS_Viewport_GetWidth</a> (<a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a> *)</td></tr>
+<tr class="memitem:af5af19bde04c0720efe7a8e4c4b56c26" id="r_af5af19bde04c0720efe7a8e4c4b56c26"><td class="memItemLeft"><a class="el" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a>&#160;</td><td class="memItemRight"><a class="el" href="#af5af19bde04c0720efe7a8e4c4b56c26">TP_GfxGS_Viewport_GetHeight</a> (<a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a> *)</td></tr>
 </table>
 <a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
-<a id="a5f1987d3d415bbfac093a2d64d91499e" name="a5f1987d3d415bbfac093a2d64d91499e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f1987d3d415bbfac093a2d64d91499e">&#9670;&#160;</a></span>TP_Graphics_Viewport</h2>
+<a id="a1af77342ee6a0f0b9e66c85a98a942b8" name="a1af77342ee6a0f0b9e66c85a98a942b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1af77342ee6a0f0b9e66c85a98a942b8">&#9670;&#160;</a></span>TP_GfxGS_Viewport</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct <a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a> <a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a></td>
+          <td class="memname">typedef struct <a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a> <a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -172,23 +172,23 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a5a9cbdda94b67a158147100a6d828f1b" name="a5a9cbdda94b67a158147100a6d828f1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a9cbdda94b67a158147100a6d828f1b">&#9670;&#160;</a></span>TP_Graphics_Viewport_BeginRender()</h2>
+<a id="a855b1d946877dd544948123d2cd13641" name="a855b1d946877dd544948123d2cd13641"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a855b1d946877dd544948123d2cd13641">&#9670;&#160;</a></span>TP_GfxGS_Viewport_BeginRender()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void TP_Graphics_Viewport_BeginRender </td>
+          <td class="memname">void TP_GfxGS_Viewport_BeginRender </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a> *</td>          <td class="paramname"><span class="paramname"><em>viewport</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a> *</td>          <td class="paramname"><span class="paramname"><em>viewport</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Sets this Viewport to be the current active target for rendering.</p>
-<p>Any calls to this function must be followed by a call to TP_Graphics_Viewport_FinishRender. </p><dl class="section warning"><dt>Warning</dt><dd>This conflicts with TP_Graphics_Display_BeginRender. Only have one active target at a time.</dd></dl>
-<p>Calling this function multiple times without calling TP_Graphics_Viewport_FinishRender is undefined behavior. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Any calls to this function must be followed by a call to TP_GfxGS_Viewport_FinishRender. </p><dl class="section warning"><dt>Warning</dt><dd>This conflicts with TP_GfxGS_Display_BeginRender. Only have one active target at a time.</dd></dl>
+<p>Calling this function multiple times without calling TP_GfxGS_Viewport_FinishRender is undefined behavior. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">viewport</td><td>The Viewport to be targeted. </td></tr>
   </table>
@@ -197,16 +197,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5c1b98fd4a1541fa9c5726cc6926b401" name="a5c1b98fd4a1541fa9c5726cc6926b401"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c1b98fd4a1541fa9c5726cc6926b401">&#9670;&#160;</a></span>TP_Graphics_Viewport_Create()</h2>
+<a id="a87de03d80a43598697f82f59c14b5a74" name="a87de03d80a43598697f82f59c14b5a74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87de03d80a43598697f82f59c14b5a74">&#9670;&#160;</a></span>TP_GfxGS_Viewport_Create()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a> * TP_Graphics_Viewport_Create </td>
+          <td class="memname"><a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a> * TP_GfxGS_Viewport_Create </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structTP__Graphics__ViewportParams.html">TP_Graphics_ViewportParams</a> *</td>          <td class="paramname"><span class="paramname"><em>params</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structTP__GfxGS__ViewportParams.html">TP_GfxGS_ViewportParams</a> *</td>          <td class="paramname"><span class="paramname"><em>params</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -221,16 +221,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1dfa6547858cecf38e9b9eaf4e48db36" name="a1dfa6547858cecf38e9b9eaf4e48db36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1dfa6547858cecf38e9b9eaf4e48db36">&#9670;&#160;</a></span>TP_Graphics_Viewport_Destroy()</h2>
+<a id="abdc83e20a45910660f2878518091d1fd" name="abdc83e20a45910660f2878518091d1fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdc83e20a45910660f2878518091d1fd">&#9670;&#160;</a></span>TP_GfxGS_Viewport_Destroy()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void TP_Graphics_Viewport_Destroy </td>
+          <td class="memname">void TP_GfxGS_Viewport_Destroy </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -239,14 +239,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a78e2a26a1d35fa64cbc375aeaafba000" name="a78e2a26a1d35fa64cbc375aeaafba000"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78e2a26a1d35fa64cbc375aeaafba000">&#9670;&#160;</a></span>TP_Graphics_Viewport_FinishRender()</h2>
+<a id="aa32389a852151e64afc21987831671fe" name="aa32389a852151e64afc21987831671fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa32389a852151e64afc21987831671fe">&#9670;&#160;</a></span>TP_GfxGS_Viewport_FinishRender()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void TP_Graphics_Viewport_FinishRender </td>
+          <td class="memname">void TP_GfxGS_Viewport_FinishRender </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -254,20 +254,20 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Finishes rendering the current Viewport..</p>
-<p>This function must be preceded with a call to TP_Graphics_Viewport_BeginRender. </p><dl class="section warning"><dt>Warning</dt><dd>Calling this function without a prior call to TP_Graphics_Viewport_BeginRender, or after another call to TP_Graphics_Viewport_FinishRender, is undefined behavior. </dd></dl>
+<p>This function must be preceded with a call to TP_GfxGS_Viewport_BeginRender. </p><dl class="section warning"><dt>Warning</dt><dd>Calling this function without a prior call to TP_GfxGS_Viewport_BeginRender, or after another call to TP_GfxGS_Viewport_FinishRender, is undefined behavior. </dd></dl>
 
 </div>
 </div>
-<a id="af9732c7d82552d589774d49d57fe18ba" name="af9732c7d82552d589774d49d57fe18ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af9732c7d82552d589774d49d57fe18ba">&#9670;&#160;</a></span>TP_Graphics_Viewport_GetHeight()</h2>
+<a id="af5af19bde04c0720efe7a8e4c4b56c26" name="af5af19bde04c0720efe7a8e4c4b56c26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5af19bde04c0720efe7a8e4c4b56c26">&#9670;&#160;</a></span>TP_GfxGS_Viewport_GetHeight()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> TP_Graphics_Viewport_GetHeight </td>
+          <td class="memname"><a class="el" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> TP_GfxGS_Viewport_GetHeight </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -276,16 +276,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="afc6b0ce8ae463b21208dc9c92384e370" name="afc6b0ce8ae463b21208dc9c92384e370"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc6b0ce8ae463b21208dc9c92384e370">&#9670;&#160;</a></span>TP_Graphics_Viewport_GetWidth()</h2>
+<a id="a292d901eaeff49eb7b511dc4b843ad69" name="a292d901eaeff49eb7b511dc4b843ad69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a292d901eaeff49eb7b511dc4b843ad69">&#9670;&#160;</a></span>TP_GfxGS_Viewport_GetWidth()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> TP_Graphics_Viewport_GetWidth </td>
+          <td class="memname"><a class="el" href="Numeric_8h.html#a031720b1155047e9fb121d96567d01b6">tp_u16</a> TP_GfxGS_Viewport_GetWidth </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="#a5f1987d3d415bbfac093a2d64d91499e">TP_Graphics_Viewport</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#a1af77342ee6a0f0b9e66c85a98a942b8">TP_GfxGS_Viewport</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -307,7 +307,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="Viewport_8h.html">Viewport.h</a></li>
+    <li class="navelem"><a href="dir_ad48409b27ba43b3ac61f20887beb093.html">Graphics</a></li><li class="navelem"><a href="dir_0dfa553d2ed790368cdfd7366739073d.html">GS</a></li><li class="navelem"><a href="Viewport_8h.html">Viewport.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
   </ul>
 </div>

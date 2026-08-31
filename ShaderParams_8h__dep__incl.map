@@ -1,5 +1,5 @@
-<map id="Graphics/ShaderParams.h" name="Graphics/ShaderParams.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,179,31"/>
-<area shape="rect" id="Node000002" href="$Shader_8h.html" title=" " alt="" coords="28,79,156,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,46,95,79,89,79,89,46"/>
+<map id="Graphics/GS/ShaderParams.h" name="Graphics/GS/ShaderParams.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,202,31"/>
+<area shape="rect" id="Node000002" href="$Shader_8h.html" title=" " alt="" coords="28,79,179,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,46,106,79,101,79,101,46"/>
 </map>

@@ -1,15 +1,15 @@
 var annotated_dup =
 [
-    [ "TP_Graphics_Color8", "structTP__Graphics__Color8.html", "structTP__Graphics__Color8" ],
-    [ "TP_Graphics_Color8A", "structTP__Graphics__Color8A.html", "structTP__Graphics__Color8A" ],
-    [ "TP_Graphics_DisplayParams", "structTP__Graphics__DisplayParams.html", "structTP__Graphics__DisplayParams" ],
-    [ "TP_Graphics_ImageData", "structTP__Graphics__ImageData.html", "structTP__Graphics__ImageData" ],
-    [ "TP_Graphics_MeshParams", "structTP__Graphics__MeshParams.html", "structTP__Graphics__MeshParams" ],
-    [ "TP_Graphics_ShaderBufferParams", "structTP__Graphics__ShaderBufferParams.html", "structTP__Graphics__ShaderBufferParams" ],
-    [ "TP_Graphics_ShaderParams", "structTP__Graphics__ShaderParams.html", "structTP__Graphics__ShaderParams" ],
-    [ "TP_Graphics_TextureParams", "structTP__Graphics__TextureParams.html", "structTP__Graphics__TextureParams" ],
-    [ "TP_Graphics_TextureUseFlags", "structTP__Graphics__TextureUseFlags.html", "structTP__Graphics__TextureUseFlags" ],
-    [ "TP_Graphics_VariableType", "structTP__Graphics__VariableType.html", "structTP__Graphics__VariableType" ],
-    [ "TP_Graphics_ViewportParams", "structTP__Graphics__ViewportParams.html", "structTP__Graphics__ViewportParams" ],
+    [ "TP_Gfx_Color8", "structTP__Gfx__Color8.html", "structTP__Gfx__Color8" ],
+    [ "TP_Gfx_Color8A", "structTP__Gfx__Color8A.html", "structTP__Gfx__Color8A" ],
+    [ "TP_Gfx_ImageData", "structTP__Gfx__ImageData.html", "structTP__Gfx__ImageData" ],
+    [ "TP_GfxGS_DisplayParams", "structTP__GfxGS__DisplayParams.html", "structTP__GfxGS__DisplayParams" ],
+    [ "TP_GfxGS_MeshParams", "structTP__GfxGS__MeshParams.html", "structTP__GfxGS__MeshParams" ],
+    [ "TP_GfxGS_ShaderBufferParams", "structTP__GfxGS__ShaderBufferParams.html", "structTP__GfxGS__ShaderBufferParams" ],
+    [ "TP_GfxGS_ShaderParams", "structTP__GfxGS__ShaderParams.html", "structTP__GfxGS__ShaderParams" ],
+    [ "TP_GfxGS_TextureParams", "structTP__GfxGS__TextureParams.html", "structTP__GfxGS__TextureParams" ],
+    [ "TP_GfxGS_TextureUseFlags", "structTP__GfxGS__TextureUseFlags.html", "structTP__GfxGS__TextureUseFlags" ],
+    [ "TP_GfxGS_VariableType", "structTP__GfxGS__VariableType.html", "structTP__GfxGS__VariableType" ],
+    [ "TP_GfxGS_ViewportParams", "structTP__GfxGS__ViewportParams.html", "structTP__GfxGS__ViewportParams" ],
     [ "TP_Window_Params", "structTP__Window__Params.html", "structTP__Window__Params" ]
 ];

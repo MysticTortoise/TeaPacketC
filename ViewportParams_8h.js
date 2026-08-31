@@ -1,4 +1,4 @@
 var ViewportParams_8h =
 [
-    [ "TP_Graphics_ViewportParams", "structTP__Graphics__ViewportParams.html", "structTP__Graphics__ViewportParams" ]
+    [ "TP_GfxGS_ViewportParams", "structTP__GfxGS__ViewportParams.html", "structTP__GfxGS__ViewportParams" ]
 ];

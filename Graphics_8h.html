@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: Graphics/Graphics.h File Reference</title>
+<title>TeaPacket: Graphics/GS/Graphics.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="codefolding.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
@@ -119,23 +119,33 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('Graphics_8h.ht
   <div class="headertitle"><div class="title">Graphics.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="Numeric_8h_source.html">TeaPacket/Types/Numeric.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="Color_8h_source.html">TeaPacket/Graphics/Common/Color.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Numeric_8h_source.html">TeaPacket/Types/Numeric.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Graphics.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="Graphics_8h__incl.png" border="0" usemap="#aGraphics_2Graphics_8h" loading="lazy" alt=""/></div>
-<map name="aGraphics_2Graphics_8h" id="aGraphics_2Graphics_8h">
-<area shape="rect" title=" " alt="" coords="187,5,327,31"/>
-<area shape="rect" href="Numeric_8h.html" title=" " alt="" coords="164,79,350,105"/>
-<area shape="poly" title=" " alt="" coords="260,31,260,63,254,63,254,31"/>
-<area shape="rect" href="Features_8h.html" title=" " alt="" coords="5,153,157,193"/>
-<area shape="poly" title=" " alt="" coords="231,108,140,148,137,144,229,103"/>
-<area shape="rect" title=" " alt="" coords="180,160,243,186"/>
-<area shape="poly" title=" " alt="" coords="252,106,229,148,224,145,248,104"/>
-<area shape="rect" title=" " alt="" coords="267,160,340,186"/>
-<area shape="poly" title=" " alt="" coords="266,104,291,145,286,148,262,106"/>
-<area shape="rect" title=" " alt="" coords="364,160,427,186"/>
-<area shape="poly" title=" " alt="" coords="279,103,363,150,360,155,277,107"/>
+<div class="center"><img src="Graphics_8h__incl.png" border="0" usemap="#aGraphics_2GS_2Graphics_8h" loading="lazy" alt=""/></div>
+<map name="aGraphics_2GS_2Graphics_8h" id="aGraphics_2GS_2Graphics_8h">
+<area shape="rect" title=" " alt="" coords="188,5,350,31"/>
+<area shape="rect" href="Color_8h.html" title=" " alt="" coords="146,79,286,120"/>
+<area shape="poly" title=" " alt="" coords="263,33,240,67,235,64,259,30"/>
+<area shape="rect" href="Numeric_8h.html" title=" " alt="" coords="209,241,396,267"/>
+<area shape="poly" title=" " alt="" coords="279,30,291,52,301,78,308,118,310,158,308,226,303,226,305,158,302,119,296,80,286,54,275,33"/>
+<area shape="poly" title=" " alt="" coords="229,119,290,226,286,229,224,121"/>
+<area shape="rect" href="Array_8h.html" title=" " alt="" coords="68,168,235,193"/>
+<area shape="poly" title=" " alt="" coords="202,122,173,157,169,154,198,118"/>
+<area shape="rect" href="Features_8h.html" title=" " alt="" coords="5,315,157,356"/>
+<area shape="poly" title=" " alt="" coords="269,270,151,312,149,307,267,265"/>
+<area shape="rect" title=" " alt="" coords="364,322,427,348"/>
+<area shape="poly" title=" " alt="" coords="318,265,372,310,368,314,315,269"/>
+<area shape="rect" title=" " alt="" coords="180,322,254,348"/>
+<area shape="poly" title=" " alt="" coords="291,269,243,314,239,310,288,265"/>
+<area shape="rect" title=" " alt="" coords="277,322,341,348"/>
+<area shape="poly" title=" " alt="" coords="306,267,309,307,304,307,301,268"/>
+<area shape="poly" title=" " alt="" coords="178,191,264,232,262,237,176,196"/>
+<area shape="poly" title=" " alt="" coords="142,195,125,217,109,243,97,272,90,301,84,299,92,270,104,240,121,213,138,192"/>
+<area shape="rect" title=" " alt="" coords="118,241,185,267"/>
+<area shape="poly" title=" " alt="" coords="154,194,154,226,149,226,149,194"/>
 </map>
 </div>
 </div>
@@ -143,72 +153,44 @@ Include dependency graph for Graphics.h:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:adec42d29e07d46d64e6f086f90f1517f" id="r_adec42d29e07d46d64e6f086f90f1517f"><td class="memItemLeft"><a class="el" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a>&#160;</td><td class="memItemRight"><a class="el" href="#adec42d29e07d46d64e6f086f90f1517f">TP_Graphics_Init</a> (void)</td></tr>
-<tr class="memitem:af3f74ede2cd3c54c70b835ab9b29ccb1" id="r_af3f74ede2cd3c54c70b835ab9b29ccb1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af3f74ede2cd3c54c70b835ab9b29ccb1">TP_Graphics_DeInit</a> (void)</td></tr>
-<tr class="memitem:a0267c43182e77d37f4f3426d51ef5ca4" id="r_a0267c43182e77d37f4f3426d51ef5ca4"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0267c43182e77d37f4f3426d51ef5ca4">TP_Graphics_DrawMesh</a> (void)</td></tr>
-<tr class="memitem:a69b852c396fc5feb048f9fdf22cef708" id="r_a69b852c396fc5feb048f9fdf22cef708"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a69b852c396fc5feb048f9fdf22cef708">TP_Graphics_ClearColor</a> (<a class="el" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> r, <a class="el" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> g, <a class="el" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a> b)</td></tr>
-<tr class="memitem:a8abbb95059170523f16e964c81d29945" id="r_a8abbb95059170523f16e964c81d29945"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8abbb95059170523f16e964c81d29945">TP_Graphics_SetDepthEnabled</a> (<a class="el" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> depthEnabled)</td></tr>
+<tr class="memitem:a2071e0316d9a993c6ced8d22f5a394c1" id="r_a2071e0316d9a993c6ced8d22f5a394c1"><td class="memItemLeft"><a class="el" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a>&#160;</td><td class="memItemRight"><a class="el" href="#a2071e0316d9a993c6ced8d22f5a394c1">TP_GraphicsGS_Init</a> (void)</td></tr>
+<tr class="memitem:af6c7475d08619035ddba02ecb05d044b" id="r_af6c7475d08619035ddba02ecb05d044b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af6c7475d08619035ddba02ecb05d044b">TP_GraphicsGS_DeInit</a> (void)</td></tr>
+<tr class="memitem:a208be918ff86d2a7204aa1505eacf8a0" id="r_a208be918ff86d2a7204aa1505eacf8a0"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a208be918ff86d2a7204aa1505eacf8a0">TP_GfxGS_DrawMesh</a> (void)</td></tr>
+<tr class="memitem:ac167bfbb70c472149d39c71a79adf06d" id="r_ac167bfbb70c472149d39c71a79adf06d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac167bfbb70c472149d39c71a79adf06d">TP_GfxGS_ClearColor</a> (<a class="el" href="structTP__Gfx__Color8.html">TP_Gfx_Color8</a> clearColor)</td></tr>
+<tr class="memitem:a85b94b07b1a7a1e7532a1102ee7b94cd" id="r_a85b94b07b1a7a1e7532a1102ee7b94cd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a85b94b07b1a7a1e7532a1102ee7b94cd">TP_GfxGS_SetDepthEnabled</a> (<a class="el" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> depthEnabled)</td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a69b852c396fc5feb048f9fdf22cef708" name="a69b852c396fc5feb048f9fdf22cef708"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69b852c396fc5feb048f9fdf22cef708">&#9670;&#160;</a></span>TP_Graphics_ClearColor()</h2>
+<a id="ac167bfbb70c472149d39c71a79adf06d" name="ac167bfbb70c472149d39c71a79adf06d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac167bfbb70c472149d39c71a79adf06d">&#9670;&#160;</a></span>TP_GfxGS_ClearColor()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void TP_Graphics_ClearColor </td>
+          <td class="memname">void TP_GfxGS_ClearColor </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="structTP__Gfx__Color8.html">TP_Gfx_Color8</a></td>          <td class="paramname"><span class="paramname"><em>clearColor</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a></td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="Numeric_8h.html#af14919785d1013bf520294d3eb1b26a8">tp_u8</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Clears the currently active Viewport with a color. Will also clear its depth buffer if possible. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">r</td><td>The red value to clear the Viewport with, from 0-255. </td></tr>
-    <tr><td class="paramname">g</td><td>The green value to clear the Viewport with, from 0-255. </td></tr>
-    <tr><td class="paramname">b</td><td>The blue value to clear the Viewport with, from 0-255. </td></tr>
+    <tr><td class="paramname">clearColor</td><td>The color to clear the viewport with. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="af3f74ede2cd3c54c70b835ab9b29ccb1" name="af3f74ede2cd3c54c70b835ab9b29ccb1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3f74ede2cd3c54c70b835ab9b29ccb1">&#9670;&#160;</a></span>TP_Graphics_DeInit()</h2>
+<a id="a208be918ff86d2a7204aa1505eacf8a0" name="a208be918ff86d2a7204aa1505eacf8a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a208be918ff86d2a7204aa1505eacf8a0">&#9670;&#160;</a></span>TP_GfxGS_DrawMesh()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void TP_Graphics_DeInit </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0267c43182e77d37f4f3426d51ef5ca4" name="a0267c43182e77d37f4f3426d51ef5ca4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0267c43182e77d37f4f3426d51ef5ca4">&#9670;&#160;</a></span>TP_Graphics_DrawMesh()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void TP_Graphics_DrawMesh </td>
+          <td class="memname">void TP_GfxGS_DrawMesh </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -220,31 +202,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adec42d29e07d46d64e6f086f90f1517f" name="adec42d29e07d46d64e6f086f90f1517f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adec42d29e07d46d64e6f086f90f1517f">&#9670;&#160;</a></span>TP_Graphics_Init()</h2>
+<a id="a85b94b07b1a7a1e7532a1102ee7b94cd" name="a85b94b07b1a7a1e7532a1102ee7b94cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85b94b07b1a7a1e7532a1102ee7b94cd">&#9670;&#160;</a></span>TP_GfxGS_SetDepthEnabled()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> TP_Graphics_Init </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8abbb95059170523f16e964c81d29945" name="a8abbb95059170523f16e964c81d29945"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8abbb95059170523f16e964c81d29945">&#9670;&#160;</a></span>TP_Graphics_SetDepthEnabled()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void TP_Graphics_SetDepthEnabled </td>
+          <td class="memname">void TP_GfxGS_SetDepthEnabled </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a></td>          <td class="paramname"><span class="paramname"><em>depthEnabled</em></span></td><td>)</td>
           <td></td>
@@ -257,6 +222,40 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="af6c7475d08619035ddba02ecb05d044b" name="af6c7475d08619035ddba02ecb05d044b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6c7475d08619035ddba02ecb05d044b">&#9670;&#160;</a></span>TP_GraphicsGS_DeInit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TP_GraphicsGS_DeInit </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2071e0316d9a993c6ced8d22f5a394c1" name="a2071e0316d9a993c6ced8d22f5a394c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2071e0316d9a993c6ced8d22f5a394c1">&#9670;&#160;</a></span>TP_GraphicsGS_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Numeric_8h.html#a4b32425ab06ad510852bcb2cab482e8b">tp_bool</a> TP_GraphicsGS_Init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -273,7 +272,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="Graphics_8h.html">Graphics.h</a></li>
+    <li class="navelem"><a href="dir_ad48409b27ba43b3ac61f20887beb093.html">Graphics</a></li><li class="navelem"><a href="dir_0dfa553d2ed790368cdfd7366739073d.html">GS</a></li><li class="navelem"><a href="Graphics_8h.html">Graphics.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
   </ul>
 </div>

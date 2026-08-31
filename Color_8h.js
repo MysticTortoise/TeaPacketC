@@ -1,7 +1,7 @@
 var Color_8h =
 [
-    [ "TP_Graphics_Color8", "structTP__Graphics__Color8.html", "structTP__Graphics__Color8" ],
-    [ "TP_Graphics_Color8A", "structTP__Graphics__Color8A.html", "structTP__Graphics__Color8A" ],
-    [ "TP_Array", "Color_8h.html#ab6ec13d39e74b387828ad3f90a5659ab", null ],
-    [ "TP_Array", "Color_8h.html#ae77409e07871083d55d6e8d85f93d4c9", null ]
+    [ "TP_Gfx_Color8", "structTP__Gfx__Color8.html", "structTP__Gfx__Color8" ],
+    [ "TP_Gfx_Color8A", "structTP__Gfx__Color8A.html", "structTP__Gfx__Color8A" ],
+    [ "TP_Array", "Color_8h.html#a29f4fa3bc33e10b47272e715d7c11ae6", null ],
+    [ "TP_Array", "Color_8h.html#a79da7aa2ad664cb2aa812a86aa4feb2c", null ]
 ];

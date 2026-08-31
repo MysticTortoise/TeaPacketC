@@ -1,4 +1,4 @@
 var ShaderBufferParams_8h =
 [
-    [ "TP_Graphics_ShaderBufferParams", "structTP__Graphics__ShaderBufferParams.html", "structTP__Graphics__ShaderBufferParams" ]
+    [ "TP_GfxGS_ShaderBufferParams", "structTP__GfxGS__ShaderBufferParams.html", "structTP__GfxGS__ShaderBufferParams" ]
 ];

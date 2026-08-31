@@ -1,10 +1,10 @@
 var Viewport_8h =
 [
-    [ "TP_Graphics_Viewport", "Viewport_8h.html#a5f1987d3d415bbfac093a2d64d91499e", null ],
-    [ "TP_Graphics_Viewport_BeginRender", "Viewport_8h.html#a5a9cbdda94b67a158147100a6d828f1b", null ],
-    [ "TP_Graphics_Viewport_Create", "Viewport_8h.html#a5c1b98fd4a1541fa9c5726cc6926b401", null ],
-    [ "TP_Graphics_Viewport_Destroy", "Viewport_8h.html#a1dfa6547858cecf38e9b9eaf4e48db36", null ],
-    [ "TP_Graphics_Viewport_FinishRender", "Viewport_8h.html#a78e2a26a1d35fa64cbc375aeaafba000", null ],
-    [ "TP_Graphics_Viewport_GetHeight", "Viewport_8h.html#af9732c7d82552d589774d49d57fe18ba", null ],
-    [ "TP_Graphics_Viewport_GetWidth", "Viewport_8h.html#afc6b0ce8ae463b21208dc9c92384e370", null ]
+    [ "TP_GfxGS_Viewport", "Viewport_8h.html#a1af77342ee6a0f0b9e66c85a98a942b8", null ],
+    [ "TP_GfxGS_Viewport_BeginRender", "Viewport_8h.html#a855b1d946877dd544948123d2cd13641", null ],
+    [ "TP_GfxGS_Viewport_Create", "Viewport_8h.html#a87de03d80a43598697f82f59c14b5a74", null ],
+    [ "TP_GfxGS_Viewport_Destroy", "Viewport_8h.html#abdc83e20a45910660f2878518091d1fd", null ],
+    [ "TP_GfxGS_Viewport_FinishRender", "Viewport_8h.html#aa32389a852151e64afc21987831671fe", null ],
+    [ "TP_GfxGS_Viewport_GetHeight", "Viewport_8h.html#af5af19bde04c0720efe7a8e4c4b56c26", null ],
+    [ "TP_GfxGS_Viewport_GetWidth", "Viewport_8h.html#a292d901eaeff49eb7b511dc4b843ad69", null ]
 ];

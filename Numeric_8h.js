@@ -1,5 +1,6 @@
 var Numeric_8h =
 [
+    [ "tp_bfint_t", "Numeric_8h.html#a9b963f827b6cf64d4c1f54dc3bb2d43b", null ],
     [ "tp_false", "Numeric_8h.html#a6f76e3485c1d4889537996084d3234fc", null ],
     [ "TP_MAX_I64", "Numeric_8h.html#a9cfe7894221729820809fd84870b10db", null ],
     [ "TP_MAX_U64", "Numeric_8h.html#abc913c46dae7ad4ad6454534f8f4857f", null ],

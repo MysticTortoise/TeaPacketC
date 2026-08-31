@@ -1,7 +1,7 @@
 var Mesh_8h =
 [
-    [ "TP_Graphics_Mesh", "Mesh_8h.html#a75d0fcb4e29618907009304d4a4f2a93", null ],
-    [ "TP_Graphics_Mesh_Create", "Mesh_8h.html#ad054c9048bfa356d2e67af7c87f9b6b6", null ],
-    [ "TP_Graphics_Mesh_Destroy", "Mesh_8h.html#a159493a62eb2c3caa00d25a24fc730af", null ],
-    [ "TP_Graphics_Mesh_SetActive", "Mesh_8h.html#a553a773bac040606a3f10b9c0f01b162", null ]
+    [ "TP_GfxGS_Mesh", "Mesh_8h.html#ae7df58424ad557139f73ffe35a38af42", null ],
+    [ "TP_GfxGS_Mesh_Create", "Mesh_8h.html#a0e743bce5800c57ca894816e3e48c8e3", null ],
+    [ "TP_GfxGS_Mesh_Destroy", "Mesh_8h.html#ae21082567e1293edd5663692771932e4", null ],
+    [ "TP_GfxGS_Mesh_SetActive", "Mesh_8h.html#adf275777c28d1f2f630da30cb08f44bd", null ]
 ];

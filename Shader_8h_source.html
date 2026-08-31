@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeaPacket: Graphics/Shader.h Source File</title>
+<title>TeaPacket: Graphics/GS/Shader.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="codefolding.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
@@ -125,38 +125,38 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('Shader_8h_sour
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * A Shader in TeaPacket is comprised of a Vertex and a Fragment shader. Both must exist for a Shader to compile.</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * As the Graphics Module is based on OpenGL/Direct3D, these shaders follow the same principles as there.</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_SHADER_H</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_SHADER_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef TEAPACKET_GRAPHICS_GS_SHADER_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define TEAPACKET_GRAPHICS_GS_SHADER_H</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifdef __cplusplus</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="ShaderParams_8h.html">ShaderParams.h</a>&quot;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="Shader_8h.html#a7dde8ae43b53aff2ceee620eed25f0af">   15</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_typedef" href="Shader_8h.html#a7dde8ae43b53aff2ceee620eed25f0af">TP_Graphics_Shader</a> <a class="code hl_typedef" href="Shader_8h.html#a7dde8ae43b53aff2ceee620eed25f0af">TP_Graphics_Shader</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="Shader_8h.html#aa01e59f65deee1fd7368f32c37b70a4f">   15</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_typedef" href="Shader_8h.html#aa01e59f65deee1fd7368f32c37b70a4f">TP_GfxGS_Shader</a> <a class="code hl_typedef" href="Shader_8h.html#aa01e59f65deee1fd7368f32c37b70a4f">TP_GfxGS_Shader</a>;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="Shader_8h.html#adebad2907887d149621d3829f8a17069">   22</a></span><a class="code hl_typedef" href="Shader_8h.html#a7dde8ae43b53aff2ceee620eed25f0af">TP_Graphics_Shader</a>* <a class="code hl_function" href="Shader_8h.html#adebad2907887d149621d3829f8a17069">TP_Graphics_Shader_Create</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structTP__Graphics__ShaderParams.html">TP_Graphics_ShaderParams</a>* params);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="Shader_8h.html#a10d9564ba447307c22066d450b02b0f2">   26</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Shader_8h.html#a10d9564ba447307c22066d450b02b0f2">TP_Graphics_Shader_Destroy</a>(<a class="code hl_typedef" href="Shader_8h.html#a7dde8ae43b53aff2ceee620eed25f0af">TP_Graphics_Shader</a>*);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="Shader_8h.html#a81c1f546d9a6a3a2d6ddcbfa46ec9cdd">   22</a></span><a class="code hl_typedef" href="Shader_8h.html#aa01e59f65deee1fd7368f32c37b70a4f">TP_GfxGS_Shader</a>* <a class="code hl_function" href="Shader_8h.html#a81c1f546d9a6a3a2d6ddcbfa46ec9cdd">TP_GfxGS_Shader_Create</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structTP__GfxGS__ShaderParams.html">TP_GfxGS_ShaderParams</a>* params);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="Shader_8h.html#ab0911e069d102780689e8533201c0a51">   26</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Shader_8h.html#ab0911e069d102780689e8533201c0a51">TP_GfxGS_Shader_Destroy</a>(<a class="code hl_typedef" href="Shader_8h.html#aa01e59f65deee1fd7368f32c37b70a4f">TP_GfxGS_Shader</a>*);</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="Shader_8h.html#aeb23382dd985a338274df5b205801d38">   34</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Shader_8h.html#aeb23382dd985a338274df5b205801d38">TP_Graphics_Shader_SetActive</a>(<a class="code hl_typedef" href="Shader_8h.html#a7dde8ae43b53aff2ceee620eed25f0af">TP_Graphics_Shader</a>*);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="Shader_8h.html#af6674ab4534e570212daee6f2479f0f0">   34</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Shader_8h.html#af6674ab4534e570212daee6f2479f0f0">TP_GfxGS_Shader_SetActive</a>(<a class="code hl_typedef" href="Shader_8h.html#aa01e59f65deee1fd7368f32c37b70a4f">TP_GfxGS_Shader</a>*);</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#ifdef __cplusplus</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aShaderParams_8h_html"><div class="ttname"><a href="ShaderParams_8h.html">ShaderParams.h</a></div></div>
-<div class="ttc" id="aShader_8h_html_a10d9564ba447307c22066d450b02b0f2"><div class="ttname"><a href="Shader_8h.html#a10d9564ba447307c22066d450b02b0f2">TP_Graphics_Shader_Destroy</a></div><div class="ttdeci">void TP_Graphics_Shader_Destroy(TP_Graphics_Shader *)</div></div>
-<div class="ttc" id="aShader_8h_html_a7dde8ae43b53aff2ceee620eed25f0af"><div class="ttname"><a href="Shader_8h.html#a7dde8ae43b53aff2ceee620eed25f0af">TP_Graphics_Shader</a></div><div class="ttdeci">struct TP_Graphics_Shader TP_Graphics_Shader</div><div class="ttdef"><b>Definition</b> Shader.h:15</div></div>
-<div class="ttc" id="aShader_8h_html_adebad2907887d149621d3829f8a17069"><div class="ttname"><a href="Shader_8h.html#adebad2907887d149621d3829f8a17069">TP_Graphics_Shader_Create</a></div><div class="ttdeci">TP_Graphics_Shader * TP_Graphics_Shader_Create(const TP_Graphics_ShaderParams *params)</div></div>
-<div class="ttc" id="aShader_8h_html_aeb23382dd985a338274df5b205801d38"><div class="ttname"><a href="Shader_8h.html#aeb23382dd985a338274df5b205801d38">TP_Graphics_Shader_SetActive</a></div><div class="ttdeci">void TP_Graphics_Shader_SetActive(TP_Graphics_Shader *)</div></div>
-<div class="ttc" id="astructTP__Graphics__ShaderParams_html"><div class="ttname"><a href="structTP__Graphics__ShaderParams.html">TP_Graphics_ShaderParams</a></div><div class="ttdef"><b>Definition</b> ShaderParams.h:12</div></div>
+<div class="ttc" id="aShader_8h_html_a81c1f546d9a6a3a2d6ddcbfa46ec9cdd"><div class="ttname"><a href="Shader_8h.html#a81c1f546d9a6a3a2d6ddcbfa46ec9cdd">TP_GfxGS_Shader_Create</a></div><div class="ttdeci">TP_GfxGS_Shader * TP_GfxGS_Shader_Create(const TP_GfxGS_ShaderParams *params)</div></div>
+<div class="ttc" id="aShader_8h_html_aa01e59f65deee1fd7368f32c37b70a4f"><div class="ttname"><a href="Shader_8h.html#aa01e59f65deee1fd7368f32c37b70a4f">TP_GfxGS_Shader</a></div><div class="ttdeci">struct TP_GfxGS_Shader TP_GfxGS_Shader</div><div class="ttdef"><b>Definition</b> Shader.h:15</div></div>
+<div class="ttc" id="aShader_8h_html_ab0911e069d102780689e8533201c0a51"><div class="ttname"><a href="Shader_8h.html#ab0911e069d102780689e8533201c0a51">TP_GfxGS_Shader_Destroy</a></div><div class="ttdeci">void TP_GfxGS_Shader_Destroy(TP_GfxGS_Shader *)</div></div>
+<div class="ttc" id="aShader_8h_html_af6674ab4534e570212daee6f2479f0f0"><div class="ttname"><a href="Shader_8h.html#af6674ab4534e570212daee6f2479f0f0">TP_GfxGS_Shader_SetActive</a></div><div class="ttdeci">void TP_GfxGS_Shader_SetActive(TP_GfxGS_Shader *)</div></div>
+<div class="ttc" id="astructTP__GfxGS__ShaderParams_html"><div class="ttname"><a href="structTP__GfxGS__ShaderParams.html">TP_GfxGS_ShaderParams</a></div><div class="ttdef"><b>Definition</b> ShaderParams.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_8da666e09d0c2e7551ed53e944c3bba4.html">Graphics</a></li><li class="navelem"><a href="Shader_8h.html">Shader.h</a></li>
+    <li class="navelem"><a href="dir_ad48409b27ba43b3ac61f20887beb093.html">Graphics</a></li><li class="navelem"><a href="dir_0dfa553d2ed790368cdfd7366739073d.html">GS</a></li><li class="navelem"><a href="Shader_8h.html">Shader.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
   </ul>
 </div>

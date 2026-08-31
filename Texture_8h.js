@@ -1,11 +1,11 @@
 var Texture_8h =
 [
-    [ "TP_Graphics_Texture", "Texture_8h.html#ac7933fa59a5a4e0439053e6085d7c8a6", null ],
-    [ "TP_Graphics_Texture_Create", "Texture_8h.html#a9df4c2fe34478fe1d573877ca62aa74f", null ],
-    [ "TP_Graphics_Texture_Destroy", "Texture_8h.html#a951918bab6b761d1a24bf3d3db2959ab", null ],
-    [ "TP_Graphics_Texture_GetFormat", "Texture_8h.html#a632c718d966c3b47916ad0e2dfe357e2", null ],
-    [ "TP_Graphics_Texture_GetHeight", "Texture_8h.html#a741efb96139ae1c337a7901dcad52ee4", null ],
-    [ "TP_Graphics_Texture_GetWidth", "Texture_8h.html#ac572c49219386f44771b1d43ea773393", null ],
-    [ "TP_Graphics_Texture_IsFormatSupported", "Texture_8h.html#a7a1c666e72974a4ce435c09537a6ca11", null ],
-    [ "TP_Graphics_Texture_SetActive", "Texture_8h.html#acf41a4c9359ab93b8e8e32f7911dc5da", null ]
+    [ "TP_GfxGS_Texture", "Texture_8h.html#acb9d3a678a3dea611d50405abbb82a23", null ],
+    [ "TP_GfxGS_Texture_Create", "Texture_8h.html#aca97e23127a4e5f2a45cb8fa43e9901d", null ],
+    [ "TP_GfxGS_Texture_Destroy", "Texture_8h.html#a2f515023968fa30fde026586a5e6e9c5", null ],
+    [ "TP_GfxGS_Texture_GetFormat", "Texture_8h.html#aaed1f5e9b5e6d53b5e9cb2d20748e247", null ],
+    [ "TP_GfxGS_Texture_GetHeight", "Texture_8h.html#a30dccc435edb98ea4b7e00427ad1138a", null ],
+    [ "TP_GfxGS_Texture_GetWidth", "Texture_8h.html#a409369eb51b4bd211f7243aa043d69d1", null ],
+    [ "TP_GfxGS_Texture_IsFormatSupported", "Texture_8h.html#abf7aee285b74ec860962d2702d6f6c54", null ],
+    [ "TP_GfxGS_Texture_SetActive", "Texture_8h.html#ab53ec02edc26bdb8e587a381acddbd27", null ]
 ];

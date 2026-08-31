@@ -1,4 +1,4 @@
 var DisplayParams_8h =
 [
-    [ "TP_Graphics_DisplayParams", "structTP__Graphics__DisplayParams.html", "structTP__Graphics__DisplayParams" ]
+    [ "TP_GfxGS_DisplayParams", "structTP__GfxGS__DisplayParams.html", "structTP__GfxGS__DisplayParams" ]
 ];
