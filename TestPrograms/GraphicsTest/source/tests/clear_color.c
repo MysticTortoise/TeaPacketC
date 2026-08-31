@@ -1,7 +1,7 @@
 #include "tests.h"
 
-#include "TeaPacket/Graphics/Display.h"
-#include "TeaPacket/Graphics/Graphics.h"
+#include "TeaPacket/Graphics/GS/Display.h"
+#include "TeaPacket/Graphics/GS/Graphics.h"
 
 
 #if GFXTESTS_ALLOWED >= 3
@@ -12,14 +12,16 @@ static tp_bool Init(void)
 
 static void Render(void)
 {
-    TP_Graphics_Display_BeginRender(0);
+    TP_Gfx_Color8 c = {0};
+    TP_GfxGS_Display_BeginRender(0);
 
     static unsigned char i = 0;
     i = (i+3)%255;
-    TP_Graphics_ClearColor(i, 0, 0);
+    c.r = i;
+    TP_GfxGS_ClearColor(c);
 
-    TP_Graphics_Display_FinishRender();
-    TP_Graphics_Display_PresentAll(tp_true);
+    TP_GfxGS_Display_FinishRender();
+    TP_GfxGS_Display_PresentAll(tp_true);
 }
 
 static void DeInit(void)

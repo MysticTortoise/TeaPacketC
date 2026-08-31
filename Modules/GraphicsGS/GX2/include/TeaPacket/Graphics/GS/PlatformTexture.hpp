@@ -1,0 +1,11 @@
+#pragma once
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
+
+#include <gx2/sampler.h>
+#include <gx2/texture.h>
+
+struct TP_GfxGS_Texture
+{
+    GX2Texture gx2Texture;
+    GX2Sampler gx2Sampler;
+};

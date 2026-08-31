@@ -1,0 +1,14 @@
+Destination TeaPacket/Graphics/GS/D3D11/D3D11TextureFormat.gen
+Enum TP_Gfx_Image_Format
+Enum DXGI_FORMAT Alias D3D
+Headers <d3d11.h> "TeaPacket/Graphics/Common/ImageFormat.h"
+Data
+TP_Gfx_Image_Format_RGBA8 DXGI_FORMAT_R8G8B8A8_UNORM
+TP_Gfx_Image_Format_BGRA8 DXGI_FORMAT_B8G8R8A8_UNORM
+TP_Gfx_Image_Format_D24S8 DXGI_FORMAT_D24_UNORM_S8_UINT
+TP_Gfx_Image_Format_R8 DXGI_FORMAT_R8_UNORM
+TP_Gfx_Image_Format_R16 DXGI_FORMAT_R16_UNORM
+TP_Gfx_Image_Format_B5G6R5 DXGI_FORMAT_B5G6R5_UNORM
+TP_Gfx_Image_Format_BGR5A1 DXGI_FORMAT_B5G5R5A1_UNORM
+End
+Default TP_Gfx_Image_Format_NONE DXGI_FORMAT_UNKNOWN

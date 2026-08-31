@@ -1,7 +1,7 @@
 TP_add_interface_subdirectory(Assets)
 TP_add_interface_subdirectory(Clipboard)
 TP_add_interface_subdirectory(Endianness)
-TP_add_interface_subdirectory(Graphics)
+TP_add_interface_subdirectory(GraphicsGS)
 TP_add_interface_subdirectory(Input)
 TP_add_interface_subdirectory(Logging)
 TP_add_interface_subdirectory(MacroUtils)

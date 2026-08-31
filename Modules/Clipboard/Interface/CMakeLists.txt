@@ -6,11 +6,11 @@ include("${TEAPACKET_ROOT}/Generators/EnumGenerator/Functions.CMake")
 
 TP_add_interface_subdirectory(Types)
 TP_add_interface_subdirectory(MacroUtils)
-TP_add_interface_subdirectory(Graphics)
+TP_add_interface_subdirectory(GraphicsGS)
 
 include("${TEAPACKET_ROOT}/CMakeCommons/InterfaceCommon.CMake")
 target_link_libraries(TeaPacket_Clipboard_Base INTERFACE TeaPacket_Types_Base
-        TeaPacket_MacroUtils_Base TeaPacket_Graphics_Base)
+        TeaPacket_MacroUtils_Base TeaPacket_GraphicsGS_Base)
 
 TP_EnumGenerator(
         "${PROJECT_SOURCE_DIR}/generators/ClipboardContentsType.enum"

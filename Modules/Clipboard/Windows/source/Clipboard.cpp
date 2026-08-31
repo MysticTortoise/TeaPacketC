@@ -91,7 +91,7 @@ tp_bool TP_Clipboard_WriteText(const TP_StringView text)
 
 }
 
-TP_Graphics_ImageData TP_Clipboard_GetImageData()
+TP_Gfx_ImageData TP_Clipboard_GetImageData()
 {
     if (!IsClipboardFormatAvailable(CF_DIB))
         return {};
@@ -100,7 +100,7 @@ TP_Graphics_ImageData TP_Clipboard_GetImageData()
         return {};
 
     const auto clipboardHandle = GetClipboardData(CF_DIB);
-    TP_Graphics_ImageData imageData{};
+    TP_Gfx_ImageData imageData{};
 
     if (clipboardHandle != nullptr && clipboardHandle != INVALID_HANDLE_VALUE)
     {
@@ -123,7 +123,7 @@ TP_Graphics_ImageData TP_Clipboard_GetImageData()
 
 }
 
-tp_bool TP_Clipboard_WriteImageData(const TP_Graphics_ImageData imageData)
+tp_bool TP_Clipboard_WriteImageData(const TP_Gfx_ImageData imageData)
 {
     (void)imageData;
     assert(0);

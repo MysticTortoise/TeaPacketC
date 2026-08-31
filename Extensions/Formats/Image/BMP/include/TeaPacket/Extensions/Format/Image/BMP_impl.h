@@ -1,10 +1,10 @@
-#ifndef TEAPACKET_EXTENSIONS_FORMAT_IMAGE_BMP_IMPL_H
-#define TEAPACKET_EXTENSIONS_FORMAT_IMAGE_BMP_IMPL_H
+#ifndef TeaPacket_Extensions_Formats_Image_BMP_IMPL_H
+#define TeaPacket_Extensions_Formats_Image_BMP_IMPL_H
 #include "TeaPacket/Types/Array.h"
 #include "TeaPacket/Endianness/Endian.h"
 #include "TeaPacket/Extensions/IStream/IStream.h"
-#include "TeaPacket/Graphics/Texture/ImageData.h"
-#include "TeaPacket/Graphics/Color.h"
+#include "TeaPacket/Graphics/Common/ImageData.h"
+#include "TeaPacket/Graphics/Common/Color.h"
 #ifdef __cplusplus
 extern "C"
 {
@@ -113,7 +113,7 @@ typedef struct
     tp_u8 bitsPerPixel;
     tp_bool topDown;
     
-    TP_Graphics_Color8A_List colorTable;
+    TP_Gfx_Color8A_List colorTable;
 } TP_Ext_Format_Image_BMP_Info;
 
 TP_Ext_Format_Image_BMP_Info TP_Ext_Format_Image_BMP_ReadDIBHeader(TP_Extension_IStream* stream); 
@@ -124,7 +124,7 @@ void TP_Ext_Format_Image_BMP_ReadColorTable(
         TP_Extension_IStream* stream,
         TP_Ext_Format_Image_BMP_Info* info);
 
-TP_Graphics_ImageData TP_Ext_Format_Image_BMP_ReadImage(
+TP_Gfx_ImageData TP_Ext_Format_Image_BMP_ReadImage(
         TP_Extension_IStream* stream,
         const TP_Ext_Format_Image_BMP_Info* info);
 

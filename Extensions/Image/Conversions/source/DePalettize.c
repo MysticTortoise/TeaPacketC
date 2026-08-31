@@ -4,19 +4,19 @@
 #include "TeaPacket/Extensions/Image/Conversions/Conversions.h"
 #include "TeaPacket/Memory/Memory.h"
 
-TP_Graphics_ImageData TP_Extensions_Image_Convert_PaletteNToRGBA(
-    const TP_Graphics_ImageData* palettedImage,
-    const TP_Graphics_Color8A_List colorList,
+static TP_Gfx_ImageData TP_Extensions_Image_Convert_PaletteNToRGBA(
+    const TP_Gfx_ImageData* palettedImage,
+    const TP_Gfx_Color8A_List colorList,
     const tp_u8 n)
 {
-    TP_Graphics_ImageData imageData;
+    TP_Gfx_ImageData imageData;
     size_t y, xb, b;
     
 
     imageData.pitch = palettedImage->width * 4;
     imageData.width = palettedImage->width;
     imageData.height = palettedImage->height;
-    imageData.format = TP_Graphics_Texture_Format_RGBA8;
+    imageData.format = TP_Gfx_Image_Format_RGBA8;
     imageData.data = TP_MemAlloc(imageData.pitch * imageData.height);
     
     for (y = 0; y < imageData.height; y++)
@@ -47,34 +47,34 @@ TP_Graphics_ImageData TP_Extensions_Image_Convert_PaletteNToRGBA(
 }
 
 
-TP_Graphics_ImageData TP_Extensions_Image_Convert_Palette1ToRGBA(
-    const TP_Graphics_ImageData* palettedImage,
-    const TP_Graphics_Color8A_List colorList)
+TP_Gfx_ImageData TP_Extensions_Image_Convert_Palette1ToRGBA(
+    const TP_Gfx_ImageData* palettedImage,
+    const TP_Gfx_Color8A_List colorList)
 {
-    assert(palettedImage->format == TP_Graphics_Texture_Format_R1);
+    assert(palettedImage->format == TP_Gfx_Image_Format_R1);
     return TP_Extensions_Image_Convert_PaletteNToRGBA(palettedImage, colorList, 1);
 }
 
-TP_Graphics_ImageData TP_Extensions_Image_Convert_Palette2ToRGBA(
-    const TP_Graphics_ImageData* palettedImage,
-    const TP_Graphics_Color8A_List colorList)
+TP_Gfx_ImageData TP_Extensions_Image_Convert_Palette2ToRGBA(
+    const TP_Gfx_ImageData* palettedImage,
+    const TP_Gfx_Color8A_List colorList)
 {
-    assert(palettedImage->format == TP_Graphics_Texture_Format_R2);
+    assert(palettedImage->format == TP_Gfx_Image_Format_R2);
     return TP_Extensions_Image_Convert_PaletteNToRGBA(palettedImage, colorList, 2);
 }
 
-TP_Graphics_ImageData TP_Extensions_Image_Convert_Palette4ToRGBA(
-    const TP_Graphics_ImageData* palettedImage,
-    const TP_Graphics_Color8A_List colorList)
+TP_Gfx_ImageData TP_Extensions_Image_Convert_Palette4ToRGBA(
+    const TP_Gfx_ImageData* palettedImage,
+    const TP_Gfx_Color8A_List colorList)
 {
-    assert(palettedImage->format == TP_Graphics_Texture_Format_R4);
+    assert(palettedImage->format == TP_Gfx_Image_Format_R4);
     return TP_Extensions_Image_Convert_PaletteNToRGBA(palettedImage, colorList, 4);
 }
 
-TP_Graphics_ImageData TP_Extensions_Image_Convert_Palette8ToRGBA(
-    const TP_Graphics_ImageData* palettedImage,
-    const TP_Graphics_Color8A_List colorList)
+TP_Gfx_ImageData TP_Extensions_Image_Convert_Palette8ToRGBA(
+    const TP_Gfx_ImageData* palettedImage,
+    const TP_Gfx_Color8A_List colorList)
 {
-    assert(palettedImage->format == TP_Graphics_Texture_Format_R8);
+    assert(palettedImage->format == TP_Gfx_Image_Format_R8);
     return TP_Extensions_Image_Convert_PaletteNToRGBA(palettedImage, colorList, 8);
 }

@@ -1,6 +1,6 @@
 #include "tests.h"
 
-#include "TeaPacket/Graphics/Display.h"
+#include "TeaPacket/Graphics/GS/Display.h"
 
 
 
@@ -12,10 +12,10 @@ static tp_bool Init(void)
 
 static void Render(void)
 {
-    TP_Graphics_Display_BeginRender(0);
-    TP_Graphics_Display_FinishRender();
+    TP_GfxGS_Display_BeginRender(0);
+    TP_GfxGS_Display_FinishRender();
 
-    TP_Graphics_Display_PresentAll(tp_true);
+    TP_GfxGS_Display_PresentAll(tp_true);
 }
 
 static void DeInit(void)

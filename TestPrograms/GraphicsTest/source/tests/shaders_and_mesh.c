@@ -1,10 +1,10 @@
 #include "tests.h"
 
-#include "TeaPacket/Graphics/Display.h"
-#include "TeaPacket/Graphics/Graphics.h"
+#include "TeaPacket/Graphics/GS/Display.h"
+#include "TeaPacket/Graphics/GS/Graphics.h"
 
-#include "TeaPacket/Graphics/Mesh.h"
-#include "TeaPacket/Graphics/Shader.h"
+#include "TeaPacket/Graphics/GS/Mesh.h"
+#include "TeaPacket/Graphics/GS/Shader.h"
 
 #include "TeaPacket/Assets/Assets.h"
 #include "TeaPacket/Memory/Memory.h"
@@ -25,36 +25,36 @@ static const tp_u32 faceData[] = {
     1, 3, 2
 };
 
-static const TP_Graphics_VariableType shaderVar = {
-    TP_Graphics_VariableBaseType_Float,
+static const TP_GfxGS_VariableType shaderVar = {
+    TP_GfxGS_VariableBaseType_Float,
     2
 };
 
-static const TP_Graphics_MeshParams meshParams = {
+static const TP_GfxGS_MeshParams meshParams = {
     .vertexData = {(tp_byte*)&vertData, sizeof(vertData)},
     .vertexInfo =  {&shaderVar, 1},
     .indexList = {faceData, sizeof(faceData) / sizeof(faceData[0])}
 };
-static TP_Graphics_Mesh* mesh;
+static TP_GfxGS_Mesh* mesh;
 
-static TP_Graphics_ShaderParams shaderParams = {
+static TP_GfxGS_ShaderParams shaderParams = {
     .vertexShaderCode = {0},
     .fragmentShaderCode = {0},
     .inputAttributes = {&shaderVar, 1}
 };
-static TP_Graphics_Shader* shader;
+static TP_GfxGS_Shader* shader;
 
 
 static tp_bool Init(void)
 {
-    mesh = TP_Graphics_Mesh_Create(&meshParams);
+    mesh = TP_GfxGS_Mesh_Create(&meshParams);
 
     const TP_String vertCode = TP_Assets_ReadTextAsset(TP_StrViewFromConstStr("color.vert"));
     const TP_String fragCode = TP_Assets_ReadTextAsset(TP_StrViewFromConstStr("color.frag"));
     shaderParams.vertexShaderCode = TP_StrViewFromStr(vertCode);
     shaderParams.fragmentShaderCode = TP_StrViewFromStr(fragCode);
 
-    shader = TP_Graphics_Shader_Create(&shaderParams);
+    shader = TP_GfxGS_Shader_Create(&shaderParams);
 
     TP_MemFree(vertCode.p);
     TP_MemFree(fragCode.p);
@@ -65,24 +65,27 @@ static tp_bool Init(void)
     return tp_true;
 }
 
+static const TP_Gfx_Color8 clearCol = {0};
+
+
 static void Render(void)
 {
-    TP_Graphics_Display_BeginRender(0);
+    TP_GfxGS_Display_BeginRender(0);
 
-    TP_Graphics_ClearColor(0, 0, 0);
+    TP_GfxGS_ClearColor(clearCol);
 
-    TP_Graphics_Mesh_SetActive(mesh);
-    TP_Graphics_Shader_SetActive(shader);
-    TP_Graphics_DrawMesh();
+    TP_GfxGS_Mesh_SetActive(mesh);
+    TP_GfxGS_Shader_SetActive(shader);
+    TP_GfxGS_DrawMesh();
 
-    TP_Graphics_Display_FinishRender();
-    TP_Graphics_Display_PresentAll(tp_true);
+    TP_GfxGS_Display_FinishRender();
+    TP_GfxGS_Display_PresentAll(tp_true);
 }
 
 static void DeInit(void)
 {
-    TP_Graphics_Mesh_Destroy(mesh);
-    TP_Graphics_Shader_Destroy(shader);
+    TP_GfxGS_Mesh_Destroy(mesh);
+    TP_GfxGS_Shader_Destroy(shader);
 }
 #else
 static tp_bool Init(void) {return tp_true;}

@@ -12,7 +12,7 @@ set(TP_Bundle_Windows_InputLib WinMessage)
 TP_build_bundle(${TEAPACKET_PLATFORM})
 
 
-target_link_libraries(TeaPacket_TestPrograms_BMP PUBLIC TeaPacket_Extensions_Format_Image_BMP)
+target_link_libraries(TeaPacket_TestPrograms_BMP PUBLIC TeaPacket_Extensions_Formats_Image_BMP)
 TP_link_bundle(TeaPacket_TestPrograms_BMP ${TEAPACKET_PLATFORM})
 
 TP_AM_BuildAssets(

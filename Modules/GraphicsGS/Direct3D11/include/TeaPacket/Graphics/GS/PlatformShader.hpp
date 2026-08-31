@@ -1,0 +1,14 @@
+#pragma once
+/* Copyright (C) 2026 Kevin "MysticTortoise" Tessier */
+
+#include <d3d11.h>
+#include <wrl/client.h>
+
+
+struct TP_GfxGS_Shader
+{
+    Microsoft::WRL::ComPtr<ID3D11VertexShader> vertexShader;
+    Microsoft::WRL::ComPtr<ID3D11PixelShader> pixelShader;
+
+    Microsoft::WRL::ComPtr<ID3D11InputLayout> inputLayout;
+};

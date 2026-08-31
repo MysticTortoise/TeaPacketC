@@ -5,13 +5,14 @@
 #include "TeaPacket/Bundled/Init.h"
 #include "TeaPacket/Bundled/DeInit.h"
 
-#include "TeaPacket/Graphics/Display.h"
-#include "TeaPacket/Graphics/Mesh.h"
-#include "TeaPacket/Graphics/MeshParams.h"
-#include "TeaPacket/Graphics/Shader.h"
-#include "TeaPacket/Graphics/VariableBaseType.h"
-#include "TeaPacket/Graphics/VariableType.h"
-#include "TeaPacket/Graphics/Texture/Texture.h"
+#include "TeaPacket/Graphics/GS/Graphics.h"
+#include "TeaPacket/Graphics/GS/Display.h"
+#include "TeaPacket/Graphics/GS/Mesh.h"
+#include "TeaPacket/Graphics/GS/MeshParams.h"
+#include "TeaPacket/Graphics/GS/Shader.h"
+#include "TeaPacket/Graphics/GS/VariableBaseType.h"
+#include "TeaPacket/Graphics/GS/VariableType.h"
+#include "TeaPacket/Graphics/GS/Texture/Texture.h"
 
 #if TeaPacket_Window_Implemented
 #include "TeaPacket/Window/Window.h"
@@ -79,12 +80,12 @@ TP_StringView images[] = {
 
 
 size_t imgIndex = 0;
-TP_Graphics_ImageData data = {0};
+TP_Gfx_ImageData data = {0};
 
-const TP_Graphics_DisplayParams displays = {
+const TP_GfxGS_DisplayParams displays = {
     480, 360
 };
-const TP_Graphics_DisplayParamList displayList = {
+const TP_GfxGS_DisplayParamList displayList = {
     &displays, 1
 };
 
@@ -100,64 +101,68 @@ static const tp_u32 faceData[] = {
     1, 3, 2
 };
 
-static const TP_Graphics_VariableType shaderVars[] = {
+static const TP_GfxGS_VariableType shaderVars[] = {
     {
-        TP_Graphics_VariableBaseType_Float,
+        TP_GfxGS_VariableBaseType_Float,
         2
     },
 {
-    TP_Graphics_VariableBaseType_Float,
+    TP_GfxGS_VariableBaseType_Float,
     2
     }
 };
 
-static const TP_Graphics_MeshParams meshParams = {
+static const TP_GfxGS_MeshParams meshParams = {
     {(tp_byte*)&vertData, sizeof(vertData)},
     {shaderVars, 2},
     {faceData, sizeof(faceData) / sizeof(faceData[0])}
 };
-static TP_Graphics_Mesh* mesh;
+static TP_GfxGS_Mesh* mesh;
 
-static TP_Graphics_ShaderParams shaderParams = {
+static TP_GfxGS_ShaderParams shaderParams = {
     {0},
     {0},
     {shaderVars, 2}
 };
-static TP_Graphics_Shader* shader;
+static TP_GfxGS_Shader* shader;
 
-static TP_Graphics_TextureParams texParams = {
+static TP_GfxGS_TextureParams texParams = {
     {0},
-    TP_Graphics_Texture_FilterMode_Nearest,
-    TP_Graphics_Texture_WrapMode_Wrap,
+    TP_GfxGS_Texture_FilterMode_Nearest,
+    TP_GfxGS_Texture_WrapMode_Wrap,
      {
          tp_true,
          tp_false,
-         TP_Graphics_Texture_AvailableMode_None
+         TP_GfxGS_Texture_AvailableMode_None
     }
 };
-static TP_Graphics_Texture* texture;
+static TP_GfxGS_Texture* texture;
 
 TP_Extensions_Formats_Image_BMP_ReadOptions opts = {
     0
 };
 
-int main()
+static const TP_Gfx_Color8 clearColor = {0, 0, 0};
+
+int main(const int argc, char** argv)
 {
+    (void)argc;
+    (void)argv;
     TP_Bundled_Init();
     
-    TP_Graphics_InitDefaultDisplays(displayList);
+    TP_GfxGS_InitDefaultDisplays(displayList);
     
     {
         const TP_String vertCode = TP_Assets_ReadTextAsset(TP_StrViewFromConstStr("textured.vert"));
         const TP_String fragCode = TP_Assets_ReadTextAsset(TP_StrViewFromConstStr("textured.frag"));
         shaderParams.vertexShaderCode = TP_StrViewFromStr(vertCode);
         shaderParams.fragmentShaderCode = TP_StrViewFromStr(fragCode);
-        shader = TP_Graphics_Shader_Create(&shaderParams);
+        shader = TP_GfxGS_Shader_Create(&shaderParams);
         TP_MemFree(vertCode.p);
         TP_MemFree(fragCode.p);
     }
     
-    mesh = TP_Graphics_Mesh_Create(&meshParams);
+    mesh = TP_GfxGS_Mesh_Create(&meshParams);
     
     assert(shader != 0);
     assert(mesh != 0);
@@ -168,11 +173,11 @@ int main()
             if (data.data != 0)
             {
                 TP_MemFree(data.data);
-                TP_Graphics_Texture_Destroy(texture);
+                TP_GfxGS_Texture_Destroy(texture);
             }
             data = TP_Extensions_Formats_Image_ReadBMPFromAsset(images[imgIndex], &opts);
             texParams.imageData = data;
-            texture = TP_Graphics_Texture_Create(&texParams);
+            texture = TP_GfxGS_Texture_Create(&texParams);
             assert(texture != 0);
             
 #if TeaPacket_Window_Implemented
@@ -184,15 +189,16 @@ int main()
             {
                 TP_System_Process();
                 
-                TP_Graphics_Display_BeginRender(0);
-                TP_Graphics_ClearColor(0, 0, 0);
-                TP_Graphics_Mesh_SetActive(mesh);
-                TP_Graphics_Shader_SetActive(shader);
-                TP_Graphics_Texture_SetActive(texture, 1);  
-                TP_Graphics_DrawMesh();
+                TP_GfxGS_Display_BeginRender(0);
+
+                TP_GfxGS_ClearColor(clearColor);
+                TP_GfxGS_Mesh_SetActive(mesh);
+                TP_GfxGS_Shader_SetActive(shader);
+                TP_GfxGS_Texture_SetActive(texture, 1);
+                TP_GfxGS_DrawMesh();
                 
-                TP_Graphics_Display_FinishRender();
-                TP_Graphics_Display_PresentAll(tp_true);
+                TP_GfxGS_Display_FinishRender();
+                TP_GfxGS_Display_PresentAll(tp_true);
                 
                 TP_Input_UpdateControllers();
                 TP_Input_PollSlot(0);

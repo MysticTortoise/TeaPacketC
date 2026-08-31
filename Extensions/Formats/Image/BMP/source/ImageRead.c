@@ -6,7 +6,7 @@
 #include "TeaPacket/Memory/Memory.h"
 #include "TeaPacket/Logging/Logging.h"
 
-static void Clear32BPPAlpha(TP_Graphics_ImageData image)
+static void Clear32BPPAlpha(TP_Gfx_ImageData image)
 {
     tp_byte* ptr = (tp_byte*)image.data + 3;
     size_t i;
@@ -17,9 +17,9 @@ static void Clear32BPPAlpha(TP_Graphics_ImageData image)
     }
 }
 
-static TP_Graphics_ImageData Read32BPP_Easy(TP_Extension_IStream* stream,
+static TP_Gfx_ImageData Read32BPP_Easy(TP_Extension_IStream* stream,
                                             const TP_Ext_Format_Image_BMP_Info* info,
-                                            TP_Graphics_ImageData image)
+                                            TP_Gfx_ImageData image)
 {
     if (info->topDown)
     {
@@ -70,10 +70,10 @@ static TP_Graphics_ImageData Read32BPP_Easy(TP_Extension_IStream* stream,
 // }
 
 
-static TP_Graphics_ImageData ReadTrueColor(TP_Extension_IStream* stream,
+static TP_Gfx_ImageData ReadTrueColor(TP_Extension_IStream* stream,
                                            const TP_Ext_Format_Image_BMP_Info* info)
 {
-    TP_Graphics_ImageData image;
+    TP_Gfx_ImageData image;
     const size_t bytes = info->bitsPerPixel / 8;
     tp_u8 pixelColors[4] = {0};
     tp_u32 masks[4];
@@ -98,7 +98,7 @@ static TP_Graphics_ImageData ReadTrueColor(TP_Extension_IStream* stream,
     {
         if (info->compressionType == TP_Ext_Format_Image_BMP_CompressionType_RGB)
         {
-            image.format = TP_Graphics_Texture_Format_BGRA8;
+            image.format = TP_Gfx_Image_Format_BGRA8;
             return Read32BPP_Easy(stream, info, image);
         }
 
@@ -108,7 +108,7 @@ static TP_Graphics_ImageData ReadTrueColor(TP_Extension_IStream* stream,
             info->colorMasks.b == 0x000000FF
         )
         {
-            image.format = TP_Graphics_Texture_Format_BGRA8;
+            image.format = TP_Gfx_Image_Format_BGRA8;
             return Read32BPP_Easy(stream, info, image);
         }
 
@@ -118,7 +118,7 @@ static TP_Graphics_ImageData ReadTrueColor(TP_Extension_IStream* stream,
             info->colorMasks.b == 0x00FF0000
         )
         {
-            image.format = TP_Graphics_Texture_Format_RGBA8;
+            image.format = TP_Gfx_Image_Format_BGRA8;
             return Read32BPP_Easy(stream, info, image);
         }
     }
@@ -141,7 +141,7 @@ static TP_Graphics_ImageData ReadTrueColor(TP_Extension_IStream* stream,
 
 
     /* Do it the hard way - bitfield parsing */
-    image.format = TP_Graphics_Texture_Format_RGBA8;
+    image.format = TP_Gfx_Image_Format_RGBA8;
 
     masks[0] = info->colorMasks.r;
     masks[1] = info->colorMasks.g;
@@ -213,9 +213,9 @@ static TP_Graphics_ImageData ReadTrueColor(TP_Extension_IStream* stream,
     return image;
 }
 
-static TP_Graphics_ImageData ReadPaletted(TP_Extension_IStream* stream,  const TP_Ext_Format_Image_BMP_Info* info)
+static TP_Gfx_ImageData ReadPaletted(TP_Extension_IStream* stream,  const TP_Ext_Format_Image_BMP_Info* info)
 {
-    TP_Graphics_ImageData image;
+    TP_Gfx_ImageData image;
     size_t y;
     const size_t srcStride = ((info->width * info->bitsPerPixel + 31) & ~31) >> 3;
     const tp_u32 pitch = (tp_u32)((double)info->width / (8.0/(double)info->bitsPerPixel)+1);
@@ -227,16 +227,16 @@ static TP_Graphics_ImageData ReadPaletted(TP_Extension_IStream* stream,  const T
     switch (info->bitsPerPixel)
     {
     case 1:
-        image.format = TP_Graphics_Texture_Format_R1;
+        image.format = TP_Gfx_Image_Format_R1;
         break;
     case 2:
-        image.format = TP_Graphics_Texture_Format_R2;
+        image.format = TP_Gfx_Image_Format_R2;
         break;
     case 4:
-        image.format = TP_Graphics_Texture_Format_R4;
+        image.format = TP_Gfx_Image_Format_R4;
         break;
     case 8:
-        image.format = TP_Graphics_Texture_Format_R8;
+        image.format = TP_Gfx_Image_Format_R8;
         break;
     default: 
         TP_Ext_Format_Image_BMP_SetError(TP_StrViewFromConstStr("Invalid bpp for paletted image"));
@@ -270,10 +270,10 @@ static TP_Graphics_ImageData ReadPaletted(TP_Extension_IStream* stream,  const T
     return image;
 }
 
-TP_Graphics_ImageData TP_Ext_Format_Image_BMP_ReadImage(TP_Extension_IStream* stream,
+TP_Gfx_ImageData TP_Ext_Format_Image_BMP_ReadImage(TP_Extension_IStream* stream,
                                                         const TP_Ext_Format_Image_BMP_Info* info)
 {
-    const TP_Graphics_ImageData failData = {0};
+    const TP_Gfx_ImageData failData = {0};
 
     if (info->bitsPerPixel <= 8)
     {

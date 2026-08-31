@@ -2,5 +2,5 @@ Memory
 System
 Logging
 Time
-Graphics
+GraphicsGS TeaPacket/Graphics/GS/Graphics.h
 Input

@@ -1,11 +1,11 @@
 #include "tests.h"
 
-#include "TeaPacket/Graphics/Display.h"
-#include "TeaPacket/Graphics/Graphics.h"
+#include "TeaPacket/Graphics/GS/Display.h"
+#include "TeaPacket/Graphics/GS/Graphics.h"
 
-#include "TeaPacket/Graphics/Mesh.h"
-#include "TeaPacket/Graphics/Shader.h"
-#include "TeaPacket/Graphics/Texture/Texture.h"
+#include "TeaPacket/Graphics/GS/Mesh.h"
+#include "TeaPacket/Graphics/GS/Shader.h"
+#include "TeaPacket/Graphics/GS/Texture/Texture.h"
 
 
 #include "TeaPacket/Assets/Assets.h"
@@ -39,54 +39,54 @@ static const tp_byte texData[] = {
     255, 255, 255, 255 // white
 };
 
-static const TP_Graphics_VariableType shaderVars[] = {
+static const TP_GfxGS_VariableType shaderVars[] = {
 {
-        TP_Graphics_VariableBaseType_Float,
+        TP_GfxGS_VariableBaseType_Float,
         2
     },
 {
-    TP_Graphics_VariableBaseType_Float,
+    TP_GfxGS_VariableBaseType_Float,
     2
     }
 };
 
-static const TP_Graphics_MeshParams meshParams = {
+static const TP_GfxGS_MeshParams meshParams = {
     .vertexData = {(tp_byte*)&vertData, sizeof(vertData)},
     .vertexInfo =  {shaderVars, 2},
     .indexList = {faceData, sizeof(faceData) / sizeof(faceData[0])}
 };
-static TP_Graphics_Mesh* mesh;
+static TP_GfxGS_Mesh* mesh;
 
-static TP_Graphics_ShaderParams shaderParams = {
+static TP_GfxGS_ShaderParams shaderParams = {
     .vertexShaderCode = {0},
     .fragmentShaderCode = {0},
     .inputAttributes = {shaderVars, 2}
 };
-static TP_Graphics_Shader* shader;
+static TP_GfxGS_Shader* shader;
 
-static const TP_Graphics_TextureParams texParams = {
+static const TP_GfxGS_TextureParams texParams = {
     .imageData = {
         .data = (void*)texData,
         .pitch = 3*4,
         .width = 3,
         .height = 3,
-        .format = TP_Graphics_Texture_Format_RGBA8,
+        .format = TP_Gfx_Image_Format_RGBA8,
     },
-    .filterMode = TP_Graphics_Texture_FilterMode_Nearest,
-    .wrapMode = TP_Graphics_Texture_WrapMode_Wrap,
+    .filterMode = TP_GfxGS_Texture_FilterMode_Nearest,
+    .wrapMode = TP_GfxGS_Texture_WrapMode_Wrap,
     .flags = {
         .shaderResource = tp_true,
         .cpuReadable = tp_false,
-        .writeMode = TP_Graphics_Texture_AvailableMode_None
+        .writeMode = TP_GfxGS_Texture_AvailableMode_None
     }
 };
-static TP_Graphics_Texture* texture;
+static TP_GfxGS_Texture* texture;
 
 
 
 static tp_bool Init(void)
 {
-    mesh = TP_Graphics_Mesh_Create(&meshParams);
+    mesh = TP_GfxGS_Mesh_Create(&meshParams);
 
 
     const TP_String vertCode = TP_Assets_ReadTextAsset(TP_StrViewFromConstStr("textured.vert"));
@@ -94,12 +94,12 @@ static tp_bool Init(void)
     shaderParams.vertexShaderCode = TP_StrViewFromStr(vertCode);
     shaderParams.fragmentShaderCode = TP_StrViewFromStr(fragCode);
 
-    shader = TP_Graphics_Shader_Create(&shaderParams);
+    shader = TP_GfxGS_Shader_Create(&shaderParams);
 
     TP_MemFree(vertCode.p);
     TP_MemFree(fragCode.p);
 
-    texture = TP_Graphics_Texture_Create(&texParams);
+    texture = TP_GfxGS_Texture_Create(&texParams);
 
     assert(mesh != 0);
     assert(shader != 0);
@@ -108,26 +108,28 @@ static tp_bool Init(void)
     return tp_true;
 }
 
+static const TP_Gfx_Color8 clearCol = {0};
+
 static void Render(void)
 {
-    TP_Graphics_Display_BeginRender(0);
+    TP_GfxGS_Display_BeginRender(0);
 
-    TP_Graphics_ClearColor(0, 0, 0);
+    TP_GfxGS_ClearColor(clearCol);
 
-    TP_Graphics_Mesh_SetActive(mesh);
-    TP_Graphics_Shader_SetActive(shader);
-    TP_Graphics_Texture_SetActive(texture, 1);
-    TP_Graphics_DrawMesh();
+    TP_GfxGS_Mesh_SetActive(mesh);
+    TP_GfxGS_Shader_SetActive(shader);
+    TP_GfxGS_Texture_SetActive(texture, 1);
+    TP_GfxGS_DrawMesh();
 
-    TP_Graphics_Display_FinishRender();
-    TP_Graphics_Display_PresentAll(tp_true);
+    TP_GfxGS_Display_FinishRender();
+    TP_GfxGS_Display_PresentAll(tp_true);
 }
 
 static void DeInit(void)
 {
-    TP_Graphics_Mesh_Destroy(mesh);
-    TP_Graphics_Shader_Destroy(shader);
-    TP_Graphics_Texture_Destroy(texture);
+    TP_GfxGS_Mesh_Destroy(mesh);
+    TP_GfxGS_Shader_Destroy(shader);
+    TP_GfxGS_Texture_Destroy(texture);
 }
 #else
 static tp_bool Init(void) {return tp_true;}

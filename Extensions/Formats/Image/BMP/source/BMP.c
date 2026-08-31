@@ -240,7 +240,7 @@ void TP_Ext_Format_Image_BMP_ReadColorTable(
     if (!hasAlpha)
     {
         /* no reserved */
-        TP_Graphics_Color8A* color = info->colorTable.p;
+        TP_Gfx_Color8A* color = info->colorTable.p;
         tp_u8 colors[4];
         for (i = 0; i < info->colorTable.size; i++)
         {
@@ -254,7 +254,7 @@ void TP_Ext_Format_Image_BMP_ReadColorTable(
     } else
     {
         /* has reserved */
-        TP_Graphics_Color8A* color = info->colorTable.p;
+        TP_Gfx_Color8A* color = info->colorTable.p;
         tp_u8 colors[4];
         for (i = 0; i < info->colorTable.size; i++)
         {
@@ -276,7 +276,7 @@ void TP_Ext_Format_Image_BMP_SetError(TP_StringView msg)
     /* TP_LogString(msg);*/
 }
 
-TP_Graphics_ImageData TP_Ext_Format_Image_BMP_ReadDIB(TP_Extension_IStream* data,
+TP_Gfx_ImageData TP_Ext_Format_Image_BMP_ReadDIB(TP_Extension_IStream* data,
                                                           TP_Extensions_Formats_Image_BMP_ReadOptions* readOptions, const TP_Ext_Format_Image_BMP_FileHeader* fileHeader)
 {
     TP_Ext_Format_Image_BMP_Info info;
@@ -284,7 +284,7 @@ TP_Graphics_ImageData TP_Ext_Format_Image_BMP_ReadDIB(TP_Extension_IStream* data
     info = TP_Ext_Format_Image_BMP_ReadDIBHeader(data);
     if (!TP_Ext_Format_Image_BMP_ValidateDIBHeader(&info))
     {
-        const TP_Graphics_ImageData blankData = {0};
+        const TP_Gfx_ImageData blankData = {0};
         return blankData;
     }
 
@@ -304,7 +304,7 @@ TP_Graphics_ImageData TP_Ext_Format_Image_BMP_ReadDIB(TP_Extension_IStream* data
     }
 
     {
-        TP_Graphics_ImageData imgData = TP_Ext_Format_Image_BMP_ReadImage(data, &info);
+        TP_Gfx_ImageData imgData = TP_Ext_Format_Image_BMP_ReadImage(data, &info);
         if (readOptions->colorTable == 0 && info.colorTable.p != 0 && info.bitsPerPixel <= 8)
         {
             void* oldData = imgData.data;
@@ -324,7 +324,7 @@ TP_Graphics_ImageData TP_Ext_Format_Image_BMP_ReadDIB(TP_Extension_IStream* data
                 break;
             default:
                 {
-                    const TP_Graphics_ImageData blankData = {0};
+                    const TP_Gfx_ImageData blankData = {0};
                     return blankData;
                 }
             }
@@ -337,7 +337,7 @@ TP_Graphics_ImageData TP_Ext_Format_Image_BMP_ReadDIB(TP_Extension_IStream* data
 }
 
 
-TP_Graphics_ImageData TP_Extensions_Formats_Image_ReadBMP(TP_Extension_IStream* data,
+TP_Gfx_ImageData TP_Extensions_Formats_Image_ReadBMP(TP_Extension_IStream* data,
                                                           TP_Extensions_Formats_Image_BMP_ReadOptions* readOptions)
 {
     TP_Ext_Format_Image_BMP_FileHeader header;
@@ -345,19 +345,19 @@ TP_Graphics_ImageData TP_Extensions_Formats_Image_ReadBMP(TP_Extension_IStream* 
     return TP_Ext_Format_Image_BMP_ReadDIB(data, readOptions, &header);
 }
 
-TP_Graphics_ImageData TP_Extensions_Formats_Image_ReadBMPFromAsset(const TP_StringView assetPath,
+TP_Gfx_ImageData TP_Extensions_Formats_Image_ReadBMPFromAsset(const TP_StringView assetPath,
     TP_Extensions_Formats_Image_BMP_ReadOptions* readOptions)
 {
     TP_Extension_IStream stream = TP_Extensions_IStream_StreamFromAsset(assetPath);
     if (!stream.privData)
     {
-        const TP_Graphics_ImageData data = {0};
+        const TP_Gfx_ImageData data = {0};
         TP_Ext_Format_Image_BMP_SetError(TP_StrViewFromConstStr("Failed to open file!"));
         return data;
     }
 
     {
-        const TP_Graphics_ImageData data = TP_Extensions_Formats_Image_ReadBMP(&stream, readOptions);
+        const TP_Gfx_ImageData data = TP_Extensions_Formats_Image_ReadBMP(&stream, readOptions);
         TP_Extension_IStream_Close(&stream);
         return data;
     }

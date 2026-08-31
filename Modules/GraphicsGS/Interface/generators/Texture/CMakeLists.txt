@@ -1,0 +1,14 @@
+TP_EnumGenerator(
+        "${PROJECT_SOURCE_DIR}/generators/Texture/AvailableMode.enum"
+        "${PROJECT_SOURCE_DIR}/include/TeaPacket/Graphics/GS/Texture/AvailableMode.h"
+        TeaPacket_GraphicsGS_Base)
+
+TP_EnumGenerator(
+        "${PROJECT_SOURCE_DIR}/generators/Texture/FilterMode.enum"
+        "${PROJECT_SOURCE_DIR}/include/TeaPacket/Graphics/GS/Texture/FilterMode.h"
+        TeaPacket_GraphicsGS_Base)
+
+TP_EnumGenerator(
+        "${PROJECT_SOURCE_DIR}/generators/Texture/WrapMode.enum"
+        "${PROJECT_SOURCE_DIR}/include/TeaPacket/Graphics/GS/Texture/WrapMode.h"
+        TeaPacket_GraphicsGS_Base)

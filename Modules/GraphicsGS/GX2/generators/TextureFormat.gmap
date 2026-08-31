@@ -1,0 +1,13 @@
+Destination TeaPacket/Graphics/GS/GX2/GX2TextureFormat.gen
+Enum TP_Gfx_Image_Format
+Enum GX2SurfaceFormat Alias GX2
+Headers "TeaPacket/Graphics/Common/ImageFormat.h" <gx2/surface.h>
+Data
+TP_Gfx_Image_Format_RGBA8 GX2_SURFACE_FORMAT_UNORM_R8_G8_B8_A8
+TP_Gfx_Image_Format_D24S8 GX2_SURFACE_FORMAT_UNORM_R24_X8
+TP_Gfx_Image_Format_R8 GX2_SURFACE_FORMAT_UNORM_R8
+TP_Gfx_Image_Format_R16 GX2_SURFACE_FORMAT_UNORM_R16
+TP_Gfx_Image_Format_R5G6B5 GX2_SURFACE_FORMAT_UNORM_R5_G6_B5
+TP_Gfx_Image_Format_RGB5A1 GX2_SURFACE_FORMAT_UNORM_R5_G5_B5_A1
+End
+Default TP_Gfx_Image_Format_NONE GX2_SURFACE_FORMAT_INVALID

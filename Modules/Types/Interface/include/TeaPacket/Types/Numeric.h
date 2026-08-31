@@ -172,4 +172,6 @@ __extension__ typedef unsigned long long int tp_u64;
 
 typedef unsigned int tp_bfint;
 
+#define tp_bfint_t(trueType) tp_bfint
+
 #endif

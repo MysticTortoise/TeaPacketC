@@ -3,13 +3,13 @@
 #include "TeaPacket/Bundled/Init.h"
 #include "TeaPacket/Bundled/DeInit.h"
 
-#include "TeaPacket/Graphics/Display.h"
+#include "TeaPacket/Graphics/GS/Display.h"
 
-static const TP_Graphics_DisplayParams dispParams = {
+static const TP_GfxGS_DisplayParams dispParams = {
     1280,
     720,
 };
-static const TP_Graphics_DisplayParamList dispParamList = {
+static const TP_GfxGS_DisplayParamList dispParamList = {
     &dispParams,
     1
 };
