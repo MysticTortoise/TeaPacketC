@@ -1,6 +1,7 @@
 TP_add_interface_subdirectory(Assets)
 TP_add_interface_subdirectory(Clipboard)
 TP_add_interface_subdirectory(Endianness)
+TP_add_interface_subdirectory(GraphicsCommon)
 TP_add_interface_subdirectory(GraphicsGS)
 TP_add_interface_subdirectory(Input)
 TP_add_interface_subdirectory(Logging)
@@ -17,7 +18,8 @@ target_link_libraries(TeaPacket_Bundle_Interface INTERFACE
         TeaPacket_Assets_Base
         TeaPacket_Clipboard_Base
         TeaPacket_Endianness_Base
-        TeaPacket_Graphics_Base
+        TeaPacket_GraphicsCommon_Base
+        TeaPacket_GraphicsGS_Base
         TeaPacket_Input_Base
         TeaPacket_Logging_Base
         TeaPacket_MacroUtils_Base

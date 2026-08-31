@@ -22,7 +22,7 @@ int main(void)
         TP_Bundled_DeInit();
         return -1;
     }
-    TP_Graphics_InitDefaultDisplays(dispParamList);
+    TP_GfxGS_InitDefaultDisplays(dispParamList);
 
     while (TP_System_ShouldRun())
     {

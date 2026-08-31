@@ -122,22 +122,6 @@ static TP_Gfx_ImageData ReadTrueColor(TP_Extension_IStream* stream,
             return Read32BPP_Easy(stream, info, image);
         }
     }
-    
-    /*if (info->bitsPerPixel == 16)
-    {
-        if (info->compressionType == TP_Ext_Format_Image_BMP_CompressionType_RGB)
-        {
-            image.format = TP_Graphics_Texture_Format_RGB5A1;
-            if (
-            info->colorMasks.r == 0x001F &&
-            info->colorMasks.g == 0x03E0 &&
-            info->colorMasks.b == 0x7C00
-        )
-            {
-                return Read16BPP_Easy(stream, info, image);
-            }
-        }
-    } */
 
 
     /* Do it the hard way - bitfield parsing */
