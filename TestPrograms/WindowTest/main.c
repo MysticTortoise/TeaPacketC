@@ -1,8 +1,7 @@
 #include "TeaPacket/Window/Window.h"
 #include "TeaPacket/Types/Array.h"
-#include "TeaPacket/Graphics/DisplayParams.h"
-#include "TeaPacket/Graphics/Display.h"
 
+#include "TeaPacket/System/System.h"
 int main(void)
 {
     const TP_Window_Params parms = {
@@ -10,17 +9,23 @@ int main(void)
         0,
         1280,
         720,
-        TP_StrViewFromConstStr("TeaPacket")
+        TP_StrViewFromConstStrBrace("TeaPacket")
     };
-    TP_Window* window = TP_Window_Create(&parms);
+    TP_Window* window;
+    /*unsigned int i;*/
 
-    unsigned int i;
-    for (i = 0; i < 2000000; i++)
-    {
+
+    TP_System_Init();
+    window = TP_Window_Create(&parms);
+
+    while(TP_System_ShouldRun()){
+        TP_System_Process();
         TP_Window_ProcessEvents(window);
     }
 
     TP_Window_Destroy(window);
+
+    TP_System_DeInit();
 
     return 0;
 }
