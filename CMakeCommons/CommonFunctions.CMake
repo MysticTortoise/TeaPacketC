@@ -104,16 +104,40 @@ if(NOT COMMAND TP_link_bundle)
     endfunction()
 endif()
 
+if(NOT COMMAND TP_get_python)
+    function(TP_get_python)
+        if(DEFINED TP_PYTHON_NAME)
+            return()
+        endif()
 
+        find_program(TP_PYTHON_NAME NAMES "python")
+        if(TP_PYTHON_NAME)
+            return()
+        endif()
+
+        find_program(TP_PYTHON_NAME NAMES "python3")
+        if(TP_PYTHON_NAME)
+            return()
+        endif()
+
+        find_program(TP_PYTHON_NAME NAMES "py")
+        if(TP_PYTHON_NAME)
+            return()
+        endif()
+
+        message(FATAL_ERROR "Couldn't find Python! Make sure it's installed!")
+    endfunction()
+endif()
 
 if(NOT COMMAND TP_run_python_script)
     function(TP_run_python_script projectName scriptPath)
+        TP_get_python()
         cmake_path(GET scriptPath PARENT_PATH scriptDir)
         add_custom_command(
                 TARGET ${projectName}
                 PRE_BUILD
                 COMMENT "Running ${scriptPath}"
-                COMMAND python ${scriptPath}
+                COMMAND ${TP_PYTHON_NAME} ${scriptPath}
                 WORKING_DIRECTORY "${scriptDir}"
                 VERBATIM
         )
