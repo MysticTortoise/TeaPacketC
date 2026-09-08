@@ -43,6 +43,16 @@ extern "C" {
 #define TP_CPP_VER TP_CPP_VERNONE
 #endif
 
+/* OBJECTIVE C VERSION */
+#define TP_OBJC_VERNONE 0L
+#define TP_OBJC_VERBASE 1L
+
+#ifdef __OBJC__
+#define TP_OBJC_VER TP_OBJC_VERBASE
+#else
+#define TP_OBJC_VER TP_OBJC_VERNONE
+#endif
+
 /* Compile specifics */
 #if defined(__GNUC__)
 #define TP_HAS_GNUC 1
