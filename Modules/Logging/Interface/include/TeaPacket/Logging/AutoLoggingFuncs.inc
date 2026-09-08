@@ -7,6 +7,9 @@
  * These only require that TP_LogString be implemented.
  * These are not required to use but speed up the process of making logging implementations drastically.
  */
+
+#define _ISOC99_SOURCE
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
@@ -123,7 +126,7 @@ void TP_LogDouble(const double x)
 
     /* Todo: make not shit, dont depend on snprintf?  */
 
-#if  TP_C_VER >= TP_C_VER99
+#if  TP_C_VER >= TP_C_VER99 || TP_OBJC_VER >= TP_OBJC_VERBASE || defined(TP_HAS_GNUC)
     snprintf(text,1024, "%f", x);
 #elif defined(TP_HAS_MSC)
     sprintf_s(text,1024, "%f", x);
