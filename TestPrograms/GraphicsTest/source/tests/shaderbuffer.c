@@ -15,7 +15,7 @@
 
 #include <assert.h>
 
-#if GFXTESTS_ALLOWED >= 4
+#if GFXTESTS_ALLOWED >= 6
 
 static const float vertData[] = {
     -0.5f, 0.5f,

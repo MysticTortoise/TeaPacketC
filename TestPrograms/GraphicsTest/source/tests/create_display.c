@@ -2,6 +2,7 @@
 
 #include "TeaPacket/Graphics/GS/Display.h"
 
+#if GFXTESTS_ALLOWED >= 1
 static const TP_GfxGS_DisplayParams dispParams = {
     1280,
     720,
@@ -12,7 +13,6 @@ static const TP_GfxGS_DisplayParamList dispParamList = {
     1
 };
 
-#if GFXTESTS_ALLOWED >= 1
 static tp_bool Init(void)
 {
     static tp_bool hasLaunched = tp_false;

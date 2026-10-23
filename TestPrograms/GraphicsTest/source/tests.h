@@ -29,7 +29,7 @@ extern GfxTest ShadersMeshTest;
 extern GfxTest TextureTest;
 extern GfxTest ShaderBufferTest;
 
-#define GFXTEST_COUNT (GFXTESTS_ALLOWED < GfxTests_MAX) ? GFXTESTS_ALLOWED : GfxTests_MAX;
+#define GFXTEST_COUNT ((GFXTESTS_ALLOWED < GfxTests_MAX) ? GFXTESTS_ALLOWED : GfxTests_MAX)
 
 
 #endif

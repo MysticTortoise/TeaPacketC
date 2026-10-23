@@ -40,8 +40,10 @@ int main(void)
         {
             tests[id]->deInitFunc();
             curTime = 0;
+#if GFXTESTS_ALLOWED > 0
             id++;
-            id %= GFXTEST_COUNT;
+            id %= GFXTEST_COUNT + 1;
+#endif
             tests[id]->initFunc();
         }
     }
