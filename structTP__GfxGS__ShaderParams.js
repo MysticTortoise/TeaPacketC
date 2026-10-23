@@ -1,6 +1,6 @@
 var structTP__GfxGS__ShaderParams =
 [
-    [ "fragmentShaderCode", "structTP__GfxGS__ShaderParams.html#a6a212e6ecc14eae03834c9e6dfbcc9ae", null ],
+    [ "fragmentShaderData", "structTP__GfxGS__ShaderParams.html#abb6ecfca46f94967ba0e8295c3e04bd6", null ],
     [ "inputAttributes", "structTP__GfxGS__ShaderParams.html#abf51845e201ce154d3b7d4c6fd646c8f", null ],
-    [ "vertexShaderCode", "structTP__GfxGS__ShaderParams.html#a6c1301b460030b2f31bd212dc351cc60", null ]
+    [ "vertexShaderData", "structTP__GfxGS__ShaderParams.html#aeb6e6534e0ed3eccc1e63feb3b624dc3", null ]
 ];

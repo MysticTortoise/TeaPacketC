@@ -8,6 +8,7 @@ var Array_8h =
     [ "TP_Array", "Array_8h.html#af6ee95b86b529d9b810d9dac43b18857", null ],
     [ "TP_ArrayView", "Array_8h.html#acb959d43d8ab87a8c761a9e45cdd2c79", null ],
     [ "TP_ArrayView", "Array_8h.html#a38794277baadef3be2fb0e03c371a039", null ],
+    [ "TP_ByteViewFromStr", "Array_8h.html#a4e2d0e23cd2827685499a775b9b71524", null ],
     [ "TP_StrViewFromStr", "Array_8h.html#ab596593dd8d7cef3c80d97eb037ca019", null ],
     [ "TP_StrViewMake", "Array_8h.html#a15dca29aba629c43a7710e2c62088d20", null ]
 ];
