@@ -9,7 +9,7 @@ class EnumDef:
     alias : str = ""
     default : str = None
 
-def generate(file):
+def generate(file, c_mode: Bool):
     dest_file = ""
     namespaces = set()
     headers = set()
@@ -89,7 +89,12 @@ def generate(file):
                     continue
 
                 # Generate Conversion
-                genfile.write("constexpr inline " + other_enum.name + " " + enum.alias + "To" + other_enum.alias + "(const " + enum.name + " val)\n")
+                if c_mode:
+                    func_preline = "TP_INLINE_FUNC "
+                else:
+                    func_preline = "constexpr inline "
+
+                genfile.write(func_preline + other_enum.name + " " + enum.alias + "To" + other_enum.alias + "(const " + enum.name + " val)\n")
                 genfile.write("{\n")
                 genfile.write(" switch(val)\n")
                 genfile.write(" {\n")
@@ -102,8 +107,14 @@ def generate(file):
                 this_index = enums.index(enum)
                 other_index = enums.index(other_enum)
 
+                in_values:set = set()
+
                 for i in range(len(enum_map)):
-                    genfile.write("case " + enum_map[i][this_index] + ": return " + enum_map[i][other_index] + ";\n")
+                    enum_in_val = enum_map[i][this_index]
+                    if enum_in_val in in_values:
+                        continue
+                    in_values.add(enum_in_val)
+                    genfile.write("case " + enum_in_val + ": return " + enum_map[i][other_index] + ";\n")
                 if other_enum.default is None:
                     genfile.write("default: throw std::runtime_error(\"" + error_message + "\");\n")
                 else:
@@ -113,29 +124,34 @@ def generate(file):
                 genfile.write("}\n")
 
                 # Generate "Is Possible?" function
-                genfile.write("constexpr inline bool " + enum.alias + "ConvertableTo" + other_enum.alias + "(const " + enum.name + " val)\n")
-                genfile.write("{\n")
-                genfile.write(" switch(val)\n")
-                genfile.write(" {\n")
+                if not c_mode:
+                    genfile.write(func_preline + "bool " + enum.alias + "ConvertableTo" + other_enum.alias + "(const " + enum.name + " val)\n")
+                    genfile.write("{\n")
+                    genfile.write(" switch(val)\n")
+                    genfile.write(" {\n")
 
-                if enum.is_class:
-                    genfile.write(" using enum " + enum.name + ";\n")
-                if other_enum.is_class:
-                    genfile.write(" using enum " + other_enum.name + ";\n")
+                    if enum.is_class:
+                        genfile.write(" using enum " + enum.name + ";\n")
+                    if other_enum.is_class:
+                        genfile.write(" using enum " + other_enum.name + ";\n")
 
-                this_index = enums.index(enum)
-                other_index = enums.index(other_enum)
+                    this_index = enums.index(enum)
+                    other_index = enums.index(other_enum)
 
-                for i in range(len(enum_map)):
-                    genfile.write("case " + enum_map[i][this_index] + ":\n")
-                genfile.write("return true;\n")
-                genfile.write("default: return false;\n")
+                    for i in range(len(enum_map)):
+                        genfile.write("case " + enum_map[i][this_index] + ":\n")
+                    genfile.write("return true;\n")
+                    genfile.write("default: return false;\n")
 
-                genfile.write(" }\n")
-                genfile.write("}\n")
+                    genfile.write(" }\n")
+                    genfile.write("}\n")
 
         with open(f"{mypath}/footer.hpp", "r") as footerFile:
             genfile.write(footerFile.read())
 
 if __name__ == "__main__":
-    generate(sys.argv[1])
+    if len(sys.argv) > 1 and sys.argv[2] == "--c_mode":
+        c_mode = True
+    else:
+        c_mode = False
+    generate(sys.argv[1], c_mode)

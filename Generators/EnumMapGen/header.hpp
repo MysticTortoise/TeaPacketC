@@ -1,4 +1,7 @@
 #pragma once
+
+#include "TeaPacket/MacroUtils/Features.h"
+
 #if defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wswitch"
