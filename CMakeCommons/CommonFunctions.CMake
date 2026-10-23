@@ -37,7 +37,7 @@ endif()
 
 if(NOT COMMAND TP_add_impl_subdirectory)
     function(TP_add_impl_subdirectory moduleName implName)
-        message(${moduleName}${implName})
+        message("${moduleName} | ${implName}")
         set(target_name TeaPacket_${moduleName}_${implName})
         set(subdir "${TEAPACKET_ROOT}/Modules/${moduleName}/${implName}")
         if(NOT TARGET ${target_name})
@@ -49,13 +49,12 @@ endif()
 
 if(NOT COMMAND TP_add_extension_subdirectory)
     function(TP_add_extension_subdirectory extensionName)
-        message(${extensionName})
+        message("Ext: ${extensionName}")
         
         string(REPLACE / _ target_name_suffix "${extensionName}")
         
         set(target_name TeaPacket_Extensions_${target_name_suffix})
         set(subdir "${TEAPACKET_ROOT}/Extensions/${extensionName}")
-        message("ext is ${target_name}")
         if(NOT TARGET ${target_name})
             add_subdirectory_no_overwrite(${target_name} ${subdir} "${extensionName}")
         endif()
