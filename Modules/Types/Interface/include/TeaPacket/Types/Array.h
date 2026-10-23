@@ -58,6 +58,14 @@ TP_INLINE_FUNC TP_StringView TP_StrViewFromStr(const TP_String str) {
     return view;
 }
 
+TP_INLINE_FUNC TP_ByteView TP_ByteViewFromStr(const TP_String str)
+{
+    TP_ByteView view;
+    view.p = (const tp_byte*)str.p;
+    view.size = str.size;
+    return view;
+}
+
 /**
  * Creates a TP_StringView from a source pointer and a size.
  * @param data A pointer to the source data to view.
