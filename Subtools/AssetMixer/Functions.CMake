@@ -15,11 +15,12 @@ if(NOT COMMAND TP_AM_BuildAssets)
         else()
             set(TP_AM_BuildAssets_REBUILD)
         endif ()
+        TP_get_python()
         add_custom_command(
                 TARGET ${TP_AM_BuildAssets_TARGET}
                 PRE_BUILD
                 COMMENT "Building assets..."
-                COMMAND python
+                COMMAND ${TP_PYTHON_NAME}
                     "${TEAPACKET_ROOT}/Subtools/AssetMixer/main.py"
                     "--passes"
                     ${TP_AM_BuildAssets_PASSES}
