@@ -142,3 +142,16 @@ if(NOT COMMAND TP_run_python_script)
         )
     endfunction()
 endif()
+
+if(NOT COMMAND TP_execute_python_script)
+    function(TP_execute_python_script scriptPath)
+        TP_get_python()
+        cmake_path(GET scriptPath PARENT_PATH scriptDir)
+        execute_process(
+                COMMAND ${TP_PYTHON_NAME} ${scriptPath}
+                WORKING_DIRECTORY "${scriptDir}"
+                RESULT_VARIABLE TP_PYTHON_RESULT
+        )
+        set(TP_PYTHON_RESULT ${TP_PYTHON_RESULT} PARENT_SCOPE)
+    endfunction()
+endif ()
