@@ -1,0 +1,5 @@
+add_library(LibGLShaderMixer_GLSLToSpirv STATIC glsl_to_spirv.cpp)
+
+add_subdirectory(deps)
+target_include_directories(LibGLShaderMixer_GLSLToSpirv PUBLIC include)
+target_link_libraries(LibGLShaderMixer_GLSLToSpirv PUBLIC LibGLShaderMixer_Settings)

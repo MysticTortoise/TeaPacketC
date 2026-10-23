@@ -1,0 +1,11 @@
+add_library(LibGLShaderMixer_SpirvPasses STATIC)
+
+add_subdirectory(source)
+add_subdirectory(deps)
+add_subdirectory(spvpass)
+
+target_include_directories(LibGLShaderMixer_SpirvPasses PUBLIC include)
+target_include_directories(LibGLShaderMixer_SpirvPasses PRIVATE source)
+
+target_link_libraries(LibGLShaderMixer_SpirvPasses PUBLIC LibGLShaderMixer_Settings)
+target_link_libraries(LibGLShaderMixer_SpirvPasses PRIVATE spvpass)

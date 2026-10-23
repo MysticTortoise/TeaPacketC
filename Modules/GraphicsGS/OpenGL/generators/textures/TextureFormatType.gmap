@@ -1,0 +1,18 @@
+Destination TeaPacket/Graphics/GS/GL/Texture/FormatType.gen
+Enum TP_Gfx_Image_Format
+Enum GLint Alias GLType
+Headers "TeaPacket/Graphics/GS/GL/gl.h" "TeaPacket/Graphics/Common/ImageFormat.h"
+Data
+TP_Gfx_Image_Format_RGBA8 GL_UNSIGNED_BYTE
+TP_Gfx_Image_Format_BGRA8 GL_UNSIGNED_BYTE
+TP_Gfx_Image_Format_D24S8 GL_UNSIGNED_INT_24_8
+TP_Gfx_Image_Format_R8 GL_UNSIGNED_BYTE
+TP_Gfx_Image_Format_R16 GL_UNSIGNED_SHORT
+TP_Gfx_Image_Format_RGB8 GL_UNSIGNED_BYTE
+TP_Gfx_Image_Format_BGR8 GL_UNSIGNED_BYTE
+TP_Gfx_Image_Format_R5G6B5 GL_UNSIGNED_SHORT_5_6_5
+TP_Gfx_Image_Format_B5G6R5 GL_UNSIGNED_SHORT_5_6_5
+TP_Gfx_Image_Format_RGB5A1 GL_UNSIGNED_SHORT_5_5_5_1
+TP_Gfx_Image_Format_BGR5A1 GL_UNSIGNED_SHORT_5_5_5_1
+End
+Default TP_Gfx_Image_Format_NONE GL_NONE

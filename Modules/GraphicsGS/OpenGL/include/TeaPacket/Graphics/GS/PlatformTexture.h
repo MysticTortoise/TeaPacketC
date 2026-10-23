@@ -1,0 +1,13 @@
+#ifndef TEAPACKET_GRAPHICS_GS_GL_PLATFORMTEXTURE_H
+#define TEAPACKET_GRAPHICS_GS_GL_PLATFORMTEXTURE_H
+
+#include "TeaPacket/Graphics/GS/GL/gl.h"
+
+
+struct TP_GfxGS_Texture
+{
+    GLuint id;
+};
+
+
+#endif //TEAPACKET_GRAPHICS_GS_GL_PLATFORMTEXTURE_H

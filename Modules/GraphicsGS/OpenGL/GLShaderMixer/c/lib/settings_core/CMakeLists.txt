@@ -1,0 +1,6 @@
+TP_add_interface_subdirectory(Types)
+
+add_library(LibGLShaderMixer_Settings INTERFACE)
+
+target_include_directories(LibGLShaderMixer_Settings INTERFACE include)
+target_link_libraries(LibGLShaderMixer_Settings INTERFACE TeaPacket_Types_Base)
