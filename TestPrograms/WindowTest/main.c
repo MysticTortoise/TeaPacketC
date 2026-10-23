@@ -12,7 +12,6 @@ int main(void)
         TP_StrViewFromConstStrBrace("TeaPacket")
     };
     TP_Window* window;
-    /*unsigned int i;*/
 
 
     TP_System_Init();
