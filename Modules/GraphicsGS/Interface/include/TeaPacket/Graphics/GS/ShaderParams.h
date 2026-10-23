@@ -16,11 +16,11 @@ typedef struct
      * However, GLSL is recommended as a baseline and any Module Implementations that require another language are
      * highly suggested to provide an AssetMixer pass to convert shaders from GLSL to the native language.
      */
-    TP_StringView vertexShaderCode;
+    TP_ByteView vertexShaderData;
     /**
      * A view of the code to compile the fragment/pixel part of this shader.
      */
-    TP_StringView fragmentShaderCode;
+    TP_ByteView fragmentShaderData;
     /**
      * A list of input attributes.
      * @details Each entry in this list maps to an IN attribute in the shader.

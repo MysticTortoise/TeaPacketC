@@ -31,9 +31,9 @@ TP_GfxGS_Shader* TP_GfxGS_Shader_Create(const TP_GfxGS_ShaderParams* params)
 
     {
         // Compile vert shader
-        const auto cStrCode = new char[params->vertexShaderCode.size + 1];
-        memcpy(cStrCode, params->vertexShaderCode.p, params->vertexShaderCode.size);
-        cStrCode[params->vertexShaderCode.size] = '\0';
+        const auto cStrCode = new char[params->vertexShaderData.size + 1];
+        memcpy(cStrCode, params->vertexShaderData.p, params->vertexShaderData.size);
+        cStrCode[params->vertexShaderData.size] = '\0';
 
         shader->vertexShader = GLSL_CompileVertexShader(
             cStrCode,
@@ -51,9 +51,9 @@ TP_GfxGS_Shader* TP_GfxGS_Shader_Create(const TP_GfxGS_ShaderParams* params)
 
     {
         // Compile pixel shader
-        const auto cStrCode = new char[params->fragmentShaderCode.size + 1];
-        memcpy(cStrCode, params->fragmentShaderCode.p, params->fragmentShaderCode.size);
-        cStrCode[params->fragmentShaderCode.size] = '\0';
+        const auto cStrCode = new char[params->fragmentShaderData.size + 1];
+        memcpy(cStrCode, params->fragmentShaderData.p, params->fragmentShaderData.size);
+        cStrCode[params->fragmentShaderData.size] = '\0';
 
         shader->pixelShader = GLSL_CompilePixelShader(
             cStrCode,

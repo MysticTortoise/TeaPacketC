@@ -64,8 +64,8 @@ static tp_bool Init(void)
     const TP_String vertCode = TP_Assets_ReadTextAsset(vertShaderPath);
     const TP_String fragCode = TP_Assets_ReadTextAsset(fragShaderPath);
 
-    shaderParams.vertexShaderCode = TP_StrViewFromStr(vertCode);
-    shaderParams.fragmentShaderCode = TP_StrViewFromStr(fragCode);
+    shaderParams.vertexShaderData = TP_ByteViewFromStr(vertCode);
+    shaderParams.fragmentShaderData = TP_ByteViewFromStr(fragCode);
 
     mesh = TP_GfxGS_Mesh_Create(&meshParams);
 

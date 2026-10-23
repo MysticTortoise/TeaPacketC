@@ -58,8 +58,8 @@ static const TP_GfxGS_MeshParams meshParams = {
 static TP_GfxGS_Mesh* mesh;
 
 static TP_GfxGS_ShaderParams shaderParams = {
-    .vertexShaderCode = {0},
-    .fragmentShaderCode = {0},
+    .vertexShaderData = {0},
+    .fragmentShaderData = {0},
     .inputAttributes = {shaderVars, 2}
 };
 static TP_GfxGS_Shader* shader;
@@ -91,8 +91,8 @@ static tp_bool Init(void)
 
     const TP_String vertCode = TP_Assets_ReadTextAsset(TP_StrViewFromConstStr("textured.vert"));
     const TP_String fragCode = TP_Assets_ReadTextAsset(TP_StrViewFromConstStr("textured.frag"));
-    shaderParams.vertexShaderCode = TP_StrViewFromStr(vertCode);
-    shaderParams.fragmentShaderCode = TP_StrViewFromStr(fragCode);
+    shaderParams.vertexShaderData = TP_ByteViewFromStr(vertCode);
+    shaderParams.fragmentShaderData = TP_ByteViewFromStr(fragCode);
 
     shader = TP_GfxGS_Shader_Create(&shaderParams);
 

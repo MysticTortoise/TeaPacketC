@@ -75,7 +75,7 @@ TP_GfxGS_Shader* TP_GfxGS_Shader_Create(const TP_GfxGS_ShaderParams* params)
     Microsoft::WRL::ComPtr<ID3D10Blob> vertexShaderBuffer;
     // Compile Vertex Shader
     HRESULT result = D3DCompile(
-        params->vertexShaderCode.p, params->vertexShaderCode.size,
+        params->vertexShaderData.p, params->vertexShaderData.size,
         nullptr, nullptr, nullptr,
         "main", "vs_5_0",
         D3D10_SHADER_ENABLE_STRICTNESS, 0,
@@ -101,7 +101,7 @@ TP_GfxGS_Shader* TP_GfxGS_Shader_Create(const TP_GfxGS_ShaderParams* params)
     // Compile Pixel Shader
     result =
         D3DCompile(
-            params->fragmentShaderCode.p, params->fragmentShaderCode.size,
+            params->fragmentShaderData.p, params->fragmentShaderData.size,
             nullptr, nullptr, nullptr,
             "main", "ps_5_0",
             D3D10_SHADER_ENABLE_STRICTNESS, 0,
