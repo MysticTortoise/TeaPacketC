@@ -10,7 +10,7 @@ spvtools::opt::Pass::Status SpirVPassRenameAttribute::Process()
         {
             continue;
         }
-        for (const auto deco : var.GetAllDecorations())
+        for (const auto& deco : var.GetAllDecorations())
         {
             if (deco.GetDecorationType() == spv::Decoration::Location)
             {
