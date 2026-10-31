@@ -44,9 +44,12 @@ def get_need_files(src_dirs : list[str], dest_dir : str, loaded_modules, rebuild
 
     return need_files
 
-def build_assets(src_dirs : list[str], dest_dir, asset_pass_scripts=None, rebuild_all = False):
+def build_assets(src_dirs : list[str], dest_dir, asset_pass_scripts=None, rebuild_all = False, extra_args: dict[str, str] = None):
     if asset_pass_scripts is None:
         asset_pass_scripts = list()
+
+    if extra_args is None:
+        extra_args = dict()
 
     for i, path in enumerate(asset_pass_scripts):
         asset_pass_scripts[i] = os.path.abspath(path)
@@ -89,7 +92,7 @@ def build_assets(src_dirs : list[str], dest_dir, asset_pass_scripts=None, rebuil
             function = getattr(module, "asset_pass")
 
             if function and callable(function):
-                function(temp_dir)
+                function(temp_dir, extra_args)
             else:
                 raise Exception(f"Error loading asset pass script: {module}")
 

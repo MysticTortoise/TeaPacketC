@@ -10,9 +10,18 @@ parser.add_argument("--passes", nargs="*", help="A list of asset pass scripts to
 
 parser.add_argument("--rebuild", "-r", help="Force-rebuilds all assets", action="store_true")
 
+parser.add_argument("--passparams", nargs="*", help="A list of extra arguments to be passed to each pass.")
 
 args = parser.parse_args()
 
-#print(args.passes)
+extra_args = dict()
 
-assetmixer.assetmixer.build_assets(args.asset_sources, args.asset_destination, args.passes, args.rebuild)
+if args.passparams is not None:
+    for item in args.passparams:
+        if "=" in item:
+            key, val = item.split("=", 1)
+            extra_args[key] = val
+
+
+assetmixer.assetmixer.build_assets(args.asset_sources, args.asset_destination,
+                                   args.passes, args.rebuild, extra_args)

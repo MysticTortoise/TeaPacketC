@@ -3,7 +3,7 @@ if(NOT COMMAND TP_AM_BuildAssets)
         #message("Building assets...")
         set(options REBUILD)
         set(oneValueArgs DESTINATION TARGET)
-        set(multiValueArgs SOURCE PASSES)
+        set(multiValueArgs SOURCE PASSES EXARGS)
         cmake_parse_arguments(PARSE_ARGV 0 TP_AM_BuildAssets
                 "${options}" "${oneValueArgs}" "${multiValueArgs}"
         )
@@ -16,6 +16,7 @@ if(NOT COMMAND TP_AM_BuildAssets)
             set(TP_AM_BuildAssets_REBUILD)
         endif ()
         TP_get_python()
+        message(${TP_AM_BuildAssets_EXARGS})
         add_custom_command(
                 TARGET ${TP_AM_BuildAssets_TARGET}
                 PRE_BUILD
@@ -29,6 +30,8 @@ if(NOT COMMAND TP_AM_BuildAssets)
                     ${TP_AM_BuildAssets_SOURCE}
                     --asset_destination
                     "${TP_AM_BuildAssets_DESTINATION}"
+                    "--passparams"
+                    ${TP_AM_BuildAssets_EXARGS}
         )
     endfunction()
 endif()
