@@ -7,6 +7,7 @@
 #define TEAPACKET_TYPES_ARRAY_H
 
 #include "stddef.h"
+#include "string.h"
 #include "TeaPacket/Types/Numeric.h"
 
 #include "TeaPacket/MacroUtils/Features.h"
@@ -90,5 +91,9 @@ TP_INLINE_FUNC TP_StringView TP_StrViewMake(const char* data, const size_t size)
  * @param msg The constant message to create a StringView for.
  */
 #define TP_StrViewFromConstStrBrace(msg) {msg, sizeof(msg)-1}
+
+
+#define TP_ArrEq(a, b) (a.size == b.size && memcmp(a.p,b.p,a.size) == 0)
+#define TP_StrViewEq(a, b) (a.size == sizeof(b)-1 && memcmp(a.p,b,sizeof(b)-1) == 0)
 
 #endif
