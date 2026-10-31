@@ -42,7 +42,7 @@ int main(void)
             curTime = 0;
 #if GFXTESTS_ALLOWED > 0
             id++;
-            id %= GFXTEST_COUNT + 1;
+            id %= GFXTEST_COUNT;
 #endif
             tests[id]->initFunc();
         }

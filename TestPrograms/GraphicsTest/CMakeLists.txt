@@ -21,4 +21,4 @@ TP_AM_BuildAssets(
 set_target_properties(TeaPacket_TestPrograms_Graphics PROPERTIES C_STANDARD 99)
 
 get_target_property(OUT TeaPacket_TestPrograms_Graphics LINK_LIBRARIES)
-target_compile_definitions(TeaPacket_TestPrograms_Graphics PRIVATE GFXTESTS_ALLOWED=6)
+target_compile_definitions(TeaPacket_TestPrograms_Graphics PRIVATE GFXTESTS_ALLOWED=99)
