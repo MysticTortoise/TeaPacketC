@@ -10,6 +10,8 @@
 
 #include <stdlib.h>
 
+#include "TeaPacket/Logging/Logging.h"
+
 TP_GfxGS_Texture* TP_GfxGS_Texture_Create(const TP_GfxGS_TextureParams* params)
 {
     TP_GfxGS_Texture* tex = malloc(sizeof(TP_GfxGS_Texture));

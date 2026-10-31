@@ -19,3 +19,5 @@ target_link_libraries(TP_GfxGS_GL_Platform PUBLIC TP_GfxGS_GL_Platform_GLAD
 )
 
 target_compile_definitions(TP_GfxGS_GL_Platform PRIVATE GL_SILENCE_DEPRECATION)
+
+set(TP_ASSET_MIXER_EXARGS "${TP_ASSET_MIXER_EXARGS};${TP_GfxGS_GL_AMEXARGS}" CACHE INTERNAL "" FORCE)

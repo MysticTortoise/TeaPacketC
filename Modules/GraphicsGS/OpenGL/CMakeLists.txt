@@ -31,6 +31,11 @@ target_link_libraries(TeaPacket_GraphicsGS_OpenGL TeaPacket_GraphicsGS_Base
 
 set(TP_ASSET_MIXER_PASSES "${TP_ASSET_MIXER_PASSES};${CMAKE_CURRENT_SOURCE_DIR}/GLShaderMixer/pass/glsmixer_shader.py" CACHE INTERNAL "" FORCE)
 
+if(NOT DEFINED TP_GfxGS_GL_AMEXARGS)
+    set(TP_GfxGS_GL_AMEXARGS "GLSMix_Major=${TP_GfxGS_GL_MajorVer};GLSMix_Minor=${TP_GfxGS_GL_MinorVer};GLSMix_SpecVer=${TP_GfxGS_GL_SpecsVer};GLSMix_Platform=${TeaPacket_GraphicsGS_OpenGL_Platform}" CACHE INTERNAL "" FORCE)
+    set(TP_ASSET_MIXER_EXARGS "${TP_ASSET_MIXER_EXARGS};${TP_GfxGS_GL_AMEXARGS}" CACHE INTERNAL "" FORCE)
+endif ()
+
 if("${TP_GfxGS_GL_SpecsVer}" STREQUAL "GL")
     set(version_def TP_GfxGS_GL_SpecsVer_GL)
 elseif("${TP_GfxGS_GL_SpecsVer}" STREQUAL "ES")

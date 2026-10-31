@@ -6,13 +6,22 @@
 
 #include "TeaPacket/Logging/Logging.h"
 
+static tp_bool IsInit = tp_false;
+
 #define TP_GL_MANUAL_TEX_BINDING TP_GfxGS_GL_MajorVer < 4 || (TP_GfxGS_GL_MajorVer == 4 && TP_GfxGS_GL_MinorVer < 2)
 
 #if TP_GL_MANUAL_TEX_BINDING
-static tp_bool IsInit = tp_false;
 static GLint MAX_TEXTURE_UNITS;
 static char** TEXTURE_UNIFORM_STRINGS;
 static const char TEXTURE_PREFIX_STR[] = {'t'};
+#endif
+
+#define TP_GL_MANUAL_UBO_ORDERING TP_GfxGS_GL_MajorVer < 4 || (TP_GfxGS_GL_MajorVer == 4 && TP_GfxGS_GL_MinorVer < 2)
+
+#if TP_GL_MANUAL_UBO_ORDERING
+static GLint MAX_UBOS;
+static char** UBO_STRINGS;
+static const char UBO_PREFIX_STR[] = {'u'};
 #endif
 
 /* https://stackoverflow.com/a/1068937 */
@@ -65,6 +74,24 @@ static void InitShaderGlobalConsts(void)
         text[digits] = '\0';
     }
 #endif
+
+#if TP_GL_MANUAL_UBO_ORDERING
+    glGetIntegerv(GL_MAX_UNIFORM_BUFFER_BINDINGS, &MAX_UBOS);
+
+    UBO_STRINGS = malloc(MAX_UBOS * sizeof(void*));
+    for (GLint i = 0; i < MAX_UBOS; i++)
+    {
+        const int digits = numPlaces(i);
+        char* text = malloc(sizeof(UBO_PREFIX_STR) + digits + 1);
+        UBO_STRINGS[i] = text;
+
+        memcpy(text, UBO_PREFIX_STR, sizeof(UBO_PREFIX_STR));
+        text += sizeof(UBO_PREFIX_STR);
+        numToStr(i, text, digits);
+        text[digits] = '\0';
+    }
+#endif
+
 }
 
 TP_GfxGS_Shader* TP_GfxGS_Shader_Create(const TP_GfxGS_ShaderParams* params)
@@ -132,6 +159,8 @@ TP_GfxGS_Shader* TP_GfxGS_Shader_Create(const TP_GfxGS_ShaderParams* params)
     glDeleteShader(vShader);
     glDeleteShader(fShader);
 
+    glUseProgram(shader->program);
+
     /* TODO:
      * Vertex in attrs < 3.3
      */
@@ -139,10 +168,26 @@ TP_GfxGS_Shader* TP_GfxGS_Shader_Create(const TP_GfxGS_ShaderParams* params)
 #if TP_GL_MANUAL_TEX_BINDING
     for (GLint i = 0; i < MAX_TEXTURE_UNITS; i++)
     {
-        glUniform1i(glGetUniformLocation(shader->program, TEXTURE_UNIFORM_STRINGS[i]), i);
+        const GLint loc = glGetUniformLocation(shader->program, TEXTURE_UNIFORM_STRINGS[i]);
+        if (loc == -1)
+        {
+            continue;
+        }
+        glUniform1i(loc, i);
     }
 #endif
 
+#if TP_GL_MANUAL_UBO_ORDERING
+    for (GLint i = 0; i < MAX_UBOS; i++)
+    {
+        const GLuint x = glGetUniformBlockIndex(shader->program, UBO_STRINGS[i]);
+        if (x == GL_INVALID_INDEX)
+        {
+            continue;
+        }
+        glUniformBlockBinding(shader->program, x, i);
+    }
+#endif
 
     return shader;
 }

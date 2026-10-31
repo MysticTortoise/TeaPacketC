@@ -12,9 +12,15 @@ spvtools::opt::Pass::Status SpirVPassRenameAttribute::Process()
         }
         for (const auto& deco : var.GetAllDecorations())
         {
-            if (deco.GetDecorationType() == spv::Decoration::Location)
+            uint32_t loc = 0xFFFFFFFF;
+            if (deco.GetDecorationType() == spv::Decoration::Location ||
+                deco.GetDecorationType() == spv::Decoration::Binding)
             {
-                var.SetName(GetVarPrefix() + std::to_string(deco.GetDecorationParam(0)));
+                loc = deco.GetDecorationParam(0);
+            }
+            if (loc != 0xFFFFFFF)
+            {
+                var.SetName(GetVarPrefix() + std::to_string(loc));
                 changed = true;
                 break;
             }

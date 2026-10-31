@@ -10,6 +10,6 @@ public:
     bool IsVarRenamable(const spvpass::OpVariable& var) override
     { return var.GetStorageClass() == spv::StorageClass::UniformConstant; }
 
-    [[nodiscard]] const char* name() const override {return "rename_input_vert_attrs"; }
+    [[nodiscard]] const char* name() const override {return "rename_sampler_attrs"; }
     [[nodiscard]] const char* GetVarPrefix() override { return "t"; }
 };

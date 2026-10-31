@@ -35,9 +35,9 @@ typedef struct
 typedef struct
 {
     GLSMix_ShaderType shaderType;
+    TP_StringView platform;
 } GLSMix_SrcContext;
 
-#define _(v) (v.major * 100 + v.minor * 10)
 
 static inline unsigned int GLSMix_GLVersion_ToNum(GLSMix_GLVersion version)
 {

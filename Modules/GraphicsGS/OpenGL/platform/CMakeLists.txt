@@ -1,6 +1,6 @@
 if(NOT DEFINED TeaPacket_GraphicsGS_OpenGL_Platform)
     if(DEFINED TEAPACKET_PLATFORM)
-        set(TeaPacket_GraphicsGS_OpenGL_Platform ${TEAPACKET_PLATFORM})
+        set(TeaPacket_GraphicsGS_OpenGL_Platform ${TEAPACKET_PLATFORM} CACHE INTERNAL "" FORCE)
     endif ()
 endif ()
 

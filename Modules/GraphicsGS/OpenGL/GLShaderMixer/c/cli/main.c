@@ -19,8 +19,12 @@ static void print_usage(void)
     printf("\t[--minor <version>]:\n");
     printf("\t\tSets the minor version target. Must match with --major to a valid version.\n");
 
+    printf("\t[--spec <specification>]:\n");
+    printf("\t\tSets the target GL specification. Supported options: GL, ES\n");
+
     printf("\t[--platform <platform>]:\n");
-    printf("\t\tSets the target GL version. Supported options: GL, ES\n");
+    printf("\t\tSets the target GL platform. Any string is valid, but most common are:\n");
+    printf("\t\t\tMacOS\n");
 }
 
 static const TP_String nullStr = {0, 0};
@@ -74,8 +78,10 @@ static tp_bool write_to_file(const char* const path, TP_ByteArray bytes)
 
 typedef struct
 {
-    char* input_file;
-    char* output_file;
+    const char* input_file;
+    const char* output_file;
+
+    const char* platform;
 
     GLSMix_ShaderType shaderType;
     GLSMix_GLVersion version;
@@ -105,6 +111,7 @@ static InputArgs parse_all_args(size_t argc, char** argv)
     args.version.minor = 0;
     args.version.platform = GLSMix_TargetPlatform_GLCORE;
     args.version._ = 0;
+    args.platform = 0;
 
     char** argv_stream = &argv[3];
 #define VALIDATE_ARGV_STREAM (argv_stream < argv + argc)
@@ -146,7 +153,7 @@ static InputArgs parse_all_args(size_t argc, char** argv)
             continue;
         }
 
-        if (strcmp(cur_arg, "--platform") == 0)
+        if (strcmp(cur_arg, "--spec") == 0)
         {
             ASSERT_VALSTREAM;
             const char* const platformStr = *argv_stream++;
@@ -159,10 +166,17 @@ static InputArgs parse_all_args(size_t argc, char** argv)
                 args.version.platform = GLSMix_TargetPlatform_GLES;
             } else
             {
-                perror("Invalid Argument for --platform: Valid arguments are GL and ES");
+                perror("Invalid Argument for --spec: Valid arguments are GL and ES");
                 return ErrorArgs;
             }
             continue;
+        }
+
+        if (strcmp(cur_arg, "--platform") == 0)
+        {
+            ASSERT_VALSTREAM;
+            const char* const platformStr = *argv_stream++;
+            args.platform = platformStr;
         }
 
         if (strcmp(cur_arg, "--help") == 0)
@@ -170,6 +184,12 @@ static InputArgs parse_all_args(size_t argc, char** argv)
             return ErrorArgs;
         }
     }
+
+    if (args.platform == 0)
+    {
+        args.platform = calloc(1, 1);
+    }
+
     return args;
 }
 
@@ -197,7 +217,10 @@ int main(int argc, char** argv)
         GLSMix_SrcContext srcContext;
 
         targetContext.version = args.version;
+
         srcContext.shaderType = args.shaderType;
+        srcContext.platform.p = args.platform;
+        srcContext.platform.size = strlen(args.platform);
 
         TP_ByteArray out = GLSMix_MixDownShader(codeView, &targetContext, &srcContext);
         write_to_file(argv[2], out);

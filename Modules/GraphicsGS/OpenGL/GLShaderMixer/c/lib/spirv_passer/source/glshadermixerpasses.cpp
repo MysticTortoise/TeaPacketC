@@ -4,9 +4,13 @@
 #include "passes/rename_inputs.hpp"
 #include "passes/rename_outputs.hpp"
 #include "passes/rename_samplers.hpp"
+#include "passes/rename_uniforms.hpp"
+
 #include "spvpass/pass.hpp"
 
 #include <fstream>
+
+#include "../../settings_core/include/glshadermixer/settings.h"
 
 
 GLShaderMixer::SpirVData GLShaderMixer::TransformSpirv(const SpirVData& spirv_data,
@@ -41,7 +45,10 @@ GLShaderMixer::SpirVData GLShaderMixer::TransformSpirv(const SpirVData& spirv_da
     }
 
     if (srcContext->shaderType == GLSMix_ShaderType_Fragment &&
-        GLSMix_GLVersion_ToNum(targetContext->version) < 410)
+        (   GLSMix_GLVersion_ToNum(targetContext->version) < 410
+            ||
+            TP_StrViewEq(srcContext->platform, "MacOS"))
+        )
     {
         spvpass::RegisterCustomPass<SpirVPassRenameFragmentInputs>(optimizer);
     }
@@ -53,9 +60,30 @@ GLShaderMixer::SpirVData GLShaderMixer::TransformSpirv(const SpirVData& spirv_da
     }
 
     if (srcContext->shaderType == GLSMix_ShaderType_Vertex &&
-        GLSMix_GLVersion_ToNum(targetContext->version) < 410)
+        (   GLSMix_GLVersion_ToNum(targetContext->version) < 410
+            ||
+            TP_StrViewEq(srcContext->platform, "MacOS"))
+        )
     {
         spvpass::RegisterCustomPass<SpirVPassRenameVertexOutputs>(optimizer);
+    }
+
+    if (GLSMix_GLVersion_ToNum(targetContext->version) < 420)
+    {
+        spvpass::RegisterCustomPass<SpirVPassRenameSamplers>(optimizer);
+    }
+
+
+    if (GLSMix_GLVersion_ToNum(targetContext->version) > 140 &&
+        GLSMix_GLVersion_ToNum(targetContext->version) < 420)
+    {
+        spvpass::RegisterCustomPass<SpirVPassRenameUniforms>(optimizer);
+    }
+
+    std::cout << "Running passes:\n";
+    for (const auto name : optimizer.GetPassNames())
+    {
+        std::cout << name << "\n";
     }
 
 
