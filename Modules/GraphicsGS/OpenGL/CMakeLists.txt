@@ -48,4 +48,5 @@ target_compile_definitions(TeaPacket_GraphicsGS_OpenGL PUBLIC
         "${version_def}"
 )
 
+TP_ModuleImplEnd(GraphicsGS)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")
