@@ -50,7 +50,7 @@ def check_module_coverage(include_folder: Path, obj_folder: Path):
 
     progbar = "["
     progbar += ('#' * true_blocks)
-    progbar += (' ' * empty_blocks)
+    progbar += ('-' * empty_blocks)
     progbar += "]"
     print(f"{progbar} | {round(percent_found * 100, 2)}% functions implemented")
 
