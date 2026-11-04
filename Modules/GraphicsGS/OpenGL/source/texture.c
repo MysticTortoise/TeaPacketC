@@ -10,7 +10,25 @@
 
 #include <stdlib.h>
 
-#include "TeaPacket/Logging/Logging.h"
+#include "TeaPacket/Graphics/GS/Viewport.h"
+#include "TeaPacket/Graphics/GS/PlatformViewport.h"
+
+static GLint GLSetActiveTexAndStore(const GLuint tempID)
+{
+    GLint lastTex;
+    glGetIntegerv(GL_TEXTURE_BINDING_2D, &lastTex);
+    glBindTexture(GL_TEXTURE_2D, tempID);
+    return lastTex;
+}
+
+static GLint GLGetTexParam(const GLuint texID, const GLenum param)
+{
+    const GLint lastTex = GLSetActiveTexAndStore(texID);
+    GLint x;
+    glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, param, &x);
+    glBindTexture(GL_TEXTURE_2D, lastTex);
+    return x;
+}
 
 TP_GfxGS_Texture* TP_GfxGS_Texture_Create(const TP_GfxGS_TextureParams* params)
 {
@@ -48,9 +66,41 @@ void TP_GfxGS_Texture_Destroy(TP_GfxGS_Texture* tex)
     free(tex);
 }
 
+tp_u16 TP_GfxGS_Texture_GetWidth(TP_GfxGS_Texture* const tex)
+{
+    return (tp_u16)GLGetTexParam(tex->id, GL_TEXTURE_WIDTH);
+}
+
+tp_u16 TP_GfxGS_Texture_GetHeight(TP_GfxGS_Texture* const tex)
+{
+    return (tp_u16)GLGetTexParam(tex->id, GL_TEXTURE_HEIGHT);
+}
+
+TP_Gfx_Image_Format TP_GfxGS_Texture_GetFormat(TP_GfxGS_Texture* const tex)
+{
+    const GLint format = GLGetTexParam(tex->id, GL_TEXTURE_INTERNAL_FORMAT);
+    return GLToTP_Gfx_Image_Format(format);
+    // TODO: Is this correct? What about layouts? Etc?
+}
+
 void TP_GfxGS_Texture_SetActive(TP_GfxGS_Texture* const texture, tp_u8 slot)
 {
     glActiveTexture(GL_TEXTURE0 + slot);
     glBindTexture(GL_TEXTURE_2D, texture->id);
 }
 
+tp_bool TP_GfxGS_Texture_IsFormatSupported(TP_Gfx_Image_Format format)
+{
+    return TP_Gfx_Image_FormatConvertableToGL(format);
+}
+
+
+tp_u16 TP_GfxGS_Viewport_GetWidth(TP_GfxGS_Viewport* viewport)
+{
+    return (tp_u16)GLGetTexParam(viewport->colorTex, GL_TEXTURE_WIDTH);
+}
+
+tp_u16 TP_GfxGS_Viewport_GetHeight(TP_GfxGS_Viewport* viewport)
+{
+    return (tp_u16)GLGetTexParam(viewport->colorTex, GL_TEXTURE_HEIGHT);
+}

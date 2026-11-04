@@ -1,6 +1,19 @@
 #include "TeaPacket/Graphics/GS/Graphics.h"
+#include "TeaPacket/Graphics/GS/GL/GLGraphics.h"
 
 #include "TeaPacket/Graphics/GS/GL/gl.h"
+
+tp_bool TP_GfxGS_GL_Init(void)
+{
+    glEnable(GL_DEPTH_TEST);
+
+    return tp_true;
+}
+
+void TP_GfxGS_GL_DeInit(void)
+{
+
+}
 
 void TP_GfxGS_ClearColor(TP_Gfx_Color8 clearColor)
 {
@@ -11,4 +24,15 @@ void TP_GfxGS_ClearColor(TP_Gfx_Color8 clearColor)
         1.0f);
     glClearDepth(1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void TP_GfxGS_SetDepthEnabled(tp_bool depthEnabled)
+{
+    if (depthEnabled)
+    {
+        glEnable(GL_DEPTH_TEST);
+    } else
+    {
+        glDisable(GL_DEPTH_TEST);
+    }
 }
