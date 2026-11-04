@@ -1,6 +1,7 @@
 #pragma once
 
 #include "TeaPacket/MacroUtils/Features.h"
+#include "TeaPacket/Types/Numeric.h"
 
 #if defined(__clang__)
 #pragma clang diagnostic push

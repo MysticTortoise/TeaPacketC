@@ -124,27 +124,33 @@ def generate(file, c_mode: Bool):
                 genfile.write("}\n")
 
                 # Generate "Is Possible?" function
-                if not c_mode:
-                    genfile.write(func_preline + "bool " + enum.alias + "ConvertableTo" + other_enum.alias + "(const " + enum.name + " val)\n")
-                    genfile.write("{\n")
-                    genfile.write(" switch(val)\n")
-                    genfile.write(" {\n")
+                genfile.write(func_preline + "tp_bool " + enum.alias + "ConvertableTo" + other_enum.alias + "(const " + enum.name + " val)\n")
+                genfile.write("{\n")
+                genfile.write(" switch(val)\n")
+                genfile.write(" {\n")
 
-                    if enum.is_class:
-                        genfile.write(" using enum " + enum.name + ";\n")
-                    if other_enum.is_class:
-                        genfile.write(" using enum " + other_enum.name + ";\n")
+                if enum.is_class:
+                    genfile.write(" using enum " + enum.name + ";\n")
+                if other_enum.is_class:
+                    genfile.write(" using enum " + other_enum.name + ";\n")
 
-                    this_index = enums.index(enum)
-                    other_index = enums.index(other_enum)
+                this_index = enums.index(enum)
+                other_index = enums.index(other_enum)
 
-                    for i in range(len(enum_map)):
-                        genfile.write("case " + enum_map[i][this_index] + ":\n")
-                    genfile.write("return true;\n")
-                    genfile.write("default: return false;\n")
+                used_enums = set()
 
-                    genfile.write(" }\n")
-                    genfile.write("}\n")
+                for i in range(len(enum_map)):
+                    i_enum = enum_map[i][this_index]
+                    if i_enum in used_enums:
+                        continue
+                    used_enums.add(i_enum)
+                    genfile.write("case " + i_enum + ":\n")
+
+                genfile.write("return tp_true;\n")
+                genfile.write("default: return tp_false;\n")
+
+                genfile.write(" }\n")
+                genfile.write("}\n")
 
         with open(f"{mypath}/footer.hpp", "r") as footerFile:
             genfile.write(footerFile.read())
