@@ -23,7 +23,7 @@ TP_GfxGS_Viewport* TP_GfxGS_Viewport_Create(const TP_GfxGS_ViewportParams* param
 /**
  * Destroys a Viewport.
  */
-void TP_GfxGS_Viewport_Destroy(const TP_GfxGS_Viewport*);
+void TP_GfxGS_Viewport_Destroy(TP_GfxGS_Viewport*);
 
 /**
  * Sets this Viewport to be the current active target for rendering.

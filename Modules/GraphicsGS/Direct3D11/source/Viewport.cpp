@@ -106,7 +106,7 @@ TP_GfxGS_Viewport* TP_GfxGS_Viewport_Create(const TP_GfxGS_ViewportParams* param
 
 static TP_GfxGS_Viewport* activeViewport;
 
-void TP_GfxGS_Viewport_Destroy(const TP_GfxGS_Viewport* viewport)
+void TP_GfxGS_Viewport_Destroy(TP_GfxGS_Viewport* viewport)
 {
     TP_GfxGS_Texture_Destroy(viewport->colorTex);
     TP_GfxGS_Texture_Destroy(viewport->depthTex);
