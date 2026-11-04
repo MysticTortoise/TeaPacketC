@@ -16,8 +16,9 @@ TP_AM_BuildAssets(
         SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/assets/" 
         DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/assets/"
         PASSES ${TP_ASSET_MIXER_PASSES}
+        EXARGS ${TP_ASSET_MIXER_EXARGS}
         )
 set_target_properties(TeaPacket_TestPrograms_Graphics PROPERTIES C_STANDARD 99)
 
 get_target_property(OUT TeaPacket_TestPrograms_Graphics LINK_LIBRARIES)
-target_compile_definitions(TeaPacket_TestPrograms_Graphics PRIVATE GFXTESTS_ALLOWED=5)
+target_compile_definitions(TeaPacket_TestPrograms_Graphics PRIVATE GFXTESTS_ALLOWED=99)

@@ -1,0 +1,11 @@
+Destination TeaPacket/Graphics/GS/GL/GLVarType.gen
+Enum TP_GfxGS_VariableBaseType
+Enum GLenum Alias GL
+Headers "TeaPacket/Graphics/GS/GL/gl.h" "TeaPacket/Graphics/GS/Texture/TextureParams.h"
+Data
+TP_GfxGS_VariableBaseType_None GL_NONE
+TP_GfxGS_VariableBaseType_Float GL_FLOAT
+TP_GfxGS_VariableBaseType_Int GL_INT
+TP_GfxGS_VariableBaseType_UInt GL_UNSIGNED_INT
+End
+Default TP_GfxGS_VariableBaseType_None GL_NONE

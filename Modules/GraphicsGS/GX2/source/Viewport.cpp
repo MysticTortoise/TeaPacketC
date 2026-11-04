@@ -163,7 +163,7 @@ void TP_GfxGS_ClearColor(TP_Gfx_Color8 color)
 }
 
 
-void TP_GfxGS_Viewport_Destroy(const TP_GfxGS_Viewport* viewport)
+void TP_GfxGS_Viewport_Destroy(TP_GfxGS_Viewport* viewport)
 {
     delete viewport;
 }

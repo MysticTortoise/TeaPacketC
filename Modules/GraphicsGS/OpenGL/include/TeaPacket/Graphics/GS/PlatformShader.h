@@ -1,0 +1,13 @@
+#ifndef TEAPACKET_GRAPHICS_GS_GL_PLATFORMSHADER_H
+#define TEAPACKET_GRAPHICS_GS_GL_PLATFORMSHADER_H
+
+#include "TeaPacket/Graphics/GS/GL/gl.h"
+
+
+struct TP_GfxGS_Shader
+{
+    GLuint program;
+};
+
+
+#endif //TEAPACKET_GRAPHICS_GS_GL_PLATFORMSHADER_H

@@ -1,0 +1,3 @@
+add_executable(gl_shader_mixer_cli main.c)
+
+target_link_libraries(gl_shader_mixer_cli PRIVATE LibGLShaderMixer)

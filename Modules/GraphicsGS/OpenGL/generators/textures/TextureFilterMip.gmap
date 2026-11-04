@@ -1,0 +1,9 @@
+Destination TeaPacket/Graphics/GS/GL/Texture/FilterMip.gen
+Enum TP_GfxGS_Texture_FilterMode
+Enum GLint Alias GLMip
+Headers "TeaPacket/Graphics/GS/GL/gl.h" "TeaPacket/Graphics/GS/Texture/TextureParams.h"
+Data
+TP_GfxGS_Texture_FilterMode_Nearest GL_NEAREST_MIPMAP_NEAREST
+TP_GfxGS_Texture_FilterMode_Linear GL_LINEAR_MIPMAP_LINEAR
+End
+Default TP_GfxGS_Texture_FilterMode_Linear GL_LINEAR

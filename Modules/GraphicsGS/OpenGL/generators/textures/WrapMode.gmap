@@ -1,0 +1,10 @@
+Destination TeaPacket/Graphics/GS/GL/Texture/WrapMode.gen
+Enum TP_GfxGS_Texture_WrapMode
+Enum GLint Alias GL
+Headers "TeaPacket/Graphics/GS/GL/gl.h" "TeaPacket/Graphics/GS/Texture/TextureParams.h"
+Data
+TP_GfxGS_Texture_WrapMode_Wrap GL_REPEAT
+TP_GfxGS_Texture_WrapMode_Clamp GL_CLAMP_TO_EDGE
+TP_GfxGS_Texture_WrapMode_Mirror GL_MIRRORED_REPEAT
+End
+Default TP_GfxGS_Texture_WrapMode_Wrap GL_REPEAT

@@ -6,7 +6,7 @@ types = ("*.frag", "*.vert", "*.vs", "*.fs", "*.psh", "*.fsh", "*.vsh", "*.glsl"
 #def get_updated_files(asset_source : str, asset_built : str):
 #    pass
 
-def asset_pass(asset_dir):
+def asset_pass(asset_dir, extra_args: dict[str,str]):
     sys.path.append(os.path.dirname(__file__))
 
     import Setup
