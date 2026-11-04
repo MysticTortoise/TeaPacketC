@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('Array_8h.html'
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;stddef.h&quot;</code><br />
+<code>#include &quot;string.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="Numeric_8h_source.html">TeaPacket/Types/Numeric.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Features_8h_source.html">TeaPacket/MacroUtils/Features.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -120,20 +121,22 @@ Include dependency graph for Array.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="Array_8h__incl.png" border="0" usemap="#aTypes_2Array_8h" loading="lazy" alt=""/></div>
 <map name="aTypes_2Array_8h" id="aTypes_2Array_8h">
-<area shape="rect" title=" " alt="" coords="60,5,160,31"/>
+<area shape="rect" title=" " alt="" coords="113,5,213,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,73,105"/>
-<area shape="poly" title=" " alt="" coords="100,33,63,70,60,66,96,29"/>
-<area shape="rect" href="Numeric_8h.html" title=" " alt="" coords="147,79,334,105"/>
-<area shape="poly" title=" " alt="" coords="133,29,206,69,204,74,131,34"/>
-<area shape="rect" href="Features_8h.html" title=" " alt="" coords="34,153,185,193"/>
-<area shape="poly" title=" " alt="" coords="112,31,112,137,107,137,107,31"/>
-<area shape="poly" title=" " alt="" coords="222,107,156,147,153,142,219,103"/>
-<area shape="rect" title=" " alt="" coords="209,160,272,186"/>
-<area shape="poly" title=" " alt="" coords="243,105,243,144,238,144,238,105"/>
-<area shape="rect" title=" " alt="" coords="296,160,369,186"/>
-<area shape="poly" title=" " alt="" coords="256,103,309,148,305,152,253,107"/>
-<area shape="rect" title=" " alt="" coords="393,160,456,186"/>
-<area shape="poly" title=" " alt="" coords="271,103,383,150,385,151,383,156,381,155,269,108"/>
+<area shape="poly" title=" " alt="" coords="143,34,74,73,72,69,141,29"/>
+<area shape="rect" title=" " alt="" coords="97,79,160,105"/>
+<area shape="poly" title=" " alt="" coords="160,32,143,66,139,64,155,30"/>
+<area shape="rect" href="Numeric_8h.html" title=" " alt="" coords="235,79,422,105"/>
+<area shape="poly" title=" " alt="" coords="192,29,287,70,285,75,190,34"/>
+<area shape="rect" href="Features_8h.html" title=" " alt="" coords="122,153,273,193"/>
+<area shape="poly" title=" " alt="" coords="168,31,193,137,187,138,163,32"/>
+<area shape="poly" title=" " alt="" coords="310,107,244,147,241,142,307,103"/>
+<area shape="rect" title=" " alt="" coords="297,160,360,186"/>
+<area shape="poly" title=" " alt="" coords="331,105,331,144,326,144,326,105"/>
+<area shape="rect" title=" " alt="" coords="384,160,457,186"/>
+<area shape="poly" title=" " alt="" coords="344,103,397,148,393,152,341,107"/>
+<area shape="rect" title=" " alt="" coords="481,160,544,186"/>
+<area shape="poly" title=" " alt="" coords="359,103,471,150,473,151,471,156,469,155,357,108"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -190,6 +193,8 @@ Macros</h2></td></tr>
 <tr class="memitem:a0be908a2008c98031855bbe049c37010" id="r_a0be908a2008c98031855bbe049c37010"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a>(Type)</td></tr>
 <tr class="memitem:a63b14b9dd0eb5785786409f9820fc280" id="r_a63b14b9dd0eb5785786409f9820fc280"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a63b14b9dd0eb5785786409f9820fc280">TP_StrViewFromConstStr</a>(msg)</td></tr>
 <tr class="memitem:af0ed7312bd2edb857c339e33e122aa41" id="r_af0ed7312bd2edb857c339e33e122aa41"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#af0ed7312bd2edb857c339e33e122aa41">TP_StrViewFromConstStrBrace</a>(msg)</td></tr>
+<tr class="memitem:adeda01eeecd101a41ab2d68dd4ed3388" id="r_adeda01eeecd101a41ab2d68dd4ed3388"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#adeda01eeecd101a41ab2d68dd4ed3388">TP_ArrEq</a>(a,  b)</td></tr>
+<tr class="memitem:a832a6da4e7200b06c3209eda5f3842ae" id="r_a832a6da4e7200b06c3209eda5f3842ae"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a832a6da4e7200b06c3209eda5f3842ae">TP_StrViewEq</a>(a,  b)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -247,6 +252,50 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="adeda01eeecd101a41ab2d68dd4ed3388" name="adeda01eeecd101a41ab2d68dd4ed3388"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeda01eeecd101a41ab2d68dd4ed3388">&#9670;&#160;</a></span>TP_ArrEq</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TP_ArrEq</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">(a.size == b.size &amp;&amp; memcmp(a.p,b.p,a.size) == 0)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a832a6da4e7200b06c3209eda5f3842ae" name="a832a6da4e7200b06c3209eda5f3842ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a832a6da4e7200b06c3209eda5f3842ae">&#9670;&#160;</a></span>TP_StrViewEq</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TP_StrViewEq</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">(a.size == <span class="keyword">sizeof</span>(b)-1 &amp;&amp; memcmp(a.p,b,<span class="keyword">sizeof</span>(b)-1) == 0)</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a63b14b9dd0eb5785786409f9820fc280" name="a63b14b9dd0eb5785786409f9820fc280"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a63b14b9dd0eb5785786409f9820fc280">&#9670;&#160;</a></span>TP_StrViewFromConstStr</h2>
 
@@ -262,7 +311,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_function" href="#a15dca29aba629c43a7710e2c62088d20">TP_StrViewMake</a>(msg, <span class="keyword">sizeof</span>(msg)-1)</div>
-<div class="ttc" id="aArray_8h_html_a15dca29aba629c43a7710e2c62088d20"><div class="ttname"><a href="#a15dca29aba629c43a7710e2c62088d20">TP_StrViewMake</a></div><div class="ttdeci">TP_INLINE_FUNC TP_StringView TP_StrViewMake(const char *data, const size_t size)</div><div class="ttdef"><b>Definition</b> Array.h:75</div></div>
+<div class="ttc" id="aArray_8h_html_a15dca29aba629c43a7710e2c62088d20"><div class="ttname"><a href="#a15dca29aba629c43a7710e2c62088d20">TP_StrViewMake</a></div><div class="ttdeci">TP_INLINE_FUNC TP_StringView TP_StrViewMake(const char *data, const size_t size)</div><div class="ttdef"><b>Definition</b> Array.h:76</div></div>
 </div><!-- fragment --><p>Creates a StringView from an inline string literal. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">msg</td><td>The constant message to create a StringView for. </td></tr>

@@ -121,71 +121,76 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('Array_8h_sourc
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define TEAPACKET_TYPES_ARRAY_H</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;stddef.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="Numeric_8h.html">TeaPacket/Types/Numeric.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="Features_8h.html">TeaPacket/MacroUtils/Features.h</a>&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span></div>
-<div class="foldopen" id="foldopen00020" data-start="" data-end="">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="Array_8h.html#ab046bb8216ac0492ec808c4eece63efb">   20</a></span><span class="preprocessor">#define TP_Array(Type) \</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">struct TP_##Type##Array{\</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">    Type* p;\</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">    size_t size;\</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">}</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;string.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="Numeric_8h.html">TeaPacket/Types/Numeric.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="Features_8h.html">TeaPacket/MacroUtils/Features.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span></div>
+<div class="foldopen" id="foldopen00021" data-start="" data-end="">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="Array_8h.html#ab046bb8216ac0492ec808c4eece63efb">   21</a></span><span class="preprocessor">#define TP_Array(Type) \</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">struct TP_##Type##Array{\</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">    Type* p;\</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">    size_t size;\</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">}</span></div>
 </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
-<div class="foldopen" id="foldopen00030" data-start="" data-end="">
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="Array_8h.html#a0be908a2008c98031855bbe049c37010">   30</a></span><span class="preprocessor">#define TP_ArrayView(Type) \</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">struct TP_##Type##ArrayView{\</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">const Type* p;\</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">size_t size;\</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">}</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
+<div class="foldopen" id="foldopen00031" data-start="" data-end="">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="Array_8h.html#a0be908a2008c98031855bbe049c37010">   31</a></span><span class="preprocessor">#define TP_ArrayView(Type) \</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">struct TP_##Type##ArrayView{\</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">const Type* p;\</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">size_t size;\</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">}</span></div>
 </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="Array_8h.html#aa5979eea5fedfda5f6482a64c7099c77">   39</a></span><span class="keyword">typedef</span> <a class="code hl_define" href="Array_8h.html#ab046bb8216ac0492ec808c4eece63efb">TP_Array</a>(<span class="keywordtype">char</span>) TP_String;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="Array_8h.html#af6ee95b86b529d9b810d9dac43b18857">   40</a></span><span class="keyword">typedef</span> <a class="code hl_define" href="Array_8h.html#ab046bb8216ac0492ec808c4eece63efb">TP_Array</a>(<a class="code hl_typedef" href="Numeric_8h.html#aa7e0f23d3ed0e687be8bc0f0e1d454b4">tp_byte</a>) TP_ByteArray;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="Array_8h.html#acb959d43d8ab87a8c761a9e45cdd2c79">   45</a></span><span class="keyword">typedef</span> <a class="code hl_define" href="Array_8h.html#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a>(<span class="keywordtype">char</span>) TP_StringView;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="Array_8h.html#a38794277baadef3be2fb0e03c371a039">   46</a></span><span class="keyword">typedef</span> <a class="code hl_define" href="Array_8h.html#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a>(<a class="code hl_typedef" href="Numeric_8h.html#aa7e0f23d3ed0e687be8bc0f0e1d454b4">tp_byte</a>) TP_ByteView;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
-<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="Array_8h.html#ab596593dd8d7cef3c80d97eb037ca019">   54</a></span><a class="code hl_define" href="Features_8h.html#a3ce4b3b022c1aa8e3e5f7ff531436bb4">TP_INLINE_FUNC</a> TP_StringView <a class="code hl_function" href="Array_8h.html#ab596593dd8d7cef3c80d97eb037ca019">TP_StrViewFromStr</a>(<span class="keyword">const</span> TP_String str) {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    TP_StringView view;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    view.p = str.p;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    view.size = str.size;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">return</span> view;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="Array_8h.html#aa5979eea5fedfda5f6482a64c7099c77">   40</a></span><span class="keyword">typedef</span> <a class="code hl_define" href="Array_8h.html#ab046bb8216ac0492ec808c4eece63efb">TP_Array</a>(<span class="keywordtype">char</span>) TP_String;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="Array_8h.html#af6ee95b86b529d9b810d9dac43b18857">   41</a></span><span class="keyword">typedef</span> <a class="code hl_define" href="Array_8h.html#ab046bb8216ac0492ec808c4eece63efb">TP_Array</a>(<a class="code hl_typedef" href="Numeric_8h.html#aa7e0f23d3ed0e687be8bc0f0e1d454b4">tp_byte</a>) TP_ByteArray;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="Array_8h.html#acb959d43d8ab87a8c761a9e45cdd2c79">   46</a></span><span class="keyword">typedef</span> <a class="code hl_define" href="Array_8h.html#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a>(<span class="keywordtype">char</span>) TP_StringView;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="Array_8h.html#a38794277baadef3be2fb0e03c371a039">   47</a></span><span class="keyword">typedef</span> <a class="code hl_define" href="Array_8h.html#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a>(<a class="code hl_typedef" href="Numeric_8h.html#aa7e0f23d3ed0e687be8bc0f0e1d454b4">tp_byte</a>) TP_ByteView;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span></div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="Array_8h.html#ab596593dd8d7cef3c80d97eb037ca019">   55</a></span><a class="code hl_define" href="Features_8h.html#a3ce4b3b022c1aa8e3e5f7ff531436bb4">TP_INLINE_FUNC</a> TP_StringView <a class="code hl_function" href="Array_8h.html#ab596593dd8d7cef3c80d97eb037ca019">TP_StrViewFromStr</a>(<span class="keyword">const</span> TP_String str) {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    TP_StringView view;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    view.p = str.p;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    view.size = str.size;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">return</span> view;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
 </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="Array_8h.html#a4e2d0e23cd2827685499a775b9b71524">   61</a></span><a class="code hl_define" href="Features_8h.html#a3ce4b3b022c1aa8e3e5f7ff531436bb4">TP_INLINE_FUNC</a> TP_ByteView <a class="code hl_function" href="Array_8h.html#a4e2d0e23cd2827685499a775b9b71524">TP_ByteViewFromStr</a>(<span class="keyword">const</span> TP_String str)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>{</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    TP_ByteView view;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    view.p = (<span class="keyword">const</span> <a class="code hl_typedef" href="Numeric_8h.html#aa7e0f23d3ed0e687be8bc0f0e1d454b4">tp_byte</a>*)str.p;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    view.size = str.size;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">return</span> view;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="Array_8h.html#a4e2d0e23cd2827685499a775b9b71524">   62</a></span><a class="code hl_define" href="Features_8h.html#a3ce4b3b022c1aa8e3e5f7ff531436bb4">TP_INLINE_FUNC</a> TP_ByteView <a class="code hl_function" href="Array_8h.html#a4e2d0e23cd2827685499a775b9b71524">TP_ByteViewFromStr</a>(<span class="keyword">const</span> TP_String str)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>{</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    TP_ByteView view;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    view.p = (<span class="keyword">const</span> <a class="code hl_typedef" href="Numeric_8h.html#aa7e0f23d3ed0e687be8bc0f0e1d454b4">tp_byte</a>*)str.p;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    view.size = str.size;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">return</span> view;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
 </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span></div>
-<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="Array_8h.html#a15dca29aba629c43a7710e2c62088d20">   75</a></span><a class="code hl_define" href="Features_8h.html#a3ce4b3b022c1aa8e3e5f7ff531436bb4">TP_INLINE_FUNC</a> TP_StringView <a class="code hl_function" href="Array_8h.html#a15dca29aba629c43a7710e2c62088d20">TP_StrViewMake</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* data, <span class="keyword">const</span> <span class="keywordtype">size_t</span> size) {</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    TP_StringView view;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    view.p = data;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    view.size = size;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">return</span> view;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span></div>
+<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="Array_8h.html#a15dca29aba629c43a7710e2c62088d20">   76</a></span><a class="code hl_define" href="Features_8h.html#a3ce4b3b022c1aa8e3e5f7ff531436bb4">TP_INLINE_FUNC</a> TP_StringView <a class="code hl_function" href="Array_8h.html#a15dca29aba629c43a7710e2c62088d20">TP_StrViewMake</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* data, <span class="keyword">const</span> <span class="keywordtype">size_t</span> size) {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    TP_StringView view;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    view.p = data;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    view.size = size;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordflow">return</span> view;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
 </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="Array_8h.html#a63b14b9dd0eb5785786409f9820fc280">   86</a></span><span class="preprocessor">#define TP_StrViewFromConstStr(msg) TP_StrViewMake(msg, sizeof(msg)-1)</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="Array_8h.html#af0ed7312bd2edb857c339e33e122aa41">   92</a></span><span class="preprocessor">#define TP_StrViewFromConstStrBrace(msg) {msg, sizeof(msg)-1}</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aArray_8h_html_a0be908a2008c98031855bbe049c37010"><div class="ttname"><a href="Array_8h.html#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a></div><div class="ttdeci">#define TP_ArrayView(Type)</div><div class="ttdef"><b>Definition</b> Array.h:30</div></div>
-<div class="ttc" id="aArray_8h_html_a15dca29aba629c43a7710e2c62088d20"><div class="ttname"><a href="Array_8h.html#a15dca29aba629c43a7710e2c62088d20">TP_StrViewMake</a></div><div class="ttdeci">TP_INLINE_FUNC TP_StringView TP_StrViewMake(const char *data, const size_t size)</div><div class="ttdef"><b>Definition</b> Array.h:75</div></div>
-<div class="ttc" id="aArray_8h_html_a4e2d0e23cd2827685499a775b9b71524"><div class="ttname"><a href="Array_8h.html#a4e2d0e23cd2827685499a775b9b71524">TP_ByteViewFromStr</a></div><div class="ttdeci">TP_INLINE_FUNC TP_ByteView TP_ByteViewFromStr(const TP_String str)</div><div class="ttdef"><b>Definition</b> Array.h:61</div></div>
-<div class="ttc" id="aArray_8h_html_ab046bb8216ac0492ec808c4eece63efb"><div class="ttname"><a href="Array_8h.html#ab046bb8216ac0492ec808c4eece63efb">TP_Array</a></div><div class="ttdeci">#define TP_Array(Type)</div><div class="ttdef"><b>Definition</b> Array.h:20</div></div>
-<div class="ttc" id="aArray_8h_html_ab596593dd8d7cef3c80d97eb037ca019"><div class="ttname"><a href="Array_8h.html#ab596593dd8d7cef3c80d97eb037ca019">TP_StrViewFromStr</a></div><div class="ttdeci">TP_INLINE_FUNC TP_StringView TP_StrViewFromStr(const TP_String str)</div><div class="ttdef"><b>Definition</b> Array.h:54</div></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="Array_8h.html#a63b14b9dd0eb5785786409f9820fc280">   87</a></span><span class="preprocessor">#define TP_StrViewFromConstStr(msg) TP_StrViewMake(msg, sizeof(msg)-1)</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="Array_8h.html#af0ed7312bd2edb857c339e33e122aa41">   93</a></span><span class="preprocessor">#define TP_StrViewFromConstStrBrace(msg) {msg, sizeof(msg)-1}</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="Array_8h.html#adeda01eeecd101a41ab2d68dd4ed3388">   96</a></span><span class="preprocessor">#define TP_ArrEq(a, b) (a.size == b.size &amp;&amp; memcmp(a.p,b.p,a.size) == 0)</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="Array_8h.html#a832a6da4e7200b06c3209eda5f3842ae">   97</a></span><span class="preprocessor">#define TP_StrViewEq(a, b) (a.size == sizeof(b)-1 &amp;&amp; memcmp(a.p,b,sizeof(b)-1) == 0)</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aArray_8h_html_a0be908a2008c98031855bbe049c37010"><div class="ttname"><a href="Array_8h.html#a0be908a2008c98031855bbe049c37010">TP_ArrayView</a></div><div class="ttdeci">#define TP_ArrayView(Type)</div><div class="ttdef"><b>Definition</b> Array.h:31</div></div>
+<div class="ttc" id="aArray_8h_html_a15dca29aba629c43a7710e2c62088d20"><div class="ttname"><a href="Array_8h.html#a15dca29aba629c43a7710e2c62088d20">TP_StrViewMake</a></div><div class="ttdeci">TP_INLINE_FUNC TP_StringView TP_StrViewMake(const char *data, const size_t size)</div><div class="ttdef"><b>Definition</b> Array.h:76</div></div>
+<div class="ttc" id="aArray_8h_html_a4e2d0e23cd2827685499a775b9b71524"><div class="ttname"><a href="Array_8h.html#a4e2d0e23cd2827685499a775b9b71524">TP_ByteViewFromStr</a></div><div class="ttdeci">TP_INLINE_FUNC TP_ByteView TP_ByteViewFromStr(const TP_String str)</div><div class="ttdef"><b>Definition</b> Array.h:62</div></div>
+<div class="ttc" id="aArray_8h_html_ab046bb8216ac0492ec808c4eece63efb"><div class="ttname"><a href="Array_8h.html#ab046bb8216ac0492ec808c4eece63efb">TP_Array</a></div><div class="ttdeci">#define TP_Array(Type)</div><div class="ttdef"><b>Definition</b> Array.h:21</div></div>
+<div class="ttc" id="aArray_8h_html_ab596593dd8d7cef3c80d97eb037ca019"><div class="ttname"><a href="Array_8h.html#ab596593dd8d7cef3c80d97eb037ca019">TP_StrViewFromStr</a></div><div class="ttdeci">TP_INLINE_FUNC TP_StringView TP_StrViewFromStr(const TP_String str)</div><div class="ttdef"><b>Definition</b> Array.h:55</div></div>
 <div class="ttc" id="aFeatures_8h_html"><div class="ttname"><a href="Features_8h.html">Features.h</a></div></div>
 <div class="ttc" id="aFeatures_8h_html_a3ce4b3b022c1aa8e3e5f7ff531436bb4"><div class="ttname"><a href="Features_8h.html#a3ce4b3b022c1aa8e3e5f7ff531436bb4">TP_INLINE_FUNC</a></div><div class="ttdeci">#define TP_INLINE_FUNC</div><div class="ttdef"><b>Definition</b> Features.h:85</div></div>
 <div class="ttc" id="aNumeric_8h_html"><div class="ttname"><a href="Numeric_8h.html">Numeric.h</a></div></div>

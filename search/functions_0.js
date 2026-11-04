@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['tp_5farray_0',['TP_Array',['../Color_8h.html#a79da7aa2ad664cb2aa812a86aa4feb2c',1,'TP_Array(TP_Gfx_Color8A) TP_Gfx_Color8A_List:&#160;Color.h'],['../Color_8h.html#a29f4fa3bc33e10b47272e715d7c11ae6',1,'TP_Array(TP_Gfx_Color8) TP_Gfx_Color8_List:&#160;Color.h'],['../Array_8h.html#aa5979eea5fedfda5f6482a64c7099c77',1,'TP_Array(char) TP_String:&#160;Array.h'],['../Array_8h.html#af6ee95b86b529d9b810d9dac43b18857',1,'TP_Array(tp_byte) TP_ByteArray:&#160;Array.h']]],
+  ['tp_5farray_0',['TP_Array',['../Array_8h.html#aa5979eea5fedfda5f6482a64c7099c77',1,'TP_Array(char) TP_String:&#160;Array.h'],['../Array_8h.html#af6ee95b86b529d9b810d9dac43b18857',1,'TP_Array(tp_byte) TP_ByteArray:&#160;Array.h'],['../Color_8h.html#a79da7aa2ad664cb2aa812a86aa4feb2c',1,'TP_Array(TP_Gfx_Color8A) TP_Gfx_Color8A_List:&#160;Color.h'],['../Color_8h.html#a29f4fa3bc33e10b47272e715d7c11ae6',1,'TP_Array(TP_Gfx_Color8) TP_Gfx_Color8_List:&#160;Color.h']]],
   ['tp_5farrayview_1',['TP_ArrayView',['../Display_8h.html#a50b9f2efbd4f1d79e5cc8b9797d72277',1,'TP_ArrayView(TP_GfxGS_DisplayParams) TP_GfxGS_DisplayParamList:&#160;Display.h'],['../MeshParams_8h.html#a8b1007c06299c32fa798462308bc905e',1,'TP_ArrayView(tp_u32) TP_GfxGS_MeshIndexList:&#160;MeshParams.h'],['../VariableType_8h.html#ade7ab53f329e8076b96ce1d0a5463c6f',1,'TP_ArrayView(TP_GfxGS_VariableType) TP_GfxGS_Shader_VarList:&#160;VariableType.h'],['../Array_8h.html#acb959d43d8ab87a8c761a9e45cdd2c79',1,'TP_ArrayView(char) TP_StringView:&#160;Array.h'],['../Array_8h.html#a38794277baadef3be2fb0e03c371a039',1,'TP_ArrayView(tp_byte) TP_ByteView:&#160;Array.h']]],
   ['tp_5fassets_5freadbinaryasset_2',['TP_Assets_ReadBinaryAsset',['../Assets_8h.html#ae5811293d98f0c62c489f6cba22f93a2',1,'Assets.h']]],
   ['tp_5fassets_5freadtextasset_3',['TP_Assets_ReadTextAsset',['../Assets_8h.html#a03c8ffbfabf3b984b23561c16f396810',1,'Assets.h']]],
@@ -50,7 +50,7 @@ var searchData=
   ['tp_5fgfxgs_5ftexture_5fsetactive_47',['TP_GfxGS_Texture_SetActive',['../Texture_8h.html#ab53ec02edc26bdb8e587a381acddbd27',1,'Texture.h']]],
   ['tp_5fgfxgs_5fviewport_5fbeginrender_48',['TP_GfxGS_Viewport_BeginRender',['../Viewport_8h.html#a855b1d946877dd544948123d2cd13641',1,'Viewport.h']]],
   ['tp_5fgfxgs_5fviewport_5fcreate_49',['TP_GfxGS_Viewport_Create',['../Viewport_8h.html#a87de03d80a43598697f82f59c14b5a74',1,'Viewport.h']]],
-  ['tp_5fgfxgs_5fviewport_5fdestroy_50',['TP_GfxGS_Viewport_Destroy',['../Viewport_8h.html#abdc83e20a45910660f2878518091d1fd',1,'Viewport.h']]],
+  ['tp_5fgfxgs_5fviewport_5fdestroy_50',['TP_GfxGS_Viewport_Destroy',['../Viewport_8h.html#a05aedcef16831e8854e69325f77d43f3',1,'Viewport.h']]],
   ['tp_5fgfxgs_5fviewport_5ffinishrender_51',['TP_GfxGS_Viewport_FinishRender',['../Viewport_8h.html#aa32389a852151e64afc21987831671fe',1,'Viewport.h']]],
   ['tp_5fgfxgs_5fviewport_5fgetheight_52',['TP_GfxGS_Viewport_GetHeight',['../Viewport_8h.html#af5af19bde04c0720efe7a8e4c4b56c26',1,'Viewport.h']]],
   ['tp_5fgfxgs_5fviewport_5fgetwidth_53',['TP_GfxGS_Viewport_GetWidth',['../Viewport_8h.html#a292d901eaeff49eb7b511dc4b843ad69',1,'Viewport.h']]],
