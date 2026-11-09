@@ -1,7 +1,7 @@
 set(TP_Bundle_MacOS_AssetsLib     CPPSTDFile  PARENT_SCOPE)
 #set(TP_Bundle_MacOS_ClipboardLib  MacOS     PARENT_SCOPE)
 set(TP_Bundle_MacOS_GraphicsGSLib   OpenGL  PARENT_SCOPE)
-#set(TP_Bundle_MacOS_InputLib      GameInput   PARENT_SCOPE)
+set(TP_Bundle_MacOS_InputLib      GameController   PARENT_SCOPE)
 set(TP_Bundle_MacOS_LoggingLib    STDIO       PARENT_SCOPE)
 set(TP_Bundle_MacOS_MemoryLib     CMem        PARENT_SCOPE)
 set(TP_Bundle_MacOS_RandomLib     STDRandom   PARENT_SCOPE)
