@@ -1,5 +1,8 @@
 import os, pathlib, sys
 
+import itertools
+
+
 class EnumDataList:
     typ : str = "data"
 
@@ -9,7 +12,7 @@ class EnumDef:
     alias : str = ""
     default : str = None
 
-def generate(file, c_mode: Bool):
+def generate(file, c_mode: Bool, up_to: int):
     dest_file = ""
     namespaces = set()
     headers = set()
@@ -82,8 +85,8 @@ def generate(file, c_mode: Bool):
             genfile.write("#include " + header + "\n")
         for namespace in namespaces:
             genfile.write("using namespace " + namespace + ";\n")
-        
-        for enum in enums:
+
+        for enum in itertools.islice(enums,up_to):
             for other_enum in enums:
                 if other_enum == enum:
                     continue
@@ -156,8 +159,14 @@ def generate(file, c_mode: Bool):
             genfile.write(footerFile.read())
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[2] == "--c_mode":
-        c_mode = True
-    else:
-        c_mode = False
-    generate(sys.argv[1], c_mode)
+    import argparse
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("gmap_file", help="gmap file to generate")
+    parser.add_argument("--c_mode", "-c", help="Generates in c mode instead of c++", action="store_true")
+    parser.add_argument("--max_from", help="Only generates From A to B for the first N enums.", type=int, default=9999)
+
+    args = parser.parse_args()
+
+    generate(args.gmap_file, args.c_mode, args.max_from)
