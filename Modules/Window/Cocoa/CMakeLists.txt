@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(TeaPacket_Window_Cocoa OBJC)
+project(TeaPacket_Window_Cocoa)
 
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonFunctions.CMake")
 
