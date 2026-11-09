@@ -6,7 +6,7 @@ set(TP_Bundle_MacOS_LoggingLib    STDIO       PARENT_SCOPE)
 set(TP_Bundle_MacOS_MemoryLib     CMem        PARENT_SCOPE)
 set(TP_Bundle_MacOS_RandomLib     STDRandom   PARENT_SCOPE)
 set(TP_Bundle_MacOS_SystemLib     MacOS     PARENT_SCOPE)
-set(TP_Bundle_MacOS_TimeLib       STDChrono   PARENT_SCOPE)
+set(TP_Bundle_MacOS_TimeLib       QuartzCore   PARENT_SCOPE)
 set(TP_Bundle_MacOS_WindowLib     Cocoa     PARENT_SCOPE)
 
 if(NOT COMMAND TP_Bundle_MacOS_CMakeFunction)
