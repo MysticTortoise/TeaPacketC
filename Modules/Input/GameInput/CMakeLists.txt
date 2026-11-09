@@ -42,4 +42,5 @@ target_link_libraries(TeaPacket_Input_GameInput TeaPacket_Input_Base
         "${GAMEINPUT_DIR}/lib/GameInput.lib"
 )
 
+TP_ModuleImplEnd(Input)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

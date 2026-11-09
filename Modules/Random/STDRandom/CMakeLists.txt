@@ -12,4 +12,5 @@ target_include_directories(TeaPacket_Random_STDRandom PRIVATE source)
 #target_include_directories(TeaPacket_Time_STDChrono PUBLIC include)
 target_link_libraries(TeaPacket_Random_STDRandom TeaPacket_Random_Base)
 
+TP_ModuleImplEnd(Random)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

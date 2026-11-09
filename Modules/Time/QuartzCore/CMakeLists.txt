@@ -12,4 +12,5 @@ target_link_libraries(TeaPacket_Time_QuartzCore PUBLIC TeaPacket_Time_Base)
 find_library(QUARTZCORE_LIB QuartzCore REQUIRED)
 target_link_libraries(TeaPacket_Time_QuartzCore PRIVATE ${QUARTZCORE_LIB})
 
+TP_ModuleImplEnd(Time)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

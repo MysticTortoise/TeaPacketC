@@ -27,4 +27,6 @@ TP_EnumMapGen("${INPUT_MODULE_DIR}/GameInput/generators/VirtualKey.gmap" TeaPack
 
 
 set_target_properties(TeaPacket_Input_WinMessage PROPERTIES CXX_STANDARD 17)
+
+TP_ModuleImplEnd(Input)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

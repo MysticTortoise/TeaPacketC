@@ -21,4 +21,5 @@ target_link_libraries(TeaPacket_Clipboard_Windows TeaPacket_Clipboard_Base
 )
 set_target_properties(TeaPacket_Clipboard_Windows PROPERTIES CXX_STANDARD 17)
 
+TP_ModuleImplEnd(Clipboard)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

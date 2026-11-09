@@ -15,4 +15,5 @@ target_include_directories(TeaPacket_Window_Windows PRIVATE source)
 target_include_directories(TeaPacket_Window_Windows PUBLIC include)
 target_link_libraries(TeaPacket_Window_Windows PUBLIC TeaPacket_Window_Base TeaPacket_Memory_Base)
 
+TP_ModuleImplEnd(Window)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

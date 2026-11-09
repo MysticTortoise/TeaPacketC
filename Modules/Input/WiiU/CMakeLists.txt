@@ -21,4 +21,5 @@ target_link_libraries(TeaPacket_Input_WiiU TeaPacket_Input_Base
         TeaPacket_Types_Base
 )
 
+TP_ModuleImplEnd(Input)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

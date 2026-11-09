@@ -16,4 +16,5 @@ target_include_directories(TeaPacket_Window_Cocoa PUBLIC include)
 target_link_libraries(TeaPacket_Window_Cocoa PUBLIC TeaPacket_Window_Base TeaPacket_Memory_Base
     ${COCOA_FRAMEWORK})
 
+TP_ModuleImplEnd(Window)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

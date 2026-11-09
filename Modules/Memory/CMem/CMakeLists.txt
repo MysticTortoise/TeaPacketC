@@ -12,4 +12,5 @@ target_link_libraries(TeaPacket_Memory_CMem TeaPacket_Memory_Base)
 
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")
 
+TP_ModuleImplEnd(Memory)
 set_target_properties(TeaPacket_Memory_CMem PROPERTIES C_STANDARD 90)

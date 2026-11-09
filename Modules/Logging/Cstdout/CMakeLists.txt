@@ -10,4 +10,5 @@ add_library(TeaPacket_Logging_Cstdout STATIC ${sources})
 target_include_directories(TeaPacket_Logging_Cstdout PRIVATE source)
 target_link_libraries(TeaPacket_Logging_Cstdout TeaPacket_Logging_Base)
 
+TP_ModuleImplEnd(Logging)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

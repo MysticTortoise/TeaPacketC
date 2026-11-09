@@ -12,4 +12,5 @@ target_include_directories(TeaPacket_Time_CoreinitU PRIVATE source)
 #target_include_directories(TeaPacket_Time_STDChrono PUBLIC include)
 target_link_libraries(TeaPacket_Time_CoreinitU TeaPacket_Time_Base)
 
+TP_ModuleImplEnd(Time)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

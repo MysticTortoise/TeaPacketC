@@ -37,4 +37,5 @@ target_link_libraries(TeaPacket_GraphicsGS_Direct3D11 TeaPacket_GraphicsGS_Base 
 
 set(TP_ASSET_MIXER_PASSES "${TP_ASSET_MIXER_PASSES};${CMAKE_CURRENT_SOURCE_DIR}/AssetMixer/Passes/hlsl_shader.py" CACHE INTERNAL "" FORCE)
 
+TP_ModuleImplEnd(GraphicsGS)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

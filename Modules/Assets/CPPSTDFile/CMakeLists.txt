@@ -27,4 +27,5 @@ endif()
 
 target_compile_definitions(TeaPacket_Assets_CPPSTDFile PRIVATE TP_ASSETS_ASSETPREPEND="${TeaPacket_Assets_AssetPrepend}")
 
+TP_ModuleImplEnd(Assets)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

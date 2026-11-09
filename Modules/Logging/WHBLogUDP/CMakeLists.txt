@@ -10,4 +10,5 @@ add_library(TeaPacket_Logging_WHBLogUDP STATIC ${sources})
 target_include_directories(TeaPacket_Logging_WHBLogUDP PRIVATE source)
 target_link_libraries(TeaPacket_Logging_WHBLogUDP TeaPacket_Logging_Base)
 
+TP_ModuleImplEnd(Logging)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

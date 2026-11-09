@@ -16,4 +16,5 @@ add_library(TeaPacket_System_MacOS STATIC ${sources})
 target_link_libraries(TeaPacket_System_MacOS PUBLIC TeaPacket_System_Base)
 target_link_libraries(TeaPacket_System_MacOS PRIVATE ${COCOA_FRAMEWORK})
 
+TP_ModuleImplEnd(System)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

@@ -28,4 +28,5 @@ target_include_directories(TeaPacket_GraphicsGS_GX2 PUBLIC include)
 target_link_libraries(TeaPacket_GraphicsGS_GX2 TeaPacket_GraphicsGS_Base TeaPacket_GraphicsGS_Helper
         TeaPacket_Logging_Base)
 
+TP_ModuleImplEnd(GraphicsGS)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")

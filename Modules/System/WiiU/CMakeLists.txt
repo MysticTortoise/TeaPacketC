@@ -13,4 +13,5 @@ target_include_directories(TeaPacket_System_WiiU PRIVATE "${CMAKE_SOURCE_DIR}/so
 #target_include_directories(TeaPacket_System_WiiU PUBLIC "${CMAKE_SOURCE_DIR}/include")
 target_link_libraries(TeaPacket_System_WiiU TeaPacket_System_Base TeaPacket_Logging_Base)
 
+TP_ModuleImplEnd(System)
 include("${TEAPACKET_ROOT}/CMakeCommons/CommonEnd.CMake")
