@@ -3,7 +3,10 @@
 #include "TeaPacket/Bundled/Init.h"
 #include "TeaPacket/Bundled/DeInit.h"
 
+
+#ifdef TP_INPUT_TEST_HASGFX
 #include "TeaPacket/Graphics/GS/Display.h"
+#include "TeaPacket/Graphics/GS/Graphics.h"
 
 static const TP_GfxGS_DisplayParams dispParams = {
     1280,
@@ -13,6 +16,8 @@ static const TP_GfxGS_DisplayParamList dispParamList = {
     &dispParams,
     1
 };
+TP_Gfx_Color8 clearCol;
+#endif
 
 
 int main(void)
@@ -22,7 +27,9 @@ int main(void)
         TP_Bundled_DeInit();
         return -1;
     }
+#ifdef TP_INPUT_TEST_HASGFX
     TP_GfxGS_InitDefaultDisplays(dispParamList);
+#endif
 
     while (TP_System_ShouldRun())
     {
@@ -38,6 +45,13 @@ int main(void)
             }
         }
 
+#ifdef TP_INPUT_TEST_HASGFX
+        TP_GfxGS_Display_BeginRender(0);
+        clearCol.r = 0;
+        clearCol.g = 0;
+        clearCol.b = 0;
+#endif
+
         {
             /* MOUSE TEST */
             const TP_Input_Slot mouseSlot = TP_Input_GetLastSlotPressed(TP_Input_ControllerType_Mouse);
@@ -50,6 +64,12 @@ int main(void)
 
                 TP_LogConstStr("IS CLICKED:");
                 TP_LogBool(TP_Input_IsButtonPressed(mouseSlot, TP_Input_Button_MOUSE_LEFT));
+#ifdef TP_INPUT_TEST_HASGFX
+                if (TP_Input_IsButtonPressed(mouseSlot, TP_Input_Button_MOUSE_LEFT))
+                {
+                    clearCol.b = 255;
+                }
+#endif
             }
         }
 
@@ -60,6 +80,13 @@ int main(void)
             {
                 TP_LogConstStr("IS ENTER PRESSED:");
                 TP_LogBool(TP_Input_IsButtonPressed(keyboardSlot, TP_Input_Button_KEY_ENTER));
+
+#ifdef TP_INPUT_TEST_HASGFX
+                if (TP_Input_IsButtonPressed(keyboardSlot, TP_Input_Button_KEY_ENTER))
+                {
+                    clearCol.g = 255;
+                }
+#endif
             }
         }
 
@@ -100,8 +127,10 @@ int main(void)
             }
         }
 
-        system("cls");
-
+#ifdef TP_INPUT_TEST_HASGFX
+        TP_GfxGS_ClearColor(clearCol);
+        TP_GfxGS_Display_FinishRender();
+#endif
 
     }
 
