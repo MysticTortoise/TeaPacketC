@@ -12,6 +12,5 @@ var Input_8h =
     [ "TP_Input_IsButtonSupported", "Input_8h.html#a0ac171c2647839d5d22045cecfee0fa5", null ],
     [ "TP_Input_IsConnected", "Input_8h.html#a08249f1f3db8ed1fd4012953a9349067", null ],
     [ "TP_Input_PollSlot", "Input_8h.html#a6ac0515c1fa4536e26e4456b4764137e", null ],
-    [ "TP_Input_UpdateControllers", "Input_8h.html#ac90d080f9bfebeec0e47dfbd1a320e0e", null ],
-    [ "TP_Input_NoControllerSlot", "Input_8h.html#ae684e47ae4df4e82a2cf1e1d332032f0", null ]
+    [ "TP_Input_UpdateControllers", "Input_8h.html#ac90d080f9bfebeec0e47dfbd1a320e0e", null ]
 ];

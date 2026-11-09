@@ -1,6 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"Time_8h.html#a24a21ac93b2439172192c15f3979295c":[1,0,11,0,0],
 "Time_8h.html#a43823928bc1039d319e1240417a4438d":[1,0,11,0,7],
 "Time_8h.html#a438b4c17d18168bf7eb6ffe376fd867b":[1,0,11,0,4],
 "Time_8h.html#ac384c629d0b878e5e30a6a71cc3e8ef7":[1,0,11,0,6],
@@ -80,10 +79,9 @@ var NAVTREEINDEX1 =
 "functions_vars.html":[0,2,1],
 "globals.html":[1,1,0],
 "globals.html":[1,1,0,0],
-"globals_defs.html":[1,1,4],
+"globals_defs.html":[1,1,3],
 "globals_func.html":[1,1,1],
-"globals_type.html":[1,1,3],
-"globals_vars.html":[1,1,2],
+"globals_type.html":[1,1,2],
 "globals_z.html":[1,1,0,1],
 "index.html":[],
 "pages.html":[],
